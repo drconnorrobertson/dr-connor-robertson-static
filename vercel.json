@@ -3,6 +3,33 @@
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": true,
+  "redirects": [
+    { "source": "/category/blog/", "destination": "/blog/", "statusCode": 301 },
+    { "source": "/category/business-strategy-growth/", "destination": "/blog/", "statusCode": 301 },
+    { "source": "/category/leadership-entrepreneurship/", "destination": "/blog/", "statusCode": 301 },
+    { "source": "/category/marketing-business-systems/", "destination": "/blog/", "statusCode": 301 },
+    { "source": "/category/philanthropy-community-impact/", "destination": "/blog/", "statusCode": 301 },
+    { "source": "/category/pittsburgh-real-estate/", "destination": "/blog/", "statusCode": 301 },
+    { "source": "/category/the-prospecting-show/", "destination": "/blog/", "statusCode": 301 },
+    { "source": "/category/uncategorized/", "destination": "/blog/", "statusCode": 301 },
+    { "source": "/category/:path*", "destination": "/blog/", "statusCode": 301 },
+    { "source": "/author/:path*", "destination": "/about/", "statusCode": 301 },
+    { "source": "/feed/", "destination": "/blog/", "statusCode": 301 },
+    { "source": "/comments/feed/", "destination": "/blog/", "statusCode": 301 },
+    { "source": "/wp-json/:path*", "destination": "/", "statusCode": 301 },
+    { "source": "/wp-admin/:path*", "destination": "/", "statusCode": 301 },
+    { "source": "/wp-login.php", "destination": "/", "statusCode": 301 },
+    { "source": "/wp-content/:path*", "destination": "/", "statusCode": 301 },
+    { "source": "/xmlrpc.php", "destination": "/", "statusCode": 301 },
+    { "source": "/wp-sitemap.xml", "destination": "/sitemap.xml", "statusCode": 301 },
+    { "source": "/wp-sitemap-posts-post-1.xml", "destination": "/sitemap.xml", "statusCode": 301 },
+    { "source": "/wp-sitemap-posts-page-1.xml", "destination": "/sitemap.xml", "statusCode": 301 },
+    { "source": "/wp-sitemap-taxonomies-category-1.xml", "destination": "/sitemap.xml", "statusCode": 301 },
+    { "source": "/wp-sitemap-users-1.xml", "destination": "/sitemap.xml", "statusCode": 301 },
+    { "source": "/page/:num/", "destination": "/blog/page/:num/", "statusCode": 301 },
+    { "source": "/?s=:query*", "destination": "/blog/", "statusCode": 301 },
+    { "source": "/?p=:id*", "destination": "/blog/", "statusCode": 301 }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -10,7 +37,14 @@
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" },
         { "key": "X-XSS-Protection", "value": "1; mode=block" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
   ]
