@@ -23,7 +23,6 @@ WP_API = "https://drconnorrobertson.com/wp-json/wp/v2"
 CACHE_FILE = BASE_DIR / "posts_cache.json"
 IMAGE_DIR = DIST / "images"
 WP_DOMAIN = "drconnorrobertson.com"
-WP_DOMAIN_WWW = "www.drconnorrobertson.com"
 
 # Google Search Console verification (update with your actual code)
 GSC_VERIFICATION = ""  # e.g. "google1234567890abcdef.html"
@@ -269,26 +268,20 @@ def fetch_categories():
 
 SOCIAL_LINKS = {
     "LinkedIn": "https://www.linkedin.com/in/dr-connor-robertson",
-    "Medium": "https://medium.com/@dr.connor.robertson",
+    "Facebook": "https://www.facebook.com/therealconnorrobertson",
     "X (Twitter)": "https://x.com/DrConnorRE",
-    "YouTube": "https://www.youtube.com/@drconnorrobertson",
-    "Threads": "https://www.threads.net/@drconnorrobertson",
-    "Substack": "https://drconnorrobertson.substack.com",
+    "YouTube": "https://www.youtube.com/connorrobertsonacquisitions",
+    "Medium": "https://medium.com/@dr.connor.robertson",
+    "Threads": "https://www.threads.com/@creative_acquisitions",
+    "Substack": "https://open.substack.com/pub/drconnorrobertson1",
     "Spotify": "https://open.spotify.com/show/4VDPOlbe2RSSqukaSuYniX",
     "Apple Podcasts": "https://podcasts.apple.com/us/podcast/the-prospecting-show-with-dr-connor-robertson/id1488353384",
-    "Facebook": "https://www.facebook.com/therealconnorrobertson",
-    "Instagram": "https://www.instagram.com/creative_acquisitions/",
     "Crunchbase": "https://www.crunchbase.com/person/dr-connor-robertson",
+    "Instagram": "https://www.instagram.com/creative_acquisitions/",
+    "Behance": "https://www.behance.net/connorrobertson10#",
+    "Tumblr": "https://www.tumblr.com/drconnorrobertsonre",
     "Flipboard": "https://flipboard.com/@DrConnorRobert",
 }
-
-# All properties Connor controls (for sameAs schema and SERP domination)
-OWNED_WEBSITES = [
-    "https://elixirconsultinggroup.com",
-    "https://thepittsburghwire.com",
-    "https://theprospectingshow.com",
-    "https://thegrantfinder.com",
-]
 
 NAV_ITEMS = [
     ("About", "/about/"),
@@ -344,15 +337,15 @@ img{max-width:100%;height:auto;display:block}
 .logo{font-size:18px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
 .logo a{color:var(--text)}
 .nav{display:flex;align-items:center;gap:28px;list-style:none}
-.nav a{font-size:14px;font-weight:500;color:var(--text2);transition:color var(--t);padding:8px 0;min-height:44px;display:flex;align-items:center}
+.nav a{font-size:14px;font-weight:500;color:var(--text2);transition:color var(--t)}
 .nav a:hover{color:var(--text);opacity:1}
-.nav-cta{display:inline-block;padding:12px 24px;background:var(--text);color:#000!important;border-radius:var(--r);font-size:14px;font-weight:600;transition:transform var(--t),box-shadow var(--t);min-height:44px;display:flex;align-items:center}
+.nav-cta{display:inline-block;padding:8px 20px;background:var(--text);color:#000!important;border-radius:var(--r);font-size:14px;font-weight:600;transition:transform var(--t),box-shadow var(--t)}
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(255,255,255,.15);opacity:1}
-.mob-tog{display:none;background:0 0;border:none;color:var(--text);font-size:24px;cursor:pointer;padding:8px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+.mob-tog{display:none;background:0 0;border:none;color:var(--text);font-size:24px;cursor:pointer}
 .has-dd{position:relative}
 .dd{display:none;position:absolute;top:100%;left:0;background:#111;border:1px solid var(--border);border-radius:var(--r);padding:8px 0;min-width:240px;z-index:100}
 .has-dd:hover .dd{display:block}
-.dd a{display:block;padding:12px 20px;font-size:13px;color:var(--text2);min-height:44px;display:flex;align-items:center}
+.dd a{display:block;padding:8px 20px;font-size:13px;color:var(--text2)}
 .dd a:hover{color:var(--text);background:rgba(255,255,255,.05)}
 
 /* Hero */
@@ -364,9 +357,9 @@ img{max-width:100%;height:auto;display:block}
 .hero .tag{font-size:clamp(16px,2vw,20px);color:var(--text2);margin-bottom:36px;line-height:1.6}
 .hero-btn{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .hero-img{width:180px;height:180px;border-radius:50%;object-fit:cover;margin:0 auto 32px;border:3px solid rgba(255,255,255,.15)}
-.btn-p{display:inline-block;padding:12px 32px;background:var(--text);color:#000;border-radius:var(--r);font-weight:600;font-size:15px;transition:transform var(--t),box-shadow var(--t);min-height:44px;display:flex;align-items:center}
+.btn-p{display:inline-block;padding:14px 32px;background:var(--text);color:#000;border-radius:var(--r);font-weight:600;font-size:15px;transition:transform var(--t),box-shadow var(--t)}
 .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,255,255,.15);opacity:1}
-.btn-s{display:inline-block;padding:12px 32px;background:rgba(0,0,0,.48);color:var(--text);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);font-weight:600;font-size:15px;transition:background var(--t);min-height:44px;display:flex;align-items:center}
+.btn-s{display:inline-block;padding:14px 32px;background:rgba(0,0,0,.48);color:var(--text);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);font-weight:600;font-size:15px;transition:background var(--t)}
 .btn-s:hover{background:rgba(255,255,255,.1);opacity:1}
 
 /* Featured */
@@ -419,7 +412,7 @@ img{max-width:100%;height:auto;display:block}
 .bcard .exc{color:var(--text2);font-size:14px;line-height:1.7;flex:1;margin-bottom:16px}
 .bcard .meta{font-size:12px;color:var(--muted)}
 .pag{display:flex;gap:8px;justify-content:center;margin-top:48px;flex-wrap:wrap}
-.pag a,.pag span{display:inline-block;padding:8px 16px;border:1px solid var(--border);border-radius:var(--r);font-size:14px;color:var(--text2);min-height:44px;display:flex;align-items:center;justify-content:center}
+.pag a,.pag span{display:inline-block;padding:8px 16px;border:1px solid var(--border);border-radius:var(--r);font-size:14px;color:var(--text2)}
 .pag .cur{background:var(--text);color:#000;border-color:var(--text);font-weight:600}
 
 /* Post */
@@ -443,7 +436,7 @@ img{max-width:100%;height:auto;display:block}
 .bk:hover{border-color:rgba(255,255,255,.15)}
 .bk h3{font-size:24px;font-weight:700}
 .bk p{color:var(--text2);font-size:15px;line-height:1.8}
-.bk-cta{display:inline-block;padding:12px 28px;background:var(--text);color:#000;border-radius:var(--r);font-weight:600;font-size:14px;align-self:flex-start;margin-top:8px;transition:transform var(--t);min-height:44px;display:flex;align-items:center}
+.bk-cta{display:inline-block;padding:12px 28px;background:var(--text);color:#000;border-radius:var(--r);font-weight:600;font-size:14px;align-self:flex-start;margin-top:8px;transition:transform var(--t)}
 .bk-cta:hover{transform:translateY(-2px);opacity:1}
 
 /* Speaker */
@@ -468,11 +461,11 @@ img{max-width:100%;height:auto;display:block}
 .cform{max-width:640px;margin:0 auto;padding-top:40px}
 .fg{margin-bottom:20px}
 .fg label{display:block;font-size:14px;font-weight:500;margin-bottom:6px;color:var(--text2)}
-.fg input,.fg select,.fg textarea{width:100%;padding:12px 16px;background:var(--card);border:1px solid var(--border);border-radius:15px;color:var(--text);font-family:inherit;font-size:15px;transition:border-color var(--t);min-height:44px}
+.fg input,.fg select,.fg textarea{width:100%;padding:12px 16px;background:var(--card);border:1px solid var(--border);border-radius:15px;color:var(--text);font-family:inherit;font-size:15px;transition:border-color var(--t)}
 .fg input:focus,.fg select:focus,.fg textarea:focus{outline:0;border-color:rgba(255,255,255,.3)}
 .fg textarea{resize:vertical;min-height:120px}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.fsub{display:inline-block;padding:14px 40px;background:var(--text);color:#000;border:none;border-radius:15px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:transform var(--t);min-height:44px;display:flex;align-items:center}
+.fsub{display:inline-block;padding:14px 40px;background:var(--text);color:#000;border:none;border-radius:15px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:transform var(--t)}
 .fsub:hover{transform:translateY(-2px)}
 
 /* Footer */
@@ -481,90 +474,17 @@ img{max-width:100%;height:auto;display:block}
 .ftr-tag{color:var(--text2);font-size:15px;margin-top:12px;line-height:1.6}
 .ftr-col h4{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;color:var(--muted)}
 .ftr-col ul{list-style:none}.ftr-col li{margin-bottom:10px}
-.ftr-col a{color:var(--text2);font-size:14px;min-height:44px;display:flex;align-items:center}.ftr-col a:hover{color:var(--text)}
+.ftr-col a{color:var(--text2);font-size:14px}.ftr-col a:hover{color:var(--text)}
 .ftr-btm{text-align:center;padding-top:32px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
 
-/* Responsive - Tablet */
+/* Responsive */
 @media(max-width:768px){
 .nav{display:none}.mob-tog{display:block}
-.nav.active{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(0,0,0,.95);padding:16px;gap:12px;border-bottom:1px solid var(--border);overflow-y:auto;max-height:calc(100vh - 72px)}
-.nav.active a{padding:12px;min-height:44px;font-size:15px}
-.hdr-in{padding:0 16px}.hero{min-height:70vh;padding:80px 16px 50px}
+.nav.active{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(0,0,0,.95);padding:24px;gap:16px;border-bottom:1px solid var(--border)}
+.hdr-in{padding:0 16px}.hero{min-height:70vh;padding:100px 16px 60px}
 .ftr-top{grid-template-columns:1fr;gap:32px}.stats{gap:24px}
 .fr{grid-template-columns:1fr}.bgrid{grid-template-columns:1fr}.pills{grid-template-columns:1fr}
 .dd{position:static;border:none;background:transparent;padding-left:16px}
-.sec{padding:60px 0}.quote{padding:60px 0}
-.pill{padding:32px 24px}.bk{padding:32px 24px}
-}
-
-/* Responsive - Mobile */
-@media(max-width:480px){
-.ctn{padding:0 16px}
-.hdr-in{height:64px;padding:0 12px}
-.logo{font-size:16px}
-.mob-tog{padding:6px}
-.hero{min-height:65vh;padding:70px 12px 40px}
-.hero h1{font-size:clamp(28px,5vw,48px)}
-.hero .tag{font-size:clamp(14px,4vw,16px);margin-bottom:24px}
-.hero-btn{gap:12px}
-.hero-img{width:140px;height:140px}
-.btn-p,.btn-s{padding:12px 20px;font-size:14px}
-.sec{padding:48px 0}
-.sec-t{font-size:clamp(24px,5vw,36px);margin-bottom:16px}
-.sec-sub{font-size:15px;margin-bottom:32px}
-.pill{padding:24px 16px;margin-bottom:12px}
-.pills{gap:16px}
-.quote{padding:48px 0}
-.quote-t{font-size:clamp(18px,4vw,24px);margin-bottom:16px}
-.feat{padding:32px 0}
-.feat h3{margin-bottom:20px}
-.feat-logos{gap:24px}
-.feat-logos span{font-size:13px}
-.pg-hero{padding:100px 12px 40px}
-.pg-hero h1{font-size:clamp(24px,5vw,40px)}
-.pg-hero p{font-size:15px}
-.stat-n{font-size:36px}
-.stat-l{font-size:12px}
-.stats{gap:16px}
-.about-photo img{width:160px;height:160px}
-.agrid{grid-template-columns:1fr;gap:24px;margin-top:32px}
-.bgrid{grid-template-columns:1fr}
-.bcard-body{padding:16px 20px 20px}
-.bcard h3{font-size:16px}
-.bcard .exc{font-size:13px;margin-bottom:12px}
-.pag a,.pag span{padding:8px 12px;font-size:13px}
-.post{padding:90px 12px 60px}
-.post h1{font-size:clamp(22px,4vw,32px)}
-.post .pm{font-size:13px}
-.post .pb{font-size:15px}
-.post .pb h2{font-size:22px;margin:36px 0 12px}
-.post .pb h3{font-size:18px;margin:28px 0 8px}
-.post-feat{max-height:300px;margin-bottom:20px}
-.bkgrid{gap:24px}
-.bk{padding:24px 16px}
-.bk h3{font-size:20px}
-.bk p{font-size:14px}
-.bk-cta{padding:10px 20px;font-size:13px}
-.saud{grid-template-columns:1fr;gap:16px}
-.acard,.tcard{padding:20px 16px}
-.acard h3{font-size:18px}
-.tcard h3{font-size:16px}
-.pgrid{grid-template-columns:1fr}
-.pcard{padding:20px 16px}
-.pcard h3{font-size:15px}
-.cform{padding-top:20px}
-.fg{margin-bottom:16px}
-.fg label{font-size:13px;margin-bottom:4px}
-.fg input,.fg select,.fg textarea{padding:10px 12px;font-size:14px;border-radius:12px}
-.fg textarea{min-height:100px}
-.fr{grid-template-columns:1fr;gap:12px}
-.fsub{padding:12px 24px;font-size:14px}
-.ftr{padding:48px 0 24px}
-.ftr-top{gap:24px;margin-bottom:32px}
-.ftr-col h4{font-size:12px;margin-bottom:12px}
-.ftr-col a{font-size:13px}
-.ftr-btm{font-size:12px;padding-top:24px}
-.nav.active{top:64px}
 }
 """
 
@@ -592,7 +512,7 @@ def nav_html():
 
 def header(title, desc="", canonical="/", extra="", og_image="", og_type="website"):
     if not desc:
-        desc = "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, podcast host, and philanthropist. Founder of Elixir Consulting Group, The Pittsburgh Wire, and The Prospecting Show."
+        desc = "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, educator, and philanthropist."
     can = f'<link rel="canonical" href="{SITE_URL}{canonical}">' if canonical else ""
     og_img_tag = ""
     if og_image:
@@ -637,15 +557,14 @@ def header(title, desc="", canonical="/", extra="", og_image="", og_type="websit
 
 def footer():
     social = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in SOCIAL_LINKS.items())
-    pages = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in [("/","Home"),("/about/","About"),("/speaker/","Speaker"),("/books/","Books"),("/blog/","Blog"),("/press-media/","Press & Media"),("/contact/","Contact")])
-    ventures = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{u.replace("https://","").rstrip("/")}</a></li>' for u in OWNED_WEBSITES)
+    pages = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in [("/","Home"),("/about/","About"),("/speaker/","Speaker"),("/press-media/","Press & Media"),("/contact/","Contact")])
     return f"""
 <footer class="ftr"><div class="ctn">
 <div class="ftr-top">
 <div><div class="logo" style="font-size:20px;margin-bottom:4px">Dr. Connor Robertson</div>
-<p class="ftr-tag">Founder of <a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener" style="text-decoration:underline">Elixir Consulting Group</a>, <a href="https://thepittsburghwire.com" target="_blank" rel="noopener" style="text-decoration:underline">The Pittsburgh Wire</a>, <a href="https://theprospectingshow.com" target="_blank" rel="noopener" style="text-decoration:underline">The Prospecting Show</a> &amp; <a href="https://thegrantfinder.com" target="_blank" rel="noopener" style="text-decoration:underline">The Grant Finder</a>.</p></div>
+<p class="ftr-tag">Building Businesses. Empowering People. Transforming Communities.</p></div>
 <div class="ftr-col"><h4>Pages</h4><ul>{pages}</ul></div>
-<div class="ftr-col"><h4>Connect</h4><ul>{social}</ul></div>
+<div class="ftr-col"><h4>Follow Connor</h4><ul>{social}</ul></div>
 </div>
 <div class="ftr-btm">&copy; {datetime.now().year} Dr. Connor Robertson. All Rights Reserved.</div>
 </div></footer>
@@ -659,14 +578,31 @@ def page_home():
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Dr. Connor Robertson",
-        "alternateName": "Connor Robertson",
         "url": SITE_URL,
         "image": f"{SITE_URL}/images/connor-robertson-headshot.jpg",
-        "jobTitle": "Entrepreneur, Business Strategist, Educator & Philanthropist",
-        "description": "Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, educator, author, podcast host, and philanthropist based in Pittsburgh, PA. Founder of Elixir Consulting Group, publisher of The Pittsburgh Wire, and host of The Prospecting Show.",
+        "jobTitle": "Entrepreneur, Real Estate Innovator, Educator & Philanthropist",
+        "description": "Canadian-born entrepreneur, real estate innovator, educator, and philanthropist based in Pittsburgh.",
         "address": {"@type": "PostalAddress", "addressLocality": "Pittsburgh", "addressRegion": "PA", "addressCountry": "US"},
-        "sameAs": list(SOCIAL_LINKS.values()) + OWNED_WEBSITES,
-        "knowsAbout": ["Entrepreneurship", "Real Estate", "Business Strategy", "Philanthropy", "Leadership", "Business Acquisitions", "Media Publishing", "Podcasting"],
+        "sameAs": [
+            "https://www.linkedin.com/in/dr-connor-robertson",
+            "https://www.facebook.com/therealconnorrobertson",
+            "https://x.com/DrConnorRE",
+            "https://www.youtube.com/connorrobertsonacquisitions",
+            "https://medium.com/@dr.connor.robertson",
+            "https://www.threads.com/@creative_acquisitions",
+            "https://open.substack.com/pub/drconnorrobertson1",
+            "https://open.spotify.com/show/4VDPOlbe2RSSqukaSuYniX",
+            "https://podcasts.apple.com/us/podcast/the-prospecting-show-with-dr-connor-robertson/id1488353384",
+            "https://www.crunchbase.com/person/dr-connor-robertson",
+            "https://www.instagram.com/creative_acquisitions/",
+            "https://www.behance.net/connorrobertson10#",
+            "https://www.tumblr.com/drconnorrobertsonre",
+            "https://flipboard.com/@DrConnorRobert",
+            "https://elixirconsultinggroup.com",
+            "https://thepittsburghwire.com",
+            "https://theprospectingshow.com",
+        ],
+        "knowsAbout": ["Entrepreneurship", "Real Estate", "Business Strategy", "Philanthropy", "Leadership", "Business Acquisitions", "Short-Term Rentals"],
         "alumniOf": {"@type": "EducationalOrganization", "name": "University"},
         "memberOf": [
             {"@type": "Organization", "name": "Social Venture Partners"},
@@ -675,8 +611,6 @@ def page_home():
         "founder": [
             {"@type": "Organization", "name": "Elixir Consulting Group", "url": "https://elixirconsultinggroup.com"},
             {"@type": "Organization", "name": "The Pittsburgh Wire", "url": "https://thepittsburghwire.com"},
-            {"@type": "Organization", "name": "The Prospecting Show", "url": "https://theprospectingshow.com"},
-            {"@type": "Organization", "name": "The Grant Finder", "url": "https://thegrantfinder.com"},
         ]
     })
 
@@ -696,13 +630,13 @@ def page_home():
 
     extra = f'<script type="application/ld+json">{person_schema}</script>\n<script type="application/ld+json">{website_schema}</script>'
     pillars = [
-        ("Entrepreneur & Founder", "Dr. Connor Robertson founded Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show, and The Grant Finder. He builds businesses that combine innovation with lasting community impact."),
-        ("Author & Podcast Host", "Dr. Robertson hosts The Prospecting Show podcast and has authored five books on business strategy, acquisitions, and wealth building -- sharing actionable frameworks for entrepreneurs at every stage."),
-        ("Philanthropist & Community Builder", "Dr. Robertson actively supports Social Venture Partners and Habitat for Humanity, championing social initiatives that improve education, housing, and community development across North America."),
+        ("Entrepreneur", "Dr. Connor Robertson is a visionary business leader who co-founded a leading real estate firm transforming the vacation and short-term rental market through innovation, technology, and strategy."),
+        ("Educator", "Dr. Robertson shares his expertise as a speaker and mentor, simplifying complex business principles into actionable methods that inspire entrepreneurs and professionals alike."),
+        ("Philanthropist", "Dr. Robertson actively supports Social Venture Partners and Habitat for Humanity, championing social initiatives that improve education, housing, and community development globally."),
     ]
     pcards = "".join(f'<div class="pill"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
-    return header("Dr. Connor Robertson - Official Site | Entrepreneur, Author & Speaker",
-        "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, podcast host, and philanthropist. Founder of Elixir Consulting Group, The Pittsburgh Wire, and The Prospecting Show.",
+    return header("Dr. Connor Robertson | Pittsburgh Entrepreneur & Business Strategist",
+        "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, educator, and philanthropist helping entrepreneurs scale businesses, build legacies, and create lasting impact.",
         "/", extra, og_image="/images/connor-robertson-headshot.jpg") + f"""
 <section class="hero"><div class="hero-bg"></div><div class="hero-ct">
 <h1>Dr. Connor Robertson</h1>
@@ -714,7 +648,7 @@ def page_home():
 <div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span></div>
 </div></section>
 <section class="sec"><div class="ctn">
-<h2 class="sec-t">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh.</h2>
+<h2 class="sec-t">Dr. Connor Robertson is a Canadian-born entrepreneur, real estate innovator, educator, philanthropist, and speaker.</h2>
 <div class="pills">{pcards}</div>
 </div></section>
 <section class="quote"><div class="ctn">
@@ -729,54 +663,40 @@ def page_about():
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Dr. Connor Robertson",
-        "alternateName": "Connor Robertson",
         "url": f"{SITE_URL}/about/",
         "image": f"{SITE_URL}/images/connor-robertson-headshot.jpg",
-        "jobTitle": "Entrepreneur, Business Strategist, Educator & Philanthropist",
-        "description": "Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh, PA. He founded Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show, and The Grant Finder.",
+        "jobTitle": "Entrepreneur, Real Estate Innovator, Educator & Philanthropist",
+        "description": "Dr. Connor Robertson is a visionary entrepreneur and educator focused on innovation and impact, based in Pittsburgh, PA.",
         "address": {"@type": "PostalAddress", "addressLocality": "Pittsburgh", "addressRegion": "PA", "addressCountry": "US"},
-        "sameAs": list(SOCIAL_LINKS.values()) + OWNED_WEBSITES,
-        "knowsAbout": ["Entrepreneurship", "Real Estate", "Business Strategy", "Philanthropy", "Leadership", "Business Acquisitions", "Media Publishing", "Podcasting"],
-        "founder": [
-            {"@type": "Organization", "name": "Elixir Consulting Group", "url": "https://elixirconsultinggroup.com"},
-            {"@type": "Organization", "name": "The Pittsburgh Wire", "url": "https://thepittsburghwire.com"},
-            {"@type": "Organization", "name": "The Prospecting Show", "url": "https://theprospectingshow.com"},
-            {"@type": "Organization", "name": "The Grant Finder", "url": "https://thegrantfinder.com"},
+        "sameAs": [
+            "https://www.linkedin.com/in/dr-connor-robertson",
+            "https://www.facebook.com/therealconnorrobertson",
+            "https://x.com/DrConnorRE",
+            "https://www.youtube.com/connorrobertsonacquisitions",
+            "https://medium.com/@dr.connor.robertson",
+            "https://www.threads.com/@creative_acquisitions",
+            "https://open.substack.com/pub/drconnorrobertson1",
+            "https://open.spotify.com/show/4VDPOlbe2RSSqukaSuYniX",
+            "https://podcasts.apple.com/us/podcast/the-prospecting-show-with-dr-connor-robertson/id1488353384",
+            "https://www.crunchbase.com/person/dr-connor-robertson",
+            "https://www.instagram.com/creative_acquisitions/",
+            "https://www.behance.net/connorrobertson10#",
+            "https://www.tumblr.com/drconnorrobertsonre",
+            "https://flipboard.com/@DrConnorRobert",
         ],
-        "memberOf": [
-            {"@type": "Organization", "name": "Social Venture Partners"},
-            {"@type": "Organization", "name": "Habitat for Humanity"}
-        ],
+        "knowsAbout": ["Entrepreneurship", "Real Estate", "Business Strategy", "Philanthropy", "Leadership"],
     })
-    faq_schema = json.dumps({
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {"@type": "Question", "name": "Who is Dr. Connor Robertson?",
-             "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh, PA. He is the founder of Elixir Consulting Group, publisher of The Pittsburgh Wire, host of The Prospecting Show podcast, and creator of The Grant Finder."}},
-            {"@type": "Question", "name": "What companies does Dr. Connor Robertson own?",
-             "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson founded and operates Elixir Consulting Group (a business consulting firm), The Pittsburgh Wire (a Pittsburgh business news publication), The Prospecting Show (a business podcast on Spotify and Apple Podcasts), and The Grant Finder (a grant discovery platform)."}},
-            {"@type": "Question", "name": "Where is Dr. Connor Robertson based?",
-             "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson is based in Pittsburgh, Pennsylvania. He chose Pittsburgh for its strong business ecosystem, deep talent pool, and collaborative entrepreneurial community."}},
-            {"@type": "Question", "name": "What is The Prospecting Show?",
-             "acceptedAnswer": {"@type": "Answer", "text": "The Prospecting Show is a weekly business podcast hosted by Dr. Connor Robertson where he interviews entrepreneurs and small business owners about scaling their businesses. It is available on Spotify, Apple Podcasts, YouTube, and all major podcast platforms."}},
-            {"@type": "Question", "name": "What books has Dr. Connor Robertson written?",
-             "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson has authored several books including Buying Wealth, The 7 Minute Phone Call, PadSplit Playbook, Buy The Building Keep The Profits, and Creative Acquisitions: The Playbook for Modern Dealmakers. They are available on Google Play and Barnes & Noble."}},
-            {"@type": "Question", "name": "How can I contact Dr. Connor Robertson?",
-             "acceptedAnswer": {"@type": "Answer", "text": "You can reach Dr. Connor Robertson through the contact form on drconnorrobertson.com/contact/ for business inquiries, speaking engagements, press and media requests, and partnership opportunities."}},
-        ]
-    })
-    extra = f'<script type="application/ld+json">{person_schema}</script>\n<script type="application/ld+json">{faq_schema}</script>'
-    return header("Who Is Dr. Connor Robertson? | Bio, Companies, Books & Podcast",
-        "Learn about Dr. Connor Robertson -- Pittsburgh entrepreneur, author, podcast host, and founder of Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show, and The Grant Finder.",
+    extra = f'<script type="application/ld+json">{person_schema}</script>'
+    return header("About Dr. Connor Robertson | Entrepreneur, Strategist & Media Founder",
+        "Dr. Connor Robertson is a visionary entrepreneur and educator focused on innovation and impact.",
         "/about/", extra, og_image="/images/connor-robertson-headshot.jpg") + """
 <section class="pg-hero"><div class="ctn">
 <h1>About Dr. Connor Robertson</h1>
-<p>Entrepreneur, author, podcast host, philanthropist, and founder of four companies based in Pittsburgh, PA.</p>
+<p>Entrepreneur, educator, philanthropist, co-founder of a leading real estate firm, and global advocate for community development.</p>
 </div></section>
 <section class="sec"><div class="ctn">
-<div class="about-photo"><img src="/images/connor-robertson-headshot.jpg" alt="Dr. Connor Robertson headshot - Pittsburgh entrepreneur and business strategist" loading="lazy"></div>
-<p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, and philanthropist based in Pittsburgh, PA. He is the founder of <a href="https://elixirconsultinggroup.com">Elixir Consulting Group</a>, publisher of <a href="https://thepittsburghwire.com">The Pittsburgh Wire</a>, host of <a href="https://theprospectingshow.com">The Prospecting Show</a> podcast, and creator of <a href="https://thegrantfinder.com">The Grant Finder</a>. Through his work with organizations like Social Venture Partners and Habitat for Humanity, Dr. Robertson drives meaningful change in housing, education, and social equity across North America.</p>
+<div class="about-photo"><img src="/images/connor-robertson-headshot.jpg" alt="Dr. Connor Robertson" loading="lazy"></div>
+<p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a visionary entrepreneur and educator who has built and scaled ventures focused on innovation and impact. Through his leadership in real estate and his work with organizations like Social Venture Partners and Habitat for Humanity, Dr. Robertson drives meaningful change, supporting sustainable housing, education, and social equity across communities in North America and beyond.</p>
 <div class="stats">
 <div class="stat"><div class="stat-n">150+</div><div class="stat-l">Homes built through Habitat for Humanity</div></div>
 <div class="stat"><div class="stat-n">40+</div><div class="stat-l">Global branches supported through SVP</div></div>
@@ -784,18 +704,18 @@ def page_about():
 </div>
 <div class="agrid">
 <div class="ablock"><h3>Building Businesses That Transform Communities</h3>
-<p>Dr. Connor Robertson's entrepreneurial journey began with a vision -- to combine innovation and impact. Through <a href="https://elixirconsultinggroup.com">Elixir Consulting Group</a>, he helps business owners scale with strategy, systems, and operational excellence. His passion for community growth fuels his mission to create sustainable value while improving lives across Pittsburgh and beyond.</p></div>
-<div class="ablock"><h3>Media, Publishing & Podcasting</h3>
-<p>Dr. Robertson built <a href="https://thepittsburghwire.com">The Pittsburgh Wire</a> into a leading local business news publication and hosts <a href="https://theprospectingshow.com">The Prospecting Show</a>, a weekly podcast featuring entrepreneurs sharing real stories of scaling their businesses. His media properties reach thousands of readers and listeners each month. He has also authored five books on business strategy and entrepreneurship, available on <a href="/books/">Google Play and Barnes & Noble</a>.</p></div>
-<div class="ablock"><h3>Philanthropy & Social Impact</h3>
-<p>Deeply rooted in giving back, Dr. Robertson's philanthropic work with Social Venture Partners and Habitat for Humanity has transformed communities across North America. Whether building homes or supporting nonprofits that uplift at-risk youth, his contributions embody a commitment to sustainable, meaningful change. Learn more about his <a href="/speaker/">speaking engagements</a> or <a href="/contact/">get in touch</a>.</p></div>
+<p>Dr. Connor Robertson's entrepreneurial journey began with a vision -- to combine innovation and impact. As co-founder of a leading real estate firm, he redefined the short-term rental space through cutting-edge technology, operational excellence, and a people-first approach. His passion for community growth and real estate development fuels his mission to create sustainable value while improving lives.</p></div>
+<div class="ablock"><h3>Empowering Entrepreneurs Through Education</h3>
+<p>Beyond business, Dr. Robertson is an educator and speaker dedicated to teaching entrepreneurs how to lead with purpose. Through mentoring, speaking engagements, and digital platforms, he shares insights on leadership, motivation, and entrepreneurship -- simplifying complex strategies into actionable success frameworks that empower others to thrive.</p></div>
+<div class="ablock"><h3>A Legacy of Service and Social Impact</h3>
+<p>Deeply rooted in giving back, Dr. Robertson's philanthropic work with Social Venture Partners and Habitat for Humanity has transformed communities across North America. Whether building homes or supporting nonprofits that uplift at-risk youth, his contributions embody a commitment to sustainable, meaningful change that strengthens both people and place.</p></div>
 </div></div></section>
 """ + footer()
 
 
 def page_speaker():
-    return header("Book Dr. Connor Robertson as a Speaker | Keynote on Business, AI & Entrepreneurship",
-        "Book Dr. Connor Robertson for your next event. Expert keynote speaker on entrepreneurship, business strategy, real estate, and leadership based in Pittsburgh.", "/speaker/") + """
+    return header("Book Dr. Connor Robertson | Keynote Speaker on Business & AI",
+        "Book Dr. Connor Robertson for your next event. Expert keynote speaker on entrepreneurship, real estate, and leadership.", "/speaker/") + """
 <section class="pg-hero"><div class="ctn">
 <h1>Speaking Engagements</h1>
 <p>Connor is passionate about sharing his experiences and advice with audiences that are ready to grow.</p>
@@ -850,8 +770,8 @@ def page_books():
         "mainEntity": book_schema_items,
     })
     extra = f'<script type="application/ld+json">{schema}</script>'
-    return header("Books by Dr. Connor Robertson | Wealth Building, Acquisitions & Entrepreneurship",
-        "Explore books by Dr. Connor Robertson on wealth building, business acquisitions, real estate investing, and entrepreneurship. Available on Google Play and Barnes & Noble.", "/books/", extra) + f"""
+    return header("Books by Dr. Connor Robertson | Business & Entrepreneurship",
+        "Explore books by Dr. Connor Robertson on wealth building, business acquisitions, and entrepreneurship.", "/books/", extra) + f"""
 <section class="pg-hero"><div class="ctn">
 <h1>Books</h1><p>Practical guides on wealth building, real estate, and entrepreneurship by Dr. Connor Robertson.</p>
 </div></section>
@@ -863,8 +783,8 @@ def page_press():
     cards = ""
     for title, url, source in PRESS_ARTICLES:
         cards += f'<div class="pcard"><div><h3>{esc(title)}</h3><p class="src">{esc(source)}</p></div><a href="{url}" target="_blank" rel="noopener" class="rl">Read &rarr;</a></div>\n'
-    return header("Dr. Connor Robertson in the Press | Media Features & News Coverage",
-        "Dr. Connor Robertson featured in CXO Dispatch, C-Suite Brief, NY Wire, BLK News, Famous Times, Economic Insider, and more.", "/press-media/") + f"""
+    return header("Press & Media | Dr. Connor Robertson in the News",
+        "Dr. Connor Robertson in the press. Featured in CXO Dispatch, C-Suite Brief, NY Wire, and more.", "/press-media/") + f"""
 <section class="pg-hero"><div class="ctn">
 <h1>Press &amp; Media</h1><p>Dr. Connor Robertson's insights and features across leading publications.</p>
 </div></section>
@@ -876,8 +796,8 @@ def page_press():
 
 
 def page_contact():
-    return header("Contact Dr. Connor Robertson | Business Inquiries, Speaking & Partnerships",
-        "Get in touch with Dr. Connor Robertson for business inquiries, speaking engagements, press and media requests, and partnership opportunities.", "/contact/") + """
+    return header("Contact Dr. Connor Robertson | Business Inquiries & Speaking",
+        "Get in touch with Dr. Connor Robertson for business inquiries, speaking engagements, press, and partnerships.", "/contact/") + """
 <section class="pg-hero"><div class="ctn">
 <h1>Don't Hesitate To Reach Out</h1><p>Business inquiries, speaking engagements, press, partnerships, and more.</p>
 </div></section>
@@ -927,8 +847,8 @@ def page_blog_index(posts, page_num, total_pages):
     pag += '</div>'
     sfx = f" - Page {page_num}" if page_num > 1 else ""
     can = "/blog/" if page_num == 1 else f"/blog/page/{page_num}/"
-    return header(f"Dr. Connor Robertson Blog | Business, Entrepreneurship & Pittsburgh{sfx}",
-        "Read articles by Dr. Connor Robertson on entrepreneurship, business strategy, real estate, leadership, and Pittsburgh business news.", can) + f"""
+    return header(f"Blog | Dr. Connor Robertson on Business, AI & Pittsburgh{sfx}",
+        "Insights on entrepreneurship, real estate, leadership, and Pittsburgh business from Dr. Connor Robertson.", can) + f"""
 <section class="pg-hero"><div class="ctn"><h1>Blog, Leadership &amp; Entrepreneurship</h1></div></section>
 <section class="sec"><div class="ctn"><div class="bgrid">{cards}</div>{pag}</div></section>
 """ + footer()
@@ -970,30 +890,14 @@ def page_post(p):
         "image": f"{SITE_URL}{og_image}" if og_image and og_image.startswith("/") else og_image,
     })
     extra = f'<script type="application/ld+json">{schema}</script>'
-
-    # Build the title tag: ensure "Dr. Connor Robertson" or "Connor Robertson" is in it
-    raw_title = p["title"]
-    if "connor robertson" in raw_title.lower():
-        page_title = f"{raw_title} | drconnorrobertson.com"
-    else:
-        page_title = f"{raw_title} | Dr. Connor Robertson"
-
-    # Internal linking footer for every blog post
-    internal_links = """<div style="margin-top:48px;padding:32px;background:var(--card);border:1px solid var(--border);border-radius:12px">
-<h3 style="font-size:18px;font-weight:700;margin-bottom:16px">About the Author</h3>
-<p style="color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:16px"><a href="/about/" style="text-decoration:underline">Dr. Connor Robertson</a> is a Pittsburgh-based entrepreneur, author, and podcast host. He is the founder of <a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener">Elixir Consulting Group</a>, publisher of <a href="https://thepittsburghwire.com" target="_blank" rel="noopener">The Pittsburgh Wire</a>, and host of <a href="https://theprospectingshow.com" target="_blank" rel="noopener">The Prospecting Show</a>.</p>
-<div style="display:flex;gap:12px;flex-wrap:wrap"><a href="/about/" class="btn-s" style="padding:8px 20px;font-size:13px">About Connor</a><a href="/books/" class="btn-s" style="padding:8px 20px;font-size:13px">Books</a><a href="/contact/" class="btn-s" style="padding:8px 20px;font-size:13px">Contact</a></div>
-</div>"""
-
-    return header(page_title, exc, p["relative_url"], extra,
+    return header(f'{p["title"]} | Dr. Connor Robertson', exc, p["relative_url"], extra,
                   og_image=og_image, og_type="article") + f"""
 <article class="post">
 {feat_img_html}
 <h1>{p["title"]}</h1>
-<p class="pm">{dt} &middot; <a href="/about/" style="color:var(--muted);text-decoration:underline">Dr. Connor Robertson</a></p>
+<p class="pm">{dt} &middot; Dr. Connor Robertson</p>
 <div class="pb">{content}</div>
-{internal_links}
-<div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border)"><a href="/blog/" style="font-size:14px;color:var(--muted)">&larr; Back to Blog</a></div>
+<div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border)"><a href="/blog/" style="font-size:14px;color:var(--muted)">&larr; Back to Blog</a></div>
 </article>
 """ + footer()
 
@@ -1039,33 +943,6 @@ def main():
         with open(CACHE_FILE, "w") as f:
             json.dump(posts, f)
         print("  Cached to posts_cache.json")
-
-    # Remove duplicate posts (slugs ending in -2, -3, etc.)
-    before_dedup = len(posts)
-    seen_titles = {}
-    deduped_posts = []
-    for p in posts:
-        title_key = p["title"].lower().strip()
-        slug = p["slug"]
-        # If we already saw this title, keep the original (without -2 suffix)
-        if title_key in seen_titles:
-            if re.match(r'.*-\d+$', slug):
-                print(f"  Removing duplicate: {slug}")
-                continue  # Skip the -2/-3 version
-            else:
-                # This is the original, remove the previously stored one if it was the -2
-                prev_slug = seen_titles[title_key]["slug"]
-                if re.match(r'.*-\d+$', prev_slug):
-                    deduped_posts = [dp for dp in deduped_posts if dp["slug"] != prev_slug]
-                    print(f"  Removing duplicate: {prev_slug}")
-        seen_titles[title_key] = p
-        deduped_posts.append(p)
-    posts = deduped_posts
-    if before_dedup != len(posts):
-        print(f"  Removed {before_dedup - len(posts)} duplicate posts ({before_dedup} -> {len(posts)})")
-        # Update cache with deduped posts
-        with open(CACHE_FILE, "w") as f:
-            json.dump(posts, f)
 
     # Fetch pages content
     print("\n[2/8] Fetching WP pages...")
@@ -1136,36 +1013,6 @@ def main():
             print(f"  Could not fetch media library: {e}")
 
     print(f"  Downloaded {img_count} images total ({len(downloaded_images)} unique)")
-
-    # Image verification: check for any remaining WordPress URLs in content
-    print("\n[4b/8] Verifying image integrity...")
-    wp_url_remaining = 0
-    missing_featured = 0
-    for p in posts:
-        content = p.get("content", "")
-        # Check for any unrewritten WP image URLs
-        wp_refs = re.findall(r'(?:src|srcset)=["\']([^"\']*(?:drconnorrobertson\.com|wp-content/uploads)[^"\']*)["\']', content)
-        for ref in wp_refs:
-            # Check if this URL was successfully downloaded
-            for part in ref.split(","):
-                url = part.strip().split()[0]
-                if url not in downloaded_images and (WP_DOMAIN in url or "wp-content/uploads" in url):
-                    wp_url_remaining += 1
-                    if wp_url_remaining <= 5:
-                        print(f"    WARN: Un-downloaded image in {p['slug']}: {url[:80]}")
-        # Check featured images
-        if p.get("featured_image") and p["featured_image"] not in downloaded_images:
-            missing_featured += 1
-            if missing_featured <= 5:
-                print(f"    WARN: Missing featured image for {p['slug']}: {p['featured_image'][:80]}")
-    # Verify headshot exists
-    headshot = DIST / "images" / "connor-robertson-headshot.jpg"
-    if not headshot.exists():
-        print("    WARN: About page headshot missing! Will need manual upload.")
-    else:
-        print(f"    OK: Headshot found ({headshot.stat().st_size:,} bytes)")
-    print(f"  Image verification: {wp_url_remaining} un-downloaded WP refs, {missing_featured} missing featured images")
-    print(f"  Total unique images on disk: {len(list(IMAGE_DIR.rglob('*')))}")
 
     # Static pages
     print("\n[5/8] Generating static pages...")
