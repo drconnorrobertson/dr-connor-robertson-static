@@ -944,6 +944,18 @@ def main():
             json.dump(posts, f)
         print("  Cached to posts_cache.json")
 
+    # Load manual posts (static posts to prepend before WP posts)
+    MANUAL_POSTS_FILE = BASE_DIR / "manual_posts.json"
+    if MANUAL_POSTS_FILE.exists():
+        with open(MANUAL_POSTS_FILE) as f:
+            manual_posts = json.load(f)
+        # Remove any manual posts that already exist in fetched posts (by slug)
+        fetched_slugs = {p["slug"] for p in posts}
+        new_manual = [p for p in manual_posts if p["slug"] not in fetched_slugs]
+        if new_manual:
+            posts = new_manual + posts
+            print(f"  Prepended {len(new_manual)} manual post(s)")
+
     # Fetch pages content
     print("\n[2/8] Fetching WP pages...")
     wp_pages = []
