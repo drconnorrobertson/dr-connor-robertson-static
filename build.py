@@ -390,6 +390,7 @@ img{max-width:100%;height:auto;display:block}
 /* Stats */
 .stats{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin:48px 0}
 .stat{text-align:center}.stat-n{font-size:48px;font-weight:700}.stat-l{font-size:13px;color:var(--muted);margin-top:4px}
+.about-photo{text-align:center;margin-bottom:32px}.about-photo img{width:220px;height:220px;border-radius:50%;object-fit:cover;border:4px solid var(--border)}
 
 /* Grid blocks */
 .agrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px;margin-top:48px}
@@ -660,11 +661,12 @@ def page_about():
 <p>Entrepreneur, educator, philanthropist, co-founder of a leading real estate firm, and global advocate for community development.</p>
 </div></section>
 <section class="sec"><div class="ctn">
+<div class="about-photo"><img src="/images/connor-robertson-headshot.jpg" alt="Dr. Connor Robertson" loading="lazy"></div>
 <p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a visionary entrepreneur and educator who has built and scaled ventures focused on innovation and impact. Through his leadership in real estate and his work with organizations like Social Venture Partners and Habitat for Humanity, Dr. Robertson drives meaningful change, supporting sustainable housing, education, and social equity across communities in North America and beyond.</p>
 <div class="stats">
-<div class="stat"><div class="stat-n">0+</div><div class="stat-l">Homes built through Habitat for Humanity</div></div>
-<div class="stat"><div class="stat-n">0+</div><div class="stat-l">Global branches supported through SVP</div></div>
-<div class="stat"><div class="stat-n">K+</div><div class="stat-l">Individuals impacted through community initiatives</div></div>
+<div class="stat"><div class="stat-n">150+</div><div class="stat-l">Homes built through Habitat for Humanity</div></div>
+<div class="stat"><div class="stat-n">40+</div><div class="stat-l">Global branches supported through SVP</div></div>
+<div class="stat"><div class="stat-n">10K+</div><div class="stat-l">Individuals impacted through community initiatives</div></div>
 </div>
 <div class="agrid">
 <div class="ablock"><h3>Building Businesses That Transform Communities</h3>
