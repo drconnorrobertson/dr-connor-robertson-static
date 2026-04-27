@@ -601,6 +601,7 @@ def page_home():
             "https://elixirconsultinggroup.com",
             "https://thepittsburghwire.com",
             "https://theprospectingshow.com",
+            "https://wikitia.com/wiki/Dr._Connor_Robertson",
         ],
         "knowsAbout": ["Entrepreneurship", "Real Estate", "Business Strategy", "Philanthropy", "Leadership", "Business Acquisitions", "Short-Term Rentals"],
         "alumniOf": {"@type": "EducationalOrganization", "name": "University"},
@@ -683,6 +684,7 @@ def page_about():
             "https://www.behance.net/connorrobertson10#",
             "https://www.tumblr.com/drconnorrobertsonre",
             "https://flipboard.com/@DrConnorRobert",
+            "https://wikitia.com/wiki/Dr._Connor_Robertson",
         ],
         "knowsAbout": ["Entrepreneurship", "Real Estate", "Business Strategy", "Philanthropy", "Leadership"],
     })
@@ -697,6 +699,7 @@ def page_about():
 <section class="sec"><div class="ctn">
 <div class="about-photo"><img src="/images/connor-robertson-headshot.jpg" alt="Dr. Connor Robertson" loading="lazy"></div>
 <p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a visionary entrepreneur and educator who has built and scaled ventures focused on innovation and impact. Through his leadership in real estate and his work with organizations like Social Venture Partners and Habitat for Humanity, Dr. Robertson drives meaningful change, supporting sustainable housing, education, and social equity across communities in North America and beyond.</p>
+<p style="margin-top:1rem"><a href="https://wikitia.com/wiki/Dr._Connor_Robertson" target="_blank" rel="noopener">Read more about Dr. Connor Robertson on Wikitia</a></p>
 <div class="stats">
 <div class="stat"><div class="stat-n">150+</div><div class="stat-l">Homes built through Habitat for Humanity</div></div>
 <div class="stat"><div class="stat-n">40+</div><div class="stat-l">Global branches supported through SVP</div></div>
