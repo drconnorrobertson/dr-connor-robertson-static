@@ -854,6 +854,29 @@ def page_blog_index(posts, page_num, total_pages):
         "Insights on entrepreneurship, real estate, leadership, and Pittsburgh business from Dr. Connor Robertson.", can) + f"""
 <section class="pg-hero"><div class="ctn"><h1>Blog, Leadership &amp; Entrepreneurship</h1></div></section>
 <section class="sec"><div class="ctn"><div class="bgrid">{cards}</div>{pag}</div></section>
+<section class="network-crosslinks" id="network-section">
+  <div class="ctn">
+    <span class="eyebrow">Around the Network</span>
+    <h2>From Dr. Connor Robertson&#39;s Network</h2>
+    <div class="network-grid">
+    <div class="network-card">
+      <span class="source-tag">The Pittsburgh Wire</span>
+      <h3><a href="https://thepittsburghwire.com/news/pittsburgh-brewing-iron-city-downtown-taproom/" target="_blank" rel="noopener">Iron City Is Back: Pittsburgh Brewing Co. Opens Downtown Taproom After 17 Years</a></h3>
+      <p>After 17 years outside city limits, Pittsburgh Brewing Co. returns to Downtown with a new taproom at Market Square &mdash; a signal of Pittsburgh&#39;s ongoing urban revival.</p>
+    </div>
+    <div class="network-card">
+      <span class="source-tag">The Grant Finder</span>
+      <h3><a href="https://thegrantfinder.org/blog/federal-grant-deadlines-summer-2026/" target="_blank" rel="noopener">Federal Grant Deadlines This Summer: A Planning Guide for Nonprofits</a></h3>
+      <p>Summer 2026 federal grant deadlines are approaching fast. Dr. Connor Robertson outlines which agencies are funding, what cycles to track, and how nonprofits can compete.</p>
+    </div>
+    <div class="network-card">
+      <span class="source-tag">The Prospecting Show</span>
+      <h3><a href="https://prospectingshow.com/blog/ai-sales-agents-pipeline-automation-2026/" target="_blank" rel="noopener">AI Sales Agents: How to Build a Pipeline That Works While You Sleep</a></h3>
+      <p>AI sales agents are transforming how top performers build pipelines. Dr. Connor Robertson breaks down how to deploy AI agents for prospecting, research, and outreach in 2026.</p>
+    </div>
+    </div>
+  </div>
+</section>
 """ + footer()
 
 
