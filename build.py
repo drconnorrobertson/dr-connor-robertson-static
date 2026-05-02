@@ -366,7 +366,8 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 /* Featured */
 .feat{padding:48px 0;text-align:center;border-bottom:1px solid var(--border)}
 .feat h3{font-size:12px;text-transform:uppercase;letter-spacing:3px;color:var(--muted);margin-bottom:32px}
-.feat-logos{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;opacity:.7}
+.feat-logos{display:flex;align-items:center;justify-content:center;opacity:.7;overflow:hidden;position:relative;width:100%}
+.feat-logos-track{display:flex;gap:60px;animation:scroll-marquee 20s linear infinite;width:max-content}
 .feat-logos img{height:32px;width:auto;filter:brightness(0) invert(1);opacity:.7}
 .feat-logos span{font-size:16px;font-weight:600;color:var(--text2);letter-spacing:1px}
 
@@ -481,6 +482,41 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .network-card h3 a{text-decoration:underline;text-underline-offset:3px}
 .network-card p{color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:16px;flex:1}
 
+/* Scroll-triggered fade-in animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scrolling marquee for featured logos */
+.feat-logos-track {
+  display: flex;
+  gap: 60px;
+  animation: scroll-marquee 20s linear infinite;
+  width: max-content;
+}
+
+@keyframes scroll-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.feat-logos {
+  overflow: hidden;
+  position: relative;
+}
+
 /* Footer */
 .ftr{background:var(--bg);border-top:1px solid var(--border);padding:64px 0 32px}
 .ftr-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
@@ -593,6 +629,22 @@ def footer():
 <div class="ftr-btm">&copy; {datetime.now().year} Dr. Connor Robertson. All Rights Reserved.</div>
 </div></footer>
 <script type="application/ld+json">{org_schema}</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {{
+  var observer = new IntersectionObserver(function(entries) {{
+    entries.forEach(function(entry) {{
+      if (entry.isIntersecting) {{
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }}
+    }});
+  }}, {{ threshold: 0.1, rootMargin: '0px 0px -40px 0px' }});
+
+  document.querySelectorAll('.fade-in').forEach(function(el) {{
+    observer.observe(el);
+  }});
+}});
+</script>
 </body></html>"""
 
 
@@ -660,7 +712,7 @@ def page_home():
         ("Educator", "Dr. Robertson shares his expertise as a speaker and mentor, simplifying complex business principles into actionable methods that inspire entrepreneurs and professionals alike."),
         ("Philanthropist", "Dr. Robertson actively supports Social Venture Partners and Habitat for Humanity, championing social initiatives that improve education, housing, and community development globally."),
     ]
-    pcards = "".join(f'<div class="pill"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
+    pcards = "".join(f'<div class="pill fade-in"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
     return header("Dr. Connor Robertson | Pittsburgh Entrepreneur & Business Strategist",
         "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, educator, and philanthropist helping entrepreneurs scale businesses, build legacies, and create lasting impact.",
         "/", extra, og_image="/images/connor-robertson-headshot.jpg") + f"""
@@ -671,13 +723,18 @@ def page_home():
 </div></section>
 <section class="feat"><div class="ctn">
 <h3>As Featured On</h3>
-<div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span></div>
+<div class="feat-logos">
+<div class="feat-logos-track">
+<span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span>
+<span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span>
+</div>
+</div>
 </div></section>
 <section class="sec"><div class="ctn">
-<h2 class="sec-t">Dr. Connor Robertson is a Canadian-born entrepreneur, real estate innovator, educator, philanthropist, and speaker.</h2>
+<h2 class="sec-t fade-in">Dr. Connor Robertson is a Canadian-born entrepreneur, real estate innovator, educator, philanthropist, and speaker.</h2>
 <div class="pills">{pcards}</div>
 </div></section>
-<section class="quote"><div class="ctn">
+<section class="quote fade-in"><div class="ctn">
 <p class="quote-t">"Real success comes from creating impact that lasts longer than you do."</p>
 <p class="quote-a"><strong>Dr. Connor Robertson</strong><br>Entrepreneur, Real Estate Innovator, Educator &amp; Philanthropist</p>
 </div></section>
@@ -722,20 +779,20 @@ def page_about():
 <p>Entrepreneur, educator, philanthropist, co-founder of a leading real estate firm, and global advocate for community development.</p>
 </div></section>
 <section class="sec"><div class="ctn">
-<div class="about-photo"><img src="/images/connor-robertson-headshot.jpg" alt="Dr. Connor Robertson" loading="lazy" decoding="async"></div>
-<p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a visionary entrepreneur and educator who has built and scaled ventures focused on innovation and impact. Through his leadership in real estate and his work with organizations like Social Venture Partners and Habitat for Humanity, Dr. Robertson drives meaningful change, supporting sustainable housing, education, and social equity across communities in North America and beyond.</p>
+<div class="about-photo fade-in"><img src="/images/connor-robertson-headshot.jpg" alt="Dr. Connor Robertson" loading="lazy" decoding="async"></div>
+<p class="sec-sub fade-in" style="max-width:900px">Dr. Connor Robertson is a visionary entrepreneur and educator who has built and scaled ventures focused on innovation and impact. Through his leadership in real estate and his work with organizations like Social Venture Partners and Habitat for Humanity, Dr. Robertson drives meaningful change, supporting sustainable housing, education, and social equity across communities in North America and beyond.</p>
 <p style="margin-top:1rem"><a href="https://wikitia.com/wiki/Dr._Connor_Robertson" target="_blank" rel="noopener">Read more about Dr. Connor Robertson on Wikitia</a></p>
-<div class="stats">
+<div class="stats fade-in">
 <div class="stat"><div class="stat-n">150+</div><div class="stat-l">Homes built through Habitat for Humanity</div></div>
 <div class="stat"><div class="stat-n">40+</div><div class="stat-l">Global branches supported through SVP</div></div>
 <div class="stat"><div class="stat-n">10K+</div><div class="stat-l">Individuals impacted through community initiatives</div></div>
 </div>
 <div class="agrid">
-<div class="ablock"><h3>Building Businesses That Transform Communities</h3>
-<p>Dr. Connor Robertson's entrepreneurial journey began with a vision -- to combine innovation and impact. As co-founder of a leading real estate firm, he redefined the short-term rental space through cutting-edge technology, operational excellence, and a people-first approach. His passion for community growth and real estate development fuels his mission to create sustainable value while improving lives.</p></div>
-<div class="ablock"><h3>Empowering Entrepreneurs Through Education</h3>
-<p>Beyond business, Dr. Robertson is an educator and speaker dedicated to teaching entrepreneurs how to lead with purpose. Through mentoring, speaking engagements, and digital platforms, he shares insights on leadership, motivation, and entrepreneurship -- simplifying complex strategies into actionable success frameworks that empower others to thrive.</p></div>
-<div class="ablock"><h3>A Legacy of Service and Social Impact</h3>
+<div class="ablock fade-in"><h3>Building Businesses That Transform Communities</h3>
+<p>Dr. Connor Robertson's entrepreneurial journey began with a vision to combine innovation and impact. As co-founder of a leading real estate firm, he redefined the short-term rental space through cutting-edge technology, operational excellence, and a people-first approach. His passion for community growth and real estate development fuels his mission to create sustainable value while improving lives.</p></div>
+<div class="ablock fade-in"><h3>Empowering Entrepreneurs Through Education</h3>
+<p>Beyond business, Dr. Robertson is an educator and speaker dedicated to teaching entrepreneurs how to lead with purpose. Through mentoring, speaking engagements, and digital platforms, he shares insights on leadership, motivation, and entrepreneurship, simplifying complex strategies into actionable success frameworks that empower others to thrive.</p></div>
+<div class="ablock fade-in"><h3>A Legacy of Service and Social Impact</h3>
 <p>Deeply rooted in giving back, Dr. Robertson's philanthropic work with Social Venture Partners and Habitat for Humanity has transformed communities across North America. Whether building homes or supporting nonprofits that uplift at-risk youth, his contributions embody a commitment to sustainable, meaningful change that strengthens both people and place.</p></div>
 </div></div></section>
 """ + footer()
@@ -751,16 +808,16 @@ def page_speaker():
 <section class="sec"><div class="ctn">
 <h2 class="sec-t">Audiences Connor Connects With</h2>
 <div class="saud">
-<div class="acard"><h3>Entrepreneurs</h3><p>Learn how to transform ideas into impactful, scalable ventures.</p></div>
-<div class="acard"><h3>Real Estate Leaders</h3><p>Gain insights on leveraging technology and strategy to maximize returns.</p></div>
-<div class="acard"><h3>Changemakers</h3><p>Discover how to align business success with lasting social impact.</p></div>
+<div class="acard fade-in"><h3>Entrepreneurs</h3><p>Learn how to transform ideas into impactful, scalable ventures.</p></div>
+<div class="acard fade-in"><h3>Real Estate Leaders</h3><p>Gain insights on leveraging technology and strategy to maximize returns.</p></div>
+<div class="acard fade-in"><h3>Changemakers</h3><p>Discover how to align business success with lasting social impact.</p></div>
 </div></div></section>
 <section class="sec sec-dk"><div class="ctn">
 <h2 class="sec-t">Subject Matter Expertise</h2>
 <div class="topics">
-<div class="tcard"><h3>Building a Real Estate Business That Creates Change</h3><p>Discover the steps to launch, grow, and scale a socially conscious real estate firm -- one that drives profit, purpose, and positive impact through innovation and leadership.</p></div>
-<div class="tcard"><h3>Leading with Purpose and Integrity</h3><p>Learn how to cultivate authentic leadership by balancing empathy with execution -- empowering your team and community while driving measurable business success.</p></div>
-<div class="tcard"><h3>Merging Entrepreneurship and Philanthropy</h3><p>Master the art of integrating business excellence with social responsibility. Dr. Robertson's approach teaches how purpose-driven ventures can fuel long-term, sustainable transformation.</p></div>
+<div class="tcard fade-in"><h3>Building a Real Estate Business That Creates Change</h3><p>Discover the steps to launch, grow, and scale a socially conscious real estate firm, one that drives profit, purpose, and positive impact through innovation and leadership.</p></div>
+<div class="tcard fade-in"><h3>Leading with Purpose and Integrity</h3><p>Learn how to cultivate authentic leadership by balancing empathy with execution, empowering your team and community while driving measurable business success.</p></div>
+<div class="tcard fade-in"><h3>Merging Entrepreneurship and Philanthropy</h3><p>Master the art of integrating business excellence with social responsibility. Dr. Robertson's approach teaches how purpose-driven ventures can fuel long-term, sustainable transformation.</p></div>
 </div></div></section>
 <section class="sec"><div class="ctn">
 <h2 class="sec-t">Request a Booking</h2>
@@ -782,7 +839,7 @@ def page_books():
     cards = ""
     book_schema_items = []
     for title, desc, url, store in BOOKS:
-        cards += f'<div class="bk"><h3>{esc(title)}</h3><p>{esc(desc)}</p><a href="{url}" target="_blank" rel="noopener" class="bk-cta">Get Your Copy Now</a></div>\n'
+        cards += f'<div class="bk fade-in"><h3>{esc(title)}</h3><p>{esc(desc)}</p><a href="{url}" target="_blank" rel="noopener" class="bk-cta">Get Your Copy Now</a></div>\n'
         book_schema_items.append({
             "@type": "Book",
             "name": title,
@@ -810,14 +867,19 @@ def page_books():
 def page_press():
     cards = ""
     for title, url, source in PRESS_ARTICLES:
-        cards += f'<div class="pcard"><div><h3>{esc(title)}</h3><p class="src">{esc(source)}</p></div><a href="{url}" target="_blank" rel="noopener" class="rl">Read &rarr;</a></div>\n'
+        cards += f'<div class="pcard fade-in"><div><h3>{esc(title)}</h3><p class="src">{esc(source)}</p></div><a href="{url}" target="_blank" rel="noopener" class="rl">Read &rarr;</a></div>\n'
     return header("Press & Media | Dr. Connor Robertson in the News",
         "Dr. Connor Robertson in the press. Featured in CXO Dispatch, C-Suite Brief, NY Wire, and more.", "/press-media/") + f"""
 <section class="pg-hero"><div class="ctn">
 <h1>Press &amp; Media</h1><p>Dr. Connor Robertson's insights and features across leading publications.</p>
 </div></section>
 <section class="sec"><div class="ctn">
-<div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span></div></div>
+<div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><div class="feat-logos">
+<div class="feat-logos-track">
+<span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span>
+<span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span>
+</div>
+</div></div>
 <div class="pgrid">{cards}</div>
 </div></section>
 """ + footer()
@@ -862,7 +924,7 @@ def page_blog_index(posts, page_num, total_pages):
             local = downloaded_images.get(p["featured_image"], "")
             if local:
                 feat_img = f'<img src="{local}" alt="{esc(strip_tags(p["title"]))}" class="bcard-img" loading="lazy" decoding="async">'
-        cards += f'<a href="{p["relative_url"]}" class="bcard">{feat_img}<div class="bcard-body"><h3>{p["title"]}</h3><p class="exc">{esc(exc)}</p><span class="meta">{dt}</span></div></a>\n'
+        cards += f'<a href="{p["relative_url"]}" class="bcard fade-in">{feat_img}<div class="bcard-body"><h3>{p["title"]}</h3><p class="exc">{esc(exc)}</p><span class="meta">{dt}</span></div></a>\n'
     pag = '<div class="pag">'
     for i in range(1, min(total_pages + 1, 20)):
         href = "/blog/" if i == 1 else f"/blog/page/{i}/"
@@ -879,22 +941,22 @@ def page_blog_index(posts, page_num, total_pages):
         "Insights on entrepreneurship, real estate, leadership, and Pittsburgh business from Dr. Connor Robertson.", can) + f"""
 <section class="pg-hero"><div class="ctn"><h1>Blog, Leadership &amp; Entrepreneurship</h1></div></section>
 <section class="sec"><div class="ctn"><div class="bgrid">{cards}</div>{pag}</div></section>
-<section class="network-crosslinks" id="network-section">
+<section class="network-crosslinks fade-in" id="network-section">
   <div class="ctn">
     <span class="eyebrow">Around the Network</span>
-    <h2>From Dr. Connor Robertson&#39;s Network</h2>
+    <h2>From Dr. Connor Robertson's Network</h2>
     <div class="network-grid">
-    <div class="network-card">
+    <div class="network-card fade-in">
       <span class="source-tag">The Pittsburgh Wire</span>
       <h3><a href="https://thepittsburghwire.com/news/pittsburgh-brewing-iron-city-downtown-taproom/" target="_blank" rel="noopener">Iron City Is Back: Pittsburgh Brewing Co. Opens Downtown Taproom After 17 Years</a></h3>
-      <p>After 17 years outside city limits, Pittsburgh Brewing Co. returns to Downtown with a new taproom at Market Square &mdash; a signal of Pittsburgh&#39;s ongoing urban revival.</p>
+      <p>After 17 years outside city limits, Pittsburgh Brewing Co. returns to Downtown with a new taproom at Market Square, a signal of Pittsburgh's ongoing urban revival.</p>
     </div>
-    <div class="network-card">
+    <div class="network-card fade-in">
       <span class="source-tag">The Grant Finder</span>
       <h3><a href="https://thegrantfinder.org/blog/federal-grant-deadlines-summer-2026/" target="_blank" rel="noopener">Federal Grant Deadlines This Summer: A Planning Guide for Nonprofits</a></h3>
       <p>Summer 2026 federal grant deadlines are approaching fast. Dr. Connor Robertson outlines which agencies are funding, what cycles to track, and how nonprofits can compete.</p>
     </div>
-    <div class="network-card">
+    <div class="network-card fade-in">
       <span class="source-tag">The Prospecting Show</span>
       <h3><a href="https://prospectingshow.com/blog/ai-sales-agents-pipeline-automation-2026/" target="_blank" rel="noopener">AI Sales Agents: How to Build a Pipeline That Works While You Sleep</a></h3>
       <p>AI sales agents are transforming how top performers build pipelines. Dr. Connor Robertson breaks down how to deploy AI agents for prospecting, research, and outreach in 2026.</p>
