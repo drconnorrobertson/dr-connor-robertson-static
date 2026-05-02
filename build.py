@@ -267,10 +267,10 @@ def fetch_categories():
 # ── Design System ─────────────────────────────────────────────
 
 SOCIAL_LINKS = {
-    "LinkedIn": "https://www.linkedin.com/in/dr-connor-robertson",
+    "LinkedIn": "https://www.linkedin.com/in/drconnorrobertson",
     "Facebook": "https://www.facebook.com/therealconnorrobertson",
-    "X (Twitter)": "https://x.com/DrConnorRE",
-    "YouTube": "https://www.youtube.com/connorrobertsonacquisitions",
+    "X (Twitter)": "https://x.com/drconnorre",
+    "YouTube": "https://www.youtube.com/@connorrobertsonacquisitions",
     "Medium": "https://medium.com/@dr.connor.robertson",
     "Threads": "https://www.threads.com/@creative_acquisitions",
     "Substack": "https://open.substack.com/pub/drconnorrobertson1",
@@ -278,9 +278,10 @@ SOCIAL_LINKS = {
     "Apple Podcasts": "https://podcasts.apple.com/us/podcast/the-prospecting-show-with-dr-connor-robertson/id1488353384",
     "Crunchbase": "https://www.crunchbase.com/person/dr-connor-robertson",
     "Instagram": "https://www.instagram.com/creative_acquisitions/",
-    "Behance": "https://www.behance.net/connorrobertson10#",
+    "Behance": "https://www.behance.net/connorrobertson10",
     "Tumblr": "https://www.tumblr.com/drconnorrobertsonre",
     "Flipboard": "https://flipboard.com/@DrConnorRobert",
+    "Wikitia": "https://wikitia.com/wiki/Dr._Connor_Robertson",
 }
 
 NAV_ITEMS = [
@@ -326,9 +327,9 @@ CSS = """
 :root{--bg:#000;--bg2:#0a0a0a;--card:#111;--text:#fff;--text2:#b0b0b0;--muted:#888;--border:#222;--r:8px;--mw:1200px;--t:.3s ease}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:var(--text);text-decoration:none;transition:opacity var(--t)}a:hover{opacity:.8}
-img{max-width:100%;height:auto;display:block}
+img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .ctn{max-width:var(--mw);margin:0 auto;padding:0 24px}
 
 /* Header */
@@ -468,6 +469,18 @@ img{max-width:100%;height:auto;display:block}
 .fsub{display:inline-block;padding:14px 40px;background:var(--text);color:#000;border:none;border-radius:15px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:transform var(--t)}
 .fsub:hover{transform:translateY(-2px)}
 
+/* Network Crosslinks */
+.network-crosslinks{padding:80px 0;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.network-crosslinks .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:3px;color:var(--muted);display:block;margin-bottom:16px}
+.network-crosslinks h2{font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-.02em;margin-bottom:48px;line-height:1.2}
+.network-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px}
+.network-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;transition:transform var(--t),border-color var(--t)}
+.network-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.15)}
+.network-card .source-tag{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:12px;display:block}
+.network-card h3{font-size:18px;font-weight:600;margin-bottom:12px;line-height:1.4}
+.network-card h3 a{text-decoration:underline;text-underline-offset:3px}
+.network-card p{color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:16px;flex:1}
+
 /* Footer */
 .ftr{background:var(--bg);border-top:1px solid var(--border);padding:64px 0 32px}
 .ftr-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
@@ -490,7 +503,7 @@ img{max-width:100%;height:auto;display:block}
 
 # ── Template helpers ──────────────────────────────────────────
 
-FONT_LINK = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">'
+FONT_LINK = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">'
 
 def esc(s):
     return html.escape(str(s))
@@ -526,6 +539,7 @@ def header(title, desc="", canonical="/", extra="", og_image="", og_type="websit
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 {can}
@@ -539,10 +553,13 @@ def header(title, desc="", canonical="/", extra="", og_image="", og_type="websit
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
-<meta name="twitter:site" content="@DrConnorRE">
+<meta name="twitter:site" content="@drconnorre">
+<meta name="twitter:creator" content="@drconnorre">
 <meta name="author" content="Dr. Connor Robertson">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<link rel="sitemap" type="application/xml" href="/sitemap.xml">{gsc}
+<meta name="theme-color" content="#000000">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="alternate" type="application/rss+xml" href="/feed.xml">{gsc}
 {FONT_LINK}
 <style>{CSS}</style>
 {extra}
@@ -556,8 +573,15 @@ def header(title, desc="", canonical="/", extra="", og_image="", og_type="websit
 """
 
 def footer():
-    social = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in SOCIAL_LINKS.items())
-    pages = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in [("/","Home"),("/about/","About"),("/speaker/","Speaker"),("/press-media/","Press & Media"),("/contact/","Contact")])
+    social = "".join(f'<li><a href="{u}" target="_blank" rel="noopener" aria-label="Visit Dr. Connor Robertson on {n}">{n}</a></li>' for n, u in SOCIAL_LINKS.items())
+    pages = "".join(f'<li><a href="{h}" aria-label="{l}">{l}</a></li>' for l, h in [("/","Home"),("/about/","About"),("/speaker/","Speaker"),("/press-media/","Press & Media"),("/contact/","Contact")])
+    org_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Dr. Connor Robertson",
+        "url": SITE_URL,
+        "sameAs": list(SOCIAL_LINKS.values()),
+    })
     return f"""
 <footer class="ftr"><div class="ctn">
 <div class="ftr-top">
@@ -568,6 +592,7 @@ def footer():
 </div>
 <div class="ftr-btm">&copy; {datetime.now().year} Dr. Connor Robertson. All Rights Reserved.</div>
 </div></footer>
+<script type="application/ld+json">{org_schema}</script>
 </body></html>"""
 
 
@@ -584,10 +609,10 @@ def page_home():
         "description": "Canadian-born entrepreneur, real estate innovator, educator, and philanthropist based in Pittsburgh.",
         "address": {"@type": "PostalAddress", "addressLocality": "Pittsburgh", "addressRegion": "PA", "addressCountry": "US"},
         "sameAs": [
-            "https://www.linkedin.com/in/dr-connor-robertson",
+            "https://www.linkedin.com/in/drconnorrobertson",
             "https://www.facebook.com/therealconnorrobertson",
-            "https://x.com/DrConnorRE",
-            "https://www.youtube.com/connorrobertsonacquisitions",
+            "https://x.com/drconnorre",
+            "https://www.youtube.com/@connorrobertsonacquisitions",
             "https://medium.com/@dr.connor.robertson",
             "https://www.threads.com/@creative_acquisitions",
             "https://open.substack.com/pub/drconnorrobertson1",
@@ -595,13 +620,13 @@ def page_home():
             "https://podcasts.apple.com/us/podcast/the-prospecting-show-with-dr-connor-robertson/id1488353384",
             "https://www.crunchbase.com/person/dr-connor-robertson",
             "https://www.instagram.com/creative_acquisitions/",
-            "https://www.behance.net/connorrobertson10#",
+            "https://www.behance.net/connorrobertson10",
             "https://www.tumblr.com/drconnorrobertsonre",
             "https://flipboard.com/@DrConnorRobert",
+            "https://wikitia.com/wiki/Dr._Connor_Robertson",
             "https://elixirconsultinggroup.com",
             "https://thepittsburghwire.com",
             "https://theprospectingshow.com",
-            "https://wikitia.com/wiki/Dr._Connor_Robertson",
         ],
         "knowsAbout": ["Entrepreneurship", "Real Estate", "Business Strategy", "Philanthropy", "Leadership", "Business Acquisitions", "Short-Term Rentals"],
         "alumniOf": {"@type": "EducationalOrganization", "name": "University"},
@@ -670,10 +695,10 @@ def page_about():
         "description": "Dr. Connor Robertson is a visionary entrepreneur and educator focused on innovation and impact, based in Pittsburgh, PA.",
         "address": {"@type": "PostalAddress", "addressLocality": "Pittsburgh", "addressRegion": "PA", "addressCountry": "US"},
         "sameAs": [
-            "https://www.linkedin.com/in/dr-connor-robertson",
+            "https://www.linkedin.com/in/drconnorrobertson",
             "https://www.facebook.com/therealconnorrobertson",
-            "https://x.com/DrConnorRE",
-            "https://www.youtube.com/connorrobertsonacquisitions",
+            "https://x.com/drconnorre",
+            "https://www.youtube.com/@connorrobertsonacquisitions",
             "https://medium.com/@dr.connor.robertson",
             "https://www.threads.com/@creative_acquisitions",
             "https://open.substack.com/pub/drconnorrobertson1",
@@ -681,12 +706,12 @@ def page_about():
             "https://podcasts.apple.com/us/podcast/the-prospecting-show-with-dr-connor-robertson/id1488353384",
             "https://www.crunchbase.com/person/dr-connor-robertson",
             "https://www.instagram.com/creative_acquisitions/",
-            "https://www.behance.net/connorrobertson10#",
+            "https://www.behance.net/connorrobertson10",
             "https://www.tumblr.com/drconnorrobertsonre",
             "https://flipboard.com/@DrConnorRobert",
             "https://wikitia.com/wiki/Dr._Connor_Robertson",
         ],
-        "knowsAbout": ["Entrepreneurship", "Real Estate", "Business Strategy", "Philanthropy", "Leadership"],
+        "knowsAbout": ["Entrepreneurship", "Real Estate", "Business Strategy", "Philanthropy", "Leadership", "Business Acquisitions"],
     })
     extra = f'<script type="application/ld+json">{person_schema}</script>'
     return header("About Dr. Connor Robertson | Entrepreneur, Strategist & Media Founder",
@@ -697,7 +722,7 @@ def page_about():
 <p>Entrepreneur, educator, philanthropist, co-founder of a leading real estate firm, and global advocate for community development.</p>
 </div></section>
 <section class="sec"><div class="ctn">
-<div class="about-photo"><img src="/images/connor-robertson-headshot.jpg" alt="Dr. Connor Robertson" loading="lazy"></div>
+<div class="about-photo"><img src="/images/connor-robertson-headshot.jpg" alt="Dr. Connor Robertson" loading="lazy" decoding="async"></div>
 <p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a visionary entrepreneur and educator who has built and scaled ventures focused on innovation and impact. Through his leadership in real estate and his work with organizations like Social Venture Partners and Habitat for Humanity, Dr. Robertson drives meaningful change, supporting sustainable housing, education, and social equity across communities in North America and beyond.</p>
 <p style="margin-top:1rem"><a href="https://wikitia.com/wiki/Dr._Connor_Robertson" target="_blank" rel="noopener">Read more about Dr. Connor Robertson on Wikitia</a></p>
 <div class="stats">
@@ -836,7 +861,7 @@ def page_blog_index(posts, page_num, total_pages):
         if p.get("featured_image"):
             local = downloaded_images.get(p["featured_image"], "")
             if local:
-                feat_img = f'<img src="{local}" alt="{esc(strip_tags(p["title"]))}" class="bcard-img" loading="lazy">'
+                feat_img = f'<img src="{local}" alt="{esc(strip_tags(p["title"]))}" class="bcard-img" loading="lazy" decoding="async">'
         cards += f'<a href="{p["relative_url"]}" class="bcard">{feat_img}<div class="bcard-body"><h3>{p["title"]}</h3><p class="exc">{esc(exc)}</p><span class="meta">{dt}</span></div></a>\n'
     pag = '<div class="pag">'
     for i in range(1, min(total_pages + 1, 20)):
@@ -892,16 +917,16 @@ def page_post(p):
     og_image = ""
     if p.get("featured_image"):
         local = downloaded_images.get(p["featured_image"], p["featured_image"])
-        feat_img_html = f'<img src="{local}" alt="{esc(strip_tags(p["title"]))}" class="post-feat" loading="lazy">'
+        feat_img_html = f'<img src="{local}" alt="{esc(strip_tags(p["title"]))}" class="post-feat" loading="lazy" decoding="async">'
         og_image = local
 
     # Rewrite images in post content
     content = rewrite_image_urls(p["content"])
 
     # Article schema
-    schema = json.dumps({
+    article_schema = {
         "@context": "https://schema.org",
-        "@type": "Article",
+        "@type": "BlogPosting",
         "headline": p["title"],
         "author": {"@type": "Person", "name": "Dr. Connor Robertson", "url": SITE_URL},
         "datePublished": p["date"],
@@ -914,8 +939,35 @@ def page_post(p):
         "description": exc,
         "mainEntityOfPage": {"@type": "WebPage", "@id": f"{SITE_URL}{p['relative_url']}"},
         "image": f"{SITE_URL}{og_image}" if og_image and og_image.startswith("/") else og_image,
-    })
-    extra = f'<script type="application/ld+json">{schema}</script>'
+    }
+
+    # Breadcrumb schema
+    breadcrumb_schema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": SITE_URL
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": f"{SITE_URL}/blog/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": p["title"],
+                "item": f"{SITE_URL}{p['relative_url']}"
+            }
+        ]
+    }
+
+    extra = f'<script type="application/ld+json">{json.dumps(article_schema)}</script>\n<script type="application/ld+json">{json.dumps(breadcrumb_schema)}</script>'
     return header(f'{p["title"]} | Dr. Connor Robertson', exc, p["relative_url"], extra,
                   og_image=og_image, og_type="article") + f"""
 <article class="post">
@@ -1086,7 +1138,19 @@ def main():
     # SEO files
     print("\n[8/8] Generating SEO and config files...")
     write("sitemap.xml", sitemap(posts))
-    write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")
+    write("robots.txt", f"""User-agent: *
+Allow: /
+Disallow: /dist/
+Disallow: /*.json$
+
+Sitemap: {SITE_URL}/sitemap.xml
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+""")
     write("404.html", header("Page Not Found | Dr. Connor Robertson", "", "") + """
 <section class="pg-hero" style="min-height:60vh;display:flex;align-items:center"><div class="ctn" style="text-align:center">
 <h1>404</h1><p style="margin-top:16px">The page you're looking for doesn't exist.</p>
@@ -1110,9 +1174,20 @@ def main():
                 {"key": "X-XSS-Protection", "value": "1; mode=block"},
                 {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
                 {"key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()"},
+                {"key": "Content-Security-Policy", "value": "default-src 'self' https:; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://formspree.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https://formspree.io"},
             ]},
             {"source": "/images/(.*)", "headers": [
                 {"key": "Cache-Control", "value": "public, max-age=31536000, immutable"},
+                {"key": "Content-Type", "value": "image/*"},
+            ]},
+            {"source": "^/.*\\.(js|css)$", "headers": [
+                {"key": "Cache-Control", "value": "public, max-age=31536000, immutable"},
+            ]},
+            {"source": "/sitemap.xml", "headers": [
+                {"key": "Content-Type", "value": "application/xml"},
+            ]},
+            {"source": "/feed.xml", "headers": [
+                {"key": "Content-Type", "value": "application/xml"},
             ]},
         ]
     }
