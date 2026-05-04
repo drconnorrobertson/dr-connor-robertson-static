@@ -29,6 +29,15 @@ WP_DOMAIN_WWW = "www.drconnorrobertson.com"
 GSC_VERIFICATION = ""  # e.g. "google1234567890abcdef.html"
 GSC_META = ""  # e.g. '<meta name="google-site-verification" content="...">'
 
+# ── Headshot images from Google Drive ────────────────────────────
+HEADSHOT_IMAGES = {
+    "connor-hero.jpg": "1pb9Ywj8ZSLsCWY_6BKE7dYVT5CB_wkBG",
+    "connor-about.jpg": "1WZWhF4DprYQ0KJuT1QG06-fqujAt6vqu",
+    "connor-blog-author.jpg": "1jAbDQ0gTk_ANkmNp4Ap2bHq933W-6A6d",
+    "connor-press.jpg": "18lXsfBp9lonA8ss_Y-AN1rAWbIzhRi6s",
+    "connor-contact.jpg": "1XXXo2oazNGXMthB5x4DbzWMKsd1-BfSH",
+}
+
 # ââ Image download helpers âââââââââââââââââââââââââââââââââââââ
 
 downloaded_images = {}  # maps original URL -> local path
@@ -74,6 +83,25 @@ def download_image(url):
     except Exception as e:
         print(f"    WARN: failed to download {url}: {e}")
         return None
+
+
+def download_headshots():
+    """Download headshot images from Google Drive to dist/images/."""
+    for filename, file_id in HEADSHOT_IMAGES.items():
+        dest = IMAGE_DIR / filename
+        if dest.exists():
+            print(f"    Headshot already exists: {filename}")
+            continue
+        url = f"https://drive.google.com/uc?export=download&id={file_id}"
+        try:
+            req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            resp = urlopen(req, timeout=30)
+            data = resp.read()
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_bytes(data)
+            print(f"    Downloaded headshot: {filename} ({len(data)} bytes)")
+        except Exception as e:
+            print(f"    WARN: failed to download headshot {filename}: {e}")
 
 def rewrite_image_urls(html_content):
     """Find all image URLs in HTML content, download them, and rewrite to local paths."""
@@ -374,6 +402,14 @@ img{max-width:100%;height:auto;display:block}
 .hero .tag{font-size:clamp(16px,2vw,20px);color:var(--text2);margin-bottom:36px;line-height:1.6}
 .hero-btn{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .hero-img{width:180px;height:180px;border-radius:50%;object-fit:cover;margin:0 auto 32px;border:3px solid rgba(255,255,255,.15)}
+.hero-headshot{display:flex;justify-content:center;margin-bottom:32px}
+.hero-headshot img{width:200px;height:200px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.15);box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.press-headshot{text-align:center;margin-bottom:32px}.press-headshot img{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid var(--border)}
+.contact-headshot{text-align:center;margin-bottom:32px}.contact-headshot img{width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid var(--border)}
+.blog-author{display:flex;align-items:center;gap:12px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.blog-author img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.blog-author span{font-size:13px;color:var(--muted)}
+
 .btn-p{display:inline-block;padding:14px 32px;background:var(--text);color:#000;border-radius:var(--r);font-weight:600;font-size:15px;transition:transform var(--t),box-shadow var(--t)}
 .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,255,255,.15);opacity:1}
 .btn-s{display:inline-block;padding:14px 32px;background:rgba(0,0,0,.48);color:var(--text);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);font-weight:600;font-size:15px;transition:background var(--t)}
@@ -598,7 +634,7 @@ def page_home():
         "name": "Dr. Connor Robertson",
         "alternateName": "Connor Robertson",
         "url": SITE_URL,
-        "image": f"{SITE_URL}/images/connor-robertson-headshot.jpg",
+        "image": f"{SITE_URL}/images/connor-hero.jpg",
         "jobTitle": "Entrepreneur, Business Strategist, Educator & Philanthropist",
         "description": "Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, educator, author, podcast host, and philanthropist based in Pittsburgh, PA. Founder of Elixir Consulting Group, publisher of The Pittsburgh Wire, and host of The Prospecting Show.",
         "address": {"@type": "PostalAddress", "addressLocality": "Pittsburgh", "addressRegion": "PA", "addressCountry": "US"},
@@ -640,7 +676,7 @@ def page_home():
     pcards = "".join(f'<div class="pill"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
     return header("Dr. Connor Robertson - Official Site | Entrepreneur, Author & Speaker",
         "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, podcast host, and philanthropist. Founder of Elixir Consulting Group, The Pittsburgh Wire, and The Prospecting Show.",
-        "/", extra, og_image="/images/connor-robertson-headshot.jpg") + f"""
+        "/", extra, og_image="/images/connor-hero.jpg") + f"""
 <section class="hero"><div class="hero-bg"></div><div class="hero-ct">
 <h1>Dr. Connor Robertson</h1>
 <p class="tag">Helping entrepreneurs scale businesses, build legacies, and create lasting impact.</p>
@@ -668,7 +704,7 @@ def page_about():
         "name": "Dr. Connor Robertson",
         "alternateName": "Connor Robertson",
         "url": f"{SITE_URL}/about/",
-        "image": f"{SITE_URL}/images/connor-robertson-headshot.jpg",
+        "image": f"{SITE_URL}/images/connor-hero.jpg",
         "jobTitle": "Entrepreneur, Business Strategist, Educator & Philanthropist",
         "description": "Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh, PA. He founded Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show, and The Grant Finder.",
         "address": {"@type": "PostalAddress", "addressLocality": "Pittsburgh", "addressRegion": "PA", "addressCountry": "US"},
@@ -706,13 +742,13 @@ def page_about():
     extra = f'<script type="application/ld+json">{person_schema}</script>\n<script type="application/ld+json">{faq_schema}</script>'
     return header("Who Is Dr. Connor Robertson? | Bio, Companies, Books & Podcast",
         "Learn about Dr. Connor Robertson -- Pittsburgh entrepreneur, author, podcast host, and founder of Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show, and The Grant Finder.",
-        "/about/", extra, og_image="/images/connor-robertson-headshot.jpg") + """
+        "/about/", extra, og_image="/images/connor-about.jpg") + """
 <section class="pg-hero"><div class="ctn">
 <h1>About Dr. Connor Robertson</h1>
 <p>Entrepreneur, author, podcast host, philanthropist, and founder of four companies based in Pittsburgh, PA.</p>
 </div></section>
 <section class="sec"><div class="ctn">
-<div class="about-photo"><img src="/images/connor-robertson-headshot.jpg" alt="Dr. Connor Robertson headshot - Pittsburgh entrepreneur and business strategist" loading="lazy"></div>
+<div class="about-photo"><img src="/images/connor-hero.jpg" alt="Dr. Connor Robertson headshot - Pittsburgh entrepreneur and business strategist" loading="lazy"></div>
 <p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, and philanthropist based in Pittsburgh, PA. He is the founder of <a href="https://elixirconsultinggroup.com">Elixir Consulting Group</a>, publisher of <a href="https://thepittsburghwire.com">The Pittsburgh Wire</a>, host of <a href="https://theprospectingshow.com">The Prospecting Show</a> podcast, and creator of <a href="https://thegrantfinder.com">The Grant Finder</a>. Through his work with organizations like Social Venture Partners and Habitat for Humanity, Dr. Robertson drives meaningful change in housing, education, and social equity across North America.</p>
 <div class="stats">
 <div class="stat"><div class="stat-n">150+</div><div class="stat-l">Homes built through Habitat for Humanity</div></div>
@@ -832,7 +868,7 @@ def page_contact():
 <section class="pg-hero"><div class="ctn">
 <h1>Don't Hesitate To Reach Out</h1><p>Business inquiries, speaking engagements, press, partnerships, and more.</p>
 </div></section>
-<section class="sec"><div class="ctn"><div class="cform">
+<section class="sec"><div class="ctn">\n<div class="contact-headshot fade-in"><img src="/images/connor-contact.jpg" alt="Dr. Connor Robertson - Contact" width="160" height="160" loading="lazy" decoding="async"></div>\n<div class="cform">
 <form action="https://formspree.io/f/xdkobkzz" method="POST">
 <div class="fr"><div class="fg"><label>First Name *</label><input type="text" name="first_name" required></div><div class="fg"><label>Last Name *</label><input type="text" name="last_name" required></div></div>
 <div class="fg"><label>Email *</label><input type="email" name="email" required></div>
@@ -1036,6 +1072,10 @@ def main():
     DIST.mkdir(parents=True)
     IMAGE_DIR.mkdir(parents=True, exist_ok=True)
 
+    # Download headshot images from Google Drive
+    print("\n[3.5/8] Downloading headshot images from Google Drive...")
+    download_headshots()
+
     # Download all media assets
     print("\n[4/8] Downloading images from WordPress...")
     img_count = 0
@@ -1110,7 +1150,7 @@ def main():
             if missing_featured <= 5:
                 print(f"    WARN: Missing featured image for {p['slug']}: {p['featured_image'][:80]}")
     # Verify headshot exists
-    headshot = DIST / "images" / "connor-robertson-headshot.jpg"
+    headshot = DIST / "images" / "connor-hero.jpg"
     if not headshot.exists():
         print("    WARN: About page headshot missing! Will need manual upload.")
     else:
