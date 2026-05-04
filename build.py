@@ -29,16 +29,22 @@ WP_DOMAIN_WWW = "www.drconnorrobertson.com"
 GSC_VERIFICATION = ""  # e.g. "google1234567890abcdef.html"
 GSC_META = ""  # e.g. '<meta name="google-site-verification" content="...">'
 
-# ── Headshot images from Google Drive ────────────────────────────
+# ââ Headshot images from Google Drive ââââââââââââââââââââââââââââ
 HEADSHOT_IMAGES = {
     "connor-hero.jpg": "1pb9Ywj8ZSLsCWY_6BKE7dYVT5CB_wkBG",
     "connor-about.jpg": "1WZWhF4DprYQ0KJuT1QG06-fqujAt6vqu",
     "connor-blog-author.jpg": "1jAbDQ0gTk_ANkmNp4Ap2bHq933W-6A6d",
     "connor-press.jpg": "18lXsfBp9lonA8ss_Y-AN1rAWbIzhRi6s",
     "connor-contact.jpg": "1XXXo2oazNGXMthB5x4DbzWMKsd1-BfSH",
+    "connor-book.jpg": "13Z1Mqrpx_e7lqZASXrOXcyqj22yvFkbx",
+    "connor-business.jpg": "1Ist8cAStzUkigCe4UkW8rvREvAzUyEMc",
+    "connor-casual.jpg": "179JJmOJKD1KhRezl1kk-h5wI02SchuuD",
+    "connor-blazer.jpg": "1r6zKRQC5QLUrvOnRDhSrtju8M5Y3_9_r",
+    "connor-headshot.jpg": "1kO8f_3H8YObT-Upz2bJ6S3X8O0S997tU",
+    "connor-bold.jpg": "1GXH5DvI-DlwcTKW2j37WTwXeb7NhrNM7",
 }
 
-# ââ Image download helpers âââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Image download helpers Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 downloaded_images = {}  # maps original URL -> local path
 
@@ -86,22 +92,26 @@ def download_image(url):
 
 
 def download_headshots():
-    """Download headshot images from Google Drive to dist/images/."""
+    """Copy headshot images from repo images/ dir to dist/images/, falling back to Drive download."""
+    local_images = BASE_DIR / "images"
     for filename, file_id in HEADSHOT_IMAGES.items():
         dest = IMAGE_DIR / filename
         if dest.exists():
-            print(f"    Headshot already exists: {filename}")
+            print(f"  [skip] {filename} already exists")
             continue
-        url = f"https://drive.google.com/uc?export=download&id={file_id}"
-        try:
-            req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
-            resp = urlopen(req, timeout=30)
-            data = resp.read()
-            dest.parent.mkdir(parents=True, exist_ok=True)
-            dest.write_bytes(data)
-            print(f"    Downloaded headshot: {filename} ({len(data)} bytes)")
-        except Exception as e:
-            print(f"    WARN: failed to download headshot {filename}: {e}")
+        # Try local repo copy first
+        local_src = local_images / filename
+        if local_src.exists():
+            import shutil
+            shutil.copy2(str(local_src), str(dest))
+            print(f"  [copy] {filename} from local images/")
+            continue
+        # Fall back to Google Drive download
+        result = download_from_drive(file_id, dest)
+        if result:
+            print(f"  [download] {filename} from Google Drive")
+        else:
+            print(f"  [FAIL] {filename} could not be downloaded")
 
 def rewrite_image_urls(html_content):
     """Find all image URLs in HTML content, download them, and rewrite to local paths."""
@@ -176,7 +186,7 @@ def rewrite_image_urls(html_content):
     return result
 
 
-# ââ Fetch helpers ââââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Fetch helpers Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 def fetch_json(url):
     req = Request(url, headers={"User-Agent": "StaticSiteBuilder/1.0"})
@@ -293,7 +303,7 @@ def fetch_categories():
     return {c["id"]: c["name"] for c in data}
 
 
-# ââ Design System âââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Design System Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 SOCIAL_LINKS = {
     "LinkedIn": "https://www.linkedin.com/in/dr-connor-robertson",
@@ -365,7 +375,7 @@ BOOKS = [
 ]
 
 
-# ââ CSS âââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ CSS Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 CSS = """
 :root{--bg:#000;--bg2:#0a0a0a;--card:#111;--text:#fff;--text2:#b0b0b0;--muted:#888;--border:#222;--r:8px;--mw:1200px;--t:.3s ease}
@@ -541,7 +551,7 @@ img{max-width:100%;height:auto;display:block}
 }
 """
 
-# ââ Template helpers ââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Template helpers Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 FONT_LINK = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">'
 
@@ -625,7 +635,7 @@ def footer():
 </body></html>"""
 
 
-# ââ Page builders âââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Page builders Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 def page_home():
     person_schema = json.dumps({
@@ -677,7 +687,7 @@ def page_home():
     return header("Dr. Connor Robertson - Official Site | Entrepreneur, Author & Speaker",
         "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, podcast host, and philanthropist. Founder of Elixir Consulting Group, The Pittsburgh Wire, and The Prospecting Show.",
         "/", extra, og_image="/images/connor-hero.jpg") + f"""
-<section class="hero"><div class="hero-bg"></div><div class="hero-ct">
+<section class="hero"><div class="hero-bg"><img src="/images/connor-hero.jpg" alt="Dr. Connor Robertson" width="1024" height="1024" loading="eager" class="hero-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.35;"></div><div class="hero-ct">
 <h1>Dr. Connor Robertson</h1>
 <p class="tag">Helping entrepreneurs scale businesses, build legacies, and create lasting impact.</p>
 <div class="hero-btn"><a href="/contact/" class="btn-p">Contact</a><a href="/about/" class="btn-s">About</a></div>
@@ -770,6 +780,7 @@ def page_speaker():
     return header("Book Dr. Connor Robertson as a Speaker | Keynote on Business, AI & Entrepreneurship",
         "Book Dr. Connor Robertson for your next event. Expert keynote speaker on entrepreneurship, business strategy, real estate, and leadership based in Pittsburgh.", "/speaker/") + """
 <section class="pg-hero"><div class="ctn">
+<div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-blazer.jpg" alt="Dr. Connor Robertson - Keynote Speaker" width="300" height="300" loading="lazy" style="border-radius:50%;width:200px;height:200px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
 <h1>Speaking Engagements</h1>
 <p>Connor is passionate about sharing his experiences and advice with audiences that are ready to grow.</p>
 </div></section>
@@ -826,6 +837,7 @@ def page_books():
     return header("Books by Dr. Connor Robertson | Wealth Building, Acquisitions & Entrepreneurship",
         "Explore books by Dr. Connor Robertson on wealth building, business acquisitions, real estate investing, and entrepreneurship. Available on Google Play and Barnes & Noble.", "/books/", extra) + f"""
 <section class="pg-hero"><div class="ctn">
+<div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-book.jpg" alt="Dr. Connor Robertson - Author" width="300" height="300" loading="lazy" style="border-radius:12px;width:250px;height:250px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
 <h1>Books</h1><p>Practical guides on wealth building, real estate, and entrepreneurship by Dr. Connor Robertson.</p>
 </div></section>
 <section class="sec"><div class="ctn"><div class="bkgrid">{cards}</div></div></section>
@@ -853,6 +865,7 @@ def page_press():
     return header("Dr. Connor Robertson in the Press | Media Features & News Coverage",
         "Dr. Connor Robertson featured in CXO Dispatch, C-Suite Brief, NY Wire, BLK News, Famous Times, Economic Insider, Taste Terminal, Fiction Talk, NewsBlaze, The Rogue Mag, InEntertainment, and more.", "/press-media/", extra=news_schema_tags) + f"""
 <section class="pg-hero"><div class="ctn">
+<div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-press.jpg" alt="Dr. Connor Robertson - Press" width="300" height="300" loading="lazy" style="border-radius:50%;width:180px;height:180px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
 <h1>Press &amp; Media</h1><p>Dr. Connor Robertson's insights and features across leading publications.</p>
 </div></section>
 <section class="sec"><div class="ctn">
@@ -901,7 +914,7 @@ def page_blog_index(posts, page_num, total_pages):
             local = downloaded_images.get(p["featured_image"], "")
             if local:
                 feat_img = f'<img src="{local}" alt="{esc(strip_tags(p["title"]))}" class="bcard-img" loading="lazy">'
-        cards += f'<a href="{p["relative_url"]}" class="bcard">{feat_img}<div class="bcard-body"><h3>{p["title"]}</h3><p class="exc">{esc(exc)}</p><span class="meta">{dt}</span></div></a>\n'
+        cards += f'<a href="{p["relative_url"]}" class="bcard">{feat_img}<div class="bcard-body"><h3>{p["title"]}</h3><p class="exc">{esc(exc)}</p><span class="meta">{dt}</span><div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(0,0,0,0.08);"><img src="/images/connor-blog-author.jpg" alt="" width="28" height="28" loading="lazy" style="border-radius:50%;width:28px;height:28px;object-fit:cover;"><span style="font-size:0.8rem;color:#666;">Dr. Connor Robertson</span></div></div></a>\n'
     pag = '<div class="pag">'
     for i in range(1, min(total_pages + 1, 20)):
         href = "/blog/" if i == 1 else f"/blog/page/{i}/"
@@ -981,11 +994,13 @@ def page_post(p):
 <div class="pb">{content}</div>
 {internal_links}
 <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border)"><a href="/blog/" style="font-size:14px;color:var(--muted)">&larr; Back to Blog</a></div>
+
+<section class="author-bio" style="max-width:800px;margin:3rem auto;padding:2rem;background:#f8f9fa;border-radius:12px;display:flex;gap:1.5rem;align-items:center;"><img src="/images/connor-casual.jpg" alt="Dr. Connor Robertson" width="120" height="120" loading="lazy" style="border-radius:50%;width:120px;height:120px;object-fit:cover;flex-shrink:0;"><div><strong style="font-size:1.1rem;">Dr. Connor Robertson</strong><p style="margin:0.5rem 0 0;color:#555;line-height:1.6;">Entrepreneur, author, and podcast host based in Pittsburgh. Connor writes about business strategy, leadership, and building ventures that create lasting impact.</p></div></section>
 </article>
 """ + footer()
 
 
-# ââ File writers ââââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ File writers Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 def write(path, content):
     full = DIST / path.lstrip("/")
@@ -1004,7 +1019,7 @@ def sitemap(posts):
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{entries}</urlset>'
 
 
-# ââ Main ââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+# Ã¢ÂÂÃ¢ÂÂ Main Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 def main():
     no_fetch = "--no-fetch" in sys.argv
