@@ -349,6 +349,13 @@ RESOURCE_HUBS = [
     ("Pittsburgh Business", "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/"),
 ]
 
+PILLAR_PAGES = [
+    ("Business Acquisitions", "/business-acquisitions/"),
+    ("AI Business Strategy", "/ai-business-strategy/"),
+    ("Prospecting & Sales", "/prospecting-sales/"),
+    ("Author Platform", "/author-platform/"),
+]
+
 PRESS_ARTICLES = [
     ("Building Businesses with Purpose: A Modern Framework for Entrepreneurial Impact", "https://nywire.com/building-businesses-with-purpose-a-modern-framework-for-entrepreneurial-impact/", "NY Wire"),
     ("Dr. Connor Robertson on Turning Underperforming Companies into Category Leaders", "https://nywire.com/dr-connor-robertson-on-turning-underperforming-companies-into-category-leaders/", "NY Wire"),
@@ -721,6 +728,9 @@ def nav_html():
     items = ""
     for label, href in NAV_ITEMS:
         items += f'<li><a href="{href}">{label}</a></li>'
+    # Topics dropdown (pillar pages)
+    tdd = "".join(f'<a href="{h}">{l}</a>' for l, h in PILLAR_PAGES)
+    items += f'<li class="has-dd"><a href="/business-acquisitions/">Topics</a><div class="dd">{tdd}</div></li>'
     # Resources dropdown
     dd = "".join(f'<a href="{h}">{l}</a>' for l, h in RESOURCE_HUBS)
     items += f'<li class="has-dd"><a href="/blog/complete-resource-index-dr-connor-robertson/">Resources</a><div class="dd">{dd}</div></li>'
@@ -1175,6 +1185,362 @@ def sitemap(posts):
 
 # Ã¢ÂÂÃ¢ÂÂ Main Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
+
+# ── Pillar / Topic Hub Pages ──────────────────────────────────
+
+def page_business_acquisitions():
+    person_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Dr. Connor Robertson",
+        "url": SITE_URL,
+        "jobTitle": "Entrepreneur & Business Acquisition Strategist",
+        "sameAs": list(SOCIAL_LINKS.values()),
+    })
+    breadcrumb = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "Business Acquisitions", "item": f"{SITE_URL}/business-acquisitions/"},
+        ]
+    })
+    extra = f'''<script type="application/ld+json">{person_schema}</script>
+<script type="application/ld+json">{breadcrumb}</script>'''
+    return header("Business Acquisitions: The Complete Guide to Buying Businesses | Dr. Connor Robertson",
+        "Comprehensive guide to business acquisitions by Dr. Connor Robertson. Learn deal structures, due diligence frameworks, financing options, and valuation methods for acquiring businesses.",
+        "/business-acquisitions/", extra, og_image="/images/connor-robertson-headshot.jpg") + """
+<section class="pg-hero"><div class="ctn">
+<h1>Business Acquisitions: The Complete Guide to Buying Businesses</h1>
+<p>Master the frameworks, strategies, and systems that Dr. Connor Robertson uses to acquire businesses -- from deal sourcing to integration and scale.</p>
+</div></section>
+<section class="sec"><div class="ctn">
+
+<h2 class="fade-in">Why Buying Beats Building</h2>
+<p class="fade-in">Most entrepreneurs face a critical decision early in their journey: should they build a business from scratch, or acquire an existing one? After years of both building and buying, the answer is clear -- for most people, buying is the faster, lower-risk path to wealth and freedom.</p>
+<p class="fade-in">When you acquire a business, you inherit proven revenue streams, existing customer relationships, established operational systems, and a team already in place. An existing business generating $1M in annual revenue might be purchased for 3-5x seller discretionary earnings. Compare that to the 5-10 years and significantly more capital required to build from zero, and the math speaks for itself.</p>
+<p class="fade-in">The strategic advantages compound over time. Immediate cash flow means you can service acquisition debt from day one. Reduced risk means your capital is deployed against proven models rather than unvalidated ideas. An existing team reduces the hiring burden. Established customer relationships provide a foundation for growth rather than starting from an empty pipeline.</p>
+
+<h2 class="fade-in">Deal Structures That Work</h2>
+<p class="fade-in">Understanding deal structures is where most aspiring acquirers get stuck. The reality is that there are dozens of ways to structure a business purchase, and the best deals often combine multiple approaches to create win-win outcomes for both buyer and seller.</p>
+<h3 class="fade-in">Asset Purchase vs. Stock Purchase</h3>
+<p class="fade-in">In an asset purchase, you buy specific assets of the business -- equipment, inventory, customer lists, intellectual property -- without taking on the entity itself. This protects you from unknown liabilities and often provides better depreciation benefits. In a stock purchase, you buy the entity outright, including all assets and liabilities. Stock purchases are simpler but carry more risk.</p>
+<h3 class="fade-in">Seller Financing</h3>
+<p class="fade-in">Seller financing is one of the most powerful tools in creative acquisitions. The seller carries a note for a portion of the purchase price, typically 20-60%, creating alignment between buyer and seller. The seller gets a higher total price and ongoing income. The buyer gets favorable terms and reduced upfront capital requirements. Dr. Robertson covers this extensively in <a href="https://connorrobertsonbooks.com/books/creative-acquisitions/">Creative Acquisitions</a>.</p>
+<h3 class="fade-in">Earnouts and Performance-Based Structures</h3>
+<p class="fade-in">Earnouts bridge valuation gaps by tying a portion of the purchase price to future business performance. If the seller believes the business will grow, they accept an earnout because they expect to earn more total. If the buyer is uncertain about projections, they reduce risk by paying only when results materialize.</p>
+
+<h2 class="fade-in">The Due Diligence Framework</h2>
+<p class="fade-in">Due diligence separates successful acquirers from those who overpay for problems. A systematic approach ensures you uncover the real condition of the business before committing capital.</p>
+<p class="fade-in"><strong>Financial Due Diligence:</strong> Verify revenue quality, examine customer concentration, analyze margins by product line, review accounts receivable aging, and confirm that reported earnings match actual cash flow. Look at three years of financials minimum.</p>
+<p class="fade-in"><strong>Operational Due Diligence:</strong> Assess the team, systems, and processes that make the business run. How dependent is the business on the current owner? What happens if key employees leave? Are standard operating procedures documented?</p>
+<p class="fade-in"><strong>Market Due Diligence:</strong> Evaluate the competitive landscape, market trends, customer satisfaction, and growth potential. Is the industry growing or declining? Are there regulatory risks on the horizon?</p>
+<p class="fade-in"><strong>Legal Due Diligence:</strong> Review contracts, leases, intellectual property, pending litigation, compliance history, and employment agreements. Engage qualified legal counsel for this phase -- it is not the place to cut corners.</p>
+
+<h2 class="fade-in">Financing Your Acquisition</h2>
+<p class="fade-in">Most business acquisitions do not require you to write a check for the full purchase price. Understanding financing options allows you to acquire larger businesses with less personal capital at risk.</p>
+<p class="fade-in"><strong>SBA Loans:</strong> The Small Business Administration guarantees loans up to $5M for business acquisitions. SBA 7(a) loans typically require 10-20% down and offer 10-year terms. These are the most common financing vehicle for acquisitions under $5M.</p>
+<p class="fade-in"><strong>Seller Financing:</strong> As mentioned above, seller notes reduce the amount of third-party financing needed and demonstrate the seller's confidence in the business's future.</p>
+<p class="fade-in"><strong>Conventional Bank Loans:</strong> Traditional commercial loans may offer better rates than SBA loans for well-qualified buyers with strong collateral and industry experience.</p>
+<p class="fade-in"><strong>Private Equity and Investor Capital:</strong> For larger deals, bringing in equity partners or investors can provide the capital needed while distributing risk.</p>
+
+<h2 class="fade-in">Valuation Methods</h2>
+<p class="fade-in">Business valuation is both art and science. Multiple approaches exist, and the best acquirers use several methods to triangulate fair value.</p>
+<p class="fade-in"><strong>Multiple of SDE:</strong> Seller Discretionary Earnings multiplied by an industry-appropriate multiple (typically 2-4x for small businesses). This is the most common method for businesses under $5M in revenue.</p>
+<p class="fade-in"><strong>Multiple of EBITDA:</strong> For larger businesses, EBITDA multiples (typically 4-8x) provide a more standardized valuation framework. Industry, growth rate, and risk profile determine where in the range a business falls.</p>
+<p class="fade-in"><strong>Discounted Cash Flow:</strong> Projects future cash flows and discounts them to present value. More complex but accounts for growth trajectory and investment requirements.</p>
+<p class="fade-in"><strong>Asset-Based Valuation:</strong> Values the business based on its tangible and intangible assets. Useful as a floor value or for asset-heavy businesses.</p>
+
+<h2 class="fade-in">Your First Acquisition Roadmap</h2>
+<p class="fade-in">Getting from idea to closed deal requires a systematic approach. Here is the framework Dr. Robertson recommends for first-time acquirers:</p>
+<p class="fade-in"><strong>Phase 1 -- Define Your Criteria:</strong> What size business? What industry? What geographic area? What cash flow do you need? Getting clear on criteria prevents wasted time on wrong-fit opportunities.</p>
+<p class="fade-in"><strong>Phase 2 -- Source Deals:</strong> Business brokers, online marketplaces, direct outreach to owners, your professional network, and industry events are all viable deal sources. The best deals are often found off-market through relationships and direct outreach.</p>
+<p class="fade-in"><strong>Phase 3 -- Evaluate and Negotiate:</strong> Apply your due diligence framework, develop your valuation, and structure a deal that works for both parties. This is where the principles from <a href="https://connorrobertsonbooks.com/books/creative-acquisitions/">Creative Acquisitions</a> become critical.</p>
+<p class="fade-in"><strong>Phase 4 -- Close and Integrate:</strong> Legal documentation, financing finalization, transition planning, and day-one operations. The first 90 days after closing determine long-term success.</p>
+<p class="fade-in"><strong>Phase 5 -- Optimize and Scale:</strong> Apply systems thinking to improve operations, reduce owner dependency, and position for growth or additional acquisitions.</p>
+
+<div class="quote fade-in" style="margin:48px 0">
+<p class="quote-t">"The best time to buy a business was five years ago. The second best time is right now."</p>
+<p class="quote-a"><strong>Dr. Connor Robertson</strong></p>
+</div>
+
+<h2 class="fade-in">Related Resources</h2>
+<div class="pills fade-in" style="margin-top:24px">
+<div class="pill"><h3><a href="/ai-business-strategy/">AI Business Strategy</a></h3><p>How to use AI to optimize operations after your acquisition.</p></div>
+<div class="pill"><h3><a href="/prospecting-sales/">Prospecting & Sales</a></h3><p>Build the pipeline that feeds your acquisition deal flow.</p></div>
+<div class="pill"><h3><a href="/author-platform/">Author Platform</a></h3><p>Establish authority that attracts off-market deal opportunities.</p></div>
+<div class="pill"><h3><a href="https://connorrobertsonbooks.com/books/creative-acquisitions/">Creative Acquisitions (Book)</a></h3><p>The complete playbook for modern dealmakers.</p></div>
+<div class="pill"><h3><a href="https://connorrobertsonbooks.com/books/buying-wealth/">Buying Wealth (Book)</a></h3><p>A practical guide to building wealth through ownership.</p></div>
+</div>
+
+<div style="margin-top:48px;padding:32px;background:var(--card);border-radius:var(--r);text-align:center" class="fade-in">
+<h3>Ready to Make Your First Acquisition?</h3>
+<p style="margin:16px 0;color:var(--text2)">Dr. Connor Robertson helps entrepreneurs acquire businesses through proven frameworks and hands-on guidance.</p>
+<a href="/contact/" class="btn-p" style="display:inline-block;margin-top:12px">Contact Connor</a>
+</div>
+
+</div></section>
+""" + footer()
+
+
+def page_ai_business_strategy():
+    person_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Dr. Connor Robertson",
+        "url": SITE_URL,
+        "jobTitle": "Entrepreneur & AI Business Strategist",
+        "sameAs": list(SOCIAL_LINKS.values()),
+    })
+    breadcrumb = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "AI Business Strategy", "item": f"{SITE_URL}/ai-business-strategy/"},
+        ]
+    })
+    extra = f'''<script type="application/ld+json">{person_schema}</script>
+<script type="application/ld+json">{breadcrumb}</script>'''
+    return header("AI Business Strategy: How Entrepreneurs Use AI for Competitive Advantage | Dr. Connor Robertson",
+        "Dr. Connor Robertson's guide to AI business strategy. Learn how to deploy AI for marketing automation, operations, sales intelligence, and sustainable competitive advantage.",
+        "/ai-business-strategy/", extra, og_image="/images/connor-robertson-headshot.jpg") + """
+<section class="pg-hero"><div class="ctn">
+<h1>AI Business Strategy: How Entrepreneurs Use AI for Competitive Advantage</h1>
+<p>Practical frameworks for deploying artificial intelligence across marketing, operations, and sales -- without the hype.</p>
+</div></section>
+<section class="sec"><div class="ctn">
+
+<h2 class="fade-in">The Strategic Imperative</h2>
+<p class="fade-in">Artificial intelligence is not a future consideration -- it is a present-day competitive weapon. Entrepreneurs who deploy AI strategically today are building advantages that compound over time, while those who wait find themselves playing catch-up against competitors who move faster, respond quicker, and operate more efficiently.</p>
+<p class="fade-in">The opportunity is not about replacing humans with machines. It is about augmenting human decision-making, automating repetitive workflows, and creating systems that scale without proportional increases in headcount or cost. The businesses that win in 2026 and beyond will be those that treat AI as infrastructure -- not as a novelty.</p>
+
+<h2 class="fade-in">AI for Marketing Automation</h2>
+<p class="fade-in">Marketing is where most businesses see their first AI wins. The combination of content generation, audience targeting, and performance optimization creates immediate ROI for businesses of any size.</p>
+<p class="fade-in"><strong>Content Systems:</strong> AI enables entrepreneurs to produce high-quality content at 10x the volume of manual creation. Blog posts, social media content, email sequences, video scripts, and advertising copy can all be generated, refined, and optimized using AI tools. The key is building systems -- not just using tools occasionally, but creating repeatable workflows that produce consistent output.</p>
+<p class="fade-in"><strong>Audience Intelligence:</strong> AI analyzes customer behavior patterns, identifies high-value segments, predicts churn, and personalizes messaging at scale. What previously required a team of data analysts can now be accomplished with properly configured AI systems.</p>
+<p class="fade-in"><strong>Performance Optimization:</strong> AI continuously tests headlines, images, copy variants, and audience segments to maximize conversion rates. The compounding effect of daily optimization creates significant advantages over competitors who optimize monthly or quarterly.</p>
+
+<h2 class="fade-in">AI for Operations</h2>
+<p class="fade-in">Operational efficiency is where AI delivers its most dramatic long-term impact. Every repetitive process in your business is a candidate for AI augmentation or full automation.</p>
+<p class="fade-in"><strong>Workflow Automation:</strong> Invoice processing, data entry, scheduling, inventory management, customer onboarding, and reporting can all be automated using AI agents. The goal is removing yourself and your team from low-value repetitive tasks so you can focus on high-value strategic work.</p>
+<p class="fade-in"><strong>Decision Support:</strong> AI systems can analyze complex data sets, identify patterns, flag anomalies, and recommend actions. Financial forecasting, demand planning, pricing optimization, and resource allocation all benefit from AI-powered analysis.</p>
+<p class="fade-in"><strong>Quality Control:</strong> AI monitors outputs, detects errors, ensures consistency, and maintains standards across your operation. This is particularly valuable as you scale -- maintaining quality becomes harder with growth, and AI provides the monitoring layer that catches issues before they reach customers.</p>
+<p class="fade-in">Dr. Robertson's book <a href="https://connorrobertsonbooks.com/books/built-to-run/">Built to Run</a> provides frameworks for building systems that operate without constant owner involvement -- AI accelerates this vision dramatically.</p>
+
+<h2 class="fade-in">AI for Sales Intelligence</h2>
+<p class="fade-in">Sales teams equipped with AI outperform those without it by significant margins. The advantage comes from better targeting, faster research, and more personalized outreach at scale.</p>
+<p class="fade-in"><strong>Prospect Research:</strong> AI can research prospects, identify pain points, map organizational structures, and surface trigger events in minutes rather than hours. This intelligence makes every sales conversation more relevant and valuable.</p>
+<p class="fade-in"><strong>Outreach Personalization:</strong> Generic outreach fails. AI enables personalization at scale -- crafting messages that reference specific details about the prospect, their company, and their challenges. Combined with the methodology from <a href="https://connorrobertsonbooks.com/books/the-7-minute-phone-call/">The 7 Minute Phone Call</a>, AI-powered research makes every call more productive.</p>
+<p class="fade-in"><strong>Pipeline Analytics:</strong> AI predicts which deals will close, identifies stalled opportunities, recommends next actions, and helps sales teams prioritize their time on the highest-probability opportunities.</p>
+
+<h2 class="fade-in">Implementation Roadmap</h2>
+<p class="fade-in">Successful AI implementation follows a predictable pattern. Rushing to deploy complex systems without foundation leads to failure. Here is the phased approach that works:</p>
+<p class="fade-in"><strong>Phase 1 -- Audit and Prioritize:</strong> Map every process in your business. Identify which are repetitive, rule-based, and high-volume. These are your AI candidates. Prioritize by potential impact and implementation difficulty.</p>
+<p class="fade-in"><strong>Phase 2 -- Quick Wins:</strong> Start with high-impact, low-complexity implementations. Content generation, email automation, and basic workflow automation typically deliver fastest ROI and build organizational confidence in AI.</p>
+<p class="fade-in"><strong>Phase 3 -- Core Systems:</strong> Build AI into your core operational workflows. This is where you move from using AI tools to having AI-powered systems that run continuously. CRM automation, financial analysis, customer service, and reporting infrastructure.</p>
+<p class="fade-in"><strong>Phase 4 -- Competitive Moat:</strong> Deploy AI in ways that create sustainable advantages -- proprietary data, custom models, unique workflows, and integrated systems that competitors cannot easily replicate.</p>
+
+<h2 class="fade-in">Avoiding Common Mistakes</h2>
+<p class="fade-in">The biggest mistake entrepreneurs make with AI is treating it as a magic bullet rather than a tool that requires strategy, implementation, and iteration. Other common failures include deploying AI without clear success metrics, automating broken processes (which just creates broken automation faster), and failing to invest in the human oversight that keeps AI systems on track.</p>
+<p class="fade-in">AI works best when paired with clear business objectives, defined processes, and competent human oversight. It amplifies what is already working -- it does not fix what is fundamentally broken.</p>
+
+<div class="quote fade-in" style="margin:48px 0">
+<p class="quote-t">"AI does not replace strategy. It accelerates it. The entrepreneurs who win are those who know what to build -- AI just helps them build it faster."</p>
+<p class="quote-a"><strong>Dr. Connor Robertson</strong></p>
+</div>
+
+<h2 class="fade-in">Related Resources</h2>
+<div class="pills fade-in" style="margin-top:24px">
+<div class="pill"><h3><a href="/business-acquisitions/">Business Acquisitions</a></h3><p>Apply AI to optimize acquired businesses from day one.</p></div>
+<div class="pill"><h3><a href="/prospecting-sales/">Prospecting & Sales</a></h3><p>AI-powered prospecting systems that fill your pipeline.</p></div>
+<div class="pill"><h3><a href="/author-platform/">Author Platform</a></h3><p>Use AI to scale content creation and audience building.</p></div>
+<div class="pill"><h3><a href="https://connorrobertsonbooks.com/books/built-to-run/">Built to Run (Book)</a></h3><p>Build systems and processes that run without you.</p></div>
+</div>
+
+<div style="margin-top:48px;padding:32px;background:var(--card);border-radius:var(--r);text-align:center" class="fade-in">
+<h3>Want to Deploy AI in Your Business?</h3>
+<p style="margin:16px 0;color:var(--text2)">Dr. Connor Robertson helps entrepreneurs build AI-powered systems that create real competitive advantage.</p>
+<a href="/contact/" class="btn-p" style="display:inline-block;margin-top:12px">Contact Connor</a>
+</div>
+
+</div></section>
+""" + footer()
+
+
+def page_prospecting_sales():
+    person_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Dr. Connor Robertson",
+        "url": SITE_URL,
+        "jobTitle": "Entrepreneur & Sales Strategist",
+        "sameAs": list(SOCIAL_LINKS.values()),
+    })
+    breadcrumb = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "Prospecting & Sales", "item": f"{SITE_URL}/prospecting-sales/"},
+        ]
+    })
+    extra = f'''<script type="application/ld+json">{person_schema}</script>
+<script type="application/ld+json">{breadcrumb}</script>'''
+    return header("Prospecting & Sales: Building Predictable Revenue Pipelines | Dr. Connor Robertson",
+        "Dr. Connor Robertson's guide to prospecting and sales. Learn The 7 Minute Phone Call methodology, outbound systems, pipeline architecture, and closing frameworks.",
+        "/prospecting-sales/", extra, og_image="/images/connor-robertson-headshot.jpg") + """
+<section class="pg-hero"><div class="ctn">
+<h1>Prospecting & Sales: Building Predictable Revenue Pipelines</h1>
+<p>The systems, scripts, and strategies that generate consistent deal flow -- anchored by The 7 Minute Phone Call methodology.</p>
+</div></section>
+<section class="sec"><div class="ctn">
+
+<h2 class="fade-in">The Foundation: Why Prospecting Matters More Than Anything</h2>
+<p class="fade-in">Every business problem is a pipeline problem in disguise. Revenue shortfalls, inconsistent months, over-reliance on referrals, and growth plateaus all trace back to the same root cause -- insufficient prospecting activity. The businesses that thrive are those with predictable, repeatable systems for generating new conversations with qualified prospects.</p>
+<p class="fade-in">Most entrepreneurs avoid prospecting because it feels uncomfortable. Cold outreach, follow-up sequences, and phone calls push people outside their comfort zones. But comfort and growth do not coexist. The entrepreneurs who build the most valuable businesses are those who master the discipline of consistent daily outreach.</p>
+
+<h2 class="fade-in">The 7 Minute Phone Call Methodology</h2>
+<p class="fade-in">At the heart of Dr. Robertson's prospecting philosophy is a simple truth: seven minutes on the phone builds more trust than a dozen emails ever will. The human voice carries nuance, warmth, and authenticity that no written communication can replicate.</p>
+<p class="fade-in"><strong>The Framework:</strong> Every effective prospecting call follows a structure. Open with context (why you are calling and how you found them). Establish relevance (demonstrate you understand their world). Ask a diagnostic question (uncover a pain point or opportunity). Offer value (share an insight or resource). Close with a clear next step (schedule a deeper conversation or send specific information).</p>
+<p class="fade-in"><strong>Seven Minutes, Not Sixty:</strong> Brevity signals respect for the prospect's time. A concise, focused conversation creates curiosity and momentum. Long calls exhaust attention and reduce the likelihood of a second conversation. Get in, deliver value, and get out with a next step.</p>
+<p class="fade-in"><strong>Preparation Matters:</strong> The best seven-minute calls are preceded by five minutes of research. Know who you are calling, what they do, what challenges they likely face, and what specific value you can offer. This preparation transforms cold calls into warm, relevant conversations.</p>
+<p class="fade-in">The complete methodology is detailed in <a href="https://connorrobertsonbooks.com/books/the-7-minute-phone-call/">The 7 Minute Phone Call</a>.</p>
+
+<h2 class="fade-in">Outbound Prospecting Systems</h2>
+<p class="fade-in">Individual effort does not scale. Systems do. Building an outbound prospecting machine requires defined processes, consistent execution, and measurement at every stage.</p>
+<p class="fade-in"><strong>List Building:</strong> Your prospect list is your most valuable sales asset. Build targeted lists using LinkedIn, industry databases, event attendee lists, and your existing network. Quality matters more than quantity -- 100 well-researched prospects outperform 1,000 random contacts.</p>
+<p class="fade-in"><strong>Multi-Channel Sequencing:</strong> The most effective outreach combines phone calls, emails, LinkedIn messages, and social engagement into coordinated sequences. A typical sequence might include a LinkedIn connection request on day 1, a phone call on day 3, a value-add email on day 5, and a follow-up call on day 8.</p>
+<p class="fade-in"><strong>Cadence and Consistency:</strong> Daily prospecting activity is non-negotiable. Set a minimum daily standard -- whether that is 25 calls, 50 emails, or a combination -- and hold yourself accountable to it without exception. Consistency compounds over time in ways that burst-and-rest approaches never can.</p>
+
+<h2 class="fade-in">Pipeline Architecture</h2>
+<p class="fade-in">A well-designed pipeline gives you visibility, predictability, and control over your revenue trajectory. Without pipeline discipline, growth becomes random rather than intentional.</p>
+<p class="fade-in"><strong>Stage Definition:</strong> Define clear stages that prospects move through. A typical B2B pipeline includes: Lead Identified, Initial Contact Made, Discovery Completed, Proposal Delivered, Negotiation, and Closed. Each stage should have clear entry criteria and required actions.</p>
+<p class="fade-in"><strong>Conversion Metrics:</strong> Track conversion rates between each stage. If you know that 100 calls produce 20 conversations, 20 conversations produce 8 meetings, and 8 meetings produce 2 clients, you have a formula. Need 4 clients this month? Make 200 calls.</p>
+<p class="fade-in"><strong>Pipeline Velocity:</strong> Monitor how quickly prospects move through stages. Stalled deals indicate either poor qualification or insufficient follow-up. Both are solvable with better process.</p>
+
+<h2 class="fade-in">Closing Frameworks</h2>
+<p class="fade-in">Closing is not a single event -- it is the natural conclusion of a well-executed sales process. If you have qualified properly, understood the prospect's needs, and demonstrated clear value, closing becomes a formality rather than a battle.</p>
+<p class="fade-in"><strong>Assumptive Progression:</strong> At each stage, assume the next step rather than asking permission for it. Instead of "Would you like to schedule a follow-up?", try "I will send over some times for next Tuesday -- does morning or afternoon work better?"</p>
+<p class="fade-in"><strong>Objection as Information:</strong> Objections are not rejection -- they are requests for more information or reassurance. When a prospect objects, they are telling you exactly what they need to hear before saying yes. Listen, acknowledge, and address specifically.</p>
+<p class="fade-in"><strong>The Walk-Away:</strong> Willingness to walk away from a deal is paradoxically one of the most powerful closing tools. When a prospect senses desperation, trust erodes. When they sense that you are selective about who you work with, desire increases.</p>
+
+<h2 class="fade-in">CRM and Technology</h2>
+<p class="fade-in">Your CRM is the operating system of your sales process. It should track every interaction, automate follow-up reminders, provide pipeline visibility, and generate the metrics you need to optimize performance. Choose a CRM that your team will actually use -- the best system in the world is worthless if it sits empty.</p>
+
+<div class="quote fade-in" style="margin:48px 0">
+<p class="quote-t">"Sales is not about convincing people to buy things they do not want. It is about connecting people with solutions to problems they already have."</p>
+<p class="quote-a"><strong>Dr. Connor Robertson</strong></p>
+</div>
+
+<h2 class="fade-in">Related Resources</h2>
+<div class="pills fade-in" style="margin-top:24px">
+<div class="pill"><h3><a href="/business-acquisitions/">Business Acquisitions</a></h3><p>Use prospecting skills to source off-market deals.</p></div>
+<div class="pill"><h3><a href="/ai-business-strategy/">AI Business Strategy</a></h3><p>Deploy AI to supercharge your prospecting systems.</p></div>
+<div class="pill"><h3><a href="/author-platform/">Author Platform</a></h3><p>Build inbound authority that warms up cold prospects.</p></div>
+<div class="pill"><h3><a href="https://connorrobertsonbooks.com/books/the-7-minute-phone-call/">The 7 Minute Phone Call (Book)</a></h3><p>The complete prospecting methodology in detail.</p></div>
+</div>
+
+<div style="margin-top:48px;padding:32px;background:var(--card);border-radius:var(--r);text-align:center" class="fade-in">
+<h3>Ready to Build Your Pipeline?</h3>
+<p style="margin:16px 0;color:var(--text2)">Dr. Connor Robertson teaches entrepreneurs how to build prospecting systems that generate predictable revenue.</p>
+<a href="/contact/" class="btn-p" style="display:inline-block;margin-top:12px">Contact Connor</a>
+</div>
+
+</div></section>
+""" + footer()
+
+
+def page_author_platform():
+    person_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Dr. Connor Robertson",
+        "url": SITE_URL,
+        "jobTitle": "Author & Entrepreneur",
+        "sameAs": list(SOCIAL_LINKS.values()),
+    })
+    breadcrumb = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "Author Platform", "item": f"{SITE_URL}/author-platform/"},
+        ]
+    })
+    extra = f'''<script type="application/ld+json">{person_schema}</script>
+<script type="application/ld+json">{breadcrumb}</script>'''
+    return header("Author Platform: Building Authority Through Publishing | Dr. Connor Robertson",
+        "Dr. Connor Robertson's guide to building an author platform. Learn book writing strategy, content repurposing, personal branding, and how publishing drives business development.",
+        "/author-platform/", extra, og_image="/images/connor-robertson-headshot.jpg") + """
+<section class="pg-hero"><div class="ctn">
+<h1>Author Platform: Building Authority Through Publishing</h1>
+<p>How writing books and creating content builds the authority, trust, and visibility that drives real business results.</p>
+</div></section>
+<section class="sec"><div class="ctn">
+
+<h2 class="fade-in">Why Authors Win</h2>
+<p class="fade-in">In a world saturated with content, a published book remains the single most powerful credibility asset an entrepreneur can create. A book signals depth of expertise, commitment to your craft, and willingness to share knowledge publicly. It positions you as the authority in your space -- not just another voice competing for attention.</p>
+<p class="fade-in">But the real power of authorship extends far beyond credibility. A book is a business development engine. It opens doors to speaking engagements, podcast appearances, media coverage, partnerships, and client relationships that would otherwise take years to build. Every copy in circulation is a salesperson working on your behalf, 24 hours a day.</p>
+<p class="fade-in">Dr. Robertson has published multiple books -- including <a href="https://connorrobertsonbooks.com/books/buying-wealth/">Buying Wealth</a>, <a href="https://connorrobertsonbooks.com/books/creative-acquisitions/">Creative Acquisitions</a>, <a href="https://connorrobertsonbooks.com/books/the-7-minute-phone-call/">The 7 Minute Phone Call</a>, and <a href="https://connorrobertsonbooks.com/books/built-to-run/">Built to Run</a> -- each serving as a pillar of his broader business development strategy.</p>
+
+<h2 class="fade-in">Book Writing Strategy</h2>
+<p class="fade-in">Writing a book does not require genius or years of isolation. It requires a system. The most effective approach is to write from experience rather than research alone -- your unique perspective and real-world results are what readers cannot find anywhere else.</p>
+<p class="fade-in"><strong>Start With the Transformation:</strong> Every great book promises a specific transformation. What will the reader be able to do, think, or achieve after reading that they could not before? Define this clearly before writing a single chapter.</p>
+<p class="fade-in"><strong>Structure Around Problems:</strong> Each chapter should address a specific problem your audience faces and provide a clear framework for solving it. This makes the book immediately actionable rather than merely theoretical.</p>
+<p class="fade-in"><strong>Write in Sprints:</strong> Aim for 1,000-2,000 words per writing session. A 40,000-word book requires only 20-40 focused sessions. Most entrepreneurs can complete a first draft in 60-90 days with consistent daily writing habits.</p>
+<p class="fade-in"><strong>Edit Ruthlessly:</strong> First drafts are for getting ideas down. Editing is where the book becomes great. Cut everything that does not directly serve the reader's transformation. Clarity beats cleverness every time.</p>
+
+<h2 class="fade-in">Content Repurposing</h2>
+<p class="fade-in">A single book contains hundreds of pieces of derivative content. Strategic repurposing multiplies your reach without multiplying your effort.</p>
+<p class="fade-in"><strong>Blog Posts:</strong> Each chapter becomes 2-5 blog posts exploring specific concepts in more detail. These posts drive organic search traffic back to your book and author platform.</p>
+<p class="fade-in"><strong>Social Media:</strong> Key quotes, frameworks, and insights become daily social content across LinkedIn, Twitter, Instagram, and other platforms. A single book provides 6-12 months of daily content.</p>
+<p class="fade-in"><strong>Podcast Episodes:</strong> Each chapter is a potential podcast episode topic. Whether on your own show or as a guest, book content provides endless conversation material.</p>
+<p class="fade-in"><strong>Email Sequences:</strong> Book excerpts and expanded chapters become nurture sequences that build relationships with your audience over time.</p>
+<p class="fade-in"><strong>Speaking Material:</strong> Book frameworks translate directly into keynote presentations, workshop content, and training materials.</p>
+
+<h2 class="fade-in">Personal Branding and Visibility</h2>
+<p class="fade-in">Your author platform is the hub that connects all your content, presence, and credibility into a cohesive brand that people trust and remember.</p>
+<p class="fade-in"><strong>Multi-Platform Presence:</strong> Show up consistently across the platforms where your audience spends time. LinkedIn for professional audiences, YouTube for long-form education, podcasts for commuters, and social media for daily engagement. Consistency across platforms creates an omnipresent feeling that builds familiarity and trust.</p>
+<p class="fade-in"><strong>Thought Leadership:</strong> Share perspectives that challenge conventional thinking in your industry. Agree-with-everyone content is forgettable. Distinct points of view attract the right people and repel the wrong ones -- both outcomes serve you.</p>
+<p class="fade-in"><strong>Media and PR:</strong> Published authors attract media attention naturally. Proactive outreach to podcasts, publications, and industry events accelerates visibility. Each appearance reinforces your authority and introduces you to new audiences.</p>
+
+<h2 class="fade-in">Publishing as Business Development</h2>
+<p class="fade-in">The most successful author-entrepreneurs treat their books not as profit centers (though they can be) but as business development tools that generate far more value through indirect channels.</p>
+<p class="fade-in"><strong>Authority Positioning:</strong> When a prospect is choosing between you and a competitor, being a published author on the topic immediately differentiates you. Books create a perception of expertise that no amount of social media posts can replicate.</p>
+<p class="fade-in"><strong>Inbound Lead Generation:</strong> Books attract readers who self-identify as your ideal clients. A reader who finishes your book and reaches out is pre-sold on your philosophy and approach -- they are not comparing you against five competitors.</p>
+<p class="fade-in"><strong>Strategic Gifting:</strong> Sending your book to prospects, partners, and referral sources is a low-cost, high-impact business development tactic. A book is not junk mail -- it sits on shelves, gets read, and creates ongoing impressions.</p>
+<p class="fade-in"><strong>Speaking and Events:</strong> Books open doors to speaking engagements where you address rooms full of potential clients, partners, and collaborators. Every stage appearance compounds your visibility and authority.</p>
+
+<h2 class="fade-in">Building Your Platform</h2>
+<p class="fade-in">An author platform is not built overnight. It is built through consistent action over months and years. But the compound returns make the investment worthwhile many times over.</p>
+<p class="fade-in"><strong>Start Today:</strong> You do not need a finished book to start building your platform. Begin sharing your expertise through blog posts, social content, and conversations. The book crystallizes what you are already teaching.</p>
+<p class="fade-in"><strong>Be Consistent:</strong> Publish on a regular schedule. Daily social content, weekly blog posts, monthly podcast episodes -- whatever cadence you choose, maintain it without exception. Consistency builds audience trust and algorithmic favor.</p>
+<p class="fade-in"><strong>Invest in Quality:</strong> Professional covers, quality editing, and polished production signal that you take your work seriously. First impressions matter -- do not undermine strong content with weak presentation.</p>
+
+<div class="quote fade-in" style="margin:48px 0">
+<p class="quote-t">"A book is not just something you write. It is something that works for you -- opening doors, building trust, and creating opportunities -- long after you have finished writing it."</p>
+<p class="quote-a"><strong>Dr. Connor Robertson</strong></p>
+</div>
+
+<h2 class="fade-in">Related Resources</h2>
+<div class="pills fade-in" style="margin-top:24px">
+<div class="pill"><h3><a href="/business-acquisitions/">Business Acquisitions</a></h3><p>Books position you as the expert acquirers want to work with.</p></div>
+<div class="pill"><h3><a href="/ai-business-strategy/">AI Business Strategy</a></h3><p>Use AI to accelerate content creation and distribution.</p></div>
+<div class="pill"><h3><a href="/prospecting-sales/">Prospecting & Sales</a></h3><p>Combine authorship with outbound for unstoppable deal flow.</p></div>
+<div class="pill"><h3><a href="https://connorrobertsonbooks.com/">All Books by Dr. Connor Robertson</a></h3><p>Browse the complete library of published works.</p></div>
+</div>
+
+<div style="margin-top:48px;padding:32px;background:var(--card);border-radius:var(--r);text-align:center" class="fade-in">
+<h3>Ready to Build Your Author Platform?</h3>
+<p style="margin:16px 0;color:var(--text2)">Dr. Connor Robertson helps entrepreneurs leverage publishing as a business development strategy.</p>
+<a href="/contact/" class="btn-p" style="display:inline-block;margin-top:12px">Contact Connor</a>
+</div>
+
+</div></section>
+""" + footer()
+
+
 def main():
     no_fetch = "--no-fetch" in sys.argv
 
@@ -1335,7 +1701,12 @@ def main():
     write("books/index.html", page_books())
     write("press-media/index.html", page_press())
     write("contact/index.html", page_contact())
-    print("  6 static pages generated")
+    # Pillar/Topic Hub pages
+    write("business-acquisitions/index.html", page_business_acquisitions())
+    write("ai-business-strategy/index.html", page_ai_business_strategy())
+    write("prospecting-sales/index.html", page_prospecting_sales())
+    write("author-platform/index.html", page_author_platform())
+    print("  10 static pages generated (including 4 pillar pages)")
 
     # Blog posts
     print(f"\n[6/8] Generating {len(posts)} blog post pages...")
