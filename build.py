@@ -1619,7 +1619,14 @@ def main():
     print("=" * 60)
 
     # Fetch posts
-    if no_fetch and CACHE_FILE.exists():
+    # Fetch posts - try manual_posts.json first, then cache, then WP API
+    MANUAL_POSTS_FILE = BASE_DIR / "manual_posts.json"
+    if MANUAL_POSTS_FILE.exists():
+        print("\n[1/8] Loading posts from manual_posts.json...")
+        with open(MANUAL_POSTS_FILE) as f:
+            posts = json.load(f)
+        print(f"  Loaded {len(posts)} posts from manual_posts.json")
+    elif no_fetch and CACHE_FILE.exists():
         print("\n[1/8] Loading cached posts...")
         with open(CACHE_FILE) as f:
             posts = json.load(f)
@@ -1631,6 +1638,10 @@ def main():
         with open(CACHE_FILE, "w") as f:
             json.dump(posts, f)
         print("  Cached to posts_cache.json")
+
+    # Sort posts by date (newest first)
+    posts.sort(key=lambda p: p.get("date", ""), reverse=True)
+    print(f"  Sorted {len(posts)} posts by date (newest first)")
 
     # Remove duplicate posts (slugs ending in -2, -3, etc.)
     before_dedup = len(posts)
