@@ -339,6 +339,7 @@ NAV_ITEMS = [
     ("Speaker", "/speaker/"),
     ("Blog", "/blog/"),
     ("Books", "/books/"),
+    ("Media Kit", "/media/"),
     ("Press & Media", "/press-media/"),
 ]
 
@@ -792,7 +793,7 @@ def header(title, desc="", canonical="/", extra="", og_image="", og_type="websit
 
 def footer():
     social = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in SOCIAL_LINKS.items())
-    pages = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in [("/","Home"),("/about/","About"),("/speaker/","Speaker"),("/books/","Books"),("/blog/","Blog"),("/press-media/","Press & Media"),("/contact/","Contact")])
+    pages = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in [("/","Home"),("/about/","About"),("/speaker/","Speaker"),("/books/","Books"),("/blog/","Blog"),("/media/","Media Kit"),("/press-media/","Press & Media"),("/contact/","Contact")])
     ventures = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{u.replace("https://","").rstrip("/")}</a></li>' for u in OWNED_WEBSITES)
     return f"""
 <footer class="ftr"><div class="ctn">
@@ -1045,6 +1046,57 @@ def page_press():
 <div class="pgrid">{cards}</div>
 </div></section>
 """ + footer()
+
+
+def page_media():
+    photos = [
+        ("dr-connor-robertson-headshot.jpg", "Dr. Connor Robertson professional headshot"),
+        ("dr-connor-robertson-professional-portrait.jpg", "Dr. Connor Robertson professional portrait"),
+        ("dr-connor-robertson-business-blazer.jpg", "Dr. Connor Robertson in business blazer"),
+        ("dr-connor-robertson-speaking-event.jpg", "Dr. Connor Robertson at speaking event"),
+        ("dr-connor-robertson-casual-portrait.jpg", "Dr. Connor Robertson casual portrait"),
+        ("dr-connor-robertson-author-photo.jpg", "Dr. Connor Robertson author photo"),
+        ("dr-connor-robertson-business-strategy.jpg", "Dr. Connor Robertson business strategist"),
+        ("dr-connor-robertson-editorial.jpg", "Dr. Connor Robertson editorial portrait"),
+        ("dr-connor-robertson-entrepreneur.jpg", "Dr. Connor Robertson entrepreneur"),
+    ]
+    
+    grid = ""
+    schemas = []
+    for fname, alt in photos:
+        grid += f'''<div class="media-item"><img src="/images/{fname}" alt="{alt}" width="400" height="400" loading="lazy" style="width:100%;height:auto;border-radius:8px;object-fit:cover;aspect-ratio:1;box-shadow:0 4px 16px rgba(0,0,0,0.1);"><p style="margin-top:8px;font-size:13px;color:var(--smoke,#666);">{alt}</p></div>
+'''
+        schemas.append({
+            "@context": "https://schema.org",
+            "@type": "ImageObject",
+            "name": alt,
+            "contentUrl": f"{SITE_URL}/images/{fname}",
+            "description": f"{alt} - available for media use",
+            "creator": {"@type": "Person", "name": "Dr. Connor Robertson"},
+            "copyrightHolder": {"@type": "Person", "name": "Dr. Connor Robertson"}
+        })
+    
+    schema_tags = "
+".join(f'<script type="application/ld+json">{json.dumps(s)}</script>' for s in schemas)
+    
+    return header("Media Kit & Press Photos | Dr. Connor Robertson",
+        "Download professional photos of Dr. Connor Robertson for press coverage, event promotion, podcast features, and editorial use.", "/media/", extra=schema_tags,
+        og_image="/images/dr-connor-robertson-headshot.jpg") + f"""
+<section class="pg-hero"><div class="ctn">
+<h1>Media Kit &amp; Press Photos</h1>
+<p>Professional photos of Dr. Connor Robertson available for journalists, event organizers, podcast hosts, and editorial teams. All images may be used for media coverage with attribution.</p>
+</div></section>
+<section class="sec"><div class="ctn">
+<div style="background:var(--bg-card,#f8f8f8);border:1px solid var(--border,#e0e0e0);border-radius:12px;padding:24px 32px;margin-bottom:48px;">
+<p style="font-size:15px;margin:0;"><strong>Download for media use:</strong> Right-click any image and select "Save image as" to download. For high-resolution originals or specific requests, please <a href="/contact/" style="color:var(--accent,#2563eb);text-decoration:underline;">contact Connor directly</a>.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+{grid}
+</div>
+<style>@media(max-width:900px){{[style*="grid-template-columns:repeat(3"]{{grid-template-columns:repeat(2,1fr)!important;}}}}@media(max-width:600px){{[style*="grid-template-columns:repeat(3"]{{grid-template-columns:1fr!important;}}}}</style>
+</div></section>
+""" + footer()
+
 
 
 def page_contact():
@@ -1719,13 +1771,14 @@ def main():
     write("speaker/index.html", page_speaker())
     write("books/index.html", page_books())
     write("press-media/index.html", page_press())
+    write("media/index.html", page_media())
     write("contact/index.html", page_contact())
     # Pillar/Topic Hub pages
     write("business-acquisitions/index.html", page_business_acquisitions())
     write("ai-business-strategy/index.html", page_ai_business_strategy())
     write("prospecting-sales/index.html", page_prospecting_sales())
     write("author-platform/index.html", page_author_platform())
-    print("  10 static pages generated (including 4 pillar pages)")
+    print("  11 static pages generated (including 4 pillar pages)")
 
     # Blog posts
     print(f"\n[6/8] Generating {len(posts)} blog post pages...")
