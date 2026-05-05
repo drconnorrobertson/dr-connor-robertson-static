@@ -414,12 +414,13 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 /* Hero */
 .hero{position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a 0%,#1a1a2e 50%,#0a0a0a 100%);z-index:0}
-.hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.03) 0%,transparent 70%)}
-.hero-ct{position:relative;z-index:1;max-width:800px;width:100%}
+.hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.03) 0%,transparent 70%);z-index:2}
+.hero-ct{position:relative;z-index:3;max-width:800px;width:100%}
 .hero h1{font-size:clamp(40px,6vw,72px);font-weight:700;letter-spacing:-.03em;margin-bottom:20px;line-height:1.1}
 .hero .tag{font-size:clamp(16px,2vw,20px);color:var(--text2);margin-bottom:36px;line-height:1.6}
 .hero-btn{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .hero-img{width:180px;height:180px;border-radius:50%;object-fit:cover;margin:0 auto 32px;border:3px solid rgba(255,255,255,.15);max-width:100%}
+.hero-bg-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.45;z-index:1;border-radius:0;border:none}
 .btn-p{display:inline-flex;padding:14px 32px;background:var(--text);color:#000;border-radius:var(--r);font-weight:600;font-size:15px;transition:transform var(--t),box-shadow var(--t);min-height:44px;align-items:center}
 .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,255,255,.15);opacity:1}
 .btn-s{display:inline-flex;padding:14px 32px;background:rgba(0,0,0,.48);color:var(--text);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);font-weight:600;font-size:15px;transition:background var(--t);min-height:44px;align-items:center}
@@ -599,6 +600,7 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .hero{min-height:70vh;padding:100px 16px 60px}
 .hero h1{font-size:clamp(28px,5vw,48px)}
 .hero-img{width:140px;height:140px}
+.hero-bg-img{object-position:center top}
 .pg-hero{padding:120px 16px 40px}
 .pg-hero h1{font-size:clamp(28px,4vw,42px)}
 .ftr-top{grid-template-columns:1fr;gap:24px}
@@ -638,6 +640,7 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .hero h1{font-size:clamp(24px,5vw,38px);margin-bottom:16px}
 .hero .tag{font-size:clamp(14px,2vw,16px);margin-bottom:24px}
 .hero-img{width:120px;height:120px;margin:0 auto 20px}
+.hero-bg-img{object-position:center top;opacity:0.4}
 .hero-btn{flex-direction:column;width:100%;gap:12px}
 .btn-p,.btn-s{width:100%;justify-content:center;padding:14px 20px}
 .pg-hero{padding:100px 12px 30px}
@@ -856,7 +859,7 @@ def page_home():
     return header("Dr. Connor Robertson - Official Site | Entrepreneur, Author & Speaker",
         "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, podcast host, and philanthropist. Founder of Elixir Consulting Group, The Pittsburgh Wire, and The Prospecting Show.",
         "/", extra, og_image="/images/dr-connor-robertson-headshot.jpg") + f"""
-<section class="hero"><div class="hero-bg"><img src="/images/dr-connor-robertson-headshot.jpg" alt="Dr. Connor Robertson - Entrepreneur, Author, and Business Strategist" width="1024" height="1024" loading="eager" class="hero-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.55;"></div><div class="hero-ct">
+<section class="hero"><div class="hero-bg"><img src="/images/dr-connor-robertson-headshot.jpg" alt="Dr. Connor Robertson - Entrepreneur, Author, and Business Strategist" width="1024" height="1024" loading="eager" class="hero-bg-img"></div><div class="hero-ct">
 <h1>Dr. Connor Robertson</h1>
 <p class="tag">Helping entrepreneurs scale businesses, build legacies, and create lasting impact.</p>
 <div class="hero-btn"><a href="/contact/" class="btn-p">Contact</a><a href="/about/" class="btn-s">About</a></div>
