@@ -332,6 +332,9 @@ OWNED_WEBSITES = [
     "https://newsblaze.com/business/latest-business/connor-robertson-on-ai-and-business-growth-how-connor-robertson-helps-entrepreneurs-use-artificial-intelligence-to-outpace-the-competition_213548/",
     "https://www.theroguemag.com/business/connor-robertson-on-prospecting-systems-how-connor-robertson-builds-a-predictable-pipeline-for-entrepreneurs/",
     "https://www.inentertainment.co.uk/connor-robertson-on-the-author-platform-how-connor-robertson-built-a-business-development-engine-through-publishing/",
+    "https://finance.yahoo.com/sectors/technology/articles/elixir-consulting-group-launches-business-112900872.html",
+    "https://www.theglobeandmail.com/investing/markets/markets-news/Newsfile/1681496/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-mid-sized-business-owners/",
+    "https://markets.businessinsider.com/news/stocks/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-midsized-business-owners-1036100299",
 ]
 
 NAV_ITEMS = [
@@ -373,6 +376,9 @@ PRESS_ARTICLES = [
     ("Connor Robertson on AI and Business Growth", "https://newsblaze.com/business/latest-business/connor-robertson-on-ai-and-business-growth-how-connor-robertson-helps-entrepreneurs-use-artificial-intelligence-to-outpace-the-competition_213548/", "NewsBlaze"),
     ("Connor Robertson on Prospecting Systems", "https://www.theroguemag.com/business/connor-robertson-on-prospecting-systems-how-connor-robertson-builds-a-predictable-pipeline-for-entrepreneurs/", "The Rogue Mag"),
     ("Connor Robertson on the Author Platform", "https://www.inentertainment.co.uk/connor-robertson-on-the-author-platform-how-connor-robertson-built-a-business-development-engine-through-publishing/", "InEntertainment"),
+    ("Elixir Consulting Group Launches Business Automation Advisory Service", "https://finance.yahoo.com/sectors/technology/articles/elixir-consulting-group-launches-business-112900872.html", "Yahoo Finance"),
+    ("Elixir Consulting Group Launches Business Automation Advisory Service for Small and Mid-Sized Business Owners", "https://www.theglobeandmail.com/investing/markets/markets-news/Newsfile/1681496/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-mid-sized-business-owners/", "The Globe and Mail"),
+    ("Elixir Consulting Group Launches Business Automation Advisory Service for Small and Midsized Business Owners", "https://markets.businessinsider.com/news/stocks/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-midsized-business-owners-1036100299", "Business Insider"),
 ]
 
 BOOKS = [
@@ -867,7 +873,7 @@ def page_home():
 </div></section>
 <section class="feat"><div class="ctn">
 <h3>As Featured On</h3>
-<div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span></div>
+<div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div>
 </div></section>
 <section class="sec"><div class="ctn">
 <h2 class="sec-t">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh.</h2>
@@ -1036,13 +1042,13 @@ def page_press():
     news_schema_tags = "\n".join(f'<script type="application/ld+json">{s}</script>' for s in news_schemas)
 
     return header("Dr. Connor Robertson in the Press | Media Features & News Coverage",
-        "Dr. Connor Robertson featured in CXO Dispatch, C-Suite Brief, NY Wire, BLK News, Famous Times, Economic Insider, Taste Terminal, Fiction Talk, NewsBlaze, The Rogue Mag, InEntertainment, and more.", "/press-media/", extra=news_schema_tags) + f"""
+        "Dr. Connor Robertson featured in Yahoo Finance, The Globe and Mail, Business Insider, CXO Dispatch, C-Suite Brief, NY Wire, BLK News, Famous Times, Economic Insider, Taste Terminal, Fiction Talk, NewsBlaze, The Rogue Mag, InEntertainment, and more.", "/press-media/", extra=news_schema_tags) + f"""
 <section class="pg-hero"><div class="ctn">
 <div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-press.jpg" alt="Dr. Connor Robertson - Press" width="300" height="300" loading="lazy" style="border-radius:50%;width:180px;height:180px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
 <h1>Press &amp; Media</h1><p>Dr. Connor Robertson's insights and features across leading publications.</p>
 </div></section>
 <section class="sec"><div class="ctn">
-<div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span></div></div>
+<div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div></div>
 <div class="pgrid">{cards}</div>
 </div></section>
 """ + footer()
