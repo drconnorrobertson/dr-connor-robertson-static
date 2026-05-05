@@ -42,6 +42,7 @@ HEADSHOT_IMAGES = {
     "connor-blazer.jpg": "1r6zKRQC5QLUrvOnRDhSrtju8M5Y3_9_r",
     "connor-headshot.jpg": "1kO8f_3H8YObT-Upz2bJ6S3X8O0S997tU",
     "connor-bold.jpg": "1GXH5DvI-DlwcTKW2j37WTwXeb7NhrNM7",
+    "dr-connor-robertson-headshot.jpg": "local_upload",
 }
 
 # Ã¢ÂÂÃ¢ÂÂ Image download helpers Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
@@ -812,7 +813,7 @@ def page_home():
         "name": "Dr. Connor Robertson",
         "alternateName": "Connor Robertson",
         "url": SITE_URL,
-        "image": f"{SITE_URL}/images/connor-hero.jpg",
+        "image": f"{SITE_URL}/images/dr-connor-robertson-headshot.jpg",
         "jobTitle": "Entrepreneur, Business Strategist, Educator & Philanthropist",
         "description": "Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, educator, author, podcast host, and philanthropist based in Pittsburgh, PA. Founder of Elixir Consulting Group, publisher of The Pittsburgh Wire, and host of The Prospecting Show.",
         "address": {"@type": "PostalAddress", "addressLocality": "Pittsburgh", "addressRegion": "PA", "addressCountry": "US"},
@@ -854,8 +855,8 @@ def page_home():
     pcards = "".join(f'<div class="pill"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
     return header("Dr. Connor Robertson - Official Site | Entrepreneur, Author & Speaker",
         "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, podcast host, and philanthropist. Founder of Elixir Consulting Group, The Pittsburgh Wire, and The Prospecting Show.",
-        "/", extra, og_image="/images/connor-hero.jpg") + f"""
-<section class="hero"><div class="hero-bg"><img src="/images/connor-hero.jpg" alt="Dr. Connor Robertson" width="1024" height="1024" loading="eager" class="hero-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.35;"></div><div class="hero-ct">
+        "/", extra, og_image="/images/dr-connor-robertson-headshot.jpg") + f"""
+<section class="hero"><div class="hero-bg"><img src="/images/dr-connor-robertson-headshot.jpg" alt="Dr. Connor Robertson - Entrepreneur, Author, and Business Strategist" width="1024" height="1024" loading="eager" class="hero-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.55;"></div><div class="hero-ct">
 <h1>Dr. Connor Robertson</h1>
 <p class="tag">Helping entrepreneurs scale businesses, build legacies, and create lasting impact.</p>
 <div class="hero-btn"><a href="/contact/" class="btn-p">Contact</a><a href="/about/" class="btn-s">About</a></div>
@@ -882,7 +883,7 @@ def page_about():
         "name": "Dr. Connor Robertson",
         "alternateName": "Connor Robertson",
         "url": f"{SITE_URL}/about/",
-        "image": f"{SITE_URL}/images/connor-hero.jpg",
+        "image": f"{SITE_URL}/images/dr-connor-robertson-headshot.jpg",
         "jobTitle": "Entrepreneur, Business Strategist, Educator & Philanthropist",
         "description": "Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh, PA. He founded Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show, and The Grant Finder.",
         "address": {"@type": "PostalAddress", "addressLocality": "Pittsburgh", "addressRegion": "PA", "addressCountry": "US"},
