@@ -1076,8 +1076,7 @@ def page_media():
             "copyrightHolder": {"@type": "Person", "name": "Dr. Connor Robertson"}
         })
     
-    schema_tags = "
-".join(f'<script type="application/ld+json">{json.dumps(s)}</script>' for s in schemas)
+    schema_tags = "\n".join(f'<script type="application/ld+json">{json.dumps(s)}</script>' for s in schemas)
     
     return header("Media Kit & Press Photos | Dr. Connor Robertson",
         "Download professional photos of Dr. Connor Robertson for press coverage, event promotion, podcast features, and editorial use.", "/media/", extra=schema_tags,
