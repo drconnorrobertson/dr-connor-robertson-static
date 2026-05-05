@@ -742,11 +742,14 @@ def header(title, desc="", canonical="/", extra="", og_image="", og_type="websit
         desc = "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, podcast host, and philanthropist. Founder of Elixir Consulting Group, The Pittsburgh Wire, and The Prospecting Show."
     can = f'<link rel="canonical" href="{SITE_URL}{canonical}">' if canonical else ""
     og_img_tag = ""
+    twitter_img_tag = ""
     if og_image:
         if og_image.startswith("/"):
             og_img_tag = f'<meta property="og:image" content="{SITE_URL}{og_image}">'
+            twitter_img_tag = f'<meta name="twitter:image" content="{SITE_URL}{og_image}">'
         else:
             og_img_tag = f'<meta property="og:image" content="{og_image}">'
+            twitter_img_tag = f'<meta name="twitter:image" content="{og_image}">'
     gsc = f"\n{GSC_META}" if GSC_META else ""
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -767,6 +770,7 @@ def header(title, desc="", canonical="/", extra="", og_image="", og_type="websit
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
 <meta name="twitter:site" content="@DrConnorRE">
+{twitter_img_tag}
 <meta name="author" content="Dr. Connor Robertson">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">{gsc}
@@ -1078,7 +1082,7 @@ def page_blog_index(posts, page_num, total_pages):
             local = downloaded_images.get(p["featured_image"], "")
             if local:
                 feat_img = f'<img src="{local}" alt="{esc(strip_tags(p["title"]))}" class="bcard-img" loading="lazy">'
-        cards += f'<a href="{p["relative_url"]}" class="bcard">{feat_img}<div class="bcard-body"><h3>{p["title"]}</h3><p class="exc">{esc(exc)}</p><span class="meta">{dt}</span><div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(0,0,0,0.08);"><img src="/images/connor-blog-author.jpg" alt="" width="28" height="28" loading="lazy" style="border-radius:50%;width:28px;height:28px;object-fit:cover;"><span style="font-size:0.8rem;color:#666;">Dr. Connor Robertson</span></div></div></a>\n'
+        cards += f'<a href="{p["relative_url"]}" class="bcard">{feat_img}<div class="bcard-body"><h3>{p["title"]}</h3><p class="exc">{esc(exc)}</p><span class="meta">{dt}</span><div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(0,0,0,0.08);"><img src="/images/connor-blog-author.jpg" alt="Dr. Connor Robertson" width="28" height="28" loading="lazy" style="border-radius:50%;width:28px;height:28px;object-fit:cover;"><span style="font-size:0.8rem;color:#666;">Dr. Connor Robertson</span></div></div></a>\n'
     pag = '<div class="pag">'
     for i in range(1, min(total_pages + 1, 20)):
         href = "/blog/" if i == 1 else f"/blog/page/{i}/"
@@ -1133,7 +1137,18 @@ def page_post(p):
         "mainEntityOfPage": {"@type": "WebPage", "@id": f"{SITE_URL}{p['relative_url']}"},
         "image": f"{SITE_URL}{og_image}" if og_image and og_image.startswith("/") else og_image,
     })
-    extra = f'<script type="application/ld+json">{schema}</script>'
+    
+    # Breadcrumb schema
+    breadcrumb_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": f"{SITE_URL}/blog/"},
+            {"@type": "ListItem", "position": 3, "name": esc(p["title"]), "item": f"{SITE_URL}{p['relative_url']}"}
+        ]
+    })
+    extra = f'<script type="application/ld+json">{schema}</script>\n<script type="application/ld+json">{breadcrumb_schema}</script>'
 
     # Build the title tag: ensure "Dr. Connor Robertson" or "Connor Robertson" is in it
     raw_title = p["title"]
@@ -1159,7 +1174,7 @@ def page_post(p):
 {internal_links}
 <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border)"><a href="/blog/" style="font-size:14px;color:var(--muted)">&larr; Back to Blog</a></div>
 
-<section class="author-bio" style="max-width:800px;margin:3rem auto;padding:2rem;background:#f8f9fa;border-radius:12px;display:flex;gap:1.5rem;align-items:center;"><img src="/images/connor-casual.jpg" alt="Dr. Connor Robertson" width="120" height="120" loading="lazy" style="border-radius:50%;width:120px;height:120px;object-fit:cover;flex-shrink:0;"><div><strong style="font-size:1.1rem;">Dr. Connor Robertson</strong><p style="margin:0.5rem 0 0;color:#555;line-height:1.6;">Entrepreneur, author, and podcast host based in Pittsburgh. Connor writes about business strategy, leadership, and building ventures that create lasting impact.</p></div></section>
+<section class="author-bio" style="max-width:800px;margin:3rem auto;padding:2rem;background:#f8f9fa;border-radius:12px;display:flex;gap:1.5rem;align-items:center;"><img src="/images/connor-casual.jpg" alt="Dr. Connor Robertson" width="120" height="120" loading="lazy" style="border-radius:50%;width:120px;height:120px;object-fit:cover;flex-shrink:0;"><div><strong style="font-size:1.1rem;">Dr. Connor Robertson</strong><p style="margin:0.5rem 0 0;color:#555;line-height:1.6;">Entrepreneur, author, and podcast host based in Pittsburgh. Connor writes about business strategy, leadership, and building ventures that create lasting impact. <a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" style="color:#0066cc;text-decoration:underline;">Explore his published books</a>.</p></div></section>
 </article>
 """ + footer()
 
