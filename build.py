@@ -327,6 +327,7 @@ OWNED_WEBSITES = [
     "https://thepittsburghwire.com",
     "https://theprospectingshow.com",
     "https://thegrantfinder.com",
+    "https://drconnorrobertsonbooks.com",
     "https://www.tasteterminal.com/2026/04/16/connor-robertson-on-ai-marketing-strategy-how-connor-robertson-helps-entrepreneurs-build-audiences-and-close-more-deals/",
     "https://fictiontalk.com/2026/04/16/connor-robertson-on-business-acquisitions-why-connor-robertson-says-buying-beats-building-for-most-entrepreneurs/",
     "https://newsblaze.com/business/latest-business/connor-robertson-on-ai-and-business-growth-how-connor-robertson-helps-entrepreneurs-use-artificial-intelligence-to-outpace-the-competition_213548/",
@@ -721,6 +722,85 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .saud{gap:16px}
 .topics{gap:16px}
 }
+
+/* Lead Magnet */
+.lead-magnet{padding:80px 0;background:linear-gradient(135deg,#0d1117 0%,#161b22 50%,#0d1117 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center}
+.lead-magnet h2{font-size:clamp(24px,3.5vw,40px);font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+.lead-magnet .lm-sub{color:var(--text2);font-size:17px;max-width:600px;margin:0 auto 32px}
+.lm-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:500px;margin:0 auto}
+.lm-form input[type="email"]{flex:1;min-width:240px;padding:14px 20px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);color:var(--text);font-size:15px;font-family:inherit}
+.lm-form input[type="email"]:focus{outline:0;border-color:rgba(255,255,255,.3)}
+.lm-form button{padding:14px 28px;background:var(--text);color:#000;border:none;border-radius:var(--r);font-weight:600;font-size:15px;cursor:pointer;font-family:inherit;transition:transform var(--t);white-space:nowrap}
+.lm-form button:hover{transform:translateY(-2px)}
+.lm-note{color:var(--muted);font-size:12px;margin-top:12px}
+
+/* CTA Banner */
+.cta-banner{padding:64px 0;text-align:center;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cta-banner h2{font-size:clamp(24px,3.5vw,40px);font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+.cta-banner p{color:var(--text2);font-size:17px;max-width:600px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* Podcast / As Heard On */
+.podcast-section{padding:80px 0}
+.podcast-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px}
+.pod-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;text-align:center;transition:transform var(--t),border-color var(--t)}
+.pod-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.15)}
+.pod-card h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.pod-card p{color:var(--text2);font-size:14px;line-height:1.7}
+.pod-card .pod-link{display:inline-flex;align-items:center;margin-top:16px;font-size:14px;font-weight:600;color:var(--text);gap:6px}
+
+/* Speaker page enhancements */
+.speaker-hero{padding:140px 24px 80px;text-align:center;background:linear-gradient(180deg,#000 0%,#0d1117 100%);position:relative;overflow:hidden}
+.speaker-hero h1{font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:-.03em;margin-bottom:20px;line-height:1.1}
+.speaker-hero .sh-sub{font-size:clamp(16px,2vw,20px);color:var(--text2);max-width:700px;margin:0 auto 36px;line-height:1.6}
+.speaker-stats{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin:48px 0 0}
+.speaker-stats .stat{text-align:center}
+.topic-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:rgba(255,255,255,.08);border-radius:50%;font-size:14px;font-weight:700;margin-bottom:16px;color:var(--text2)}
+.book-cta{display:inline-flex;padding:16px 40px;background:var(--text);color:#000;border-radius:var(--r);font-weight:700;font-size:16px;transition:transform var(--t),box-shadow var(--t);min-height:48px;align-items:center;text-transform:uppercase;letter-spacing:.5px}
+.book-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,255,255,.15);opacity:1}
+
+/* About page credentials */
+.cred-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin:48px 0}
+.cred-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center}
+.cred-card .cred-icon{font-size:32px;margin-bottom:12px}
+.cred-card h3{font-size:16px;font-weight:600;margin-bottom:8px}
+.cred-card p{color:var(--text2);font-size:13px;line-height:1.6}
+
+/* Books showcase strip */
+.books-strip{padding:80px 0;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.books-strip h2{font-size:clamp(24px,3.5vw,40px);font-weight:700;letter-spacing:-.02em;margin-bottom:12px;text-align:center}
+.books-strip .bs-sub{color:var(--text2);font-size:17px;text-align:center;max-width:600px;margin:0 auto 48px}
+.books-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+.book-mini{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;transition:transform var(--t),border-color var(--t)}
+.book-mini:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.15)}
+.book-mini h3{font-size:16px;font-weight:600;margin-bottom:8px}
+.book-mini p{color:var(--text2);font-size:13px;line-height:1.6;margin-bottom:12px}
+.book-mini a{font-size:13px;font-weight:600;color:var(--text);text-decoration:underline;text-underline-offset:3px}
+
+@media(max-width:768px){
+.lm-form{flex-direction:column;padding:0 16px}
+.lm-form input[type="email"]{min-width:auto;width:100%}
+.lm-form button{width:100%}
+.cta-btns{flex-direction:column;align-items:center;padding:0 16px}
+.cta-btns .btn-p,.cta-btns .btn-s{width:100%;max-width:320px;justify-content:center}
+.speaker-hero{padding:120px 16px 60px}
+.speaker-stats{gap:24px}
+.podcast-grid{grid-template-columns:1fr}
+.cred-grid{grid-template-columns:repeat(2,1fr)}
+.books-row{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+.lead-magnet{padding:48px 0}
+.lead-magnet h2{font-size:clamp(20px,4vw,28px)}
+.lm-form{padding:0 12px}
+.cta-banner{padding:40px 0}
+.speaker-hero{padding:100px 12px 40px}
+.speaker-stats{flex-direction:column;gap:16px}
+.cred-grid{grid-template-columns:1fr}
+.books-row{grid-template-columns:1fr}
+.podcast-grid{gap:16px}
+.pod-card{padding:24px}
+}
 """
 
 # Ã¢ÂÂÃ¢ÂÂ Template helpers Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
@@ -750,7 +830,7 @@ def nav_html():
 
 def header(title, desc="", canonical="/", extra="", og_image="", og_type="website"):
     if not desc:
-        desc = "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, podcast host, and philanthropist. Founder of Elixir Consulting Group, The Pittsburgh Wire, and The Prospecting Show."
+        desc = "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, AI strategist, and business acquisition expert. Founder of Elixir Consulting Group, host of The Prospecting Show, and author of five books on business strategy."
     can = f'<link rel="canonical" href="{SITE_URL}{canonical}">' if canonical else ""
     og_img_tag = ""
     twitter_img_tag = ""
@@ -824,7 +904,7 @@ def page_home():
         "alternateName": "Connor Robertson",
         "url": SITE_URL,
         "image": f"{SITE_URL}/images/dr-connor-robertson-headshot.jpg",
-        "jobTitle": "Entrepreneur, Business Strategist, Educator & Philanthropist",
+        "jobTitle": "Entrepreneur, Author, AI Strategist & Business Acquisition Expert",
         "description": "Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, educator, author, podcast host, and philanthropist based in Pittsburgh, PA. Founder of Elixir Consulting Group, publisher of The Pittsburgh Wire, and host of The Prospecting Show.",
         "address": {"@type": "PostalAddress", "addressLocality": "Pittsburgh", "addressRegion": "PA", "addressCountry": "US"},
         "sameAs": list(SOCIAL_LINKS.values()) + OWNED_WEBSITES,
@@ -858,9 +938,9 @@ def page_home():
 
     extra = f'<script type="application/ld+json">{person_schema}</script>\n<script type="application/ld+json">{website_schema}</script>'
     pillars = [
-        ("Entrepreneur & Founder", "Dr. Connor Robertson founded Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show, and The Grant Finder. He builds businesses that combine innovation with lasting community impact."),
-        ("Author & Podcast Host", "Dr. Robertson hosts The Prospecting Show podcast and has authored five books on business strategy, acquisitions, and wealth building -- sharing actionable frameworks for entrepreneurs at every stage."),
-        ("Philanthropist & Community Builder", "Dr. Robertson actively supports Social Venture Partners and Habitat for Humanity, championing social initiatives that improve education, housing, and community development across North America."),
+        ("Entrepreneur & Business Acquisition Expert", "Dr. Connor Robertson has founded four companies and helps business owners acquire, scale, and exit businesses through <a href=\"https://elixirconsultinggroup.com\" target=\"_blank\" rel=\"noopener\">Elixir Consulting Group</a>. His book <em>Creative Acquisitions</em> is the playbook for modern dealmakers."),
+        ("Author & AI Strategist", "Five published books on acquisitions, prospecting, and wealth building. Connor also helps small businesses deploy AI to automate operations and outpace competitors. Browse all titles at <a href=\"https://drconnorrobertsonbooks.com\" target=\"_blank\" rel=\"noopener\">drconnorrobertsonbooks.com</a>."),
+        ("Podcast Host & Community Builder", "Host of <a href=\"https://theprospectingshow.com\" target=\"_blank\" rel=\"noopener\">The Prospecting Show</a> with 350+ episodes and publisher of <a href=\"https://thepittsburghwire.com\" target=\"_blank\" rel=\"noopener\">The Pittsburgh Wire</a>. Connor also supports Social Venture Partners and Habitat for Humanity."),
     ]
     pcards = "".join(f'<div class="pill"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
     return header("Dr. Connor Robertson - Official Site | Entrepreneur, Author & Speaker",
@@ -868,8 +948,8 @@ def page_home():
         "/", extra, og_image="/images/dr-connor-robertson-headshot.jpg") + f"""
 <section class="hero"><div class="hero-bg"><img src="/images/dr-connor-robertson-headshot.jpg" alt="Dr. Connor Robertson - Entrepreneur, Author, and Business Strategist" width="1024" height="1024" loading="eager" class="hero-bg-img"></div><div class="hero-ct">
 <h1>Dr. Connor Robertson</h1>
-<p class="tag">Helping entrepreneurs scale businesses, build legacies, and create lasting impact.</p>
-<div class="hero-btn"><a href="/contact/" class="btn-p">Contact</a><a href="/about/" class="btn-s">About</a></div>
+<p class="tag">Entrepreneur. Author. AI Strategist. Helping business owners acquire companies, automate operations, and build lasting wealth.</p>
+<div class="hero-btn"><a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" class="btn-p">Browse My Books</a><a href="/speaker/" class="btn-s">Book Me to Speak</a></div>
 </div></section>
 <section class="feat"><div class="ctn">
 <h3>As Featured On</h3>
@@ -881,7 +961,29 @@ def page_home():
 </div></section>
 <section class="quote"><div class="ctn">
 <p class="quote-t">"Real success comes from creating impact that lasts longer than you do."</p>
-<p class="quote-a"><strong>Dr. Connor Robertson</strong><br>Entrepreneur, Real Estate Innovator, Educator &amp; Philanthropist</p>
+<p class="quote-a"><strong>Dr. Connor Robertson</strong><br>Entrepreneur, Author, AI Strategist &amp; Business Acquisition Expert</p>
+</div></section>
+
+<section class="lead-magnet"><div class="ctn">
+<h2>Free Guide: 5 Strategies to Acquire Your First Business</h2>
+<p class="lm-sub">Connor's most-requested frameworks for finding, evaluating, and closing your first business acquisition -- distilled into a free guide.</p>
+<form class="lm-form" action="https://formspree.io/f/xdkobkzz" method="POST">
+<input type="hidden" name="_subject" value="Lead Magnet Download Request">
+<input type="hidden" name="source" value="homepage-lead-magnet">
+<input type="email" name="email" placeholder="Enter your email address" required>
+<button type="submit">Get the Free Guide</button>
+</form>
+<p class="lm-note">No spam. Unsubscribe anytime.</p>
+</div></section>
+
+<section class="cta-banner"><div class="ctn">
+<h2>Ready to Take the Next Step?</h2>
+<p>Explore Connor's books, book him for your next event, or work with Elixir Consulting to scale your business.</p>
+<div class="cta-btns">
+<a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" class="btn-p">Browse His Books</a>
+<a href="/speaker/" class="btn-s">Book Connor to Speak</a>
+<a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener" class="btn-s">Elixir Consulting</a>
+</div>
 </div></section>
 """ + footer()
 
@@ -894,7 +996,7 @@ def page_about():
         "alternateName": "Connor Robertson",
         "url": f"{SITE_URL}/about/",
         "image": f"{SITE_URL}/images/dr-connor-robertson-headshot.jpg",
-        "jobTitle": "Entrepreneur, Business Strategist, Educator & Philanthropist",
+        "jobTitle": "Entrepreneur, Author, AI Strategist & Business Acquisition Expert",
         "description": "Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh, PA. He founded Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show, and The Grant Finder.",
         "address": {"@type": "PostalAddress", "addressLocality": "Pittsburgh", "addressRegion": "PA", "addressCountry": "US"},
         "sameAs": list(SOCIAL_LINKS.values()) + OWNED_WEBSITES,
@@ -934,61 +1036,135 @@ def page_about():
         "/about/", extra, og_image="/images/connor-about.jpg") + """
 <section class="pg-hero"><div class="ctn">
 <h1>About Dr. Connor Robertson</h1>
-<p>Entrepreneur, author, podcast host, philanthropist, and founder of four companies based in Pittsburgh, PA.</p>
+<p>Entrepreneur. Author. AI Strategist. Business Acquisition Expert. Podcast Host. Founder of four companies based in Pittsburgh, PA.</p>
 </div></section>
 <section class="sec"><div class="ctn">
-<div class="about-photo"><img src="/images/connor-hero.jpg" alt="Dr. Connor Robertson headshot - Pittsburgh entrepreneur and business strategist" loading="lazy"></div>
-<p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, and philanthropist based in Pittsburgh, PA. He is the founder of <a href="https://elixirconsultinggroup.com">Elixir Consulting Group</a>, publisher of <a href="https://thepittsburghwire.com">The Pittsburgh Wire</a>, host of <a href="https://theprospectingshow.com">The Prospecting Show</a> podcast, and creator of <a href="https://thegrantfinder.com">The Grant Finder</a>. Through his work with organizations like Social Venture Partners and Habitat for Humanity, Dr. Robertson drives meaningful change in housing, education, and social equity across North America.</p>
-<div class="stats">
-<div class="stat"><div class="stat-n">150+</div><div class="stat-l">Homes built through Habitat for Humanity</div></div>
-<div class="stat"><div class="stat-n">40+</div><div class="stat-l">Global branches supported through SVP</div></div>
-<div class="stat"><div class="stat-n">10K+</div><div class="stat-l">Individuals impacted through community initiatives</div></div>
+<div class="about-photo"><img src="/images/connor-hero.jpg" alt="Dr. Connor Robertson - Pittsburgh entrepreneur, author, AI strategist, and business acquisition expert" loading="lazy"></div>
+<p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, and AI implementation expert based in Pittsburgh, PA. He has built four companies from the ground up, authored five books, hosted over 350 podcast episodes, and helped business owners across North America acquire companies, automate operations, and scale with purpose.</p>
+
+<div class="cred-grid">
+<div class="cred-card"><div class="cred-icon">&#9889;</div><h3>Entrepreneur</h3><p>Founded Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show, and The Grant Finder</p></div>
+<div class="cred-card"><div class="cred-icon">&#9997;</div><h3>Author</h3><p>Five published books on acquisitions, wealth building, prospecting, and real estate strategy</p></div>
+<div class="cred-card"><div class="cred-icon">&#129302;</div><h3>AI Strategist</h3><p>Helps small and mid-sized businesses deploy AI for automation, lead generation, and competitive advantage</p></div>
+<div class="cred-card"><div class="cred-icon">&#127911;</div><h3>Podcast Host</h3><p>350+ episodes of The Prospecting Show featuring entrepreneurs and business operators</p></div>
 </div>
+
+<div class="stats">
+<div class="stat"><div class="stat-n">5</div><div class="stat-l">Books Published</div></div>
+<div class="stat"><div class="stat-n">4</div><div class="stat-l">Companies Founded</div></div>
+<div class="stat"><div class="stat-n">350+</div><div class="stat-l">Podcast Episodes</div></div>
+<div class="stat"><div class="stat-n">10K+</div><div class="stat-l">People Impacted</div></div>
+</div>
+
 <div class="agrid">
-<div class="ablock"><h3>Building Businesses That Transform Communities</h3>
-<p>Dr. Connor Robertson's entrepreneurial journey began with a vision -- to combine innovation and impact. Through <a href="https://elixirconsultinggroup.com">Elixir Consulting Group</a>, he helps business owners scale with strategy, systems, and operational excellence. His passion for community growth fuels his mission to create sustainable value while improving lives across Pittsburgh and beyond.</p></div>
-<div class="ablock"><h3>Media, Publishing & Podcasting</h3>
-<p>Dr. Robertson built <a href="https://thepittsburghwire.com">The Pittsburgh Wire</a> into a leading local business news publication and hosts <a href="https://theprospectingshow.com">The Prospecting Show</a>, a weekly podcast featuring entrepreneurs sharing real stories of scaling their businesses. His media properties reach thousands of readers and listeners each month. He has also authored five books on business strategy and entrepreneurship, available on <a href="/books/">Google Play and Barnes & Noble</a>.</p></div>
-<div class="ablock"><h3>Philanthropy & Social Impact</h3>
-<p>Deeply rooted in giving back, Dr. Robertson's philanthropic work with Social Venture Partners and Habitat for Humanity has transformed communities across North America. Whether building homes or supporting nonprofits that uplift at-risk youth, his contributions embody a commitment to sustainable, meaningful change. Learn more about his <a href="/speaker/">speaking engagements</a> or <a href="/contact/">get in touch</a>.</p></div>
+<div class="ablock"><h3>Business Acquisitions & Strategy</h3>
+<p>Connor believes that buying an existing business is the fastest path to entrepreneurship. Through <a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener">Elixir Consulting Group</a>, he advises business owners on acquisitions, operational scaling, and exit strategies. His book <a href="https://www.barnesandnoble.com/w/creative-acquisitions-by-dr-connor-robertson-connor-robertson/1148958050" target="_blank" rel="noopener"><em>Creative Acquisitions</em></a> is the playbook for modern dealmakers. Browse all his books at <a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener">drconnorrobertsonbooks.com</a>.</p></div>
+<div class="ablock"><h3>AI, Automation & Modern Growth</h3>
+<p>Connor is at the forefront of helping small businesses adopt artificial intelligence. From automating client communications to building AI-powered lead generation systems, he shows owners how to do more with fewer resources. His approach is practical, not theoretical -- focused on tools and workflows that produce ROI within weeks, not months.</p></div>
+<div class="ablock"><h3>Media, Publishing & The Prospecting Show</h3>
+<p>Connor built <a href="https://thepittsburghwire.com" target="_blank" rel="noopener">The Pittsburgh Wire</a> into a leading local business publication and hosts <a href="https://theprospectingshow.com" target="_blank" rel="noopener">The Prospecting Show</a>, a weekly podcast featuring entrepreneurs sharing real stories of scaling their businesses. He has authored five books including <em>Buying Wealth</em>, <em>The 7 Minute Phone Call</em>, and <em>Creative Acquisitions</em> -- all available on <a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener">drconnorrobertsonbooks.com</a>.</p></div>
+<div class="ablock"><h3>Philanthropy & Community Impact</h3>
+<p>Connor's philanthropic work with Social Venture Partners and Habitat for Humanity has helped build over 150 homes and support 40+ global community branches. He believes that building businesses and building communities are inseparable -- and that the best entrepreneurs create lasting value beyond the balance sheet.</p></div>
 </div></div></section>
+
+<section class="cta-banner"><div class="ctn">
+<h2>Work With Connor</h2>
+<p>Whether you want to acquire a business, scale your company with AI, or book Connor for your next event -- start here.</p>
+<div class="cta-btns">
+<a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener" class="btn-p">Elixir Consulting</a>
+<a href="/speaker/" class="btn-s">Book Connor to Speak</a>
+<a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" class="btn-s">Browse His Books</a>
+</div>
+</div></section>
 """ + footer()
 
 
 def page_speaker():
-    return header("Book Dr. Connor Robertson as a Speaker | Keynote on Business, AI & Entrepreneurship",
-        "Book Dr. Connor Robertson for your next event. Expert keynote speaker on entrepreneurship, business strategy, real estate, and leadership based in Pittsburgh.", "/speaker/") + """
-<section class="pg-hero"><div class="ctn">
-<div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-blazer.jpg" alt="Dr. Connor Robertson - Keynote Speaker" width="300" height="300" loading="lazy" style="border-radius:50%;width:200px;height:200px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
-<h1>Speaking Engagements</h1>
-<p>Connor is passionate about sharing his experiences and advice with audiences that are ready to grow.</p>
+    books_mini = ""
+    for title, desc, url, store in BOOKS:
+        short_desc = desc[:80].rsplit(" ", 1)[0] + "..." if len(desc) > 80 else desc
+        books_mini += f'<div class="book-mini"><h3>{esc(title)}</h3><p>{esc(short_desc)}</p><a href="{url}" target="_blank" rel="noopener">Get It &rarr;</a></div>\n'
+    return header("Book Dr. Connor Robertson as a Speaker | Keynote on Business Acquisitions, AI & Entrepreneurship",
+        "Book Dr. Connor Robertson for your next conference, summit, or corporate event. Expert keynote speaker on business acquisitions, AI strategy, entrepreneurship, and scaling companies.", "/speaker/",
+        og_image="/images/connor-blazer.jpg") + f"""
+<section class="speaker-hero"><div class="ctn">
+<div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-blazer.jpg" alt="Dr. Connor Robertson - Keynote Speaker on Business Acquisitions and AI Strategy" width="300" height="300" loading="eager" style="border-radius:50%;width:200px;height:200px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
+<h1>Your Audience Deserves More Than Motivation. Give Them a Playbook.</h1>
+<p class="sh-sub">Dr. Connor Robertson delivers high-energy keynotes packed with actionable frameworks on business acquisitions, AI-powered growth, and building companies that last. He has founded four companies, authored five books, and hosts The Prospecting Show podcast.</p>
+<div class="hero-btn"><a href="#book-me" class="btn-p book-cta">Book Connor to Speak</a><a href="/books/" class="btn-s">Browse His Books</a></div>
+<div class="speaker-stats">
+<div class="stat"><div class="stat-n">5</div><div class="stat-l">Books Published</div></div>
+<div class="stat"><div class="stat-n">4</div><div class="stat-l">Companies Founded</div></div>
+<div class="stat"><div class="stat-n">350+</div><div class="stat-l">Podcast Episodes</div></div>
+</div>
 </div></section>
+
 <section class="sec"><div class="ctn">
+<h2 class="sec-t">Speaking Topics</h2>
+<p class="sec-sub">Every talk is customized to your audience. These are Connor's most requested keynotes and workshop topics.</p>
+<div class="topics">
+<div class="tcard"><div class="topic-num">1</div><h3>Buy the Business, Skip the Startup Phase</h3><p>Why acquiring an existing company is the fastest path to entrepreneurship -- and how to find, evaluate, and close your first deal using creative acquisition strategies. Based on his book <em>Creative Acquisitions</em>.</p></div>
+<div class="tcard"><div class="topic-num">2</div><h3>AI as Your Unfair Advantage</h3><p>How small and mid-sized business owners can deploy AI to automate operations, generate leads, and outmaneuver competitors ten times their size. Real case studies, not theory.</p></div>
+<div class="tcard"><div class="topic-num">3</div><h3>The 7-Minute Phone Call That Closes Deals</h3><p>The exact prospecting framework Connor used to build a pipeline worth millions. Your team will leave with a repeatable system they can use Monday morning. Based on his book <em>The 7 Minute Phone Call</em>.</p></div>
+<div class="tcard"><div class="topic-num">4</div><h3>Building Wealth Through Real Estate Ownership</h3><p>Why every business owner should own the building their company operates from -- and how to structure the deal. From Connor's book <em>Buy The Building, Keep The Profits</em>.</p></div>
+<div class="tcard"><div class="topic-num">5</div><h3>From Author to Authority: Publishing as a Business Development Engine</h3><p>How writing a book (or five) builds credibility, generates inbound leads, and positions you as the go-to expert in your market. The playbook Connor used to establish his personal brand.</p></div>
+<div class="tcard"><div class="topic-num">6</div><h3>Scaling with Systems, Not Just Hustle</h3><p>The operational frameworks, automation tools, and leadership principles that let founders step out of day-to-day firefighting and build businesses that run without them.</p></div>
+</div></div></section>
+
+<section class="sec sec-dk"><div class="ctn">
 <h2 class="sec-t">Audiences Connor Connects With</h2>
 <div class="saud">
-<div class="acard"><h3>Entrepreneurs</h3><p>Learn how to transform ideas into impactful, scalable ventures.</p></div>
-<div class="acard"><h3>Real Estate Leaders</h3><p>Gain insights on leveraging technology and strategy to maximize returns.</p></div>
-<div class="acard"><h3>Changemakers</h3><p>Discover how to align business success with lasting social impact.</p></div>
+<div class="acard"><h3>Entrepreneurs &amp; Founders</h3><p>From first-time buyers to seasoned operators looking to acquire their next company or scale what they have.</p></div>
+<div class="acard"><h3>Corporate Teams &amp; Sales Organizations</h3><p>Actionable prospecting and pipeline-building frameworks your team can implement immediately.</p></div>
+<div class="acard"><h3>Real Estate Investors &amp; Operators</h3><p>Strategies for building wealth through property ownership, creative deal structures, and portfolio scaling.</p></div>
+<div class="acard"><h3>Conference &amp; Summit Organizers</h3><p>High-energy keynotes that leave audiences with real takeaways -- not just inspiration, but implementation plans.</p></div>
 </div></div></section>
-<section class="sec sec-dk"><div class="ctn">
-<h2 class="sec-t">Subject Matter Expertise</h2>
-<div class="topics">
-<div class="tcard"><h3>Building a Real Estate Business That Creates Change</h3><p>Discover the steps to launch, grow, and scale a socially conscious real estate firm -- one that drives profit, purpose, and positive impact through innovation and leadership.</p></div>
-<div class="tcard"><h3>Leading with Purpose and Integrity</h3><p>Learn how to cultivate authentic leadership by balancing empathy with execution -- empowering your team and community while driving measurable business success.</p></div>
-<div class="tcard"><h3>Merging Entrepreneurship and Philanthropy</h3><p>Master the art of integrating business excellence with social responsibility. Dr. Robertson's approach teaches how purpose-driven ventures can fuel long-term, sustainable transformation.</p></div>
-</div></div></section>
-<section class="sec"><div class="ctn">
-<h2 class="sec-t">Request a Booking</h2>
+
+<section class="podcast-section"><div class="ctn">
+<h2 class="sec-t">As Heard On</h2>
+<p class="sec-sub">Connor hosts The Prospecting Show and has been a featured guest on podcasts and media outlets reaching millions of listeners.</p>
+<div class="podcast-grid">
+<div class="pod-card"><h3>The Prospecting Show</h3><p>Connor's own weekly podcast -- 350+ episodes interviewing entrepreneurs and small business owners about scaling their companies.</p><a href="https://theprospectingshow.com" target="_blank" rel="noopener" class="pod-link">Listen Now &rarr;</a></div>
+<div class="pod-card"><h3>Yahoo Finance</h3><p>Featured for the launch of Elixir Consulting Group's business automation advisory service.</p><a href="https://finance.yahoo.com/sectors/technology/articles/elixir-consulting-group-launches-business-112900872.html" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
+<div class="pod-card"><h3>Business Insider</h3><p>Coverage of Elixir Consulting Group's advisory services for small and mid-sized business owners.</p><a href="https://markets.businessinsider.com/news/stocks/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-midsized-business-owners-1036100299" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
+<div class="pod-card"><h3>The Globe and Mail</h3><p>National coverage of Connor's business consulting and automation advisory work.</p><a href="https://www.theglobeandmail.com/investing/markets/markets-news/Newsfile/1681496/" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
+</div>
+</div></section>
+
+<section class="lead-magnet"><div class="ctn">
+<h2>Free Guide: 5 Strategies to Acquire Your First Business</h2>
+<p class="lm-sub">The exact framework Connor teaches at live events -- now available as a free download. Enter your email and get it instantly.</p>
+<form class="lm-form" action="https://formspree.io/f/xdkobkzz" method="POST">
+<input type="hidden" name="_subject" value="Lead Magnet Download Request">
+<input type="hidden" name="source" value="speaker-page-lead-magnet">
+<input type="email" name="email" placeholder="Enter your email address" required>
+<button type="submit">Get the Free Guide</button>
+</form>
+<p class="lm-note">No spam. Unsubscribe anytime.</p>
+</div></section>
+
+<section class="books-strip"><div class="ctn">
+<h2>Books by Dr. Connor Robertson</h2>
+<p class="bs-sub">Five books on business acquisitions, wealth building, prospecting, and real estate strategy.</p>
+<div class="books-row">{books_mini}</div>
+<div style="text-align:center;margin-top:40px"><a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" class="btn-p">Browse All Books</a></div>
+</div></section>
+
+<section class="sec" id="book-me"><div class="ctn">
+<h2 class="sec-t">Book Connor to Speak</h2>
+<p class="sec-sub">Fill out the form below and Connor's team will follow up within 24 hours to discuss your event.</p>
 <div class="cform">
 <form action="https://formspree.io/f/xdkobkzz" method="POST">
+<input type="hidden" name="_subject" value="Speaking Inquiry from drconnorrobertson.com">
 <div class="fr"><div class="fg"><label>First Name</label><input type="text" name="first_name" required></div><div class="fg"><label>Last Name</label><input type="text" name="last_name" required></div></div>
 <div class="fg"><label>Email</label><input type="email" name="email" required></div>
-<div class="fg"><label>Company</label><input type="text" name="company"></div>
-<div class="fg"><label>Event Size</label><input type="number" name="event_size" min="0"></div>
-<div class="fg"><label>Budget</label><input type="text" name="budget"></div>
-<div class="fg"><label>Event Date</label><input type="date" name="event_date"></div>
-<div class="fg"><label>Speaking Request</label><textarea name="speaking_request" rows="4"></textarea></div>
-<button type="submit" class="fsub">Submit</button>
+<div class="fg"><label>Organization / Company</label><input type="text" name="company" required></div>
+<div class="fg"><label>Event Name</label><input type="text" name="event_name"></div>
+<div class="fg"><label>Expected Audience Size</label><input type="number" name="event_size" min="0" placeholder="e.g. 200"></div>
+<div class="fg"><label>Event Date (approximate is fine)</label><input type="date" name="event_date"></div>
+<div class="fg"><label>Budget Range</label><select name="budget"><option value="">Select a range</option><option>Under $5,000</option><option>$5,000 - $10,000</option><option>$10,000 - $25,000</option><option>$25,000+</option></select></div>
+<div class="fg"><label>Tell us about your event and what you are looking for</label><textarea name="speaking_request" rows="4" placeholder="Describe your event, audience, and any specific topics you would like Connor to cover..."></textarea></div>
+<button type="submit" class="fsub">Submit Speaking Inquiry</button>
 </form></div></div></section>
 """ + footer()
 
@@ -1019,7 +1195,18 @@ def page_books():
 <div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-book.jpg" alt="Dr. Connor Robertson - Author" width="300" height="300" loading="lazy" style="border-radius:12px;width:250px;height:250px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
 <h1>Books</h1><p>Practical guides on wealth building, real estate, and entrepreneurship by Dr. Connor Robertson.</p>
 </div></section>
-<section class="sec"><div class="ctn"><div class="bkgrid">{cards}</div></div></section>
+<section class="sec"><div class="ctn"><div class="bkgrid">{cards}</div>
+<div style="text-align:center;margin-top:48px"><a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" class="btn-p">Browse All Books at DrConnorRobertsonBooks.com</a></div>
+</div></section>
+
+<section class="cta-banner"><div class="ctn">
+<h2>Want Connor at Your Next Event?</h2>
+<p>Connor delivers keynotes based on the frameworks from his books. Bring actionable strategies to your audience.</p>
+<div class="cta-btns">
+<a href="/speaker/" class="btn-p">Book Connor to Speak</a>
+<a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener" class="btn-s">Work with Elixir Consulting</a>
+</div>
+</div></section>
 """ + footer()
 
 
