@@ -383,11 +383,51 @@ PRESS_ARTICLES = [
 ]
 
 BOOKS = [
-    ("Buying Wealth", "A straightforward guide to ownership and practical wealth-building. Learn how to buy assets that produce cash flow, use leverage responsibly, and build disciplined systems for growth.", "https://play.google.com/store/books/details/Dr_Connor_Robertson_Buying_Wealth?id=Dw2HEQAAQBAJ", "Google Play"),
-    ("The 7 Minute Phone Call", "Replace hesitation with action. Connect like a human being again. In seven minutes, you can build more trust than a dozen emails ever will.", "https://play.google.com/store/books/details/Dr_Connor_Robertson_The_7_Minute_Phone_Call?id=9QyHEQAAQBAJ", "Google Play"),
-    ("PadSplit Playbook: Scaling Affordable Housing Through Shared Living", "A practical, experience driven guide for property owners, operators, and housing focused entrepreneurs who want to understand how PadSplit works in real life.", "https://play.google.com/store/books/details/Dr_Connor_Robertson_Padsplit_Playbook_Scaling_Affo?id=9sSqEQAAQBAJ", "Google Play"),
-    ("Buy The Building, Keep The Profits", "A clear and practical guide that helps business owners understand why the real money is not only in running a successful company but in owning the real estate that company occupies.", "https://play.google.com/store/books/details/Dr_Connor_Robertson_Buy_the_Building_Keep_the_Prof?id=MRWfEQAAQBAJ", "Google Play"),
-    ("Creative Acquisitions: The Playbook for Modern Dealmakers", "A practical, operator focused guide for entrepreneurs who want to buy real businesses using flexible, creative, and durable acquisition strategies.", "https://www.barnesandnoble.com/w/creative-acquisitions-by-dr-connor-robertson-connor-robertson/1148958050", "Barnes & Noble"),
+    {
+        "title": "Buying Wealth",
+        "desc": "A straightforward guide to ownership and practical wealth-building. Learn how to buy assets that produce cash flow, use leverage responsibly, and build disciplined systems for growth.",
+        "retailers": [
+            ("Google Play", "https://play.google.com/store/books/details/Dr_Connor_Robertson_Buying_Wealth?id=Dw2HEQAAQBAJ"),
+        ],
+    },
+    {
+        "title": "The 7 Minute Phone Call",
+        "desc": "Replace hesitation with action. Connect like a human being again. In seven minutes, you can build more trust than a dozen emails ever will.",
+        "retailers": [
+            ("Google Play", "https://play.google.com/store/books/details/Dr_Connor_Robertson_The_7_Minute_Phone_Call?id=9QyHEQAAQBAJ"),
+        ],
+    },
+    {
+        "title": "Creative Acquisitions: The Playbook for Modern Dealmakers",
+        "desc": "A practical, operator focused guide for entrepreneurs who want to buy real businesses using flexible, creative, and durable acquisition strategies.",
+        "retailers": [
+            ("Barnes & Noble", "https://www.barnesandnoble.com/w/creative-acquisitions-by-dr-connor-robertson-connor-robertson/1148958050"),
+            ("Kobo", "https://www.kobo.com/us/en/ebook/creative-acquisitions-by-dr-connor-robertson"),
+        ],
+    },
+    {
+        "title": "Built to Run",
+        "desc": "Build systems and processes that let your business operate without constant owner involvement. A framework for creating scalable, owner-independent operations.",
+        "retailers": [],
+    },
+    {
+        "title": "PadSplit Playbook: Scaling Affordable Housing Through Shared Living",
+        "desc": "A practical, experience driven guide for property owners, operators, and housing focused entrepreneurs who want to understand how PadSplit works in real life.",
+        "retailers": [
+            ("Google Play", "https://play.google.com/store/books/details/Dr_Connor_Robertson_Padsplit_Playbook_Scaling_Affo?id=9sSqEQAAQBAJ"),
+            ("Barnes & Noble", "https://www.barnesandnoble.com/w/padsplit-playbook-by-dr-connor-robertson-connor-robertson/1149135521"),
+            ("Kobo", "https://www.kobo.com/us/en/ebook/padsplit-playbook-by-dr-connor-robertson"),
+        ],
+    },
+    {
+        "title": "Buy The Building, Keep The Profits",
+        "desc": "A clear and practical guide that helps business owners understand why the real money is not only in running a successful company but in owning the real estate that company occupies.",
+        "retailers": [
+            ("Google Play", "https://play.google.com/store/books/details/Dr_Connor_Robertson_Buy_the_Building_Keep_the_Prof?id=MRWfEQAAQBAJ"),
+            ("Barnes & Noble", "https://www.barnesandnoble.com/w/buy-the-building-keep-the-profits-by-dr-connor-robertson-connor-robertson/1148885434"),
+            ("Kobo", "https://www.kobo.com/us/en/ebook/buy-the-building-keep-the-profits-by-dr-connor-robertson"),
+        ],
+    },
 ]
 
 
@@ -776,6 +816,10 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .book-mini h3{font-size:16px;font-weight:600;margin-bottom:8px}
 .book-mini p{color:var(--text2);font-size:13px;line-height:1.6;margin-bottom:12px}
 .book-mini a{font-size:13px;font-weight:600;color:var(--text);text-decoration:underline;text-underline-offset:3px}
+.bk-retailers{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.bk-retailer{display:inline-flex;padding:10px 20px;background:var(--text);color:#000;border-radius:var(--r);font-weight:600;font-size:14px;transition:transform var(--t),box-shadow var(--t);text-transform:uppercase;letter-spacing:.5px}
+.bk-retailer:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,255,255,.15);opacity:1}
+.bk-coming-soon{font-size:14px;color:var(--text2);font-style:italic;margin-top:16px;display:block}
 
 @media(max-width:768px){
 .lm-form{flex-direction:column;padding:0 16px}
@@ -830,7 +874,7 @@ def nav_html():
 
 def header(title, desc="", canonical="/", extra="", og_image="", og_type="website"):
     if not desc:
-        desc = "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, AI strategist, and business acquisition expert. Founder of Elixir Consulting Group, host of The Prospecting Show, and author of five books on business strategy."
+        desc = "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, AI strategist, and business acquisition expert. Founder of Elixir Consulting Group, host of The Prospecting Show, and author of six books on business strategy."
     can = f'<link rel="canonical" href="{SITE_URL}{canonical}">' if canonical else ""
     og_img_tag = ""
     twitter_img_tag = ""
@@ -939,7 +983,7 @@ def page_home():
     extra = f'<script type="application/ld+json">{person_schema}</script>\n<script type="application/ld+json">{website_schema}</script>'
     pillars = [
         ("Entrepreneur & Business Acquisition Expert", "Dr. Connor Robertson has founded four companies and helps business owners acquire, scale, and exit businesses through <a href=\"https://elixirconsultinggroup.com\" target=\"_blank\" rel=\"noopener\">Elixir Consulting Group</a>. His book <em>Creative Acquisitions</em> is the playbook for modern dealmakers."),
-        ("Author & AI Strategist", "Five published books on acquisitions, prospecting, and wealth building. Connor also helps small businesses deploy AI to automate operations and outpace competitors. Browse all titles at <a href=\"https://drconnorrobertsonbooks.com\" target=\"_blank\" rel=\"noopener\">drconnorrobertsonbooks.com</a>."),
+        ("Author & AI Strategist", "Six published books on acquisitions, prospecting, and wealth building. Connor also helps small businesses deploy AI to automate operations and outpace competitors. Browse all titles at <a href=\"https://drconnorrobertsonbooks.com\" target=\"_blank\" rel=\"noopener\">drconnorrobertsonbooks.com</a>."),
         ("Podcast Host & Community Builder", "Host of <a href=\"https://theprospectingshow.com\" target=\"_blank\" rel=\"noopener\">The Prospecting Show</a> with 350+ episodes and publisher of <a href=\"https://thepittsburghwire.com\" target=\"_blank\" rel=\"noopener\">The Pittsburgh Wire</a>. Connor also supports Social Venture Partners and Habitat for Humanity."),
     ]
     pcards = "".join(f'<div class="pill"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
@@ -1025,7 +1069,7 @@ def page_about():
             {"@type": "Question", "name": "What is The Prospecting Show?",
              "acceptedAnswer": {"@type": "Answer", "text": "The Prospecting Show is a weekly business podcast hosted by Dr. Connor Robertson where he interviews entrepreneurs and small business owners about scaling their businesses. It is available on Spotify, Apple Podcasts, YouTube, and all major podcast platforms."}},
             {"@type": "Question", "name": "What books has Dr. Connor Robertson written?",
-             "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson has authored several books including Buying Wealth, The 7 Minute Phone Call, PadSplit Playbook, Buy The Building Keep The Profits, and Creative Acquisitions: The Playbook for Modern Dealmakers. They are available on Google Play and Barnes & Noble."}},
+             "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson has authored six books including Buying Wealth, The 7 Minute Phone Call, Creative Acquisitions, Built to Run, PadSplit Playbook, and Buy The Building Keep The Profits. They are available on Google Play, Barnes & Noble, and Kobo."}},
             {"@type": "Question", "name": "How can I contact Dr. Connor Robertson?",
              "acceptedAnswer": {"@type": "Answer", "text": "You can reach Dr. Connor Robertson through the contact form on drconnorrobertson.com/contact/ for business inquiries, speaking engagements, press and media requests, and partnership opportunities."}},
         ]
@@ -1040,17 +1084,17 @@ def page_about():
 </div></section>
 <section class="sec"><div class="ctn">
 <div class="about-photo"><img src="/images/connor-hero.jpg" alt="Dr. Connor Robertson - Pittsburgh entrepreneur, author, AI strategist, and business acquisition expert" loading="lazy"></div>
-<p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, and AI implementation expert based in Pittsburgh, PA. He has built four companies from the ground up, authored five books, hosted over 350 podcast episodes, and helped business owners across North America acquire companies, automate operations, and scale with purpose.</p>
+<p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, and AI implementation expert based in Pittsburgh, PA. He has built four companies from the ground up, authored six books, hosted over 350 podcast episodes, and helped business owners across North America acquire companies, automate operations, and scale with purpose.</p>
 
 <div class="cred-grid">
 <div class="cred-card"><div class="cred-icon">&#9889;</div><h3>Entrepreneur</h3><p>Founded Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show, and The Grant Finder</p></div>
-<div class="cred-card"><div class="cred-icon">&#9997;</div><h3>Author</h3><p>Five published books on acquisitions, wealth building, prospecting, and real estate strategy</p></div>
+<div class="cred-card"><div class="cred-icon">&#9997;</div><h3>Author</h3><p>Six published books on acquisitions, wealth building, prospecting, and real estate strategy</p></div>
 <div class="cred-card"><div class="cred-icon">&#129302;</div><h3>AI Strategist</h3><p>Helps small and mid-sized businesses deploy AI for automation, lead generation, and competitive advantage</p></div>
 <div class="cred-card"><div class="cred-icon">&#127911;</div><h3>Podcast Host</h3><p>350+ episodes of The Prospecting Show featuring entrepreneurs and business operators</p></div>
 </div>
 
 <div class="stats">
-<div class="stat"><div class="stat-n">5</div><div class="stat-l">Books Published</div></div>
+<div class="stat"><div class="stat-n">6</div><div class="stat-l">Books Published</div></div>
 <div class="stat"><div class="stat-n">4</div><div class="stat-l">Companies Founded</div></div>
 <div class="stat"><div class="stat-n">350+</div><div class="stat-l">Podcast Episodes</div></div>
 <div class="stat"><div class="stat-n">10K+</div><div class="stat-l">People Impacted</div></div>
@@ -1062,7 +1106,7 @@ def page_about():
 <div class="ablock"><h3>AI, Automation & Modern Growth</h3>
 <p>Connor is at the forefront of helping small businesses adopt artificial intelligence. From automating client communications to building AI-powered lead generation systems, he shows owners how to do more with fewer resources. His approach is practical, not theoretical -- focused on tools and workflows that produce ROI within weeks, not months.</p></div>
 <div class="ablock"><h3>Media, Publishing & The Prospecting Show</h3>
-<p>Connor built <a href="https://thepittsburghwire.com" target="_blank" rel="noopener">The Pittsburgh Wire</a> into a leading local business publication and hosts <a href="https://theprospectingshow.com" target="_blank" rel="noopener">The Prospecting Show</a>, a weekly podcast featuring entrepreneurs sharing real stories of scaling their businesses. He has authored five books including <em>Buying Wealth</em>, <em>The 7 Minute Phone Call</em>, and <em>Creative Acquisitions</em> -- all available on <a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener">drconnorrobertsonbooks.com</a>.</p></div>
+<p>Connor built <a href="https://thepittsburghwire.com" target="_blank" rel="noopener">The Pittsburgh Wire</a> into a leading local business publication and hosts <a href="https://theprospectingshow.com" target="_blank" rel="noopener">The Prospecting Show</a>, a weekly podcast featuring entrepreneurs sharing real stories of scaling their businesses. He has authored six books including <em>Buying Wealth</em>, <em>The 7 Minute Phone Call</em>, and <em>Creative Acquisitions</em> -- all available on <a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener">drconnorrobertsonbooks.com</a>.</p></div>
 <div class="ablock"><h3>Philanthropy & Community Impact</h3>
 <p>Connor's philanthropic work with Social Venture Partners and Habitat for Humanity has helped build over 150 homes and support 40+ global community branches. He believes that building businesses and building communities are inseparable -- and that the best entrepreneurs create lasting value beyond the balance sheet.</p></div>
 </div></div></section>
@@ -1081,19 +1125,25 @@ def page_about():
 
 def page_speaker():
     books_mini = ""
-    for title, desc, url, store in BOOKS:
+    for book in BOOKS:
+        title, desc = book["title"], book["desc"]
         short_desc = desc[:80].rsplit(" ", 1)[0] + "..." if len(desc) > 80 else desc
-        books_mini += f'<div class="book-mini"><h3>{esc(title)}</h3><p>{esc(short_desc)}</p><a href="{url}" target="_blank" rel="noopener">Get It &rarr;</a></div>\n'
+        retailers = book["retailers"]
+        if retailers:
+            links = " ".join(f'<a href="{u}" target="_blank" rel="noopener" style="margin-right:8px;font-size:12px;font-weight:600;color:var(--text);text-decoration:underline;text-underline-offset:3px">{esc(s)}</a>' for s, u in retailers)
+        else:
+            links = '<span style="font-size:12px;color:var(--text2)">Coming Soon</span>'
+        books_mini += f'<div class="book-mini"><h3>{esc(title)}</h3><p>{esc(short_desc)}</p><div>{links}</div></div>\n'
     return header("Book Dr. Connor Robertson as a Speaker | Keynote on Business Acquisitions, AI & Entrepreneurship",
         "Book Dr. Connor Robertson for your next conference, summit, or corporate event. Expert keynote speaker on business acquisitions, AI strategy, entrepreneurship, and scaling companies.", "/speaker/",
         og_image="/images/connor-blazer.jpg") + f"""
 <section class="speaker-hero"><div class="ctn">
 <div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-blazer.jpg" alt="Dr. Connor Robertson - Keynote Speaker on Business Acquisitions and AI Strategy" width="300" height="300" loading="eager" style="border-radius:50%;width:200px;height:200px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
 <h1>Your Audience Deserves More Than Motivation. Give Them a Playbook.</h1>
-<p class="sh-sub">Dr. Connor Robertson delivers high-energy keynotes packed with actionable frameworks on business acquisitions, AI-powered growth, and building companies that last. He has founded four companies, authored five books, and hosts The Prospecting Show podcast.</p>
+<p class="sh-sub">Dr. Connor Robertson delivers high-energy keynotes packed with actionable frameworks on business acquisitions, AI-powered growth, and building companies that last. He has founded four companies, authored six books, and hosts The Prospecting Show podcast.</p>
 <div class="hero-btn"><a href="#book-me" class="btn-p book-cta">Book Connor to Speak</a><a href="/books/" class="btn-s">Browse His Books</a></div>
 <div class="speaker-stats">
-<div class="stat"><div class="stat-n">5</div><div class="stat-l">Books Published</div></div>
+<div class="stat"><div class="stat-n">6</div><div class="stat-l">Books Published</div></div>
 <div class="stat"><div class="stat-n">4</div><div class="stat-l">Companies Founded</div></div>
 <div class="stat"><div class="stat-n">350+</div><div class="stat-l">Podcast Episodes</div></div>
 </div>
@@ -1145,7 +1195,7 @@ def page_speaker():
 
 <section class="books-strip"><div class="ctn">
 <h2>Books by Dr. Connor Robertson</h2>
-<p class="bs-sub">Five books on business acquisitions, wealth building, prospecting, and real estate strategy.</p>
+<p class="bs-sub">Six books on business acquisitions, wealth building, prospecting, and real estate strategy.</p>
 <div class="books-row">{books_mini}</div>
 <div style="text-align:center;margin-top:40px"><a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" class="btn-p">Browse All Books</a></div>
 </div></section>
@@ -1172,14 +1222,23 @@ def page_speaker():
 def page_books():
     cards = ""
     book_schema_items = []
-    for title, desc, url, store in BOOKS:
-        cards += f'<div class="bk"><h3>{esc(title)}</h3><p>{esc(desc)}</p><a href="{url}" target="_blank" rel="noopener" class="bk-cta">Get Your Copy Now</a></div>\n'
+    for book in BOOKS:
+        title, desc, retailers = book["title"], book["desc"], book["retailers"]
+        if retailers:
+            retailer_links = "".join(f'<a href="{u}" target="_blank" rel="noopener" class="bk-retailer">{esc(s)}</a>' for s, u in retailers)
+        else:
+            retailer_links = '<span class="bk-coming-soon">Coming Soon</span>'
+        cards += f'<div class="bk"><h3>{esc(title)}</h3><p>{esc(desc)}</p><div class="bk-retailers">{retailer_links}</div></div>\n'
+        offers = [{"@type": "Offer", "availability": "https://schema.org/InStock", "url": u, "seller": {"@type": "Organization", "name": s}} for s, u in retailers]
         book_schema_items.append({
             "@type": "Book",
             "name": title,
             "author": {"@type": "Person", "name": "Dr. Connor Robertson"},
+            "publisher": {"@type": "Person", "name": "Dr. Connor Robertson"},
             "description": desc,
-            "url": url,
+            "inLanguage": "en",
+            "bookFormat": "https://schema.org/EBook",
+            "offers": offers,
         })
     schema = json.dumps({
         "@context": "https://schema.org",
@@ -1190,7 +1249,7 @@ def page_books():
     })
     extra = f'<script type="application/ld+json">{schema}</script>'
     return header("Books by Dr. Connor Robertson | Wealth Building, Acquisitions & Entrepreneurship",
-        "Explore books by Dr. Connor Robertson on wealth building, business acquisitions, real estate investing, and entrepreneurship. Available on Google Play and Barnes & Noble.", "/books/", extra) + f"""
+        "Explore books by Dr. Connor Robertson on wealth building, business acquisitions, real estate investing, and entrepreneurship. Available on Google Play, Barnes & Noble, and Kobo.", "/books/", extra) + f"""
 <section class="pg-hero"><div class="ctn">
 <div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-book.jpg" alt="Dr. Connor Robertson - Author" width="300" height="300" loading="lazy" style="border-radius:12px;width:250px;height:250px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
 <h1>Books</h1><p>Practical guides on wealth building, real estate, and entrepreneurship by Dr. Connor Robertson.</p>
