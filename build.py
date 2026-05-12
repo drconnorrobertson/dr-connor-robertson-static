@@ -336,6 +336,8 @@ OWNED_WEBSITES = [
     "https://finance.yahoo.com/sectors/technology/articles/elixir-consulting-group-launches-business-112900872.html",
     "https://www.theglobeandmail.com/investing/markets/markets-news/Newsfile/1681496/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-mid-sized-business-owners/",
     "https://markets.businessinsider.com/news/stocks/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-midsized-business-owners-1036100299",
+    "https://wikitia.com/wiki/Dr._Connor_Robertson",
+    "https://wikialpha.co/wiki/Dr._Connor_Robertson",
 ]
 
 NAV_ITEMS = [
@@ -1390,7 +1392,8 @@ def page_projects():
                 "https://drconnorrobertsonbooks.com",
                 "https://thegrantfinder.org",
                 "https://www.linkedin.com/in/drconnorrobertson",
-                "https://wikitia.com/wiki/Dr._Connor_Robertson"
+                "https://wikitia.com/wiki/Dr._Connor_Robertson",
+                "https://wikialpha.co/wiki/Dr._Connor_Robertson"
             ]
         }
     })
