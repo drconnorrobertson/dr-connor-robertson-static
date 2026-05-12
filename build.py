@@ -340,6 +340,7 @@ OWNED_WEBSITES = [
 
 NAV_ITEMS = [
     ("About", "/about/"),
+    ("Projects", "/projects/"),
     ("Speaker", "/speaker/"),
     ("Blog", "/blog/"),
     ("Books", "/books/"),
@@ -923,7 +924,7 @@ def header(title, desc="", canonical="/", extra="", og_image="", og_type="websit
 
 def footer():
     social = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in SOCIAL_LINKS.items())
-    pages = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in [("/","Home"),("/about/","About"),("/speaker/","Speaker"),("/books/","Books"),("/blog/","Blog"),("/media/","Media Kit"),("/press-media/","Press & Media"),("/contact/","Contact")])
+    pages = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in [("/","Home"),("/about/","About"),("/projects/","Projects"),("/speaker/","Speaker"),("/books/","Books"),("/blog/","Blog"),("/media/","Media Kit"),("/press-media/","Press & Media"),("/contact/","Contact")])
     ventures = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{u.replace("https://","").rstrip("/")}</a></li>' for u in OWNED_WEBSITES)
     return f"""
 <footer class="ftr"><div class="ctn">
@@ -1367,6 +1368,81 @@ def page_contact():
 <div class="fg"><label>Message</label><textarea name="message" rows="5"></textarea></div>
 <button type="submit" class="fsub">Submit</button>
 </form></div></div></section>
+""" + footer()
+
+
+def page_projects():
+    proj_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Projects by Dr. Connor Robertson",
+        "url": f"{SITE_URL}/projects/",
+        "description": "Dr. Connor Robertson's companies, media properties, and ventures.",
+        "mainEntity": {
+            "@type": "Person",
+            "@id": f"{SITE_URL}/#person",
+            "name": "Dr. Connor Robertson",
+            "url": SITE_URL,
+            "sameAs": [
+                "https://prospectingshow.com",
+                "https://thepittsburghwire.com",
+                "https://elixirconsultinggroup.com",
+                "https://drconnorrobertsonbooks.com",
+                "https://thegrantfinder.org",
+                "https://www.linkedin.com/in/drconnorrobertson",
+                "https://wikitia.com/wiki/Dr._Connor_Robertson"
+            ]
+        }
+    })
+    extra = f'<script type="application/ld+json">{proj_schema}</script>'
+    return header("Projects & Companies | Dr. Connor Robertson",
+        "Explore the companies, media properties, and ventures founded by Dr. Connor Robertson -- including The Prospecting Show, The Pittsburgh Wire, Elixir Consulting Group, The Grant Finder, and more.",
+        "/projects/", extra=extra) + """
+<section class="pg-hero"><div class="ctn">
+<h1>Projects &amp; Companies</h1><p>The companies, media properties, and ventures I've built.</p>
+</div></section>
+<section class="sec"><div class="ctn">
+
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:32px;margin-bottom:48px;">
+
+<div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
+<h3 style="font-size:22px;margin-bottom:8px;">The Prospecting Show</h3>
+<p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">A weekly podcast interviewing entrepreneurs about how they built and scaled their businesses. 350+ episodes on Spotify, Apple Podcasts, YouTube, and all major platforms.</p>
+<a href="https://prospectingshow.com" target="_blank" rel="noopener" style="color:var(--accent,#2563eb);font-weight:600;font-size:14px;">Visit prospectingshow.com &rarr;</a>
+</div>
+
+<div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
+<h3 style="font-size:22px;margin-bottom:8px;">The Pittsburgh Wire</h3>
+<p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">An independent digital publication covering Pittsburgh business, real estate, economic development, and the people building the city. Published daily, Monday through Friday.</p>
+<a href="https://thepittsburghwire.com" target="_blank" rel="noopener" style="color:var(--accent,#2563eb);font-weight:600;font-size:14px;">Visit thepittsburghwire.com &rarr;</a>
+</div>
+
+<div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
+<h3 style="font-size:22px;margin-bottom:8px;">Elixir Consulting Group</h3>
+<p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">A consulting firm advising real estate investors, business owners, and high-income professionals on tax strategy, entity structuring, and accelerated depreciation.</p>
+<a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener" style="color:var(--accent,#2563eb);font-weight:600;font-size:14px;">Visit elixirconsultinggroup.com &rarr;</a>
+</div>
+
+<div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
+<h3 style="font-size:22px;margin-bottom:8px;">Books by Dr. Connor Robertson</h3>
+<p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">Multiple books on entrepreneurship, business acquisitions, and wealth building. Available on Amazon, Barnes &amp; Noble, Google Play, and Apple Books.</p>
+<a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" style="color:var(--accent,#2563eb);font-weight:600;font-size:14px;">Visit drconnorrobertsonbooks.com &rarr;</a>
+</div>
+
+<div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
+<h3 style="font-size:22px;margin-bottom:8px;">The Grant Finder</h3>
+<p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">A resource helping nonprofits and small businesses discover and access government grants, foundation funding, and alternative financing opportunities.</p>
+<a href="https://thegrantfinder.org" target="_blank" rel="noopener" style="color:var(--accent,#2563eb);font-weight:600;font-size:14px;">Visit thegrantfinder.org &rarr;</a>
+</div>
+
+<div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
+<h3 style="font-size:22px;margin-bottom:8px;">Swift Line Capital</h3>
+<p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">A lending platform connecting real estate investors with fast, flexible funding for fix-and-flip, bridge, DSCR, and ground-up construction loans.</p>
+<a href="https://swiftline-portal.vercel.app" target="_blank" rel="noopener" style="color:var(--accent,#2563eb);font-weight:600;font-size:14px;">Visit Swift Line Capital &rarr;</a>
+</div>
+
+</div>
+</div></section>
 """ + footer()
 
 
@@ -2030,6 +2106,7 @@ def main():
     print("\n[5/8] Generating static pages...")
     write("index.html", page_home())
     write("about/index.html", page_about())
+    write("projects/index.html", page_projects())
     write("speaker/index.html", page_speaker())
     write("books/index.html", page_books())
     write("press-media/index.html", page_press())
