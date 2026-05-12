@@ -318,6 +318,7 @@ SOCIAL_LINKS = {
     "Facebook": "https://www.facebook.com/therealconnorrobertson",
     "Instagram": "https://www.instagram.com/creative_acquisitions/",
     "TikTok": "https://www.tiktok.com/@dr.connor.robertson",
+    "NewsBreak": "https://www.newsbreak.com/@dr-connor-robertson",
     "Crunchbase": "https://www.crunchbase.com/person/dr-connor-robertson",
     "Flipboard": "https://flipboard.com/@DrConnorRobert",
 }
