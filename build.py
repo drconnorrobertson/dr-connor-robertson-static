@@ -351,6 +351,7 @@ NAV_ITEMS = [
     ("Books", "/books/"),
     ("Media Kit", "/media/"),
     ("Press & Media", "/press-media/"),
+    ("FAQ", "/faq/"),
 ]
 
 RESOURCE_HUBS = [
@@ -929,7 +930,7 @@ def header(title, desc="", canonical="/", extra="", og_image="", og_type="websit
 
 def footer():
     social = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in SOCIAL_LINKS.items())
-    pages = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in [("/","Home"),("/about/","About"),("/projects/","Projects"),("/speaker/","Speaker"),("/books/","Books"),("/blog/","Blog"),("/media/","Media Kit"),("/press-media/","Press & Media"),("/contact/","Contact")])
+    pages = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in [("/","Home"),("/about/","About"),("/projects/","Projects"),("/speaker/","Speaker"),("/books/","Books"),("/blog/","Blog"),("/media/","Media Kit"),("/press-media/","Press & Media"),("/faq/","FAQ"),("/contact/","Contact")])
     ventures = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{u.replace("https://","").rstrip("/")}</a></li>' for u in OWNED_WEBSITES)
     return f"""
 <footer class="ftr"><div class="ctn">
@@ -1584,7 +1585,7 @@ def sitemap(posts):
     now = datetime.now().strftime("%Y-%m-%d")
     entries = ""
     for u, prio in [("/", "1.0"), ("/about/", "0.9"), ("/speaker/", "0.8"), ("/books/", "0.8"),
-                     ("/press-media/", "0.7"), ("/contact/", "0.7"), ("/blog/", "0.9")]:
+                     ("/press-media/", "0.7"), ("/faq/", "0.8"), ("/contact/", "0.7"), ("/blog/", "0.9")]:
         entries += f"  <url><loc>{SITE_URL}{u}</loc><lastmod>{now}</lastmod><changefreq>weekly</changefreq><priority>{prio}</priority></url>\n"
     for p in posts:
         d = p["date"][:10]
@@ -1950,6 +1951,117 @@ def page_author_platform():
 """ + footer()
 
 
+def page_faq():
+    faqs = [
+        ("Who is Dr. Connor Robertson?",
+         "Dr. Connor Robertson is an entrepreneur, author, podcast host, and business strategist based in Pittsburgh, Pennsylvania. He is the founder of multiple companies including Elixir Consulting Group, The Prospecting Show, The Pittsburgh Wire, The Grant Finder, and Seymour Maison. Connor is widely recognized for his expertise in business acquisitions, real estate investing, and helping business owners scale through strategic advisory services. He has authored six books on business strategy and wealth building, and his podcast, The Prospecting Show, has featured over 178 episodes with top entrepreneurs and business leaders."),
+        ("What companies does Dr. Connor Robertson own?",
+         "Dr. Connor Robertson is the founder and owner of several successful companies across diverse industries. These include Elixir Consulting Group, a strategic business advisory firm helping owners with growth, acquisitions, and operational excellence; The Prospecting Show, a top-rated weekly podcast interviewing entrepreneurs about building and scaling businesses; The Pittsburgh Wire, a digital media publication covering Pittsburgh business, real estate, and development news; The Grant Finder, a platform connecting organizations with grant funding opportunities; and Seymour Maison, a luxury t-shirt brand offering premium essentials through a waitlist-only model. He also manages an active real estate investment portfolio."),
+        ("What books has Dr. Connor Robertson written?",
+         "Dr. Connor Robertson has authored six books focused on business strategy, acquisitions, and wealth building. His published works include Buying Wealth, which teaches readers how to build wealth through asset acquisition; Creative Acquisitions, a guide to innovative deal structures for purchasing businesses; The 7 Minute Phone Call, a framework for effective prospecting conversations; PadSplit Playbook, a comprehensive guide to co-living real estate investing; Buy The Building Keep The Profits, which covers strategies for business owners to acquire their commercial properties; and Built to Run, a playbook for building businesses with systems that operate independently of the founder."),
+        ("Where is Dr. Connor Robertson based?",
+         "Dr. Connor Robertson is based in Pittsburgh, Pennsylvania. Pittsburgh serves as the headquarters for his companies and ventures, and he is an active participant in the Pittsburgh business community. His publication, The Pittsburgh Wire, reflects his deep connection to the city by covering local business, real estate, and development news. Connor frequently speaks at events and conferences in the Pittsburgh area and throughout the United States."),
+        ("What is The Prospecting Show?",
+         "The Prospecting Show is a weekly podcast hosted by Dr. Connor Robertson that features in-depth interviews with entrepreneurs, business owners, and industry leaders about building and scaling successful businesses. With over 178 episodes, the show covers topics including sales strategy, business acquisitions, real estate investing, leadership, and operational excellence. The Prospecting Show is available on all major podcast platforms including Spotify, Apple Podcasts, and YouTube. It has become a go-to resource for entrepreneurs looking for practical, actionable advice on business growth."),
+        ("What is Elixir Consulting Group?",
+         "Elixir Consulting Group is a strategic advisory firm founded by Dr. Connor Robertson. The firm specializes in helping business owners achieve growth through acquisitions, partnerships, and operational improvement. Elixir Consulting Group works with entrepreneurs and companies across a range of industries, providing guidance on deal structuring, scaling operations, improving profitability, and building sustainable business systems. Based in Pittsburgh, Pennsylvania, the firm reflects Connor's hands-on approach to business strategy and his belief that disciplined systems and smart acquisitions are the foundation of long-term success."),
+        ("What is Dr. Connor Robertson known for?",
+         "Dr. Connor Robertson is known for his expertise in entrepreneurship, business acquisitions, real estate investing, podcasting, and authoring practical business guides. He has built a reputation as a trusted voice in the business community through his podcast The Prospecting Show, his six published books, and his work as founder of Elixir Consulting Group. Connor is recognized for his hands-on, results-oriented approach to helping business owners grow through strategic acquisitions and operational excellence. He is also known for his contributions to the Pittsburgh business community through The Pittsburgh Wire and his active involvement in local entrepreneurship."),
+        ("How can I contact Dr. Connor Robertson?",
+         "You can contact Dr. Connor Robertson through his official website at drconnorrobertson.com/contact/, where you will find a contact form for business inquiries, speaking engagements, press and media requests, and partnership opportunities. Connor is also active on LinkedIn, where he regularly shares insights on entrepreneurship and business strategy. For press and media inquiries, you can visit his media kit page at drconnorrobertson.com/media/ for downloadable resources and contact information."),
+        ("What is The Pittsburgh Wire?",
+         "The Pittsburgh Wire is a digital media publication founded by Dr. Connor Robertson that covers Pittsburgh business, real estate, and development news. The publication focuses on positive stories of growth, investment, and innovation in the Pittsburgh region, highlighting new businesses, real estate developments, and economic progress across the city and surrounding areas. The Pittsburgh Wire has become a trusted source for anyone interested in the Pittsburgh business landscape and the city's ongoing economic development."),
+        ("What is Seymour Maison?",
+         "Seymour Maison is a luxury t-shirt brand founded by Dr. Connor Robertson that offers premium essentials through a waitlist-only model. Established in 1993, Seymour Maison focuses on exceptional quality, craftsmanship, and understated elegance. The brand sources premium materials and emphasizes limited production runs to maintain exclusivity and quality. Seymour Maison represents Connor's commitment to building brands that prioritize excellence and long-term value over mass-market appeal."),
+    ]
+
+    faq_schema_items = []
+    faq_html_items = ""
+    for q, a in faqs:
+        faq_schema_items.append({
+            "@type": "Question",
+            "name": q,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": a
+            }
+        })
+        faq_html_items += f"""
+      <div class="faq-item fade-in">
+        <h2 class="faq-q">{esc(q)}</h2>
+        <div class="faq-a"><p>{esc(a)}</p></div>
+      </div>"""
+
+    faq_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faq_schema_items
+    }, indent=2)
+
+    person_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": f"{SITE_URL}/#person",
+        "name": "Dr. Connor Robertson",
+        "url": SITE_URL,
+        "jobTitle": "Entrepreneur, Author, Business Strategist",
+        "description": "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, podcast host, and business strategist. Founder of Elixir Consulting Group, The Prospecting Show, The Pittsburgh Wire, The Grant Finder, and Seymour Maison.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Pittsburgh",
+            "addressRegion": "PA",
+            "addressCountry": "US"
+        },
+        "sameAs": [
+            "https://linkedin.com/in/dr-connor-robertson",
+            "https://elixirconsultinggroup.com",
+            "https://prospectingshow.com",
+            "https://thepittsburghwire.com",
+            "https://thegrantfinder.com",
+            "https://seymourmaison.com"
+        ]
+    }, indent=2)
+
+    extra_head = f"""
+<script type="application/ld+json">
+{faq_schema}
+</script>
+<script type="application/ld+json">
+{person_schema}
+</script>
+<style>
+.faq-item{{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:32px;margin-bottom:20px;transition:box-shadow .3s}}
+.faq-item:hover{{box-shadow:0 4px 20px rgba(0,0,0,.08)}}
+.faq-q{{font-size:1.25rem;margin:0 0 12px;color:#1a1a2e;line-height:1.4}}
+.faq-a p{{margin:0;color:#555;line-height:1.7;font-size:1.05rem}}
+.faq-intro{{max-width:720px;margin:0 auto 40px;text-align:center;color:#555;font-size:1.1rem;line-height:1.7}}
+</style>"""
+
+    return header(
+        "Frequently Asked Questions About Dr. Connor Robertson",
+        "Find answers to the most common questions about Dr. Connor Robertson, including his companies, books, podcast, and business ventures. Pittsburgh-based entrepreneur, author, and business strategist.",
+        "/faq/",
+        extra=extra_head,
+        og_image="/images/connor-hero.jpg"
+    ) + f"""
+<section class="pg-hero"><div class="ctn">
+<h1>Frequently Asked Questions</h1>
+<p>Common questions about Dr. Connor Robertson, his companies, books, and ventures.</p>
+</div></section>
+
+<section class="sec"><div class="ctn">
+<p class="faq-intro">Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, podcast host, and business strategist. Below you will find answers to the most frequently asked questions about Connor, his companies, and his work.</p>
+{faq_html_items}
+
+<div style="text-align:center;margin-top:48px" class="fade-in">
+<h2 style="margin-bottom:16px">Have Another Question?</h2>
+<p style="color:#555;margin-bottom:24px">Get in touch with Dr. Connor Robertson for business inquiries, speaking engagements, or media requests.</p>
+<a href="/contact/" class="btn-p">Contact Connor</a>
+</div>
+</div></section>
+""" + footer()
+
+
 def main():
     no_fetch = "--no-fetch" in sys.argv
 
@@ -2123,12 +2235,13 @@ def main():
     write("press-media/index.html", page_press())
     write("media/index.html", page_media())
     write("contact/index.html", page_contact())
+    write("faq/index.html", page_faq())
     # Pillar/Topic Hub pages
     write("business-acquisitions/index.html", page_business_acquisitions())
     write("ai-business-strategy/index.html", page_ai_business_strategy())
     write("prospecting-sales/index.html", page_prospecting_sales())
     write("author-platform/index.html", page_author_platform())
-    print("  11 static pages generated (including 4 pillar pages)")
+    print("  12 static pages generated (including 4 pillar pages + FAQ)")
 
     # Blog posts
     print(f"\n[6/8] Generating {len(posts)} blog post pages...")
