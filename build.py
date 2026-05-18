@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Build script for drconnorrobertson.com static site.
+Build script for drconnorrobertson.com static site. Updated 2026-05-18.
 Fetches all content from WP REST API, downloads images locally,
 and generates a complete static site with full SEO optimization.
 
