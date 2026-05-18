@@ -330,6 +330,7 @@ OWNED_WEBSITES = [
     "https://theprospectingshow.com",
     "https://thegrantfinder.com",
     "https://drconnorrobertsonbooks.com",
+    "https://buyingwealthbook.com",
     "https://www.tasteterminal.com/2026/04/16/connor-robertson-on-ai-marketing-strategy-how-connor-robertson-helps-entrepreneurs-build-audiences-and-close-more-deals/",
     "https://fictiontalk.com/2026/04/16/connor-robertson-on-business-acquisitions-why-connor-robertson-says-buying-beats-building-for-most-entrepreneurs/",
     "https://newsblaze.com/business/latest-business/connor-robertson-on-ai-and-business-growth-how-connor-robertson-helps-entrepreneurs-use-artificial-intelligence-to-outpace-the-competition_213548/",
@@ -999,6 +1000,11 @@ def page_home():
 <h1>Dr. Connor Robertson</h1>
 <p class="tag">Entrepreneur. Author. AI Strategist. Helping business owners acquire companies, automate operations, and build lasting wealth.</p>
 <div class="hero-btn"><a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" class="btn-p">Browse My Books</a><a href="/speaker/" class="btn-s">Book Me to Speak</a></div>
+<div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
+<h3 style="font-size:22px;margin-bottom:8px;">Buying Wealth</h3>
+<p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">Dr. Robertson\'s book on building wealth through business acquisitions and real estate investing. A practical guide to creating lasting financial freedom.</p>
+<a href="https://buyingwealthbook.com" target="_blank" rel="noopener" style="color:var(--accent,#2563eb);font-weight:600;font-size:14px;">Visit buyingwealthbook.com &rarr;</a>
+</div>
 </div></section>
 <section class="feat"><div class="ctn">
 <h3>As Featured On</h3>
