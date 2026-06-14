@@ -2069,26 +2069,44 @@ def main():
     print("Building drconnorrobertson.com static site")
     print("=" * 60)
 
-    # Fetch posts
-    # Fetch posts - try manual_posts.json first, then cache, then WP API
+    # Fetch posts - load manual_posts.json and merge with WP API/cache posts
     MANUAL_POSTS_FILE = BASE_DIR / "manual_posts.json"
+    manual_posts = []
     if MANUAL_POSTS_FILE.exists():
-        print("\n[1/8] Loading posts from manual_posts.json...")
+        print("\n[1/8] Loading posts from manual_posts.json + WP API/cache...")
         with open(MANUAL_POSTS_FILE) as f:
-            posts = json.load(f)
-        print(f"  Loaded {len(posts)} posts from manual_posts.json")
-    elif no_fetch and CACHE_FILE.exists():
-        print("\n[1/8] Loading cached posts...")
-        with open(CACHE_FILE) as f:
-            posts = json.load(f)
-        print(f"  Loaded {len(posts)} posts from cache")
+            manual_posts = json.load(f)
+        print(f"  Loaded {len(manual_posts)} manual posts")
     else:
-        print("\n[1/8] Fetching posts from WP API (with _embed for full media)...")
-        posts = fetch_all_posts()
-        print(f"  Fetched {len(posts)} posts")
-        with open(CACHE_FILE, "w") as f:
-            json.dump(posts, f)
-        print("  Cached to posts_cache.json")
+        print("\n[1/8] Fetching posts...")
+
+    # Also load WP API posts or cache to merge with manual posts
+    wp_posts = []
+    if no_fetch and CACHE_FILE.exists():
+        with open(CACHE_FILE) as f:
+            wp_posts = json.load(f)
+        print(f"  Loaded {len(wp_posts)} posts from cache")
+    elif not no_fetch:
+        try:
+            wp_posts = fetch_all_posts()
+            print(f"  Fetched {len(wp_posts)} posts from WP API")
+            with open(CACHE_FILE, "w") as f:
+                json.dump(wp_posts, f)
+            print("  Cached to posts_cache.json")
+        except Exception as e:
+            print(f"  Could not fetch from WP API: {e}")
+            if CACHE_FILE.exists():
+                with open(CACHE_FILE) as f:
+                    wp_posts = json.load(f)
+                print(f"  Fell back to {len(wp_posts)} cached posts")
+
+    # Merge: manual posts take precedence over WP posts (by slug)
+    manual_slugs = {p["slug"] for p in manual_posts}
+    posts = list(manual_posts)
+    for wp in wp_posts:
+        if wp["slug"] not in manual_slugs:
+            posts.append(wp)
+    print(f"  Total posts after merge: {len(posts)} ({len(manual_posts)} manual + {len(posts) - len(manual_posts)} from WP/cache)")
 
     # Sort posts by date (newest first)
     posts.sort(key=lambda p: p.get("date", ""), reverse=True)
