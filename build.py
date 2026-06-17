@@ -342,6 +342,7 @@ OWNED_WEBSITES = [
     "https://markets.businessinsider.com/news/stocks/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-midsized-business-owners-1036100299",
     "https://wikitia.com/wiki/Dr._Connor_Robertson",
     "https://wikialpha.co/wiki/Dr._Connor_Robertson",
+    "https://blog.venturemagazine.net/dr-connor-robertson-the-va-model-is-dead-heres-what-replaced-it-7b5df3f71fe3",
 ]
 
 NAV_ITEMS = [
@@ -388,6 +389,7 @@ PRESS_ARTICLES = [
     ("Elixir Consulting Group Launches Business Automation Advisory Service", "https://finance.yahoo.com/sectors/technology/articles/elixir-consulting-group-launches-business-112900872.html", "Yahoo Finance"),
     ("Elixir Consulting Group Launches Business Automation Advisory Service for Small and Mid-Sized Business Owners", "https://www.theglobeandmail.com/investing/markets/markets-news/Newsfile/1681496/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-mid-sized-business-owners/", "The Globe and Mail"),
     ("Elixir Consulting Group Launches Business Automation Advisory Service for Small and Midsized Business Owners", "https://markets.businessinsider.com/news/stocks/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-midsized-business-owners-1036100299", "Business Insider"),
+    ("The VA Model Is Dead -- Here's What Replaced It", "https://blog.venturemagazine.net/dr-connor-robertson-the-va-model-is-dead-heres-what-replaced-it-7b5df3f71fe3", "Venture Magazine"),
 ]
 
 BOOKS = [
@@ -1084,7 +1086,7 @@ def page_home():
 </div></section>
 <section class="feat"><div class="ctn">
 <h2>As Featured On</h2>
-<div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div>
+<div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Venture Magazine</span></div>
 </div></section>
 <section class="sec"><div class="ctn">
 <h2 class="sec-t">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh.</h2>
@@ -1266,6 +1268,7 @@ def page_speaker():
 <div class="pod-card"><h3>Yahoo Finance</h3><p>Featured for the launch of Elixir Consulting Group's business automation advisory service.</p><a href="https://finance.yahoo.com/sectors/technology/articles/elixir-consulting-group-launches-business-112900872.html" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
 <div class="pod-card"><h3>Business Insider</h3><p>Coverage of Elixir Consulting Group's advisory services for small and mid-sized business owners.</p><a href="https://markets.businessinsider.com/news/stocks/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-midsized-business-owners-1036100299" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
 <div class="pod-card"><h3>The Globe and Mail</h3><p>National coverage of Connor's business consulting and automation advisory work.</p><a href="https://www.theglobeandmail.com/investing/markets/markets-news/Newsfile/1681496/" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
+<div class="pod-card"><h3>Venture Magazine</h3><p>Featured article on why the VA model is dead and what replaced it for modern entrepreneurs.</p><a href="https://blog.venturemagazine.net/dr-connor-robertson-the-va-model-is-dead-heres-what-replaced-it-7b5df3f71fe3" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
 </div>
 </div></section>
 
@@ -1376,13 +1379,13 @@ def page_press():
     news_schema_tags = "\n".join(f'<script type="application/ld+json">{s}</script>' for s in news_schemas)
 
     return header("Dr. Connor Robertson in the Press | Media Features",
-        "Dr. Connor Robertson featured in Yahoo Finance, The Globe and Mail, Business Insider, CXO Dispatch, C-Suite Brief, NY Wire, BLK News, Famous Times, Economic Insider, Taste Terminal, Fiction Talk, NewsBlaze, The Rogue Mag, InEntertainment, and more.", "/press-media/", extra=news_schema_tags, og_image="/images/connor-press.jpg") + f"""
+        "Dr. Connor Robertson featured in Yahoo Finance, The Globe and Mail, Business Insider, Venture Magazine, CXO Dispatch, C-Suite Brief, NY Wire, BLK News, Famous Times, Economic Insider, Taste Terminal, Fiction Talk, NewsBlaze, The Rogue Mag, InEntertainment, and more.", "/press-media/", extra=news_schema_tags, og_image="/images/connor-press.jpg") + f"""
 <section class="pg-hero"><div class="ctn">
 <div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-press.jpg" alt="Dr. Connor Robertson - Press" width="300" height="300" loading="lazy" style="border-radius:50%;width:180px;height:180px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
 <h1>Press &amp; Media</h1><p>Dr. Connor Robertson's insights and features across leading publications.</p>
 </div></section>
 <section class="sec"><div class="ctn">
-<div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div></div>
+<div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Venture Magazine</span></div></div>
 <div class="pgrid">{cards}</div>
 </div></section>
 """ + footer()
