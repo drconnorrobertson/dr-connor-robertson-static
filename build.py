@@ -484,7 +484,7 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 
 /* Featured */
 .feat{padding:48px 0;text-align:center;border-bottom:1px solid var(--border)}
-.feat h3{font-size:12px;text-transform:uppercase;letter-spacing:3px;color:var(--muted);margin-bottom:32px}
+.feat h2{font-size:12px;text-transform:uppercase;letter-spacing:3px;color:var(--muted);margin-bottom:32px}
 .feat-logos{display:flex;align-items:center;justify-content:center;opacity:.7;overflow:hidden;position:relative;width:100%}
 .feat-logos-track{display:flex;gap:60px;animation:scroll-marquee 20s linear infinite;width:max-content}
 .feat-logos img{height:32px;width:auto;filter:brightness(0) invert(1);opacity:.7}
@@ -618,6 +618,20 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
   transform: translateY(0);
 }
 
+/* Breadcrumbs */
+.breadcrumbs{border-bottom:1px solid var(--border);padding-top:84px;background:var(--bg)}
+.breadcrumbs ol{max-width:var(--mw);margin:0 auto;padding:12px 24px;list-style:none;display:flex;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--muted)}
+.breadcrumbs li{display:flex;align-items:center;gap:8px}
+.breadcrumbs li:not(:first-child)::before{content:"/";color:var(--border)}
+.breadcrumbs a{color:var(--text2)}
+.breadcrumbs a:hover{color:var(--text);opacity:1}
+.breadcrumbs .bc-cur span{color:var(--text2)}
+.breadcrumbs + .pg-hero{padding-top:48px}
+.breadcrumbs + .post{padding-top:40px}
+.link-list{list-style:none;padding:0;margin:8px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px}
+.link-list a{color:var(--text2);text-decoration:underline;text-underline-offset:3px;font-size:14px}
+.link-list a:hover{color:var(--text);opacity:1}
+
 /* Scrolling marquee for featured logos */
 .feat-logos-track {
   display: flex;
@@ -675,7 +689,7 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .pgrid{grid-template-columns:1fr}
 .network-grid{grid-template-columns:1fr}
 .feat{padding:32px 0}
-.feat h3{margin-bottom:24px}
+.feat h2{margin-bottom:24px}
 .quote{padding:60px 16px}
 .quote-t{font-size:clamp(18px,4vw,28px)}
 .sec{padding:60px 0}
@@ -742,7 +756,7 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .quote-t{font-size:clamp(16px,3vw,22px);margin-bottom:16px}
 .quote-a{font-size:13px}
 .feat{padding:24px 0}
-.feat h3{font-size:11px;margin-bottom:16px}
+.feat h2{font-size:11px;margin-bottom:16px}
 .feat-logos-track{gap:40px}
 .feat-logos span{font-size:14px}
 .feat-logos img{height:28px}
@@ -857,7 +871,7 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 
 # Ã¢ÂÂÃ¢ÂÂ Template helpers Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
-FONT_LINK = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">'
+FONT_LINK = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" media="print" onload="this.media=\'all\'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"></noscript>'
 
 def esc(s):
     return html.escape(str(s))
@@ -880,10 +894,11 @@ def nav_html():
     items += '<li><a href="/contact/" class="nav-cta">Contact Connor</a></li>'
     return items
 
-def header(title, desc="", canonical="/", extra="", og_image="", og_type="website"):
+def header(title, desc="", canonical="/", extra="", og_image="", og_type="website", noindex=False):
     if not desc:
         desc = "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, AI strategist, and business acquisition expert. Founder of Elixir Consulting Group, host of The Prospecting Show, and author of six books on business strategy."
     can = f'<link rel="canonical" href="{SITE_URL}{canonical}">' if canonical else ""
+    robots = "noindex, follow" if noindex else "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     og_img_tag = ""
     twitter_img_tag = ""
     if og_image:
@@ -915,8 +930,10 @@ def header(title, desc="", canonical="/", extra="", og_image="", og_type="websit
 <meta name="twitter:site" content="@DrConnorRE">
 {twitter_img_tag}
 <meta name="author" content="Dr. Connor Robertson">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="robots" content="{robots}">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">{gsc}
+<link rel="icon" type="image/jpeg" href="/images/dr-connor-robertson-headshot.jpg">
+<link rel="apple-touch-icon" href="/images/dr-connor-robertson-headshot.jpg">
 {FONT_LINK}
 <style>{CSS}</style>
 {extra}
@@ -943,10 +960,67 @@ def footer():
 </div>
 <div class="ftr-btm">&copy; {datetime.now().year} Dr. Connor Robertson. All Rights Reserved.</div>
 </div></footer>
+<script>
+(function(){{
+  function reveal(){{
+    var els=document.querySelectorAll('.fade-in');
+    if(!('IntersectionObserver' in window)){{
+      for(var i=0;i<els.length;i++){{els[i].classList.add('visible');}}
+      return;
+    }}
+    var obs=new IntersectionObserver(function(entries){{
+      entries.forEach(function(e){{
+        if(e.isIntersecting){{e.target.classList.add('visible');obs.unobserve(e.target);}}
+      }});
+    }},{{rootMargin:'0px 0px -50px 0px',threshold:0.05}});
+    els.forEach(function(el){{obs.observe(el);}});
+  }}
+  if(document.readyState==='loading'){{document.addEventListener('DOMContentLoaded',reveal);}}else{{reveal();}}
+}})();
+</script>
 </body></html>"""
 
 
 # Ã¢ÂÂÃ¢ÂÂ Page builders Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+
+def breadcrumbs(trail):
+    """Render visible breadcrumb nav. trail: list of (label, href). Last item is current page (no link)."""
+    parts = []
+    for i, (label, href) in enumerate(trail):
+        if i == len(trail) - 1 or not href:
+            parts.append(f'<li class="bc-cur" aria-current="page"><span>{esc(label)}</span></li>')
+        else:
+            parts.append(f'<li><a href="{href}">{esc(label)}</a></li>')
+    return '<nav class="breadcrumbs" aria-label="Breadcrumb"><div class="ctn"><ol>' + "".join(parts) + '</ol></div></nav>'
+
+
+def related_posts_html(current_url, all_posts, limit=3):
+    """Render a 'Related Posts' section showing up to `limit` other recent posts."""
+    if not all_posts:
+        return ""
+    related = [rp for rp in all_posts if rp.get("relative_url") != current_url][:limit]
+    if not related:
+        return ""
+    cards = ""
+    for rp in related:
+        try:
+            dt = datetime.fromisoformat(rp["date"]).strftime("%B %d, %Y")
+        except Exception:
+            dt = ""
+        ex = strip_tags(rp.get("excerpt", ""))
+        if len(ex) > 120:
+            ex = ex[:120].rsplit(" ", 1)[0] + "..."
+        feat_img = ""
+        if rp.get("featured_image"):
+            local = downloaded_images.get(rp["featured_image"], "")
+            if local:
+                feat_img = f'<img src="{local}" alt="{esc(strip_tags(rp["title"]))}" class="bcard-img" width="400" height="225" loading="lazy">'
+        cards += f'<a href="{rp["relative_url"]}" class="bcard">{feat_img}<div class="bcard-body"><h3>{rp["title"]}</h3><p class="exc">{esc(ex)}</p><span class="meta">{dt}</span></div></a>\n'
+    return f"""<section class="sec related-posts"><div class="ctn">
+<h2 class="sec-t">Related Posts</h2>
+<div class="bgrid">{cards}</div>
+</div></section>"""
+
 
 def page_home():
     person_schema = json.dumps({
@@ -995,7 +1069,7 @@ def page_home():
         ("Podcast Host & Community Builder", "Host of <a href=\"https://theprospectingshow.com\" target=\"_blank\" rel=\"noopener\">The Prospecting Show</a> with 350+ episodes and publisher of <a href=\"https://thepittsburghwire.com\" target=\"_blank\" rel=\"noopener\">The Pittsburgh Wire</a>. Connor also supports Social Venture Partners and Habitat for Humanity."),
     ]
     pcards = "".join(f'<div class="pill"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
-    return header("Dr. Connor Robertson - Official Site | Entrepreneur, Author & Speaker",
+    return header("Dr. Connor Robertson | Entrepreneur, Author & Speaker",
         "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, podcast host, and philanthropist. Founder of Elixir Consulting Group, The Pittsburgh Wire, and The Prospecting Show.",
         "/", extra, og_image="/images/dr-connor-robertson-headshot.jpg") + f"""
 <section class="hero"><div class="hero-bg"><img src="/images/dr-connor-robertson-headshot.jpg" alt="Dr. Connor Robertson - Entrepreneur, Author, and Business Strategist" width="1024" height="1024" loading="eager" class="hero-bg-img"></div><div class="hero-ct">
@@ -1009,7 +1083,7 @@ def page_home():
 </div>
 </div></section>
 <section class="feat"><div class="ctn">
-<h3>As Featured On</h3>
+<h2>As Featured On</h2>
 <div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div>
 </div></section>
 <section class="sec"><div class="ctn">
@@ -1088,7 +1162,7 @@ def page_about():
         ]
     })
     extra = f'<script type="application/ld+json">{person_schema}</script>\n<script type="application/ld+json">{faq_schema}</script>'
-    return header("Who Is Dr. Connor Robertson? | Bio, Companies, Books & Podcast",
+    return header("Who Is Dr. Connor Robertson? | Bio, Books & Podcast",
         "Learn about Dr. Connor Robertson -- Pittsburgh entrepreneur, author, podcast host, and founder of Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show, and The Grant Finder.",
         "/about/", extra, og_image="/images/connor-about.jpg") + """
 <section class="pg-hero"><div class="ctn">
@@ -1147,12 +1221,13 @@ def page_speaker():
         else:
             links = '<span style="font-size:12px;color:var(--text2)">Coming Soon</span>'
         books_mini += f'<div class="book-mini"><h3>{esc(title)}</h3><p>{esc(short_desc)}</p><div>{links}</div></div>\n'
-    return header("Book Dr. Connor Robertson as a Speaker | Keynote on Business Acquisitions, AI & Entrepreneurship",
+    return header("Keynote Speaker Dr. Connor Robertson | Business & AI",
         "Book Dr. Connor Robertson for your next conference, summit, or corporate event. Expert keynote speaker on business acquisitions, AI strategy, entrepreneurship, and scaling companies.", "/speaker/",
         og_image="/images/connor-blazer.jpg") + f"""
 <section class="speaker-hero"><div class="ctn">
 <div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-blazer.jpg" alt="Dr. Connor Robertson - Keynote Speaker on Business Acquisitions and AI Strategy" width="300" height="300" loading="eager" style="border-radius:50%;width:200px;height:200px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
-<h1>Your Audience Deserves More Than Motivation. Give Them a Playbook.</h1>
+<h1>Dr. Connor Robertson: Keynote Speaker on Business Acquisitions, AI &amp; Entrepreneurship</h1>
+<p class="sh-tag" style="font-size:1.05rem;color:var(--text2);margin-bottom:1rem">Your audience deserves more than motivation. Give them a playbook.</p>
 <p class="sh-sub">Dr. Connor Robertson delivers high-energy keynotes packed with actionable frameworks on business acquisitions, AI-powered growth, and building companies that last. He has founded four companies, authored six books, and hosts The Prospecting Show podcast.</p>
 <div class="hero-btn"><a href="#book-me" class="btn-p book-cta">Book Connor to Speak</a><a href="/books/" class="btn-s">Browse His Books</a></div>
 <div class="speaker-stats">
@@ -1261,11 +1336,11 @@ def page_books():
         "mainEntity": book_schema_items,
     })
     extra = f'<script type="application/ld+json">{schema}</script>'
-    return header("Books by Dr. Connor Robertson | Wealth Building, Acquisitions & Entrepreneurship",
-        "Explore books by Dr. Connor Robertson on wealth building, business acquisitions, real estate investing, and entrepreneurship. Available on Google Play, Barnes & Noble, and Kobo.", "/books/", extra) + f"""
+    return header("Books by Dr. Connor Robertson | Wealth & Acquisitions",
+        "Explore books by Dr. Connor Robertson on wealth building, business acquisitions, real estate investing, and entrepreneurship. Available on Google Play, Barnes & Noble, and Kobo.", "/books/", extra, og_image="/images/connor-book.jpg") + f"""
 <section class="pg-hero"><div class="ctn">
 <div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-book.jpg" alt="Dr. Connor Robertson - Author" width="300" height="300" loading="lazy" style="border-radius:12px;width:250px;height:250px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
-<h1>Books</h1><p>Practical guides on wealth building, real estate, and entrepreneurship by Dr. Connor Robertson.</p>
+<h1>Books by Dr. Connor Robertson</h1><p>Practical guides on wealth building, real estate, and entrepreneurship by Dr. Connor Robertson.</p>
 </div></section>
 <section class="sec"><div class="ctn"><div class="bkgrid">{cards}</div>
 <div style="text-align:center;margin-top:48px"><a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" class="btn-p">Browse All Books at DrConnorRobertsonBooks.com</a></div>
@@ -1300,8 +1375,8 @@ def page_press():
         }))
     news_schema_tags = "\n".join(f'<script type="application/ld+json">{s}</script>' for s in news_schemas)
 
-    return header("Dr. Connor Robertson in the Press | Media Features & News Coverage",
-        "Dr. Connor Robertson featured in Yahoo Finance, The Globe and Mail, Business Insider, CXO Dispatch, C-Suite Brief, NY Wire, BLK News, Famous Times, Economic Insider, Taste Terminal, Fiction Talk, NewsBlaze, The Rogue Mag, InEntertainment, and more.", "/press-media/", extra=news_schema_tags) + f"""
+    return header("Dr. Connor Robertson in the Press | Media Features",
+        "Dr. Connor Robertson featured in Yahoo Finance, The Globe and Mail, Business Insider, CXO Dispatch, C-Suite Brief, NY Wire, BLK News, Famous Times, Economic Insider, Taste Terminal, Fiction Talk, NewsBlaze, The Rogue Mag, InEntertainment, and more.", "/press-media/", extra=news_schema_tags, og_image="/images/connor-press.jpg") + f"""
 <section class="pg-hero"><div class="ctn">
 <div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-press.jpg" alt="Dr. Connor Robertson - Press" width="300" height="300" loading="lazy" style="border-radius:50%;width:180px;height:180px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
 <h1>Press &amp; Media</h1><p>Dr. Connor Robertson's insights and features across leading publications.</p>
@@ -1364,10 +1439,10 @@ def page_media():
 
 
 def page_contact():
-    return header("Contact Dr. Connor Robertson | Business Inquiries, Speaking & Partnerships",
-        "Get in touch with Dr. Connor Robertson for business inquiries, speaking engagements, press and media requests, and partnership opportunities.", "/contact/") + """
+    return header("Contact Dr. Connor Robertson | Speaking & Inquiries",
+        "Get in touch with Dr. Connor Robertson for business inquiries, speaking engagements, press and media requests, and partnership opportunities.", "/contact/", og_image="/images/connor-contact.jpg") + """
 <section class="pg-hero"><div class="ctn">
-<h1>Don't Hesitate To Reach Out</h1><p>Business inquiries, speaking engagements, press, partnerships, and more.</p>
+<h1>Contact Dr. Connor Robertson</h1><p>Business inquiries, speaking engagements, press, partnerships, and more.</p>
 </div></section>
 <section class="sec"><div class="ctn">\n<div class="contact-headshot fade-in"><img src="/images/connor-contact.jpg" alt="Dr. Connor Robertson - Contact" width="160" height="160" loading="lazy" decoding="async"></div>\n<div class="cform">
 <form action="https://formspree.io/f/xdkobkzz" method="POST">
@@ -1395,22 +1470,13 @@ def page_projects():
             "@id": f"{SITE_URL}/#person",
             "name": "Dr. Connor Robertson",
             "url": SITE_URL,
-            "sameAs": [
-                "https://prospectingshow.com",
-                "https://thepittsburghwire.com",
-                "https://elixirconsultinggroup.com",
-                "https://drconnorrobertsonbooks.com",
-                "https://thegrantfinder.org",
-                "https://www.linkedin.com/in/drconnorrobertson",
-                "https://wikitia.com/wiki/Dr._Connor_Robertson",
-                "https://wikialpha.co/wiki/Dr._Connor_Robertson"
-            ]
+            "sameAs": list(SOCIAL_LINKS.values()) + OWNED_WEBSITES
         }
     })
     extra = f'<script type="application/ld+json">{proj_schema}</script>'
     return header("Projects & Companies | Dr. Connor Robertson",
         "Explore the companies, media properties, and ventures founded by Dr. Connor Robertson -- including The Prospecting Show, The Pittsburgh Wire, Elixir Consulting Group, The Grant Finder, and more.",
-        "/projects/", extra=extra) + """
+        "/projects/", extra=extra, og_image="/images/dr-connor-robertson-headshot.jpg") + """
 <section class="pg-hero"><div class="ctn">
 <h1>Projects &amp; Companies</h1><p>The companies, media properties, and ventures I've built.</p>
 </div></section>
@@ -1477,7 +1543,7 @@ def page_blog_index(posts, page_num, total_pages):
         if p.get("featured_image"):
             local = downloaded_images.get(p["featured_image"], "")
             if local:
-                feat_img = f'<img src="{local}" alt="{esc(strip_tags(p["title"]))}" class="bcard-img" loading="lazy">'
+                feat_img = f'<img src="{local}" alt="{esc(strip_tags(p["title"]))}" class="bcard-img" width="400" height="225" loading="lazy">'
         cards += f'<a href="{p["relative_url"]}" class="bcard">{feat_img}<div class="bcard-body"><h3>{p["title"]}</h3><p class="exc">{esc(exc)}</p><span class="meta">{dt}</span><div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(0,0,0,0.08);"><img src="/images/connor-blog-author.jpg" alt="Dr. Connor Robertson" width="28" height="28" loading="lazy" style="border-radius:50%;width:28px;height:28px;object-fit:cover;"><span style="font-size:0.8rem;color:#666;">Dr. Connor Robertson</span></div></div></a>\n'
     pag = '<div class="pag">'
     for i in range(1, min(total_pages + 1, 20)):
@@ -1491,14 +1557,14 @@ def page_blog_index(posts, page_num, total_pages):
     pag += '</div>'
     sfx = f" - Page {page_num}" if page_num > 1 else ""
     can = "/blog/" if page_num == 1 else f"/blog/page/{page_num}/"
-    return header(f"Dr. Connor Robertson Blog | Business, Entrepreneurship & Pittsburgh{sfx}",
-        "Read articles by Dr. Connor Robertson on entrepreneurship, business strategy, real estate, leadership, and Pittsburgh business news.", can) + f"""
+    return header(f"Dr. Connor Robertson Blog | Business & Pittsburgh{sfx}",
+        "Read articles by Dr. Connor Robertson on entrepreneurship, business strategy, real estate, leadership, and Pittsburgh business news.", can, og_image="/images/dr-connor-robertson-headshot.jpg") + f"""
 <section class="pg-hero"><div class="ctn"><h1>Blog, Leadership &amp; Entrepreneurship</h1></div></section>
 <section class="sec"><div class="ctn"><div class="bgrid">{cards}</div>{pag}</div></section>
 """ + footer()
 
 
-def page_post(p):
+def page_post(p, all_posts=None):
     try:
         dt = datetime.fromisoformat(p["date"]).strftime("%B %d, %Y")
     except:
@@ -1510,7 +1576,7 @@ def page_post(p):
     og_image = ""
     if p.get("featured_image"):
         local = downloaded_images.get(p["featured_image"], p["featured_image"])
-        feat_img_html = f'<img src="{local}" alt="{esc(strip_tags(p["title"]))}" class="post-feat" loading="lazy">'
+        feat_img_html = f'<img src="{local}" alt="{esc(strip_tags(p["title"]))}" class="post-feat" width="1200" height="675" loading="lazy">'
         og_image = local
 
     # Rewrite images in post content
@@ -1519,15 +1585,19 @@ def page_post(p):
     # Article schema
     schema = json.dumps({
         "@context": "https://schema.org",
-        "@type": "Article",
+        "@type": "BlogPosting",
         "headline": p["title"],
         "author": {"@type": "Person", "name": "Dr. Connor Robertson", "url": SITE_URL},
         "datePublished": p["date"],
         "dateModified": p["date"],
         "publisher": {
-            "@type": "Person",
+            "@type": "Organization",
             "name": "Dr. Connor Robertson",
             "url": SITE_URL,
+            "logo": {
+                "@type": "ImageObject",
+                "url": f"{SITE_URL}/images/dr-connor-robertson-headshot.jpg",
+            },
         },
         "description": exc,
         "mainEntityOfPage": {"@type": "WebPage", "@id": f"{SITE_URL}{p['relative_url']}"},
@@ -1561,7 +1631,9 @@ def page_post(p):
 </div>"""
 
     return header(page_title, exc, p["relative_url"], extra,
-                  og_image=og_image, og_type="article") + f"""
+                  og_image=og_image, og_type="article") + breadcrumbs([
+                      ("Home", "/"), ("Blog", "/blog/"), (strip_tags(p["title"]), None)
+                  ]) + f"""
 <article class="post">
 {feat_img_html}
 <h1>{p["title"]}</h1>
@@ -1572,7 +1644,7 @@ def page_post(p):
 
 <section class="author-bio" style="max-width:800px;margin:3rem auto;padding:2rem;background:#f8f9fa;border-radius:12px;display:flex;gap:1.5rem;align-items:center;"><img src="/images/connor-casual.jpg" alt="Dr. Connor Robertson" width="120" height="120" loading="lazy" style="border-radius:50%;width:120px;height:120px;object-fit:cover;flex-shrink:0;"><div><strong style="font-size:1.1rem;">Dr. Connor Robertson</strong><p style="margin:0.5rem 0 0;color:#555;line-height:1.6;">Entrepreneur, author, and podcast host based in Pittsburgh. Connor writes about business strategy, leadership, and building ventures that create lasting impact. <a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" style="color:#0066cc;text-decoration:underline;">Explore his published books</a>.</p></div></section>
 </article>
-""" + footer()
+""" + related_posts_html(p["relative_url"], all_posts) + footer()
 
 
 # Ã¢ÂÂÃ¢ÂÂ File writers Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
@@ -1585,8 +1657,16 @@ def write(path, content):
 def sitemap(posts):
     now = datetime.now().strftime("%Y-%m-%d")
     entries = ""
-    for u, prio in [("/", "1.0"), ("/about/", "0.9"), ("/speaker/", "0.8"), ("/books/", "0.8"),
-                     ("/press-media/", "0.7"), ("/faq/", "0.8"), ("/contact/", "0.7"), ("/blog/", "0.9")]:
+    static_urls = [("/", "1.0"), ("/about/", "0.9"), ("/speaker/", "0.8"), ("/books/", "0.8"),
+                     ("/projects/", "0.8"), ("/media/", "0.7"), ("/press-media/", "0.7"),
+                     ("/faq/", "0.8"), ("/contact/", "0.7"), ("/blog/", "0.9"),
+                     ("/business-acquisitions/", "0.8"), ("/ai-business-strategy/", "0.8"),
+                     ("/prospecting-sales/", "0.8"), ("/author-platform/", "0.8")]
+    # Resource hub pages + complete resource index
+    for _label, _href in RESOURCE_HUBS:
+        static_urls.append((_href, "0.7"))
+    static_urls.append(("/blog/complete-resource-index-dr-connor-robertson/", "0.6"))
+    for u, prio in static_urls:
         entries += f"  <url><loc>{SITE_URL}{u}</loc><lastmod>{now}</lastmod><changefreq>weekly</changefreq><priority>{prio}</priority></url>\n"
     for p in posts:
         d = p["date"][:10]
@@ -1618,9 +1698,9 @@ def page_business_acquisitions():
     })
     extra = f'''<script type="application/ld+json">{person_schema}</script>
 <script type="application/ld+json">{breadcrumb}</script>'''
-    return header("Business Acquisitions: The Complete Guide to Buying Businesses | Dr. Connor Robertson",
+    return header("Business Acquisitions Guide | Dr. Connor Robertson",
         "Comprehensive guide to business acquisitions by Dr. Connor Robertson. Learn deal structures, due diligence frameworks, financing options, and valuation methods for acquiring businesses.",
-        "/business-acquisitions/", extra, og_image="/images/connor-robertson-headshot.jpg") + """
+        "/business-acquisitions/", extra, og_image="/images/connor-robertson-headshot.jpg") + breadcrumbs([("Home", "/"), ("Business Acquisitions", None)]) + """
 <section class="pg-hero"><div class="ctn">
 <h1>Business Acquisitions: The Complete Guide to Buying Businesses</h1>
 <p>Master the frameworks, strategies, and systems that Dr. Connor Robertson uses to acquire businesses -- from deal sourcing to integration and scale.</p>
@@ -1637,7 +1717,7 @@ def page_business_acquisitions():
 <h3 class="fade-in">Asset Purchase vs. Stock Purchase</h3>
 <p class="fade-in">In an asset purchase, you buy specific assets of the business -- equipment, inventory, customer lists, intellectual property -- without taking on the entity itself. This protects you from unknown liabilities and often provides better depreciation benefits. In a stock purchase, you buy the entity outright, including all assets and liabilities. Stock purchases are simpler but carry more risk.</p>
 <h3 class="fade-in">Seller Financing</h3>
-<p class="fade-in">Seller financing is one of the most powerful tools in creative acquisitions. The seller carries a note for a portion of the purchase price, typically 20-60%, creating alignment between buyer and seller. The seller gets a higher total price and ongoing income. The buyer gets favorable terms and reduced upfront capital requirements. Dr. Robertson covers this extensively in <a href="https://connorrobertsonbooks.com/books/creative-acquisitions/">Creative Acquisitions</a>.</p>
+<p class="fade-in">Seller financing is one of the most powerful tools in creative acquisitions. The seller carries a note for a portion of the purchase price, typically 20-60%, creating alignment between buyer and seller. The seller gets a higher total price and ongoing income. The buyer gets favorable terms and reduced upfront capital requirements. Dr. Robertson covers this extensively in <a href="https://drconnorrobertsonbooks.com/books/creative-acquisitions/" target="_blank" rel="noopener">Creative Acquisitions</a>.</p>
 <h3 class="fade-in">Earnouts and Performance-Based Structures</h3>
 <p class="fade-in">Earnouts bridge valuation gaps by tying a portion of the purchase price to future business performance. If the seller believes the business will grow, they accept an earnout because they expect to earn more total. If the buyer is uncertain about projections, they reduce risk by paying only when results materialize.</p>
 
@@ -1666,7 +1746,7 @@ def page_business_acquisitions():
 <p class="fade-in">Getting from idea to closed deal requires a systematic approach. Here is the framework Dr. Robertson recommends for first-time acquirers:</p>
 <p class="fade-in"><strong>Phase 1 -- Define Your Criteria:</strong> What size business? What industry? What geographic area? What cash flow do you need? Getting clear on criteria prevents wasted time on wrong-fit opportunities.</p>
 <p class="fade-in"><strong>Phase 2 -- Source Deals:</strong> Business brokers, online marketplaces, direct outreach to owners, your professional network, and industry events are all viable deal sources. The best deals are often found off-market through relationships and direct outreach.</p>
-<p class="fade-in"><strong>Phase 3 -- Evaluate and Negotiate:</strong> Apply your due diligence framework, develop your valuation, and structure a deal that works for both parties. This is where the principles from <a href="https://connorrobertsonbooks.com/books/creative-acquisitions/">Creative Acquisitions</a> become critical.</p>
+<p class="fade-in"><strong>Phase 3 -- Evaluate and Negotiate:</strong> Apply your due diligence framework, develop your valuation, and structure a deal that works for both parties. This is where the principles from <a href="https://drconnorrobertsonbooks.com/books/creative-acquisitions/" target="_blank" rel="noopener">Creative Acquisitions</a> become critical.</p>
 <p class="fade-in"><strong>Phase 4 -- Close and Integrate:</strong> Legal documentation, financing finalization, transition planning, and day-one operations. The first 90 days after closing determine long-term success.</p>
 <p class="fade-in"><strong>Phase 5 -- Optimize and Scale:</strong> Apply systems thinking to improve operations, reduce owner dependency, and position for growth or additional acquisitions.</p>
 
@@ -1680,8 +1760,8 @@ def page_business_acquisitions():
 <div class="pill"><h3><a href="/ai-business-strategy/">AI Business Strategy</a></h3><p>How to use AI to optimize operations after your acquisition.</p></div>
 <div class="pill"><h3><a href="/prospecting-sales/">Prospecting & Sales</a></h3><p>Build the pipeline that feeds your acquisition deal flow.</p></div>
 <div class="pill"><h3><a href="/author-platform/">Author Platform</a></h3><p>Establish authority that attracts off-market deal opportunities.</p></div>
-<div class="pill"><h3><a href="https://connorrobertsonbooks.com/books/creative-acquisitions/">Creative Acquisitions (Book)</a></h3><p>The complete playbook for modern dealmakers.</p></div>
-<div class="pill"><h3><a href="https://connorrobertsonbooks.com/books/buying-wealth/">Buying Wealth (Book)</a></h3><p>A practical guide to building wealth through ownership.</p></div>
+<div class="pill"><h3><a href="https://drconnorrobertsonbooks.com/books/creative-acquisitions/" target="_blank" rel="noopener">Creative Acquisitions (Book)</a></h3><p>The complete playbook for modern dealmakers.</p></div>
+<div class="pill"><h3><a href="https://drconnorrobertsonbooks.com/books/buying-wealth/" target="_blank" rel="noopener">Buying Wealth (Book)</a></h3><p>A practical guide to building wealth through ownership.</p></div>
 </div>
 
 <div style="margin-top:48px;padding:32px;background:var(--card);border-radius:var(--r);text-align:center" class="fade-in">
@@ -1713,9 +1793,9 @@ def page_ai_business_strategy():
     })
     extra = f'''<script type="application/ld+json">{person_schema}</script>
 <script type="application/ld+json">{breadcrumb}</script>'''
-    return header("AI Business Strategy: How Entrepreneurs Use AI for Competitive Advantage | Dr. Connor Robertson",
+    return header("AI Business Strategy Guide | Dr. Connor Robertson",
         "Dr. Connor Robertson's guide to AI business strategy. Learn how to deploy AI for marketing automation, operations, sales intelligence, and sustainable competitive advantage.",
-        "/ai-business-strategy/", extra, og_image="/images/connor-robertson-headshot.jpg") + """
+        "/ai-business-strategy/", extra, og_image="/images/connor-robertson-headshot.jpg") + breadcrumbs([("Home", "/"), ("AI Business Strategy", None)]) + """
 <section class="pg-hero"><div class="ctn">
 <h1>AI Business Strategy: How Entrepreneurs Use AI for Competitive Advantage</h1>
 <p>Practical frameworks for deploying artificial intelligence across marketing, operations, and sales -- without the hype.</p>
@@ -1737,12 +1817,12 @@ def page_ai_business_strategy():
 <p class="fade-in"><strong>Workflow Automation:</strong> Invoice processing, data entry, scheduling, inventory management, customer onboarding, and reporting can all be automated using AI agents. The goal is removing yourself and your team from low-value repetitive tasks so you can focus on high-value strategic work.</p>
 <p class="fade-in"><strong>Decision Support:</strong> AI systems can analyze complex data sets, identify patterns, flag anomalies, and recommend actions. Financial forecasting, demand planning, pricing optimization, and resource allocation all benefit from AI-powered analysis.</p>
 <p class="fade-in"><strong>Quality Control:</strong> AI monitors outputs, detects errors, ensures consistency, and maintains standards across your operation. This is particularly valuable as you scale -- maintaining quality becomes harder with growth, and AI provides the monitoring layer that catches issues before they reach customers.</p>
-<p class="fade-in">Dr. Robertson's book <a href="https://connorrobertsonbooks.com/books/built-to-run/">Built to Run</a> provides frameworks for building systems that operate without constant owner involvement -- AI accelerates this vision dramatically.</p>
+<p class="fade-in">Dr. Robertson's book <a href="https://drconnorrobertsonbooks.com/books/built-to-run/" target="_blank" rel="noopener">Built to Run</a> provides frameworks for building systems that operate without constant owner involvement -- AI accelerates this vision dramatically.</p>
 
 <h2 class="fade-in">AI for Sales Intelligence</h2>
 <p class="fade-in">Sales teams equipped with AI outperform those without it by significant margins. The advantage comes from better targeting, faster research, and more personalized outreach at scale.</p>
 <p class="fade-in"><strong>Prospect Research:</strong> AI can research prospects, identify pain points, map organizational structures, and surface trigger events in minutes rather than hours. This intelligence makes every sales conversation more relevant and valuable.</p>
-<p class="fade-in"><strong>Outreach Personalization:</strong> Generic outreach fails. AI enables personalization at scale -- crafting messages that reference specific details about the prospect, their company, and their challenges. Combined with the methodology from <a href="https://connorrobertsonbooks.com/books/the-7-minute-phone-call/">The 7 Minute Phone Call</a>, AI-powered research makes every call more productive.</p>
+<p class="fade-in"><strong>Outreach Personalization:</strong> Generic outreach fails. AI enables personalization at scale -- crafting messages that reference specific details about the prospect, their company, and their challenges. Combined with the methodology from <a href="https://drconnorrobertsonbooks.com/books/the-7-minute-phone-call/" target="_blank" rel="noopener">The 7 Minute Phone Call</a>, AI-powered research makes every call more productive.</p>
 <p class="fade-in"><strong>Pipeline Analytics:</strong> AI predicts which deals will close, identifies stalled opportunities, recommends next actions, and helps sales teams prioritize their time on the highest-probability opportunities.</p>
 
 <h2 class="fade-in">Implementation Roadmap</h2>
@@ -1766,7 +1846,7 @@ def page_ai_business_strategy():
 <div class="pill"><h3><a href="/business-acquisitions/">Business Acquisitions</a></h3><p>Apply AI to optimize acquired businesses from day one.</p></div>
 <div class="pill"><h3><a href="/prospecting-sales/">Prospecting & Sales</a></h3><p>AI-powered prospecting systems that fill your pipeline.</p></div>
 <div class="pill"><h3><a href="/author-platform/">Author Platform</a></h3><p>Use AI to scale content creation and audience building.</p></div>
-<div class="pill"><h3><a href="https://connorrobertsonbooks.com/books/built-to-run/">Built to Run (Book)</a></h3><p>Build systems and processes that run without you.</p></div>
+<div class="pill"><h3><a href="https://drconnorrobertsonbooks.com/books/built-to-run/" target="_blank" rel="noopener">Built to Run (Book)</a></h3><p>Build systems and processes that run without you.</p></div>
 </div>
 
 <div style="margin-top:48px;padding:32px;background:var(--card);border-radius:var(--r);text-align:center" class="fade-in">
@@ -1798,9 +1878,9 @@ def page_prospecting_sales():
     })
     extra = f'''<script type="application/ld+json">{person_schema}</script>
 <script type="application/ld+json">{breadcrumb}</script>'''
-    return header("Prospecting & Sales: Building Predictable Revenue Pipelines | Dr. Connor Robertson",
+    return header("Prospecting & Sales Guide | Dr. Connor Robertson",
         "Dr. Connor Robertson's guide to prospecting and sales. Learn The 7 Minute Phone Call methodology, outbound systems, pipeline architecture, and closing frameworks.",
-        "/prospecting-sales/", extra, og_image="/images/connor-robertson-headshot.jpg") + """
+        "/prospecting-sales/", extra, og_image="/images/connor-robertson-headshot.jpg") + breadcrumbs([("Home", "/"), ("Prospecting & Sales", None)]) + """
 <section class="pg-hero"><div class="ctn">
 <h1>Prospecting & Sales: Building Predictable Revenue Pipelines</h1>
 <p>The systems, scripts, and strategies that generate consistent deal flow -- anchored by The 7 Minute Phone Call methodology.</p>
@@ -1816,7 +1896,7 @@ def page_prospecting_sales():
 <p class="fade-in"><strong>The Framework:</strong> Every effective prospecting call follows a structure. Open with context (why you are calling and how you found them). Establish relevance (demonstrate you understand their world). Ask a diagnostic question (uncover a pain point or opportunity). Offer value (share an insight or resource). Close with a clear next step (schedule a deeper conversation or send specific information).</p>
 <p class="fade-in"><strong>Seven Minutes, Not Sixty:</strong> Brevity signals respect for the prospect's time. A concise, focused conversation creates curiosity and momentum. Long calls exhaust attention and reduce the likelihood of a second conversation. Get in, deliver value, and get out with a next step.</p>
 <p class="fade-in"><strong>Preparation Matters:</strong> The best seven-minute calls are preceded by five minutes of research. Know who you are calling, what they do, what challenges they likely face, and what specific value you can offer. This preparation transforms cold calls into warm, relevant conversations.</p>
-<p class="fade-in">The complete methodology is detailed in <a href="https://connorrobertsonbooks.com/books/the-7-minute-phone-call/">The 7 Minute Phone Call</a>.</p>
+<p class="fade-in">The complete methodology is detailed in <a href="https://drconnorrobertsonbooks.com/books/the-7-minute-phone-call/" target="_blank" rel="noopener">The 7 Minute Phone Call</a>.</p>
 
 <h2 class="fade-in">Outbound Prospecting Systems</h2>
 <p class="fade-in">Individual effort does not scale. Systems do. Building an outbound prospecting machine requires defined processes, consistent execution, and measurement at every stage.</p>
@@ -1849,7 +1929,7 @@ def page_prospecting_sales():
 <div class="pill"><h3><a href="/business-acquisitions/">Business Acquisitions</a></h3><p>Use prospecting skills to source off-market deals.</p></div>
 <div class="pill"><h3><a href="/ai-business-strategy/">AI Business Strategy</a></h3><p>Deploy AI to supercharge your prospecting systems.</p></div>
 <div class="pill"><h3><a href="/author-platform/">Author Platform</a></h3><p>Build inbound authority that warms up cold prospects.</p></div>
-<div class="pill"><h3><a href="https://connorrobertsonbooks.com/books/the-7-minute-phone-call/">The 7 Minute Phone Call (Book)</a></h3><p>The complete prospecting methodology in detail.</p></div>
+<div class="pill"><h3><a href="https://drconnorrobertsonbooks.com/books/the-7-minute-phone-call/" target="_blank" rel="noopener">The 7 Minute Phone Call (Book)</a></h3><p>The complete prospecting methodology in detail.</p></div>
 </div>
 
 <div style="margin-top:48px;padding:32px;background:var(--card);border-radius:var(--r);text-align:center" class="fade-in">
@@ -1881,9 +1961,9 @@ def page_author_platform():
     })
     extra = f'''<script type="application/ld+json">{person_schema}</script>
 <script type="application/ld+json">{breadcrumb}</script>'''
-    return header("Author Platform: Building Authority Through Publishing | Dr. Connor Robertson",
+    return header("Author Platform Guide | Dr. Connor Robertson",
         "Dr. Connor Robertson's guide to building an author platform. Learn book writing strategy, content repurposing, personal branding, and how publishing drives business development.",
-        "/author-platform/", extra, og_image="/images/connor-robertson-headshot.jpg") + """
+        "/author-platform/", extra, og_image="/images/connor-robertson-headshot.jpg") + breadcrumbs([("Home", "/"), ("Author Platform", None)]) + """
 <section class="pg-hero"><div class="ctn">
 <h1>Author Platform: Building Authority Through Publishing</h1>
 <p>How writing books and creating content builds the authority, trust, and visibility that drives real business results.</p>
@@ -1893,7 +1973,7 @@ def page_author_platform():
 <h2 class="fade-in">Why Authors Win</h2>
 <p class="fade-in">In a world saturated with content, a published book remains the single most powerful credibility asset an entrepreneur can create. A book signals depth of expertise, commitment to your craft, and willingness to share knowledge publicly. It positions you as the authority in your space -- not just another voice competing for attention.</p>
 <p class="fade-in">But the real power of authorship extends far beyond credibility. A book is a business development engine. It opens doors to speaking engagements, podcast appearances, media coverage, partnerships, and client relationships that would otherwise take years to build. Every copy in circulation is a salesperson working on your behalf, 24 hours a day.</p>
-<p class="fade-in">Dr. Robertson has published multiple books -- including <a href="https://connorrobertsonbooks.com/books/buying-wealth/">Buying Wealth</a>, <a href="https://connorrobertsonbooks.com/books/creative-acquisitions/">Creative Acquisitions</a>, <a href="https://connorrobertsonbooks.com/books/the-7-minute-phone-call/">The 7 Minute Phone Call</a>, and <a href="https://connorrobertsonbooks.com/books/built-to-run/">Built to Run</a> -- each serving as a pillar of his broader business development strategy.</p>
+<p class="fade-in">Dr. Robertson has published multiple books -- including <a href="https://drconnorrobertsonbooks.com/books/buying-wealth/" target="_blank" rel="noopener">Buying Wealth</a>, <a href="https://drconnorrobertsonbooks.com/books/creative-acquisitions/" target="_blank" rel="noopener">Creative Acquisitions</a>, <a href="https://drconnorrobertsonbooks.com/books/the-7-minute-phone-call/" target="_blank" rel="noopener">The 7 Minute Phone Call</a>, and <a href="https://drconnorrobertsonbooks.com/books/built-to-run/" target="_blank" rel="noopener">Built to Run</a> -- each serving as a pillar of his broader business development strategy.</p>
 
 <h2 class="fade-in">Book Writing Strategy</h2>
 <p class="fade-in">Writing a book does not require genius or years of isolation. It requires a system. The most effective approach is to write from experience rather than research alone -- your unique perspective and real-world results are what readers cannot find anywhere else.</p>
@@ -1939,7 +2019,7 @@ def page_author_platform():
 <div class="pill"><h3><a href="/business-acquisitions/">Business Acquisitions</a></h3><p>Books position you as the expert acquirers want to work with.</p></div>
 <div class="pill"><h3><a href="/ai-business-strategy/">AI Business Strategy</a></h3><p>Use AI to accelerate content creation and distribution.</p></div>
 <div class="pill"><h3><a href="/prospecting-sales/">Prospecting & Sales</a></h3><p>Combine authorship with outbound for unstoppable deal flow.</p></div>
-<div class="pill"><h3><a href="https://connorrobertsonbooks.com/">All Books by Dr. Connor Robertson</a></h3><p>Browse the complete library of published works.</p></div>
+<div class="pill"><h3><a href="https://drconnorrobertsonbooks.com/" target="_blank" rel="noopener">All Books by Dr. Connor Robertson</a></h3><p>Browse the complete library of published works.</p></div>
 </div>
 
 <div style="margin-top:48px;padding:32px;background:var(--card);border-radius:var(--r);text-align:center" class="fade-in">
@@ -2059,6 +2139,127 @@ def page_faq():
 <p style="color:#555;margin-bottom:24px">Get in touch with Dr. Connor Robertson for business inquiries, speaking engagements, or media requests.</p>
 <a href="/contact/" class="btn-p">Contact Connor</a>
 </div>
+</div></section>
+""" + footer()
+
+
+# ── Resource Hub Pages ──────────────────────────────────
+
+# Short intro copy for each resource hub, keyed by URL.
+RESOURCE_HUB_INTROS = {
+    "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/":
+        "Frameworks, playbooks, and field notes on buying businesses, structuring creative deals, and scaling what you acquire. Start with the pillar guides below, then dive into the latest articles.",
+    "/blog/hub-leadership-legacy-dr-connor-robertson/":
+        "Lessons on leading teams, building durable companies, and creating impact that outlasts you. Curated guides and articles from Dr. Connor Robertson on leadership and legacy.",
+    "/blog/hub-influence-authority-dr-connor-robertson/":
+        "How to build authority through publishing, media, and a strong personal brand. Explore the author-platform playbook and related articles on growing your influence.",
+    "/blog/hub-mindset-momentum-systems-dr-connor-robertson/":
+        "Mindset, momentum, and the operating systems that let founders step out of the day-to-day. Strategy guides and practical articles for building businesses that run without you.",
+    "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/":
+        "Coverage of Pittsburgh business, real estate, and economic development -- plus Dr. Connor Robertson's broader writing on ownership and local entrepreneurship.",
+}
+
+
+def page_resource_hub(label, href, posts):
+    intro = RESOURCE_HUB_INTROS.get(href, f"A curated collection of guides and articles from Dr. Connor Robertson on {label}.")
+    title = f"{label} | Resources by Dr. Connor Robertson"
+    desc = f"{label} resources from Dr. Connor Robertson -- in-depth guides, frameworks, and the latest articles on entrepreneurship, acquisitions, AI strategy, and more."
+
+    breadcrumb_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": f"{SITE_URL}/blog/"},
+            {"@type": "ListItem", "position": 3, "name": label, "item": f"{SITE_URL}{href}"},
+        ]
+    })
+    collection_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": label,
+        "url": f"{SITE_URL}{href}",
+        "description": desc,
+        "isPartOf": {"@type": "WebSite", "name": "Dr. Connor Robertson", "url": SITE_URL},
+    })
+    extra = f'<script type="application/ld+json">{breadcrumb_schema}</script>\n<script type="application/ld+json">{collection_schema}</script>'
+
+    pillar_cards = "".join(
+        f'<div class="pill"><h3><a href="{h}">{l}</a></h3><p>In-depth pillar guide from Dr. Connor Robertson.</p></div>'
+        for l, h in PILLAR_PAGES
+    )
+
+    # Recent articles grid
+    art_cards = ""
+    for p in posts[:6]:
+        try:
+            dt = datetime.fromisoformat(p["date"]).strftime("%B %d, %Y")
+        except Exception:
+            dt = ""
+        ex = strip_tags(p.get("excerpt", ""))
+        if len(ex) > 140:
+            ex = ex[:140].rsplit(" ", 1)[0] + "..."
+        feat_img = ""
+        if p.get("featured_image"):
+            local = downloaded_images.get(p["featured_image"], "")
+            if local:
+                feat_img = f'<img src="{local}" alt="{esc(strip_tags(p["title"]))}" class="bcard-img" width="400" height="225" loading="lazy">'
+        art_cards += f'<a href="{p["relative_url"]}" class="bcard">{feat_img}<div class="bcard-body"><h3>{p["title"]}</h3><p class="exc">{esc(ex)}</p><span class="meta">{dt}</span></div></a>\n'
+
+    return header(title, desc, href, extra, og_image="/images/dr-connor-robertson-headshot.jpg") + breadcrumbs([
+        ("Home", "/"), ("Blog", "/blog/"), (label, None)
+    ]) + f"""
+<section class="pg-hero"><div class="ctn">
+<h1>{esc(label)}</h1><p>{esc(intro)}</p>
+</div></section>
+<section class="sec"><div class="ctn">
+<h2 class="sec-t">Pillar Guides</h2>
+<div class="pills">{pillar_cards}</div>
+</div></section>
+<section class="sec sec-dk"><div class="ctn">
+<h2 class="sec-t">Latest Articles</h2>
+<div class="bgrid">{art_cards}</div>
+<div style="text-align:center;margin-top:40px"><a href="/blog/" class="btn-p">View All Articles</a></div>
+</div></section>
+""" + footer()
+
+
+def page_resource_index(posts):
+    href = "/blog/complete-resource-index-dr-connor-robertson/"
+    title = "Complete Resource Index | Dr. Connor Robertson"
+    desc = "The complete index of resources by Dr. Connor Robertson -- pillar guides, topic hubs, books, and every article on business acquisitions, AI strategy, prospecting, and the author platform."
+
+    breadcrumb_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": f"{SITE_URL}/blog/"},
+            {"@type": "ListItem", "position": 3, "name": "Complete Resource Index", "item": f"{SITE_URL}{href}"},
+        ]
+    })
+    extra = f'<script type="application/ld+json">{breadcrumb_schema}</script>'
+
+    hubs = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in RESOURCE_HUBS)
+    pillars = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in PILLAR_PAGES)
+    main_pages = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in [
+        ("About", "/about/"), ("Projects", "/projects/"), ("Speaker", "/speaker/"),
+        ("Books", "/books/"), ("Media Kit", "/media/"), ("Press & Media", "/press-media/"),
+        ("Blog", "/blog/"), ("Contact", "/contact/"),
+    ])
+    articles = "".join(f'<li><a href="{p["relative_url"]}">{p["title"]}</a></li>' for p in posts)
+
+    return header(title, desc, href, extra, og_image="/images/dr-connor-robertson-headshot.jpg") + breadcrumbs([
+        ("Home", "/"), ("Blog", "/blog/"), ("Complete Resource Index", None)
+    ]) + f"""
+<section class="pg-hero"><div class="ctn">
+<h1>Complete Resource Index</h1><p>Everything published by Dr. Connor Robertson in one place -- topic hubs, pillar guides, key pages, and every article.</p>
+</div></section>
+<section class="sec"><div class="ctn">
+<div class="ablock"><h2>Resource Hubs</h2><ul class="link-list">{hubs}</ul></div>
+<div class="ablock"><h2>Pillar Guides</h2><ul class="link-list">{pillars}</ul></div>
+<div class="ablock"><h2>Key Pages</h2><ul class="link-list">{main_pages}</ul></div>
+<div class="ablock"><h2>All Articles</h2><ul class="link-list">{articles}</ul></div>
 </div></section>
 """ + footer()
 
@@ -2260,14 +2461,18 @@ def main():
     write("ai-business-strategy/index.html", page_ai_business_strategy())
     write("prospecting-sales/index.html", page_prospecting_sales())
     write("author-platform/index.html", page_author_platform())
-    print("  12 static pages generated (including 4 pillar pages + FAQ)")
+    # Resource hub pages (linked from nav on every page)
+    for label, href in RESOURCE_HUBS:
+        write(f"{href.strip('/')}/index.html", page_resource_hub(label, href, posts))
+    write("blog/complete-resource-index-dr-connor-robertson/index.html", page_resource_index(posts))
+    print(f"  {12 + len(RESOURCE_HUBS) + 1} static pages generated (4 pillar pages + FAQ, {len(RESOURCE_HUBS)} resource hubs, 1 resource index)")
 
     # Blog posts
     print(f"\n[6/8] Generating {len(posts)} blog post pages...")
     for i, p in enumerate(posts):
         rel = p["relative_url"].strip("/")
         if rel:
-            write(f"{rel}/index.html", page_post(p))
+            write(f"{rel}/index.html", page_post(p, posts))
         if (i + 1) % 100 == 0:
             print(f"  {i+1}/{len(posts)}...")
     print(f"  {len(posts)} post pages generated")
@@ -2287,7 +2492,7 @@ def main():
     print("\n[8/8] Generating SEO and config files...")
     write("sitemap.xml", sitemap(posts))
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")
-    write("404.html", header("Page Not Found | Dr. Connor Robertson", "", "") + """
+    write("404.html", header("Page Not Found | Dr. Connor Robertson", "", "", noindex=True) + """
 <section class="pg-hero" style="min-height:60vh;display:flex;align-items:center"><div class="ctn" style="text-align:center">
 <h1>404</h1><p style="margin-top:16px">The page you're looking for doesn't exist.</p>
 <a href="/" class="btn-p" style="margin-top:32px;display:inline-block">Go Home</a>
