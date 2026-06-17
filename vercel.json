@@ -27,9 +27,7 @@
     { "source": "/wp-sitemap-posts-page-1.xml", "destination": "/sitemap.xml", "statusCode": 301 },
     { "source": "/wp-sitemap-taxonomies-category-1.xml", "destination": "/sitemap.xml", "statusCode": 301 },
     { "source": "/wp-sitemap-users-1.xml", "destination": "/sitemap.xml", "statusCode": 301 },
-    { "source": "/page/:num/", "destination": "/blog/page/:num/", "statusCode": 301 },
-    { "source": "/?s=:query*", "destination": "/blog/", "statusCode": 301 },
-    { "source": "/?p=:id*", "destination": "/blog/", "statusCode": 301 }
+    { "source": "/page/:num/", "destination": "/blog/page/:num/", "statusCode": 301 }
   ],
   "headers": [
     {
