@@ -321,6 +321,7 @@ SOCIAL_LINKS = {
     "NewsBreak": "https://www.newsbreak.com/@dr-connor-robertson",
     "Crunchbase": "https://www.crunchbase.com/person/dr-connor-robertson",
     "Flipboard": "https://flipboard.com/@DrConnorRobert",
+    "Skool": "https://www.skool.com/@connor-robertson-5397",
 }
 
 # All properties Connor controls (for sameAs schema and SERP domination)
