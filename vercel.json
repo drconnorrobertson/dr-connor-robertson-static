@@ -1,4 +1,5 @@
 {
+  
   "buildCommand": "python3 build.py",
   "outputDirectory": "dist",
   "cleanUrls": true,
