@@ -895,6 +895,7 @@ def nav_html():
     # Resources dropdown
     dd = "".join(f'<a href="{h}">{l}</a>' for l, h in RESOURCE_HUBS)
     items += f'<li class="has-dd"><a href="/blog/complete-resource-index-dr-connor-robertson/">Resources</a><div class="dd">{dd}</div></li>'
+    items += '<li><a href="https://intro.co/DrConnorRobertson" target="_blank" rel="noopener" class="nav-cta" style="margin-right:8px">Book a Call</a></li>'
     items += '<li><a href="/contact/" class="nav-cta">Contact Connor</a></li>'
     return items
 
@@ -960,7 +961,7 @@ def footer():
 <div><div class="logo" style="font-size:20px;margin-bottom:4px">Dr. Connor Robertson</div>
 <p class="ftr-tag">Founder of <a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener" style="text-decoration:underline">Elixir Consulting Group</a>, <a href="https://thepittsburghwire.com" target="_blank" rel="noopener" style="text-decoration:underline">The Pittsburgh Wire</a>, <a href="https://theprospectingshow.com" target="_blank" rel="noopener" style="text-decoration:underline">The Prospecting Show</a> &amp; <a href="https://thegrantfinder.com" target="_blank" rel="noopener" style="text-decoration:underline">The Grant Finder</a>.</p></div>
 <div class="ftr-col"><h4>Pages</h4><ul>{pages}</ul></div>
-<div class="ftr-col"><h4>Connect</h4><ul>{social}</ul></div>
+<div class="ftr-col"><h4>Connect</h4><ul><li><a href="https://intro.co/DrConnorRobertson" target="_blank" rel="noopener" style="font-weight:600;color:var(--text)">Book a Consultation</a></li>{social}</ul></div>
 </div>
 <div class="ftr-btm">&copy; {datetime.now().year} Dr. Connor Robertson. All Rights Reserved.</div>
 </div></footer>
@@ -1079,7 +1080,7 @@ def page_home():
 <section class="hero"><div class="hero-bg"><img src="/images/dr-connor-robertson-headshot.jpg" alt="Dr. Connor Robertson - Entrepreneur, Author, and Business Strategist" width="1024" height="1024" loading="eager" class="hero-bg-img"></div><div class="hero-ct">
 <h1>Dr. Connor Robertson</h1>
 <p class="tag">Entrepreneur. Author. AI Strategist. Helping business owners acquire companies, automate operations, and build lasting wealth.</p>
-<div class="hero-btn"><a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" class="btn-p">Browse My Books</a><a href="/speaker/" class="btn-s">Book Me to Speak</a></div>
+<div class="hero-btn"><a href="https://intro.co/DrConnorRobertson" target="_blank" rel="noopener" class="btn-p">Book a Consultation</a><a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" class="btn-s">Browse My Books</a><a href="/speaker/" class="btn-s">Book Me to Speak</a></div>
 <div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
 <h3 style="font-size:22px;margin-bottom:8px;">Buying Wealth</h3>
 <p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">Dr. Robertson\'s book on building wealth through business acquisitions and real estate investing. A practical guide to creating lasting financial freedom.</p>
@@ -1113,11 +1114,11 @@ def page_home():
 
 <section class="cta-banner"><div class="ctn">
 <h2>Ready to Take the Next Step?</h2>
-<p>Explore Connor's books, book him for your next event, or work with Elixir Consulting to scale your business.</p>
+<p>Book a paid consultation with Connor, explore his books, or book him for your next event.</p>
 <div class="cta-btns">
-<a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" class="btn-p">Browse His Books</a>
+<a href="https://intro.co/DrConnorRobertson" target="_blank" rel="noopener" class="btn-p">Book a Consultation</a>
+<a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" class="btn-s">Browse His Books</a>
 <a href="/speaker/" class="btn-s">Book Connor to Speak</a>
-<a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener" class="btn-s">Elixir Consulting</a>
 </div>
 </div></section>
 """ + footer()
@@ -1204,9 +1205,9 @@ def page_about():
 
 <section class="cta-banner"><div class="ctn">
 <h2>Work With Connor</h2>
-<p>Whether you want to acquire a business, scale your company with AI, or book Connor for your next event -- start here.</p>
+<p>Book a paid consultation, explore his books, or book Connor for your next event.</p>
 <div class="cta-btns">
-<a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener" class="btn-p">Elixir Consulting</a>
+<a href="https://intro.co/DrConnorRobertson" target="_blank" rel="noopener" class="btn-p">Book a Consultation</a>
 <a href="/speaker/" class="btn-s">Book Connor to Speak</a>
 <a href="https://drconnorrobertsonbooks.com" target="_blank" rel="noopener" class="btn-s">Browse His Books</a>
 </div>
@@ -1233,7 +1234,7 @@ def page_speaker():
 <h1>Dr. Connor Robertson: Keynote Speaker on Business Acquisitions, AI &amp; Entrepreneurship</h1>
 <p class="sh-tag" style="font-size:1.05rem;color:var(--text2);margin-bottom:1rem">Your audience deserves more than motivation. Give them a playbook.</p>
 <p class="sh-sub">Dr. Connor Robertson delivers high-energy keynotes packed with actionable frameworks on business acquisitions, AI-powered growth, and building companies that last. He has founded four companies, authored six books, and hosts The Prospecting Show podcast.</p>
-<div class="hero-btn"><a href="#book-me" class="btn-p book-cta">Book Connor to Speak</a><a href="/books/" class="btn-s">Browse His Books</a></div>
+<div class="hero-btn"><a href="#book-me" class="btn-p book-cta">Book Connor to Speak</a><a href="https://intro.co/DrConnorRobertson" target="_blank" rel="noopener" class="btn-s">Book a Consultation</a><a href="/books/" class="btn-s">Browse His Books</a></div>
 <div class="speaker-stats">
 <div class="stat"><div class="stat-n">6</div><div class="stat-l">Books Published</div></div>
 <div class="stat"><div class="stat-n">4</div><div class="stat-l">Companies Founded</div></div>
@@ -1355,8 +1356,8 @@ def page_books():
 <h2>Want Connor at Your Next Event?</h2>
 <p>Connor delivers keynotes based on the frameworks from his books. Bring actionable strategies to your audience.</p>
 <div class="cta-btns">
-<a href="/speaker/" class="btn-p">Book Connor to Speak</a>
-<a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener" class="btn-s">Work with Elixir Consulting</a>
+<a href="https://intro.co/DrConnorRobertson" target="_blank" rel="noopener" class="btn-p">Book a Consultation</a>
+<a href="/speaker/" class="btn-s">Book Connor to Speak</a>
 </div>
 </div></section>
 """ + footer()
@@ -1449,7 +1450,13 @@ def page_contact():
 <section class="pg-hero"><div class="ctn">
 <h1>Contact Dr. Connor Robertson</h1><p>Business inquiries, speaking engagements, press, partnerships, and more.</p>
 </div></section>
-<section class="sec"><div class="ctn">\n<div class="contact-headshot fade-in"><img src="/images/connor-contact.jpg" alt="Dr. Connor Robertson - Contact" width="160" height="160" loading="lazy" decoding="async"></div>\n<div class="cform">
+<section class="sec"><div class="ctn">
+<div style="text-align:center;margin-bottom:40px;padding:32px;background:var(--card);border:1px solid var(--border);border-radius:12px;">
+<h3 style="font-size:22px;font-weight:700;margin-bottom:12px;">Want to speak with Connor directly?</h3>
+<p style="color:var(--text2);font-size:15px;margin-bottom:20px;">Book a paid consultation through Intro and get one-on-one time with Connor to discuss your business, strategy, or investment questions.</p>
+<a href="https://intro.co/DrConnorRobertson" target="_blank" rel="noopener" class="btn-p">Book a Consultation on Intro</a>
+</div>
+\n<div class="contact-headshot fade-in"><img src="/images/connor-contact.jpg" alt="Dr. Connor Robertson - Contact" width="160" height="160" loading="lazy" decoding="async"></div>\n<div class="cform">
 <form action="https://formspree.io/f/xdkobkzz" method="POST">
 <div class="fr"><div class="fg"><label>First Name *</label><input type="text" name="first_name" required></div><div class="fg"><label>Last Name *</label><input type="text" name="last_name" required></div></div>
 <div class="fg"><label>Email *</label><input type="email" name="email" required></div>
