@@ -374,11 +374,7 @@ PILLAR_PAGES = [
 
 PRESS_ARTICLES = [
     ("Dr. Connor Robertson on the Anatomy of an Effective AI Workflow", "https://celebritynews.com/dr-connor-robertson-on-the-anatomy-of-an-effective-ai-workflow/", "Celebrity News"),
-<<<<<<< HEAD
     ("Dr. Connor Robertson on the Anatomy of an Effective AI Workflow", "https://celebritynews.com/dr-connor-robertson-on-the-anatomy-of-an-effective-ai-workflow/", "Celebrity News"),
-=======
-    ("How Dr. Connor Robertson Automated Lead Generation With a Lean, Intent-Triggered Stack", "https://artistweekly.com/how-dr-connor-robertson-automated-lead-generation-with-a-lean-intent-triggered-stack/", "Artist Weekly"),
->>>>>>> b791b0a9afc0abc60b18fdc70e0ce12e8266fa3c
     ("Building Businesses with Purpose: A Modern Framework for Entrepreneurial Impact", "https://nywire.com/building-businesses-with-purpose-a-modern-framework-for-entrepreneurial-impact/", "NY Wire"),
     ("Dr. Connor Robertson on Turning Underperforming Companies into Category Leaders", "https://nywire.com/dr-connor-robertson-on-turning-underperforming-companies-into-category-leaders/", "NY Wire"),
     ("The Case for Nonprofit Partnerships in the Private Sector", "https://blknews.com/the-case-for-nonprofit-partnerships-in-the-private-sector/", "BLK News"),
@@ -1093,13 +1089,8 @@ def page_home():
 </div>
 </div></section>
 <section class="feat"><div class="ctn">
-<<<<<<< HEAD
 <h3>As Featured On</h3>
 <div class="feat-logos"><span>Celebrity News</span><span>Celebrity News</span><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div>
-=======
-<h2>As Featured On</h2>
-<div class="feat-logos"><span>Artist Weekly</span><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Venture Magazine</span></div>
->>>>>>> b791b0a9afc0abc60b18fdc70e0ce12e8266fa3c
 </div></section>
 <section class="sec"><div class="ctn">
 <h2 class="sec-t">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh.</h2>
@@ -1393,23 +1384,14 @@ def page_press():
         }))
     news_schema_tags = "\n".join(f'<script type="application/ld+json">{s}</script>' for s in news_schemas)
 
-<<<<<<< HEAD
     return header("Dr. Connor Robertson in the Press | Media Features & News Coverage",
         "Dr. Connor Robertson featured in Celebrity News, Yahoo Finance, The Globe and Mail, Business Insider, CXO Dispatch, C-Suite Brief, NY Wire, BLK News, Famous Times, Economic Insider, Taste Terminal, Fiction Talk, NewsBlaze, The Rogue Mag, InEntertainment, and more.", "/press-media/", extra=news_schema_tags) + f"""
-=======
-    return header("Dr. Connor Robertson in the Press | Media Features",
-        "Dr. Connor Robertson featured in Artist Weekly, Yahoo Finance, The Globe and Mail, Business Insider, Venture Magazine, CXO Dispatch, C-Suite Brief, NY Wire, BLK News, Famous Times, Economic Insider, Taste Terminal, Fiction Talk, NewsBlaze, The Rogue Mag, InEntertainment, and more.", "/press-media/", extra=news_schema_tags, og_image="/images/connor-press.jpg") + f"""
->>>>>>> b791b0a9afc0abc60b18fdc70e0ce12e8266fa3c
 <section class="pg-hero"><div class="ctn">
 <div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-press.jpg" alt="Dr. Connor Robertson - Press" width="300" height="300" loading="lazy" style="border-radius:50%;width:180px;height:180px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
 <h1>Press &amp; Media</h1><p>Dr. Connor Robertson's insights and features across leading publications.</p>
 </div></section>
 <section class="sec"><div class="ctn">
-<<<<<<< HEAD
 <div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><div class="feat-logos"><span>Celebrity News</span><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div></div>
-=======
-<div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><div class="feat-logos"><span>Artist Weekly</span><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Venture Magazine</span></div></div>
->>>>>>> b791b0a9afc0abc60b18fdc70e0ce12e8266fa3c
 <div class="pgrid">{cards}</div>
 </div></section>
 """ + footer()
