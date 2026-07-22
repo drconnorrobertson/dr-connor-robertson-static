@@ -368,6 +368,7 @@ PILLAR_PAGES = [
 ]
 
 PRESS_ARTICLES = [
+    ("Dr. Connor Robertson on the Anatomy of an Effective AI Workflow", "https://celebritynews.com/dr-connor-robertson-on-the-anatomy-of-an-effective-ai-workflow/", "Celebrity News"),
     ("Building Businesses with Purpose: A Modern Framework for Entrepreneurial Impact", "https://nywire.com/building-businesses-with-purpose-a-modern-framework-for-entrepreneurial-impact/", "NY Wire"),
     ("Dr. Connor Robertson on Turning Underperforming Companies into Category Leaders", "https://nywire.com/dr-connor-robertson-on-turning-underperforming-companies-into-category-leaders/", "NY Wire"),
     ("The Case for Nonprofit Partnerships in the Private Sector", "https://blknews.com/the-case-for-nonprofit-partnerships-in-the-private-sector/", "BLK News"),
@@ -1002,7 +1003,7 @@ def page_home():
 </div></section>
 <section class="feat"><div class="ctn">
 <h3>As Featured On</h3>
-<div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div>
+<div class="feat-logos"><span>Celebrity News</span><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div>
 </div></section>
 <section class="sec"><div class="ctn">
 <h2 class="sec-t">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh.</h2>
@@ -1180,6 +1181,7 @@ def page_speaker():
 <p class="sec-sub">Connor hosts The Prospecting Show and has been a featured guest on podcasts and media outlets reaching millions of listeners.</p>
 <div class="podcast-grid">
 <div class="pod-card"><h3>The Prospecting Show</h3><p>Connor's own weekly podcast -- 350+ episodes interviewing entrepreneurs and small business owners about scaling their companies.</p><a href="https://theprospectingshow.com" target="_blank" rel="noopener" class="pod-link">Listen Now &rarr;</a></div>
+<div class="pod-card"><h3>Celebrity News</h3><p>Featured for insights on building effective AI workflows for business operations.</p><a href="https://celebritynews.com/dr-connor-robertson-on-the-anatomy-of-an-effective-ai-workflow/" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
 <div class="pod-card"><h3>Yahoo Finance</h3><p>Featured for the launch of Elixir Consulting Group's business automation advisory service.</p><a href="https://finance.yahoo.com/sectors/technology/articles/elixir-consulting-group-launches-business-112900872.html" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
 <div class="pod-card"><h3>Business Insider</h3><p>Coverage of Elixir Consulting Group's advisory services for small and mid-sized business owners.</p><a href="https://markets.businessinsider.com/news/stocks/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-midsized-business-owners-1036100299" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
 <div class="pod-card"><h3>The Globe and Mail</h3><p>National coverage of Connor's business consulting and automation advisory work.</p><a href="https://www.theglobeandmail.com/investing/markets/markets-news/Newsfile/1681496/" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
@@ -1293,13 +1295,13 @@ def page_press():
     news_schema_tags = "\n".join(f'<script type="application/ld+json">{s}</script>' for s in news_schemas)
 
     return header("Dr. Connor Robertson in the Press | Media Features & News Coverage",
-        "Dr. Connor Robertson featured in Yahoo Finance, The Globe and Mail, Business Insider, CXO Dispatch, C-Suite Brief, NY Wire, BLK News, Famous Times, Economic Insider, Taste Terminal, Fiction Talk, NewsBlaze, The Rogue Mag, InEntertainment, and more.", "/press-media/", extra=news_schema_tags) + f"""
+        "Dr. Connor Robertson featured in Celebrity News, Yahoo Finance, The Globe and Mail, Business Insider, CXO Dispatch, C-Suite Brief, NY Wire, BLK News, Famous Times, Economic Insider, Taste Terminal, Fiction Talk, NewsBlaze, The Rogue Mag, InEntertainment, and more.", "/press-media/", extra=news_schema_tags) + f"""
 <section class="pg-hero"><div class="ctn">
 <div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-press.jpg" alt="Dr. Connor Robertson - Press" width="300" height="300" loading="lazy" style="border-radius:50%;width:180px;height:180px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
 <h1>Press &amp; Media</h1><p>Dr. Connor Robertson's insights and features across leading publications.</p>
 </div></section>
 <section class="sec"><div class="ctn">
-<div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div></div>
+<div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><div class="feat-logos"><span>Celebrity News</span><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div></div>
 <div class="pgrid">{cards}</div>
 </div></section>
 """ + footer()
