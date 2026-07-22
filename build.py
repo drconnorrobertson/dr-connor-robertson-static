@@ -375,8 +375,10 @@ PILLAR_PAGES = [
 PRESS_ARTICLES = [
     ("Dr. Connor Robertson on the Anatomy of an Effective AI Workflow", "https://celebritynews.com/dr-connor-robertson-on-the-anatomy-of-an-effective-ai-workflow/", "Celebrity News"),
     ("Dr. Connor Robertson on Training a Team to Use AI Without Losing the Human Touch", "https://marketdaily.com/dr-connor-robertson-on-training-a-team-to-use-ai-without-losing-the-human-touch/", "Market Daily"),
+    ("Dr. Connor Robertson Compares GPT-4o, Claude, and Gemini for Business Use", "https://famoustimes.com/dr-connor-robertson-compares-gpt-4o-claude-and-gemini-for-business-use/", "Famous Times"),
     ("Dr. Connor Robertson on the Anatomy of an Effective AI Workflow", "https://celebritynews.com/dr-connor-robertson-on-the-anatomy-of-an-effective-ai-workflow/", "Celebrity News"),
     ("Dr. Connor Robertson on Training a Team to Use AI Without Losing the Human Touch", "https://marketdaily.com/dr-connor-robertson-on-training-a-team-to-use-ai-without-losing-the-human-touch/", "Market Daily"),
+    ("Dr. Connor Robertson Compares GPT-4o, Claude, and Gemini for Business Use", "https://famoustimes.com/dr-connor-robertson-compares-gpt-4o-claude-and-gemini-for-business-use/", "Famous Times"),
     ("Building Businesses with Purpose: A Modern Framework for Entrepreneurial Impact", "https://nywire.com/building-businesses-with-purpose-a-modern-framework-for-entrepreneurial-impact/", "NY Wire"),
     ("Dr. Connor Robertson on Turning Underperforming Companies into Category Leaders", "https://nywire.com/dr-connor-robertson-on-turning-underperforming-companies-into-category-leaders/", "NY Wire"),
     ("The Case for Nonprofit Partnerships in the Private Sector", "https://blknews.com/the-case-for-nonprofit-partnerships-in-the-private-sector/", "BLK News"),
