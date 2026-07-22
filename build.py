@@ -92,6 +92,23 @@ def download_image(url):
         return None
 
 
+def download_from_drive(file_id, dest):
+    """Download a file from Google Drive by file ID."""
+    if not file_id or file_id == "local_upload":
+        return False
+    try:
+        url = f"https://drive.google.com/uc?export=download&id={file_id}"
+        req = Request(url, headers={"User-Agent": "StaticSiteBuilder/1.0"})
+        resp = urlopen(req, timeout=30)
+        data = resp.read()
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(data)
+        return True
+    except Exception as e:
+        print(f"    WARN: Google Drive download failed for {file_id}: {e}")
+        return False
+
+
 def download_headshots():
     """Copy headshot images from repo images/ dir to dist/images/, falling back to Drive download."""
     local_images = BASE_DIR / "images"
@@ -943,12 +960,15 @@ def header(title, desc="", canonical="/", extra="", og_image="", og_type="websit
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
 <meta name="twitter:site" content="@DrConnorRE">
+<meta name="twitter:creator" content="@DrConnorRE">
 {twitter_img_tag}
 <meta name="author" content="Dr. Connor Robertson">
 <meta name="robots" content="{robots}">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">{gsc}
 <link rel="icon" type="image/jpeg" href="/images/dr-connor-robertson-headshot.jpg">
 <link rel="apple-touch-icon" href="/images/dr-connor-robertson-headshot.jpg">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 {FONT_LINK}
 <style>{CSS}</style>
 {extra}
@@ -1077,15 +1097,33 @@ def page_home():
         }
     })
 
-    extra = f'<script type="application/ld+json">{person_schema}</script>\n<script type="application/ld+json">{website_schema}</script>'
+    org_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Elixir Consulting Group",
+        "url": "https://elixirconsultinggroup.com",
+        "founder": {"@type": "Person", "name": "Dr. Connor Robertson", "url": SITE_URL},
+        "description": "Strategic advisory firm founded by Dr. Connor Robertson, helping business owners with acquisitions, operational scaling, and AI-powered automation.",
+        "address": {"@type": "PostalAddress", "addressLocality": "Pittsburgh", "addressRegion": "PA", "addressCountry": "US"},
+    })
+
+    breadcrumb_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+        ]
+    })
+
+    extra = f'<script type="application/ld+json">{person_schema}</script>\n<script type="application/ld+json">{website_schema}</script>\n<script type="application/ld+json">{org_schema}</script>\n<script type="application/ld+json">{breadcrumb_schema}</script>'
     pillars = [
         ("Entrepreneur & Business Acquisition Expert", "Dr. Connor Robertson has founded four companies and helps business owners acquire, scale, and exit businesses through <a href=\"https://elixirconsultinggroup.com\" target=\"_blank\" rel=\"noopener\">Elixir Consulting Group</a>. His book <em>Creative Acquisitions</em> is the playbook for modern dealmakers."),
         ("Author & AI Strategist", "Six published books on acquisitions, prospecting, and wealth building. Connor also helps small businesses deploy AI to automate operations and outpace competitors. Browse all titles at <a href=\"https://drconnorrobertsonbooks.com\" target=\"_blank\" rel=\"noopener\">drconnorrobertsonbooks.com</a>."),
         ("Podcast Host & Community Builder", "Host of <a href=\"https://theprospectingshow.com\" target=\"_blank\" rel=\"noopener\">The Prospecting Show</a> with 350+ episodes and publisher of <a href=\"https://thepittsburghwire.com\" target=\"_blank\" rel=\"noopener\">The Pittsburgh Wire</a>. Connor also supports Social Venture Partners and Habitat for Humanity."),
     ]
     pcards = "".join(f'<div class="pill"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
-    return header("Dr. Connor Robertson | Entrepreneur, Author & Speaker",
-        "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, podcast host, and philanthropist. Founder of Elixir Consulting Group, The Pittsburgh Wire, and The Prospecting Show.",
+    return header("Dr. Connor Robertson | Pittsburgh Entrepreneur, Author & Business Acquisition Expert",
+        "Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, and business acquisition expert. Founder of Elixir Consulting Group, host of The Prospecting Show, and author of six books on business strategy.",
         "/", extra, og_image="/images/dr-connor-robertson-headshot.jpg") + f"""
 <section class="hero"><div class="hero-bg"><img src="/images/dr-connor-robertson-headshot.jpg" alt="Dr. Connor Robertson - Entrepreneur, Author, and Business Strategist" width="1024" height="1024" loading="eager" class="hero-bg-img"></div><div class="hero-ct">
 <h1>Dr. Connor Robertson</h1>
@@ -1098,8 +1136,8 @@ def page_home():
 </div>
 </div></section>
 <section class="feat"><div class="ctn">
-<h3>As Featured On</h3>
-<div class="feat-logos"><span>Celebrity News</span><span>Market Daily</span><span>Celebrity News</span><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div>
+<h2>As Featured On</h2>
+<div class="feat-logos"><div class="feat-logos-track"><span>Celebrity News</span><span>Market Daily</span><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Venture Magazine</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Celebrity News</span><span>Market Daily</span><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Venture Magazine</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span></div></div>
 </div></section>
 <section class="sec"><div class="ctn">
 <h2 class="sec-t">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh.</h2>
@@ -1176,16 +1214,24 @@ def page_about():
              "acceptedAnswer": {"@type": "Answer", "text": "You can reach Dr. Connor Robertson through the contact form on drconnorrobertson.com/contact/ for business inquiries, speaking engagements, press and media requests, and partnership opportunities."}},
         ]
     })
-    extra = f'<script type="application/ld+json">{person_schema}</script>\n<script type="application/ld+json">{faq_schema}</script>'
-    return header("Who Is Dr. Connor Robertson? | Bio, Books & Podcast",
+    about_breadcrumb = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "About", "item": f"{SITE_URL}/about/"},
+        ]
+    })
+    extra = f'<script type="application/ld+json">{person_schema}</script>\n<script type="application/ld+json">{faq_schema}</script>\n<script type="application/ld+json">{about_breadcrumb}</script>'
+    return header("About Dr. Connor Robertson | Pittsburgh Entrepreneur, Author & AI Strategist",
         "Learn about Dr. Connor Robertson -- Pittsburgh entrepreneur, author, podcast host, and founder of Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show, and The Grant Finder.",
-        "/about/", extra, og_image="/images/connor-about.jpg") + """
+        "/about/", extra, og_image="/images/connor-about.jpg") + breadcrumbs([("Home", "/"), ("About Dr. Connor Robertson", None)]) + """
 <section class="pg-hero"><div class="ctn">
 <h1>About Dr. Connor Robertson</h1>
 <p>Entrepreneur. Author. AI Strategist. Business Acquisition Expert. Podcast Host. Founder of four companies based in Pittsburgh, PA.</p>
 </div></section>
 <section class="sec"><div class="ctn">
-<div class="about-photo"><img src="/images/connor-hero.jpg" alt="Dr. Connor Robertson - Pittsburgh entrepreneur, author, AI strategist, and business acquisition expert" loading="lazy"></div>
+<div class="about-photo"><img src="/images/connor-hero.jpg" alt="Dr. Connor Robertson - Pittsburgh entrepreneur, author, AI strategist, and business acquisition expert" width="220" height="220" loading="lazy"></div>
 <p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, and AI implementation expert based in Pittsburgh, PA. He has built four companies from the ground up, authored six books, hosted over 350 podcast episodes, and helped business owners across North America acquire companies, automate operations, and scale with purpose.</p>
 
 <div class="cred-grid">
@@ -1236,9 +1282,18 @@ def page_speaker():
         else:
             links = '<span style="font-size:12px;color:var(--text2)">Coming Soon</span>'
         books_mini += f'<div class="book-mini"><h3>{esc(title)}</h3><p>{esc(short_desc)}</p><div>{links}</div></div>\n'
-    return header("Keynote Speaker Dr. Connor Robertson | Business & AI",
-        "Book Dr. Connor Robertson for your next conference, summit, or corporate event. Expert keynote speaker on business acquisitions, AI strategy, entrepreneurship, and scaling companies.", "/speaker/",
-        og_image="/images/connor-blazer.jpg") + f"""
+    speaker_breadcrumb = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "Speaker", "item": f"{SITE_URL}/speaker/"},
+        ]
+    })
+    speaker_extra = f'<script type="application/ld+json">{speaker_breadcrumb}</script>'
+    return header("Book Keynote Speaker Dr. Connor Robertson | Business Acquisitions & AI Strategy",
+        "Book Dr. Connor Robertson as a keynote speaker for your next conference or corporate event. Expert on business acquisitions, AI strategy, and entrepreneurship. 6 books, 350+ podcast episodes.", "/speaker/",
+        extra=speaker_extra, og_image="/images/connor-blazer.jpg") + breadcrumbs([("Home", "/"), ("Keynote Speaker", None)]) + f"""
 <section class="speaker-hero"><div class="ctn">
 <div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-blazer.jpg" alt="Dr. Connor Robertson - Keynote Speaker on Business Acquisitions and AI Strategy" width="300" height="300" loading="eager" style="border-radius:50%;width:200px;height:200px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
 <h1>Dr. Connor Robertson: Keynote Speaker on Business Acquisitions, AI &amp; Entrepreneurship</h1>
@@ -1355,9 +1410,17 @@ def page_books():
         "url": f"{SITE_URL}/books/",
         "mainEntity": book_schema_items,
     })
-    extra = f'<script type="application/ld+json">{schema}</script>'
-    return header("Books by Dr. Connor Robertson | Wealth & Acquisitions",
-        "Explore books by Dr. Connor Robertson on wealth building, business acquisitions, real estate investing, and entrepreneurship. Available on Google Play, Barnes & Noble, and Kobo.", "/books/", extra, og_image="/images/connor-book.jpg") + f"""
+    books_breadcrumb = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "Books", "item": f"{SITE_URL}/books/"},
+        ]
+    })
+    extra = f'<script type="application/ld+json">{schema}</script>\n<script type="application/ld+json">{books_breadcrumb}</script>'
+    return header("Books by Dr. Connor Robertson | Business Acquisitions, Wealth Building & Real Estate",
+        "Browse all 6 books by Dr. Connor Robertson on business acquisitions, wealth building, real estate investing, and sales strategy. Available on Google Play, Barnes and Noble, and Kobo.", "/books/", extra, og_image="/images/connor-book.jpg") + breadcrumbs([("Home", "/"), ("Books", None)]) + f"""
 <section class="pg-hero"><div class="ctn">
 <div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-book.jpg" alt="Dr. Connor Robertson - Author" width="300" height="300" loading="lazy" style="border-radius:12px;width:250px;height:250px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
 <h1>Books by Dr. Connor Robertson</h1><p>Practical guides on wealth building, real estate, and entrepreneurship by Dr. Connor Robertson.</p>
@@ -1380,7 +1443,7 @@ def page_books():
 def page_press():
     cards = ""
     for title, url, source in PRESS_ARTICLES:
-        cards += f'<div class="pcard"><div><h3>{esc(title)}</h3><p class="src">{esc(source)}</p></div><a href="{url}" target="_blank" rel="noopener" class="rl">Read &rarr;</a></div>\n'
+        cards += f'<div class="pcard"><div><h3><a href="{url}" target="_blank" rel="noopener">{esc(title)}</a></h3><p class="src">{esc(source)}</p></div><a href="{url}" target="_blank" rel="noopener" class="rl">Read Full Article on {esc(source)} &rarr;</a></div>\n'
 
     # Generate NewsArticle schema for each press article
     news_schemas = []
@@ -1395,14 +1458,24 @@ def page_press():
         }))
     news_schema_tags = "\n".join(f'<script type="application/ld+json">{s}</script>' for s in news_schemas)
 
-    return header("Dr. Connor Robertson in the Press | Media Features & News Coverage",
-        "Dr. Connor Robertson featured in Market Daily, Celebrity News, Yahoo Finance, The Globe and Mail, Business Insider, CXO Dispatch, C-Suite Brief, NY Wire, BLK News, Famous Times, Economic Insider, Taste Terminal, Fiction Talk, NewsBlaze, The Rogue Mag, InEntertainment, and more.", "/press-media/", extra=news_schema_tags) + f"""
+    press_breadcrumb = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "Press & Media", "item": f"{SITE_URL}/press-media/"},
+        ]
+    })
+    news_schema_tags += f'\n<script type="application/ld+json">{press_breadcrumb}</script>'
+
+    return header("Dr. Connor Robertson Press Coverage | Yahoo Finance, Business Insider & More",
+        "Read press coverage of Dr. Connor Robertson in Yahoo Finance, Business Insider, The Globe and Mail, NY Wire, and 25+ publications. Business acquisitions, AI strategy, and entrepreneurship.", "/press-media/", extra=news_schema_tags) + breadcrumbs([("Home", "/"), ("Press & Media", None)]) + f"""
 <section class="pg-hero"><div class="ctn">
 <div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-press.jpg" alt="Dr. Connor Robertson - Press" width="300" height="300" loading="lazy" style="border-radius:50%;width:180px;height:180px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
 <h1>Press &amp; Media</h1><p>Dr. Connor Robertson's insights and features across leading publications.</p>
 </div></section>
 <section class="sec"><div class="ctn">
-<div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><div class="feat-logos"><span>Celebrity News</span><span>Market Daily</span><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div></div>
+<div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><h2>Featured In</h2><div class="feat-logos"><div class="feat-logos-track"><span>Celebrity News</span><span>Market Daily</span><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Venture Magazine</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Celebrity News</span><span>Market Daily</span><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Venture Magazine</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span></div></div></div>
 <div class="pgrid">{cards}</div>
 </div></section>
 """ + footer()
@@ -1436,11 +1509,20 @@ def page_media():
             "copyrightHolder": {"@type": "Person", "name": "Dr. Connor Robertson"}
         })
     
+    media_breadcrumb = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "Media Kit", "item": f"{SITE_URL}/media/"},
+        ]
+    }
+    schemas.append(media_breadcrumb)
     schema_tags = "\n".join(f'<script type="application/ld+json">{json.dumps(s)}</script>' for s in schemas)
-    
+
     return header("Media Kit & Press Photos | Dr. Connor Robertson",
-        "Download professional photos of Dr. Connor Robertson for press coverage, event promotion, podcast features, and editorial use.", "/media/", extra=schema_tags,
-        og_image="/images/dr-connor-robertson-headshot.jpg") + f"""
+        "Download professional headshots and press photos of Dr. Connor Robertson for media coverage, event promotion, podcast features, and editorial use. Free for journalists.", "/media/", extra=schema_tags,
+        og_image="/images/dr-connor-robertson-headshot.jpg") + breadcrumbs([("Home", "/"), ("Media Kit", None)]) + f"""
 <section class="pg-hero"><div class="ctn">
 <h1>Media Kit &amp; Press Photos</h1>
 <p>Professional photos of Dr. Connor Robertson available for journalists, event organizers, podcast hosts, and editorial teams. All images may be used for media coverage with attribution.</p>
@@ -1459,8 +1541,17 @@ def page_media():
 
 
 def page_contact():
-    return header("Contact Dr. Connor Robertson | Speaking & Inquiries",
-        "Get in touch with Dr. Connor Robertson for business inquiries, speaking engagements, press and media requests, and partnership opportunities.", "/contact/", og_image="/images/connor-contact.jpg") + """
+    contact_breadcrumb = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "Contact", "item": f"{SITE_URL}/contact/"},
+        ]
+    })
+    contact_extra = f'<script type="application/ld+json">{contact_breadcrumb}</script>'
+    return header("Contact Dr. Connor Robertson | Business Inquiries & Speaking Engagements",
+        "Contact Dr. Connor Robertson for business consulting, speaking engagements, press inquiries, and partnership opportunities. Book a paid consultation or send a message.", "/contact/", extra=contact_extra, og_image="/images/connor-contact.jpg") + breadcrumbs([("Home", "/"), ("Contact", None)]) + """
 <section class="pg-hero"><div class="ctn">
 <h1>Contact Dr. Connor Robertson</h1><p>Business inquiries, speaking engagements, press, partnerships, and more.</p>
 </div></section>
@@ -1499,10 +1590,18 @@ def page_projects():
             "sameAs": list(SOCIAL_LINKS.values()) + OWNED_WEBSITES
         }
     })
-    extra = f'<script type="application/ld+json">{proj_schema}</script>'
-    return header("Projects & Companies | Dr. Connor Robertson",
-        "Explore the companies, media properties, and ventures founded by Dr. Connor Robertson -- including The Prospecting Show, The Pittsburgh Wire, Elixir Consulting Group, The Grant Finder, and more.",
-        "/projects/", extra=extra, og_image="/images/dr-connor-robertson-headshot.jpg") + """
+    proj_breadcrumb = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "Projects", "item": f"{SITE_URL}/projects/"},
+        ]
+    })
+    extra = f'<script type="application/ld+json">{proj_schema}</script>\n<script type="application/ld+json">{proj_breadcrumb}</script>'
+    return header("Projects & Companies Founded by Dr. Connor Robertson",
+        "Explore the companies and ventures founded by Dr. Connor Robertson -- Elixir Consulting Group, The Prospecting Show, The Pittsburgh Wire, The Grant Finder, and more.",
+        "/projects/", extra=extra, og_image="/images/dr-connor-robertson-headshot.jpg") + breadcrumbs([("Home", "/"), ("Projects & Companies", None)]) + """
 <section class="pg-hero"><div class="ctn">
 <h1>Projects &amp; Companies</h1><p>The companies, media properties, and ventures I've built.</p>
 </div></section>
@@ -1583,9 +1682,18 @@ def page_blog_index(posts, page_num, total_pages):
     pag += '</div>'
     sfx = f" - Page {page_num}" if page_num > 1 else ""
     can = "/blog/" if page_num == 1 else f"/blog/page/{page_num}/"
-    return header(f"Dr. Connor Robertson Blog | Business & Pittsburgh{sfx}",
-        "Read articles by Dr. Connor Robertson on entrepreneurship, business strategy, real estate, leadership, and Pittsburgh business news.", can, og_image="/images/dr-connor-robertson-headshot.jpg") + f"""
-<section class="pg-hero"><div class="ctn"><h1>Blog, Leadership &amp; Entrepreneurship</h1></div></section>
+    blog_breadcrumb = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": f"{SITE_URL}/blog/"},
+        ]
+    })
+    blog_extra = f'<script type="application/ld+json">{blog_breadcrumb}</script>'
+    return header(f"Dr. Connor Robertson Blog | Business Acquisitions, AI Strategy & Entrepreneurship{sfx}",
+        "Read articles by Dr. Connor Robertson on business acquisitions, AI strategy, entrepreneurship, real estate investing, and Pittsburgh business news.", can, extra=blog_extra, og_image="/images/dr-connor-robertson-headshot.jpg") + breadcrumbs([("Home", "/"), ("Blog", None)]) + f"""
+<section class="pg-hero"><div class="ctn"><h1>Blog: Business Acquisitions, AI Strategy &amp; Entrepreneurship</h1></div></section>
 <section class="sec"><div class="ctn"><div class="bgrid">{cards}</div>{pag}</div></section>
 """ + footer()
 
@@ -2129,6 +2237,14 @@ def page_faq():
         ]
     }, indent=2)
 
+    faq_breadcrumb = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+            {"@type": "ListItem", "position": 2, "name": "FAQ", "item": f"{SITE_URL}/faq/"},
+        ]
+    }, indent=2)
     extra_head = f"""
 <script type="application/ld+json">
 {faq_schema}
@@ -2136,12 +2252,15 @@ def page_faq():
 <script type="application/ld+json">
 {person_schema}
 </script>
+<script type="application/ld+json">
+{faq_breadcrumb}
+</script>
 <style>
-.faq-item{{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:32px;margin-bottom:20px;transition:box-shadow .3s}}
-.faq-item:hover{{box-shadow:0 4px 20px rgba(0,0,0,.08)}}
-.faq-q{{font-size:1.25rem;margin:0 0 12px;color:#1a1a2e;line-height:1.4}}
-.faq-a p{{margin:0;color:#555;line-height:1.7;font-size:1.05rem}}
-.faq-intro{{max-width:720px;margin:0 auto 40px;text-align:center;color:#555;font-size:1.1rem;line-height:1.7}}
+.faq-item{{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;margin-bottom:20px;transition:border-color .3s}}
+.faq-item:hover{{border-color:rgba(255,255,255,.15)}}
+.faq-q{{font-size:1.25rem;margin:0 0 12px;color:var(--text);line-height:1.4}}
+.faq-a p{{margin:0;color:var(--text2);line-height:1.7;font-size:1.05rem}}
+.faq-intro{{max-width:720px;margin:0 auto 40px;text-align:center;color:var(--text2);font-size:1.1rem;line-height:1.7}}
 </style>"""
 
     return header(
@@ -2150,9 +2269,9 @@ def page_faq():
         "/faq/",
         extra=extra_head,
         og_image="/images/connor-hero.jpg"
-    ) + f"""
+    ) + breadcrumbs([("Home", "/"), ("FAQ", None)]) + f"""
 <section class="pg-hero"><div class="ctn">
-<h1>Frequently Asked Questions</h1>
+<h1>Frequently Asked Questions About Dr. Connor Robertson</h1>
 <p>Common questions about Dr. Connor Robertson, his companies, books, and ventures.</p>
 </div></section>
 
