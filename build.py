@@ -419,6 +419,7 @@ PRESS_ARTICLES = [
     ("Elixir Consulting Group Launches Business Automation Advisory Service for Small and Mid-Sized Business Owners", "https://www.theglobeandmail.com/investing/markets/markets-news/Newsfile/1681496/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-mid-sized-business-owners/", "The Globe and Mail"),
     ("Elixir Consulting Group Launches Business Automation Advisory Service for Small and Midsized Business Owners", "https://markets.businessinsider.com/news/stocks/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-midsized-business-owners-1036100299", "Business Insider"),
     ("The VA Model Is Dead -- Here's What Replaced It", "https://blog.venturemagazine.net/dr-connor-robertson-the-va-model-is-dead-heres-what-replaced-it-7b5df3f71fe3", "Venture Magazine"),
+    ("Dr. Connor Robertson Discusses Business Processes That May Benefit From Automation", "https://miamiwire.com/dr-connor-robertson-discusses-business-processes-that-may-benefit-from-automation/", "Miami Wire"),
 ]
 
 BOOKS = [
