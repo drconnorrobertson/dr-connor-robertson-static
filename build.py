@@ -592,6 +592,9 @@ PRESS_ARTICLES = [
     ("Elixir Consulting Group Launches Business Automation Advisory Service", "https://finance.yahoo.com/sectors/technology/articles/elixir-consulting-group-launches-business-112900872.html", "Yahoo Finance"),
     ("Elixir Consulting Group Launches Business Automation Advisory Service for Small and Mid-Sized Business Owners", "https://www.theglobeandmail.com/investing/markets/markets-news/Newsfile/1681496/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-mid-sized-business-owners/", "The Globe and Mail"),
     ("Elixir Consulting Group Launches Business Automation Advisory Service for Small and Midsized Business Owners", "https://markets.businessinsider.com/news/stocks/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-midsized-business-owners-1036100299", "Business Insider"),
+    ("Dr. Connor Robertson on Training a Team to Use AI Without Losing the Human Touch", "https://marketdaily.com/dr-connor-robertson-on-training-a-team-to-use-ai-without-losing-the-human-touch/", "Market Daily"),
+    ("Dr. Connor Robertson on the Anatomy of an Effective AI Workflow", "https://celebritynews.com/dr-connor-robertson-on-the-anatomy-of-an-effective-ai-workflow/", "Celebrity News"),
+    ("The VA Model Is Dead: Here's What Replaced It", "https://blog.venturemagazine.net/dr-connor-robertson-the-va-model-is-dead-heres-what-replaced-it-7b5df3f71fe3", "Venture Magazine"),
 ]
 
 # `slug` is the stable anchor for each book: it is the id on the card, the
@@ -1901,6 +1904,11 @@ def page_contact():
 <h1>Contact Dr. Connor Robertson</h1><p>Business inquiries, speaking engagements, press, partnerships, and more.</p>
 </div></section>
 <section class="sec"><div class="ctn">
+<div style="text-align:center;margin-bottom:40px;padding:32px;background:var(--card);border:1px solid var(--border);border-radius:12px;">
+<h3 style="font-size:22px;font-weight:700;margin-bottom:12px;">Want to speak with Connor directly?</h3>
+<p style="color:var(--text2);font-size:15px;margin-bottom:20px;">Book a paid consultation through Intro and get one on one time with Connor to discuss your business, strategy, or investment questions.</p>
+<a href="https://intro.co/DrConnorRobertson" target="_blank" rel="noopener" class="btn-p">Book a Consultation on Intro</a>
+</div>
 <div class="contact-headshot fade-in"><img src="/images/connor-contact.jpg" alt="Dr. Connor Robertson - Contact" width="160" height="160" loading="lazy" decoding="async"></div>
 <div class="cform">
 <form action="https://formspree.io/f/xdkobkzz" method="POST">
