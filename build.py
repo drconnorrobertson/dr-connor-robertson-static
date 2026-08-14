@@ -2232,22 +2232,65 @@ SITEMAP_PRIORITY = {
 SITEMAP_PRIORITY.update({href: ("0.7", "weekly") for _label, href in RESOURCE_HUBS})
 
 
+# Leftovers from the WordPress site this one replaced. None of these have a
+# real equivalent here, but Google still has thousands of them queued, which is
+# what inflates the "not indexed" count in Search Console. vercel.json redirects
+# them so humans and referral links land somewhere sane, these rules stop
+# crawlers spending budget rediscovering them.
+#
+# The query-string entries matter most: a static host ignores the query, so
+# /?p=123 and friends each return the homepage with a 200, and every distinct
+# old post ID becomes another duplicate of the homepage.
+WP_DISALLOW = [
+    "/wp-content/",
+    "/wp-admin/",
+    "/wp-includes/",
+    "/wp-json/",
+    "/wp-login.php",
+    "/xmlrpc.php",
+    "/?p=",
+    "/?page_id=",
+    "/?cat=",
+    "/?tag=",
+    "/?m=",
+    "/?s=",
+    "/?attachment_id=",
+    "/?replytocom=",
+    "/category/",
+    "/tag/",
+    "/author/",
+    "/page/",
+    "/feed/",
+    "/comments/",
+    "/*/feed/",
+    "/*/trackback/",
+    "/*comment-page-",
+]
+
+
 def robots_txt():
-    """Allow everything, and name the crawlers that matter explicitly.
+    """Allow the real site, block the WordPress URLs Google is still chasing.
 
     Bravebot is Brave Search's crawler, Brave has no URL-submission tool, so
     an unambiguous crawl permission plus the sitemap reference is the only
     lever a site owner actually has there.
+
+    The disallow list is repeated in every group on purpose. A crawler obeys
+    exactly one User-agent group, the most specific one that names it, and
+    ignores the rest, so rules that live only under "*" would never apply to
+    Googlebot at all. Prefixes here are all longer than the "Allow: /" above
+    them, and longest-match wins, so the blocks take precedence.
     """
     named_bots = [
         "Googlebot", "Googlebot-Image", "Bingbot", "Bravebot", "DuckDuckBot",
         "Applebot", "YandexBot", "Slurp", "Twitterbot", "facebookexternalhit",
         "LinkedInBot", "OAI-SearchBot", "PerplexityBot",
     ]
-    blocks = "\n\n".join(f"User-agent: {b}\nAllow: /" for b in named_bots)
+    disallow = "\n".join(f"Disallow: {p}" for p in WP_DISALLOW)
+    group = f"Allow: /\n{disallow}"
+    blocks = "\n\n".join(f"User-agent: {b}\n{group}" for b in named_bots)
     return (
-        "User-agent: *\n"
-        "Allow: /\n\n"
+        f"User-agent: *\n{group}\n\n"
         f"{blocks}\n\n"
         f"Sitemap: {SITE_URL}/sitemap.xml\n"
     )
