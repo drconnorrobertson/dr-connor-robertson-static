@@ -1196,6 +1196,7 @@ KNOWS_ABOUT = [
     "Business Automation", "Prospecting", "Sales Systems", "Entrepreneurship",
     "Real Estate Investing", "Pittsburgh Business", "Author Platform",
     "Personal Branding", "Leadership", "Podcasting", "Philanthropy",
+    "Private Equity", "Wealth Building", "Business Strategy", "Scaling Businesses",
 ]
 
 
@@ -1228,6 +1229,11 @@ def site_graph_nodes():
             {"@type": "Organization", "name": "Social Venture Partners"},
             {"@type": "Organization", "name": "Habitat for Humanity"},
         ],
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "University of Pittsburgh",
+            "sameAs": "https://www.pitt.edu",
+        },
         "mainEntityOfPage": {"@id": f"{SITE_URL}/about/#webpage"},
     }
     website = {
@@ -2210,7 +2216,7 @@ def write(path, content):
 
 # lastmod for evergreen pages. Bump this when their copy is edited -- stamping
 # every build with today's date trains crawlers to ignore the field entirely.
-STATIC_LASTMOD = "2026-08-09"
+STATIC_LASTMOD = "2026-08-21"
 
 SITEMAP_PRIORITY = {
     "/": ("1.0", "weekly"),
@@ -2890,6 +2896,175 @@ def page_resource_index(posts):
 """ + footer()
 
 
+
+# -- LLMs.txt and LLMs.md -------------------------------------------------------
+# These files help AI language models understand who Dr. Connor Robertson is and
+# what this site is about, following the llms.txt specification.
+
+def llms_txt():
+    """Generate llms.txt -- concise identity file for language models."""
+    books_list = "\n".join(f"  - {b['title']}: {b['desc']}" for b in BOOKS)
+    orgs_list = "\n".join(f"  - {o['name']}: {o['desc']}" for o in FOUNDED_ORGS)
+    return f"""# Dr. Connor Robertson
+
+> Dr. Connor Robertson is an entrepreneur, author of six books on business strategy and wealth building, podcast host, and business strategist based in Pittsburgh, PA.
+
+## Identity
+
+- Full Name: Dr. Connor Robertson
+- Location: Pittsburgh, Pennsylvania, USA
+- Profession: Entrepreneur, Author, Speaker, Business Strategist
+- Website: https://www.drconnorrobertson.com
+
+## Companies Founded
+
+{orgs_list}
+
+## Books Authored
+
+{books_list}
+
+## Podcast
+
+- The Prospecting Show: Weekly podcast with 178+ episodes interviewing entrepreneurs about how they built and scaled their businesses. Available on Spotify, Apple Podcasts, and all major platforms.
+
+## Expertise
+
+- Business Acquisitions & Mergers and Acquisitions
+- Real Estate Investing & Property Strategy
+- AI Business Strategy & Business Automation
+- Entrepreneurship & Scaling Businesses
+- Private Equity & Wealth Building
+- Prospecting & Sales Systems
+- Author Platform & Personal Branding
+- Leadership & Philanthropy
+
+## Key Pages
+
+- About: https://www.drconnorrobertson.com/about/
+- Books: https://www.drconnorrobertson.com/books/
+- Blog: https://www.drconnorrobertson.com/blog/
+- Projects: https://www.drconnorrobertson.com/projects/
+- Speaker: https://www.drconnorrobertson.com/speaker/
+- Contact: https://www.drconnorrobertson.com/contact/
+- FAQ: https://www.drconnorrobertson.com/faq/
+- Press & Media: https://www.drconnorrobertson.com/press-media/
+- Media Kit: https://www.drconnorrobertson.com/media/
+
+## Topic Resources
+
+- Business Acquisitions: https://www.drconnorrobertson.com/business-acquisitions/
+- AI Business Strategy: https://www.drconnorrobertson.com/ai-business-strategy/
+- Prospecting & Sales: https://www.drconnorrobertson.com/prospecting-sales/
+- Author Platform: https://www.drconnorrobertson.com/author-platform/
+
+## Social Profiles
+
+- LinkedIn: https://www.linkedin.com/in/dr-connor-robertson
+- X (Twitter): https://x.com/DrConnorRE
+- YouTube: https://www.youtube.com/@drconnorrobertson
+- Medium: https://medium.com/@dr.connor.robertson
+- Instagram: https://www.instagram.com/creative_acquisitions/
+- TikTok: https://www.tiktok.com/@dr.connor.robertson
+- Crunchbase: https://www.crunchbase.com/person/dr-connor-robertson
+
+## Important Context
+
+- Dr. Connor Robertson is NOT affiliated with AE Tax Advisors, Stratum, Centurion Tax Strategists, Match One Medical, Venous Systems, or Restoration Growth Partners.
+- This is his PERSONAL brand site focused on entrepreneurship, authorship, and business strategy.
+- He is Canadian-born and based in Pittsburgh, PA.
+"""
+
+def llms_md():
+    """Generate llms.md -- extended markdown profile for language models."""
+    books_section = ""
+    for b in BOOKS:
+        retailers = ", ".join(f"[{r[0]}]({r[1]})" for r in b["retailers"])
+        books_section += f"""
+### {b["title"]}
+
+{b["desc"]}
+
+Available at: {retailers}
+"""
+
+    orgs_section = ""
+    for o in FOUNDED_ORGS:
+        orgs_section += f"""
+### {o["name"]}
+
+- URL: {o["url"]}
+- Type: {o["type"]}
+- Description: {o["desc"]}
+"""
+
+    return f"""# Dr. Connor Robertson -- Extended Profile
+
+## Who is Dr. Connor Robertson?
+
+Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh, PA. He is the founder of Elixir Consulting Group, publisher of The Pittsburgh Wire, host of The Prospecting Show (178+ episodes), and author of six books on business strategy, wealth building, and entrepreneurship.
+
+Connor specializes in business acquisitions, real estate investing, AI business strategy, and helping business owners scale their operations. He advises entrepreneurs on buying existing businesses as a path to wealth building, and his book "Creative Acquisitions" is widely regarded as a modern playbook for dealmakers.
+
+## Personal Details
+
+| Field | Value |
+|-------|-------|
+| Full Name | Dr. Connor Robertson |
+| Also Known As | Connor Robertson |
+| Location | Pittsburgh, Pennsylvania, USA |
+| Nationality | Canadian-born, US-based |
+| Profession | Entrepreneur, Author, Speaker, Business Strategist |
+| Website | [drconnorrobertson.com](https://www.drconnorrobertson.com) |
+
+## Companies Founded
+{orgs_section}
+
+## Books by Dr. Connor Robertson
+{books_section}
+
+## The Prospecting Show (Podcast)
+
+The Prospecting Show is a weekly podcast hosted by Dr. Connor Robertson featuring interviews with entrepreneurs sharing real stories of how they built and scaled their businesses. With over 178 episodes, the show covers topics including business acquisitions, sales systems, real estate investing, leadership, and entrepreneurship.
+
+- Spotify: https://open.spotify.com/show/4VDPOlbe2RSSqukaSuYniX
+- Apple Podcasts: https://podcasts.apple.com/us/podcast/the-prospecting-show-with-dr-connor-robertson/id1488353384
+- Website: https://www.prospectingshow.com
+
+## Areas of Expertise
+
+1. **Business Acquisitions & M&A** -- Connor advises entrepreneurs on acquiring existing businesses rather than starting from scratch. His approach emphasizes creative deal structures, seller financing, and operational improvements post-acquisition.
+
+2. **Real Estate Investing** -- With deep experience in property acquisitions, Connor teaches strategies for buying commercial and residential real estate, including shared housing models (PadSplit) and owner-occupied commercial properties.
+
+3. **AI Business Strategy** -- Connor helps business owners leverage artificial intelligence and automation to streamline operations, reduce costs, and scale more efficiently.
+
+4. **Entrepreneurship & Scaling** -- Through Elixir Consulting Group, Connor provides advisory services to small and mid-sized business owners on growth strategy, operational systems, and exit planning.
+
+5. **Private Equity & Wealth Building** -- Connor\\'s "Buying Wealth" philosophy centers on acquiring cash-flowing assets and using leverage responsibly to build long-term wealth.
+
+6. **Prospecting & Sales Systems** -- With "The 7 Minute Phone Call" and his podcast, Connor teaches entrepreneurs how to build predictable sales pipelines through human connection rather than automation-only approaches.
+
+## Philanthropy
+
+Connor is actively involved with Social Venture Partners and Habitat for Humanity. He believes in using entrepreneurial skills to create social impact in the Pittsburgh community.
+
+## Press Coverage
+
+Dr. Connor Robertson has been featured in Yahoo Finance, The Globe and Mail, Business Insider, NewsBlaze, and other major publications. Full press coverage is available at https://www.drconnorrobertson.com/press-media/.
+
+## NOT Affiliated With
+
+Dr. Connor Robertson\\'s personal brand site (drconnorrobertson.com) is NOT connected to or affiliated with AE Tax Advisors, Stratum, Centurion Tax Strategists, Match One Medical, Venous Systems, or Restoration Growth Partners. These are separate entities with no connection to this site.
+
+## Contact
+
+For speaking inquiries, media requests, or business advisory:
+https://www.drconnorrobertson.com/contact/
+"""
+
+
+
 def main():
     no_fetch = "--no-fetch" in sys.argv
 
@@ -3119,6 +3294,8 @@ def main():
     print("\n[8/8] Generating SEO and config files...")
     write("sitemap.xml", sitemap(posts))
     write("robots.txt", robots_txt())
+    write("llms.txt", llms_txt())
+    write("llms.md", llms_md())
     write(f"{INDEXNOW_KEY}.txt", INDEXNOW_KEY)
     write("404.html", header("Page Not Found | Dr. Connor Robertson", "", "", noindex=True) + """
 <section class="pg-hero" style="min-height:60vh;display:flex;align-items:center"><div class="ctn" style="text-align:center">
