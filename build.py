@@ -595,6 +595,7 @@ PRESS_ARTICLES = [
     ("Dr. Connor Robertson on Training a Team to Use AI Without Losing the Human Touch", "https://marketdaily.com/dr-connor-robertson-on-training-a-team-to-use-ai-without-losing-the-human-touch/", "Market Daily"),
     ("Dr. Connor Robertson on the Anatomy of an Effective AI Workflow", "https://celebritynews.com/dr-connor-robertson-on-the-anatomy-of-an-effective-ai-workflow/", "Celebrity News"),
     ("The VA Model Is Dead: Here's What Replaced It", "https://blog.venturemagazine.net/dr-connor-robertson-the-va-model-is-dead-heres-what-replaced-it-7b5df3f71fe3", "Venture Magazine"),
+    ("Dr. Connor Robertson: Entrepreneur, Author, and Founder Helping Businesses Optimize for Growth", "https://gritdaily.com/dr-connor-robertson-entrepreneur-author-and-founder/", "Grit Daily"),
 ]
 
 # `slug` is the stable anchor for each book: it is the id on the card, the
@@ -1486,7 +1487,7 @@ def page_home():
 </div></section>
 <section class="feat"><div class="ctn">
 <h2>As Featured On</h2>
-<div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div>
+<div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Grit Daily</span></div>
 </div></section>
 <section class="sec"><div class="ctn">
 <h2 class="sec-t">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh.</h2>
@@ -1817,7 +1818,7 @@ def page_press():
 <h1>Press &amp; Media</h1><p>Dr. Connor Robertson's insights and features across leading publications.</p>
 </div></section>
 <section class="sec"><div class="ctn">
-<div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span></div></div>
+<div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Grit Daily</span></div></div>
 <div class="pgrid">{cards}</div>
 </div></section>
 """ + footer()
