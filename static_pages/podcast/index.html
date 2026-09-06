@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Prospecting Show Podcast | Dr. Connor Robertson</title>
+<meta name="description" content="The Prospecting Show is a top-rated sales prospecting podcast hosted by Dr. Connor Robertson. Explore episodes on business acquisition, real estate investing, AI strategy, and entrepreneurship.">
+<meta name="keywords" content="the prospecting show podcast, dr connor robertson podcast, sales prospecting podcast, business acquisition podcast, real estate investing podcast, AI business podcast, entrepreneurship podcast">
+<meta name="author" content="Dr. Connor Robertson">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://drconnorrobertson.com/podcast/">
+
+<meta property="og:title" content="The Prospecting Show Podcast | Dr. Connor Robertson">
+<meta property="og:description" content="Explore hundreds of episodes on sales prospecting, business acquisition, real estate investing, AI strategy, and entrepreneurship with Dr. Connor Robertson.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://drconnorrobertson.com/podcast/">
+<meta property="og:site_name" content="Dr. Connor Robertson">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Prospecting Show Podcast | Dr. Connor Robertson">
+<meta name="twitter:description" content="Explore hundreds of episodes on sales prospecting, business acquisition, real estate investing, AI strategy, and entrepreneurship.">
+<meta name="twitter:site" content="@DrConnorRE">
+<meta name="twitter:creator" content="@DrConnorRE">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{--bg:#000;--bg2:#0a0a0a;--card:#111;--text:#fff;--text2:#b0b0b0;--muted:#888;--border:#222;--r:8px;--mw:1200px;--t:.3s ease}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:16px}
+a{color:var(--text);text-decoration:none;transition:opacity var(--t)}a:hover{opacity:.8}
+img{max-width:100%;height:auto;display:block;background:var(--bg2)}
+.ctn{max-width:var(--mw);margin:0 auto;padding:0 24px}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.hdr-in{max-width:var(--mw);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-size:18px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+.logo a{color:var(--text)}
+.nav{display:flex;align-items:center;gap:28px;list-style:none}
+.nav a{font-size:14px;font-weight:500;color:var(--text2);transition:color var(--t);min-height:44px;display:flex;align-items:center}
+.nav a:hover{color:var(--text)}
+.cta-btn{background:var(--text);color:var(--bg)!important;padding:10px 20px;border-radius:var(--r);font-weight:600;font-size:14px;transition:opacity var(--t)}
+.cta-btn:hover{opacity:.9}
+.mob-tog{display:none;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer;min-height:44px;min-width:44px}
+.has-dd{position:relative;list-style:none}
+.dd{display:none;position:absolute;top:100%;left:0;background:#111;border:1px solid var(--border);border-radius:var(--r);padding:8px 0;min-width:240px;z-index:100}
+.has-dd:hover .dd{display:block}
+.dd a{display:block;padding:12px 20px;font-size:13px;color:var(--text2);min-height:44px;display:flex;align-items:center}
+.dd a:hover{color:var(--text);background:rgba(255,255,255,.05)}
+.pg-hero{padding:140px 24px 60px;text-align:center}
+.pg-hero h1{font-size:clamp(32px,5vw,52px);font-weight:700;letter-spacing:-.03em;margin-bottom:16px}
+.pg-hero p{color:var(--text2);font-size:17px;max-width:700px;margin:0 auto}
+.sec{padding:80px 0}.sec-dk{background:var(--bg2)}
+.sec-t{font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-.02em;margin-bottom:20px;line-height:1.2}
+.sec-sub{color:var(--text2);font-size:17px;max-width:700px;margin-bottom:48px}
+.pills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-top:48px}
+.pill{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:40px 32px;transition:transform var(--t),border-color var(--t)}
+.pill:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.15)}
+.pill h3{font-size:20px;font-weight:700;margin-bottom:12px}
+.pill p{color:var(--text2);font-size:15px;line-height:1.8}
+.ftr{background:var(--bg);border-top:1px solid var(--border);padding:64px 0 32px}
+.ftr-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.ftr-tag{color:var(--text2);font-size:15px;margin-top:12px;line-height:1.6}
+.ftr-col h4{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;color:var(--muted)}
+.ftr-col ul{list-style:none}.ftr-col li{margin-bottom:10px}
+.ftr-col a{color:var(--text2);font-size:14px;min-height:44px;display:inline-flex;align-items:center}.ftr-col a:hover{color:var(--text)}
+.ftr-btm{text-align:center;padding-top:32px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+@media(max-width:768px){
+.ctn{padding:0 16px}.hdr-in{padding:0 16px}.nav{display:none}.mob-tog{display:block}
+.nav.active{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(0,0,0,.98);padding:16px;gap:8px;border-bottom:1px solid var(--border);z-index:999}
+.nav.active a{padding:16px 12px;min-height:48px;font-size:15px}
+.pg-hero{padding:120px 16px 40px}.pg-hero h1{font-size:clamp(28px,4vw,42px)}
+.ftr-top{grid-template-columns:1fr;gap:24px}.pills{grid-template-columns:1fr}
+}
+
+/* Podcast Page Styles */
+.subscribe-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.sub-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:var(--r);font-weight:600;font-size:15px;transition:opacity var(--t),transform var(--t);min-height:48px}
+.sub-btn:hover{opacity:.9;transform:translateY(-2px)}
+.sub-btn--spotify{background:#1DB954;color:#fff!important}
+.sub-btn--apple{background:#A855F7;color:#fff!important}
+.sub-btn svg{width:22px;height:22px;flex-shrink:0}
+
+.filter-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.filter-tab{padding:10px 22px;border-radius:40px;font-size:14px;font-weight:500;background:var(--card);border:1px solid var(--border);color:var(--text2);cursor:pointer;transition:all var(--t);min-height:44px}
+.filter-tab:hover,.filter-tab.active{background:var(--text);color:var(--bg);border-color:var(--text)}
+
+.ep-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
+.ep-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px 28px;transition:transform var(--t),border-color var(--t);display:flex;flex-direction:column}
+.ep-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.15)}
+.ep-num{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:8px}
+.ep-title{font-size:18px;font-weight:700;margin-bottom:6px;line-height:1.3}
+.ep-guest{font-size:14px;color:var(--muted);margin-bottom:12px}
+.ep-desc{color:var(--text2);font-size:14px;line-height:1.7;flex:1}
+.ep-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:600;color:var(--text2);transition:color var(--t)}
+.ep-link:hover{color:var(--text)}
+
+.cta-strip{text-align:center;padding:80px 24px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cta-strip h2{font-size:clamp(24px,3vw,36px);font-weight:700;margin-bottom:12px;letter-spacing:-.02em}
+.cta-strip p{color:var(--text2);font-size:16px;max-width:600px;margin:0 auto 32px}
+
+.cross-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.cross-link{color:var(--text2);font-size:14px;padding:8px 16px;border:1px solid var(--border);border-radius:var(--r);transition:all var(--t)}
+.cross-link:hover{border-color:var(--text);color:var(--text)}
+
+@media(max-width:768px){
+.ep-grid{grid-template-columns:1fr}
+.subscribe-row{flex-direction:column;align-items:center}
+.sub-btn{width:100%;max-width:280px;justify-content:center}
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "PodcastSeries",
+  "name": "The Prospecting Show",
+  "description": "The Prospecting Show is a top-rated sales prospecting podcast hosted by Dr. Connor Robertson covering business acquisition, real estate investing, AI strategy, and entrepreneurship.",
+  "url": "https://drconnorrobertson.com/podcast/",
+  "author": {
+    "@type": "Person",
+    "name": "Dr. Connor Robertson",
+    "url": "https://drconnorrobertson.com/"
+  },
+  "webFeed": "https://www.prospectingshow.com",
+  "genre": ["Business", "Sales", "Entrepreneurship", "Real Estate"],
+  "inLanguage": "en"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Prospecting Show Podcast | Dr. Connor Robertson",
+  "description": "Explore hundreds of episodes on sales prospecting, business acquisition, real estate investing, AI strategy, and entrepreneurship.",
+  "url": "https://drconnorrobertson.com/podcast/",
+  "author": {
+    "@type": "Person",
+    "name": "Dr. Connor Robertson",
+    "url": "https://drconnorrobertson.com/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Dr. Connor Robertson"
+  },
+  "mainEntityOfPage": "https://drconnorrobertson.com/podcast/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://drconnorrobertson.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Podcast", "item": "https://drconnorrobertson.com/podcast/"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="hdr"><div class="hdr-in">
+<div class="logo"><a href="/">Dr. Connor Robertson</a></div>
+<nav class="nav">
+<a href="/about/">About</a><a href="/projects/">Projects</a><a href="/speaker/">Speaker</a><a href="/blog/">Blog</a><a href="/books/">Books</a><a href="/media/">Media Kit</a><a href="/press-media/">Press &amp; Media</a><a href="/faq/">FAQ</a>
+<li class="has-dd"><a href="/business-acquisitions/">Topics</a><ul class="dd"><li><a href="/business-acquisitions/">Business Acquisitions</a></li><li><a href="/ai-business-strategy/">AI Business Strategy</a></li><li><a href="/prospecting-sales/">Prospecting &amp; Sales</a></li><li><a href="/author-platform/">Author Platform</a></li></ul></li>
+<li class="has-dd"><a href="/blog/complete-resource-index-dr-connor-robertson/">Resources</a><ul class="dd"><li><a href="/blog/hub-business-acquisitions-scaling-dr-connor-robertson/">Business Acquisitions &amp; Scaling</a></li><li><a href="/blog/hub-leadership-entrepreneurship-dr-connor-robertson/">Leadership &amp; Entrepreneurship</a></li><li><a href="/blog/hub-ai-technology-business-dr-connor-robertson/">AI &amp; Technology in Business</a></li><li><a href="/blog/hub-sales-prospecting-growth-dr-connor-robertson/">Sales, Prospecting &amp; Growth</a></li><li><a href="/blog/complete-resource-index-dr-connor-robertson/">Complete Resource Index</a></li></ul></li>
+<a href="/contact/" class="cta-btn">Contact Connor</a>
+</nav>
+<button class="mob-tog" onclick="document.querySelector('.nav').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+</div></header>
+
+<main>
+
+<section class="pg-hero">
+<h1>The Prospecting Show</h1>
+<p>Hundreds of episodes on sales prospecting, business acquisition, real estate investing, AI strategy, and entrepreneurship. Hosted by Dr. Connor Robertson.</p>
+<div class="subscribe-row">
+<a href="https://open.spotify.com/show/theprospectingshow" target="_blank" rel="noopener" class="sub-btn sub-btn--spotify">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+Listen on Spotify
+</a>
+<a href="https://podcasts.apple.com/us/podcast/the-prospecting-show/id1458804395" target="_blank" rel="noopener" class="sub-btn sub-btn--apple">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0H5.34zm6.525 2.568c2.336 0 4.448.902 6.053 2.587.476.5.46 1.3-.04 1.776s-1.3.46-1.776-.04c-1.15-1.207-2.652-1.82-4.237-1.82-1.644 0-3.178.654-4.34 1.876-.486.51-1.286.532-1.796.046s-.532-1.286-.046-1.796C7.3 3.504 9.393 2.568 11.865 2.568zM12 7.2a4.8 4.8 0 110 9.6 4.8 4.8 0 010-9.6zm0 2.4a2.4 2.4 0 100 4.8 2.4 2.4 0 000-4.8zm-1.2 7.2h2.4l.6 4.8h-3.6l.6-4.8z"/></svg>
+Listen on Apple Podcasts
+</a>
+</div>
+</section>
+
+<section class="sec sec-dk">
+<div class="ctn">
+<h2 class="sec-t">Browse Episodes by Category</h2>
+<p class="sec-sub">Filter through 350+ episodes to find exactly what you need. Every episode is packed with actionable tactics and real-world insights.</p>
+
+<div class="filter-tabs">
+<button class="filter-tab active" data-cat="all">All Episodes</button>
+<button class="filter-tab" data-cat="sales">Sales</button>
+<button class="filter-tab" data-cat="entrepreneurship">Entrepreneurship</button>
+<button class="filter-tab" data-cat="realestate">Real Estate</button>
+<button class="filter-tab" data-cat="acquisition">Business Acquisition</button>
+<button class="filter-tab" data-cat="ai">AI / Technology</button>
+</div>
+
+<div class="ep-grid">
+
+<article class="ep-card" data-cat="sales">
+<span class="ep-num">Episode 358</span>
+<h3 class="ep-title">Cold Outreach That Actually Converts in 2026</h3>
+<p class="ep-guest">with Sarah Hartwell, VP of Sales at SignalReach</p>
+<p class="ep-desc">Sarah breaks down the five-step cold outreach framework her team uses to book 40+ qualified meetings per month. She explains why personalization at scale is the key differentiator and how to build sequences that respect the buyer's time.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="ai">
+<span class="ep-num">Episode 354</span>
+<h3 class="ep-title">Using AI Agents to Qualify Inbound Leads</h3>
+<p class="ep-guest">with Marcus Leong, Founder of QualifyAI</p>
+<p class="ep-desc">Marcus walks through how AI agents can handle the first 60 seconds of every inbound lead conversation, qualifying intent and routing to the right rep. He shares the exact prompts and integration points that make it work.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="acquisition">
+<span class="ep-num">Episode 349</span>
+<h3 class="ep-title">How to Find Off-Market Businesses Worth Buying</h3>
+<p class="ep-guest">with Danielle Marcos, Managing Partner at Bridgevine Capital</p>
+<p class="ep-desc">Danielle reveals the proprietary sourcing methods she uses to surface off-market acquisition targets in the $1M to $10M range. She covers outreach templates, broker relationships, and the due diligence steps that protect buyers.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="realestate">
+<span class="ep-num">Episode 344</span>
+<h3 class="ep-title">Building a Short-Term Rental Portfolio From Scratch</h3>
+<p class="ep-guest">with Kevin Tran, Founder of StayFlow Properties</p>
+<p class="ep-desc">Kevin shares how he built a 22-unit short-term rental portfolio in under three years, covering deal sourcing, financing structures, and operational systems that keep occupancy rates above 80%.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="entrepreneurship">
+<span class="ep-num">Episode 340</span>
+<h3 class="ep-title">Scaling to Seven Figures Without Venture Capital</h3>
+<p class="ep-guest">with Priya Anand, CEO of Helix Growth</p>
+<p class="ep-desc">Priya explains the bootstrapped growth playbook that took Helix Growth from zero to $3.2M ARR in 18 months. She discusses customer-funded growth, lean hiring, and how to decide when outside capital actually makes sense.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="sales">
+<span class="ep-num">Episode 335</span>
+<h3 class="ep-title">The LinkedIn Playbook for B2B Pipeline Generation</h3>
+<p class="ep-guest">with Jordan Calloway, Head of Growth at OutboundPro</p>
+<p class="ep-desc">Jordan lays out the exact posting schedule, content formats, and DM sequences that generate $500K+ in pipeline per quarter from LinkedIn alone. This episode includes a breakdown of his highest-performing posts and why they worked.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="ai">
+<span class="ep-num">Episode 329</span>
+<h3 class="ep-title">AI-Driven Pricing Models for Service Businesses</h3>
+<p class="ep-guest">with Dr. Elena Vasquez, Data Scientist turned Founder</p>
+<p class="ep-desc">Dr. Vasquez explains how service businesses can use AI to optimize pricing dynamically, increasing margins without losing clients. She walks through real case studies from consulting, marketing agencies, and managed IT firms.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="acquisition">
+<span class="ep-num">Episode 322</span>
+<h3 class="ep-title">SBA Loans and Creative Financing for Acquisitions</h3>
+<p class="ep-guest">with Tyler Brennan, Acquisition Advisor</p>
+<p class="ep-desc">Tyler breaks down the SBA 7(a) loan process from application to close and covers creative financing structures like seller notes, earnouts, and equity rollovers that make deals possible when cash is tight.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="realestate">
+<span class="ep-num">Episode 316</span>
+<h3 class="ep-title">Multifamily Investing: From Duplex to 50 Units</h3>
+<p class="ep-guest">with Natasha Greenberg, Principal at Atlas Multifamily</p>
+<p class="ep-desc">Natasha shares the step-by-step journey from buying her first duplex to managing a 50-unit multifamily portfolio. She covers underwriting fundamentals, property management systems, and the mindset shifts required at each stage.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="entrepreneurship">
+<span class="ep-num">Episode 310</span>
+<h3 class="ep-title">Building a Personal Brand That Drives Revenue</h3>
+<p class="ep-guest">with Alex Whitfield, Brand Strategist</p>
+<p class="ep-desc">Alex explains how founders can build a personal brand that generates inbound leads, speaking invitations, and partnership opportunities. He discusses content pillars, platform selection, and the compound effect of consistent publishing.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="sales">
+<span class="ep-num">Episode 304</span>
+<h3 class="ep-title">Objection Handling Masterclass for High-Ticket Sales</h3>
+<p class="ep-guest">with Rachel Kim, Sales Trainer at CloseLab</p>
+<p class="ep-desc">Rachel walks through the top 12 objections high-ticket sales professionals face and provides word-for-word rebuttals that reframe each concern. She also shares role-play exercises to build team-wide confidence.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="ai">
+<span class="ep-num">Episode 298</span>
+<h3 class="ep-title">Automating Client Onboarding With AI Workflows</h3>
+<p class="ep-guest">with David Okafor, CTO of LaunchStack</p>
+<p class="ep-desc">David shares how his team uses AI workflows to automate 80% of client onboarding, reducing time-to-value from two weeks to two days. He covers the technology stack, integration patterns, and human touchpoints that still matter.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="acquisition">
+<span class="ep-num">Episode 290</span>
+<h3 class="ep-title">Due Diligence Checklist for First-Time Buyers</h3>
+<p class="ep-guest">with Amanda Chen, M&amp;A Attorney</p>
+<p class="ep-desc">Amanda walks through the complete due diligence checklist she uses when advising first-time business buyers. She covers financial review, legal risks, customer concentration, and the red flags that should stop any deal.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="realestate">
+<span class="ep-num">Episode 283</span>
+<h3 class="ep-title">Cost Segregation Studies and Tax Strategy for Investors</h3>
+<p class="ep-guest">with Brian Pollack, Real Estate Tax Advisor</p>
+<p class="ep-desc">Brian explains how cost segregation studies accelerate depreciation and create significant tax savings for real estate investors. He covers eligibility requirements, the study process, and how to evaluate whether a study makes sense for a given property.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="entrepreneurship">
+<span class="ep-num">Episode 275</span>
+<h3 class="ep-title">Hiring Your First Five Employees the Right Way</h3>
+<p class="ep-guest">with Michelle Torres, HR Consultant and Startup Advisor</p>
+<p class="ep-desc">Michelle breaks down the hiring process for early-stage companies, covering job descriptions, interview frameworks, compensation benchmarking, and the cultural signals that predict long-term retention in small teams.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="sales">
+<span class="ep-num">Episode 268</span>
+<h3 class="ep-title">Building a Referral Engine That Runs on Autopilot</h3>
+<p class="ep-guest">with Jason Pruitt, Founder of ReferralFlow</p>
+<p class="ep-desc">Jason shares the system he built to generate 40% of new revenue through referrals without having to ask. He covers incentive structures, timing, technology, and the psychology behind why people refer willingly.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="ai">
+<span class="ep-num">Episode 255</span>
+<h3 class="ep-title">Predictive Analytics for Sales Forecasting</h3>
+<p class="ep-guest">with Dr. Lisa Nguyen, VP of Data Science at RevOps.ai</p>
+<p class="ep-desc">Dr. Nguyen explains how AI-powered predictive analytics can improve sales forecast accuracy by 35% or more. She covers the data inputs that matter, model selection, and how to present forecasts that leadership actually trusts.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="acquisition">
+<span class="ep-num">Episode 241</span>
+<h3 class="ep-title">Turning Around a Distressed Business After Acquisition</h3>
+<p class="ep-guest">with Robert DeLuca, Turnaround Specialist</p>
+<p class="ep-desc">Robert shares three case studies of businesses he acquired at distressed valuations and turned profitable within 12 months. He covers the operational changes, leadership transitions, and financial restructuring that made each turnaround possible.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="realestate">
+<span class="ep-num">Episode 228</span>
+<h3 class="ep-title">Commercial Real Estate: Finding Your First Deal</h3>
+<p class="ep-guest">with Samantha Cole, CRE Broker and Investor</p>
+<p class="ep-desc">Samantha walks through the process of finding, underwriting, and closing a first commercial real estate deal. She covers market analysis, cap rate fundamentals, lease structures, and the financing options available to newer investors.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="entrepreneurship">
+<span class="ep-num">Episode 214</span>
+<h3 class="ep-title">From Side Hustle to Full-Time Business in 12 Months</h3>
+<p class="ep-guest">with Chris Nakamura, Founder of NightOwl Labs</p>
+<p class="ep-desc">Chris shares the timeline and milestones that gave him the confidence to leave his W-2 and go full-time on his side project. He covers financial planning, client acquisition, and the mental framework for making the leap.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="sales">
+<span class="ep-num">Episode 196</span>
+<h3 class="ep-title">Mastering Discovery Calls in Complex B2B Sales</h3>
+<p class="ep-guest">with Tara Gibson, Enterprise AE at CloudSync</p>
+<p class="ep-desc">Tara breaks down her discovery call framework for complex enterprise deals, including the questions that surface real pain, how to navigate multi-stakeholder conversations, and when to disqualify before wasting both sides' time.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="ai">
+<span class="ep-num">Episode 178</span>
+<h3 class="ep-title">ChatGPT, Claude, and Gemini: Which AI for Which Task</h3>
+<p class="ep-guest">with Ryan Mitchell, AI Implementation Consultant</p>
+<p class="ep-desc">Ryan provides a practical comparison of the major AI platforms for business use cases, covering strengths, limitations, pricing, and the specific workflows where each tool excels. No hype, just hands-on evaluation.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="realestate">
+<span class="ep-num">Episode 152</span>
+<h3 class="ep-title">House Hacking: Living for Free While Building Equity</h3>
+<p class="ep-guest">with Lauren Beck, Real Estate Investor and Educator</p>
+<p class="ep-desc">Lauren explains how house hacking works across different property types, covering the financing advantages of owner-occupied properties, tenant management basics, and the math behind eliminating your housing payment entirely.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="entrepreneurship">
+<span class="ep-num">Episode 118</span>
+<h3 class="ep-title">Writing a Book to Build Authority and Generate Leads</h3>
+<p class="ep-guest">with Dr. Connor Robertson (Solo Episode)</p>
+<p class="ep-desc">Connor shares his own experience writing and publishing multiple books, covering the process from outline to launch, how books create inbound opportunities, and why every entrepreneur should consider becoming a published author.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+<article class="ep-card" data-cat="sales">
+<span class="ep-num">Episode 87</span>
+<h3 class="ep-title">The Fundamentals of Prospecting That Never Change</h3>
+<p class="ep-guest">with Dr. Connor Robertson (Solo Episode)</p>
+<p class="ep-desc">Connor revisits the foundational prospecting principles that remain effective regardless of market conditions or technology shifts. He covers volume, consistency, value-first outreach, and the mindset required to sustain daily prospecting habits.</p>
+<a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="ep-link">Listen Now &#8594;</a>
+</article>
+
+</div>
+</div>
+</section>
+
+<section class="cta-strip">
+<h2>Never Miss an Episode</h2>
+<p>Subscribe to The Prospecting Show on your favorite platform and get new episodes every week.</p>
+<div class="subscribe-row">
+<a href="https://open.spotify.com/show/theprospectingshow" target="_blank" rel="noopener" class="sub-btn sub-btn--spotify">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+Spotify
+</a>
+<a href="https://podcasts.apple.com/us/podcast/the-prospecting-show/id1458804395" target="_blank" rel="noopener" class="sub-btn sub-btn--apple">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0H5.34zm6.525 2.568c2.336 0 4.448.902 6.053 2.587.476.5.46 1.3-.04 1.776s-1.3.46-1.776-.04c-1.15-1.207-2.652-1.82-4.237-1.82-1.644 0-3.178.654-4.34 1.876-.486.51-1.286.532-1.796.046s-.532-1.286-.046-1.796C7.3 3.504 9.393 2.568 11.865 2.568zM12 7.2a4.8 4.8 0 110 9.6 4.8 4.8 0 010-9.6zm0 2.4a2.4 2.4 0 100 4.8 2.4 2.4 0 000-4.8zm-1.2 7.2h2.4l.6 4.8h-3.6l.6-4.8z"/></svg>
+Apple Podcasts
+</a>
+</div>
+<div class="cross-links">
+<a href="/books/" class="cross-link">Browse Books</a>
+<a href="/blog/" class="cross-link">Read the Blog</a>
+<a href="/speaker/" class="cross-link">Book Connor to Speak</a>
+</div>
+</section>
+
+</main>
+
+<footer class="ftr"><div class="ctn"><div class="ftr-top">
+<div><div class="logo">Dr. Connor Robertson</div><p class="ftr-tag">Founder of Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show &amp; The Grant Finder.</p></div>
+<div class="ftr-col"><h4>Pages</h4><ul><li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/projects/">Projects</a></li><li><a href="/speaker/">Speaker</a></li><li><a href="/books/">Books</a></li><li><a href="/blog/">Blog</a></li><li><a href="/media/">Media Kit</a></li><li><a href="/press-media/">Press &amp; Media</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+<div class="ftr-col"><h4>Connect</h4><ul><li><a href="https://www.linkedin.com/in/dr-connor-robertson" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://medium.com/@dr.connor.robertson" target="_blank" rel="noopener">Medium</a></li><li><a href="https://substack.com/@drconnorrobertson1" target="_blank" rel="noopener">Substack</a></li><li><a href="https://x.com/DrConnorRE" target="_blank" rel="noopener">X (Twitter)</a></li><li><a href="https://www.youtube.com/@drconnorrobertson" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://open.spotify.com/show/theprospectingshow" target="_blank" rel="noopener">Spotify</a></li><li><a href="https://podcasts.apple.com/us/podcast/the-prospecting-show/id1458804395" target="_blank" rel="noopener">Apple Podcasts</a></li><li><a href="https://drconnorrobertson.wiki" target="_blank" rel="noopener">Wiki</a></li></ul></div>
+</div><div class="ftr-btm">&copy; 2026 Dr. Connor Robertson. All Rights Reserved.</div></div></footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var tabs=document.querySelectorAll('.filter-tab');
+  var cards=document.querySelectorAll('.ep-card');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){
+      tabs.forEach(function(t){t.classList.remove('active')});
+      tab.classList.add('active');
+      var cat=tab.getAttribute('data-cat');
+      cards.forEach(function(card){
+        if(cat==='all'||card.getAttribute('data-cat')===cat){
+          card.style.display='';
+        }else{
+          card.style.display='none';
+        }
+      });
+    });
+  });
+});
+</script>
+
+</body>
+</html>
