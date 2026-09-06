@@ -1,6 +1,5 @@
 {
-  
-  "buildCommand": "python3 build.py",
+  "buildCommand": "python3 build.py && cp -r static_pages/* dist/ 2>/dev/null || true",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": true,
