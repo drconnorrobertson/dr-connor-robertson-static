@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-""
+"""
 Build script for drconnorrobertson.com static site. Updated 2026-05-18.
-Fetches all content from WPREST API, downloads images locally,
+Fetches all content from WP REST API, downloads images locally,
 and generates a complete static site with full SEO optimization.
 
-Usage
+Usage:
   python3 build.py              # fetches from WP API, generates into dist/
   python3 build.py --no-fetch   # uses cached posts_cache.json
 """
