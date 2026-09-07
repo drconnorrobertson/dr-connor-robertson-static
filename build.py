@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""
+""
 Build script for drconnorrobertson.com static site. Updated 2026-05-18.
-Fetches all content from WP REST API, downloads images locally,
+Fetches all content from WPREST API, downloads images locally,
 and generates a complete static site with full SEO optimization.
 
-Usage:
+Usage
   python3 build.py              # fetches from WP API, generates into dist/
   python3 build.py --no-fetch   # uses cached posts_cache.json
 """
@@ -1095,6 +1095,42 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .podcast-grid{gap:16px}
 .pod-card{padding:24px}
 }
+
+/* ── Layout override fixes ── Sep 2026 ────────────────────────── */
+
+/* Hide inline book preview card in hero */
+.hero-btn + div {
+  display: none !important;
+}
+
+/* Featured logos: proper spacing */
+.feat-logos {
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.feat-logos span {
+  margin: 4px 12px;
+  white-space: nowrap;
+}
+
+/* Tighter hero height */
+.hero {
+  min-height: 75vh;
+  padding-bottom: 60px;
+}
+
+/* Reduce section vertical spacing */
+.sec { padding: 60px 0; }
+.quote { padding: 50px 0; }
+.lead-magnet { padding: 60px 0; }
+.cta-banner { padding: 50px 0; }
+.feat { padding: 36px 0; }
+
+/* Smoother section transitions */
+.hero + .feat { margin-top: 0; }
+section + section { margin-top: 0; }
+
 """
 
 # Ã¢ÂÂÃ¢ÂÂ Template helpers Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
