@@ -1255,7 +1255,7 @@ def site_graph_nodes():
             "height": 1024,
             "caption": "Dr. Connor Robertson",
         },
-        "jobTitle": "Entrepreneur, Author, AI Strategist & Business Acquisition Expert",
+        "jobTitle": "AI Strategist, Entrepreneur, Author & Business Consultant",
         "description": "Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh, PA. Founder of Elixir Consulting Group, publisher of The Pittsburgh Wire, and host of The Prospecting Show.",
         "address": {"@type": "PostalAddress", "addressLocality": "Pittsburgh", "addressRegion": "PA", "addressCountry": "US"},
         "homeLocation": {"@type": "Place", "name": "Pittsburgh, Pennsylvania"},
@@ -1509,12 +1509,12 @@ def page_home():
     ]
     pcards = "".join(f'<div class="pill"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
     return header("Dr. Connor Robertson | Entrepreneur, Author & Speaker",
-        "Pittsburgh entrepreneur, author and AI strategist Dr. Connor Robertson helps owners buy businesses, automate operations and build lasting wealth.",
+        "Pittsburgh entrepreneur, author and AI strategist Dr. Connor Robertson helps business owners deploy AI, automate operations, and build competitive advantage.",
         "/", og_image="/images/dr-connor-robertson-headshot.jpg",
         page_type="ProfilePage", schema_nodes=[nav_schema]) + f"""
-<section class="hero"><div class="hero-bg"><img src="/images/dr-connor-robertson-headshot.jpg" alt="Dr. Connor Robertson - Entrepreneur, Author, and Business Strategist" width="1024" height="1024" loading="eager" class="hero-bg-img"></div><div class="hero-ct">
+<section class="hero"><div class="hero-bg"><img src="/images/dr-connor-robertson-headshot.jpg" alt="Dr. Connor Robertson - AI Strategist, Entrepreneur, and Author" width="1024" height="1024" loading="eager" class="hero-bg-img"></div><div class="hero-ct">
 <h1>Dr. Connor Robertson</h1>
-<p class="tag">Entrepreneur. Author. AI Strategist. Helping business owners acquire companies, automate operations, and build lasting wealth.</p>
+<p class="tag">Entrepreneur. Author. AI Strategist. Helping business owners deploy AI, automate operations, and build competitive advantage.</p>
 <div class="hero-btn"><a href="/books/" class="btn-p">Browse My Books</a><a href="/speaker/" class="btn-s">Book Me to Speak</a></div>
 <div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
 <h3 style="font-size:22px;margin-bottom:8px;">Buying Wealth</h3>
@@ -1532,7 +1532,7 @@ def page_home():
 </div></section>
 <section class="quote"><div class="ctn">
 <p class="quote-t">"Real success comes from creating impact that lasts longer than you do."</p>
-<p class="quote-a"><strong>Dr. Connor Robertson</strong><br>Entrepreneur, Author, AI Strategist &amp; Business Acquisition Expert</p>
+<p class="quote-a"><strong>Dr. Connor Robertson</strong><br>AI Strategist, Entrepreneur, Author &amp; Business Consultant</p>
 </div></section>
 
 <section class="lead-magnet"><div class="ctn">
@@ -1580,7 +1580,7 @@ def page_about():
         ]
     }
     return header("Who Is Dr. Connor Robertson? | Bio, Books & Podcast",
-        "Who is Dr. Connor Robertson? Pittsburgh entrepreneur, author of six books, host of The Prospecting Show and founder of Elixir Consulting Group.",
+        "Who is Dr. Connor Robertson? AI strategist, entrepreneur, and author helping businesses deploy AI for competitive advantage. Founder of Elixir Consulting Group.",
         "/about/", og_image="/images/connor-about.jpg", page_type="AboutPage",
         crumbs=[("Home", "/"), ("About", None)],
         schema_nodes=[faq_schema]) + breadcrumbs([("Home", "/"), ("About", None)]) + """
