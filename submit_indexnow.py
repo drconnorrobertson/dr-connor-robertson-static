@@ -21,7 +21,7 @@ from urllib.error import HTTPError, URLError
 
 BASE_DIR = Path(__file__).parent
 SITEMAP = BASE_DIR / "dist" / "sitemap.xml"
-HOST = "drconnorrobertson.com"
+HOST = "www.drconnorrobertson.com"
 SITE_URL = f"https://{HOST}"
 ENDPOINT = "https://api.indexnow.org/indexnow"
 

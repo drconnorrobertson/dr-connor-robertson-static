@@ -16,6 +16,8 @@ from urllib.request import Request, urlopen
 from urllib.error import URLError
 from urllib.parse import urlparse, urljoin
 
+from acquisition_guides import ACQUISITION_GUIDES
+
 BASE_DIR = Path(__file__).parent
 DIST = BASE_DIR / "dist"
 # Canonical origin. Vercel serves the site on the www host and 307s the apex to
@@ -354,7 +356,6 @@ OWNED_WEBSITES = [
     "https://www.elixirconsultinggroup.com",
     "https://www.thepittsburghwire.com",
     "https://www.prospectingshow.com",
-    "https://thegrantfinder.com",
     "https://www.buyingwealthbook.com",
     "https://builttorunbook.com",
     "https://www.seymourmaison.com",
@@ -1191,13 +1192,6 @@ FOUNDED_ORGS = [
         "desc": "Weekly podcast hosted by Dr. Connor Robertson interviewing entrepreneurs about how they built and scaled their businesses.",
     },
     {
-        "slug": "the-grant-finder",
-        "name": "The Grant Finder",
-        "url": "https://thegrantfinder.com",
-        "type": "Organization",
-        "desc": "Grant discovery service helping small businesses and nonprofits find funding they qualify for.",
-    },
-    {
         "slug": "seymour-maison",
         "name": "Seymour Maison",
         "url": "https://www.seymourmaison.com",
@@ -1234,7 +1228,7 @@ KNOWS_ABOUT = [
     "Business Automation", "Prospecting", "Sales Systems", "Entrepreneurship",
     "Real Estate Investing", "Pittsburgh Business", "Author Platform",
     "Personal Branding", "Leadership", "Podcasting", "Philanthropy",
-    "Private Equity", "Wealth Building", "Business Strategy", "Scaling Businesses",
+    "Wealth Building", "Business Strategy", "Scaling Businesses",
 ]
 
 
@@ -1424,7 +1418,7 @@ def footer():
 <footer class="ftr"><div class="ctn">
 <div class="ftr-top">
 <div><div class="logo" style="font-size:20px;margin-bottom:4px">Dr. Connor Robertson</div>
-<p class="ftr-tag">Founder of <a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener" style="text-decoration:underline">Elixir Consulting Group</a>, <a href="https://thepittsburghwire.com" target="_blank" rel="noopener" style="text-decoration:underline">The Pittsburgh Wire</a>, <a href="https://www.prospectingshow.com" target="_blank" rel="noopener" style="text-decoration:underline">The Prospecting Show</a> &amp; <a href="https://thegrantfinder.com" target="_blank" rel="noopener" style="text-decoration:underline">The Grant Finder</a>.</p></div>
+<p class="ftr-tag">Founder of <a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener" style="text-decoration:underline">Elixir Consulting Group</a>, <a href="https://thepittsburghwire.com" target="_blank" rel="noopener" style="text-decoration:underline">The Pittsburgh Wire</a>, and <a href="https://www.prospectingshow.com" target="_blank" rel="noopener" style="text-decoration:underline">The Prospecting Show</a>.</p></div>
 <div class="ftr-col"><h4>Pages</h4><ul>{pages}</ul></div>
 <div class="ftr-col"><h4>Connect</h4><ul>{social}</ul></div>
 </div>
@@ -1468,7 +1462,24 @@ def related_posts_html(current_url, all_posts, limit=3):
     """Render a 'Related Posts' section showing up to `limit` other recent posts."""
     if not all_posts:
         return ""
-    related = [rp for rp in all_posts if rp.get("relative_url") != current_url][:limit]
+    current = next((rp for rp in all_posts if rp.get("relative_url") == current_url), None)
+    stop = {"the", "and", "for", "that", "with", "from", "this", "your", "why", "how", "what", "are", "into", "2026", "business", "connor", "robertson"}
+    seed_text = " ".join([
+        strip_tags((current or {}).get("title", "")),
+        " ".join((current or {}).get("categories", [])),
+        strip_tags((current or {}).get("excerpt", "")),
+    ]).lower()
+    seed_words = {w for w in re.findall(r"[a-z]{3,}", seed_text) if w not in stop}
+    def score(rp):
+        candidate = " ".join([
+            strip_tags(rp.get("title", "")),
+            " ".join(rp.get("categories", [])),
+            strip_tags(rp.get("excerpt", "")),
+        ]).lower()
+        title = strip_tags(rp.get("title", "")).lower()
+        return sum(3 if w in title else 1 for w in seed_words if w in candidate)
+    candidates = [rp for rp in all_posts if rp.get("relative_url") != current_url]
+    related = sorted(candidates, key=lambda rp: (score(rp), rp.get("date", "")), reverse=True)[:limit]
     if not related:
         return ""
     cards = ""
@@ -1503,19 +1514,19 @@ def page_home():
         "url": [f"{SITE_URL}{href}" for _, href in PILLAR_PAGES] + [f"{SITE_URL}{href}" for _, href in NAV_ITEMS],
     }
     pillars = [
-        ("Entrepreneur & Business Acquisition Expert", "Dr. Connor Robertson has founded four companies and helps business owners acquire, scale, and exit businesses through <a href=\"https://elixirconsultinggroup.com\" target=\"_blank\" rel=\"noopener\">Elixir Consulting Group</a>. His book <em>Creative Acquisitions</em> is the playbook for modern dealmakers."),
-        ("Author & AI Strategist", "Six published books on acquisitions, prospecting, and wealth building. Connor also helps small businesses deploy AI to automate operations and outpace competitors. Browse all titles on <a href=\"/books/\">his books page</a>."),
-        ("Podcast Host & Community Builder", "Host of <a href=\"https://www.prospectingshow.com\" target=\"_blank\" rel=\"noopener\">The Prospecting Show</a> with 350+ episodes and publisher of <a href=\"https://thepittsburghwire.com\" target=\"_blank\" rel=\"noopener\">The Pittsburgh Wire</a>. Connor also supports Social Venture Partners and Habitat for Humanity."),
+        ("Acquire the Right Business", "Define acquisition criteria, evaluate normalized earnings, test valuation, and structure a transaction around verified performance. Start with the <a href=\"/business-acquisitions/\">complete business acquisition guide</a>."),
+        ("Operate What You Buy", "Turn seller-dependent knowledge into documented systems, accountable leadership, reliable reporting, and a focused first-100-day plan."),
+        ("Build Durable Enterprise Value", "Improve revenue quality, management depth, customer retention, and operating discipline so growth becomes transferable value rather than a larger job for the owner."),
     ]
     pcards = "".join(f'<div class="pill"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
-    return header("Dr. Connor Robertson | Entrepreneur, Author & Speaker",
-        "Pittsburgh entrepreneur, author and AI strategist Dr. Connor Robertson helps business owners deploy AI, automate operations, and build competitive advantage.",
+    return header("Dr. Connor Robertson | Business Acquisitions & Operations",
+        "Dr. Connor Robertson helps entrepreneurs acquire, operate, and scale profitable businesses through practical valuation, diligence, structure, and operating systems.",
         "/", og_image="/images/dr-connor-robertson-headshot.jpg",
         page_type="ProfilePage", schema_nodes=[nav_schema]) + f"""
-<section class="hero"><div class="hero-bg"><img src="/images/dr-connor-robertson-headshot.jpg" alt="Dr. Connor Robertson - AI Strategist, Entrepreneur, and Author" width="1024" height="1024" loading="eager" class="hero-bg-img"></div><div class="hero-ct">
+<section class="hero"><div class="hero-bg"><img src="/images/dr-connor-robertson-headshot.jpg" alt="Dr. Connor Robertson, business acquisition strategist and author" width="1024" height="1024" loading="eager" class="hero-bg-img"></div><div class="hero-ct">
 <h1>Dr. Connor Robertson</h1>
-<p class="tag">Entrepreneur. Author. AI Strategist. Helping business owners deploy AI, automate operations, and build competitive advantage.</p>
-<div class="hero-btn"><a href="/books/" class="btn-p">Browse My Books</a><a href="/speaker/" class="btn-s">Book Me to Speak</a></div>
+<p class="tag">Helping entrepreneurs acquire, operate, and scale profitable businesses.</p>
+<div class="hero-btn"><a href="/business-acquisitions/" class="btn-p">Explore Acquisition Guides</a><a href="/speaker/" class="btn-s">Book Me to Speak</a></div>
 <div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
 <h3 style="font-size:22px;margin-bottom:8px;">Buying Wealth</h3>
 <p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">Dr. Robertson\'s book on building wealth through business acquisitions and real estate investing. A practical guide to creating lasting financial freedom.</p>
@@ -1527,12 +1538,12 @@ def page_home():
 <div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Grit Daily</span><span>Apple News</span></div>
 </div></section>
 <section class="sec"><div class="ctn">
-<h2 class="sec-t">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh.</h2>
+<h2 class="sec-t">Practical frameworks for buying businesses, improving operations, and building durable enterprise value.</h2>
 <div class="pills">{pcards}</div>
 </div></section>
 <section class="quote"><div class="ctn">
 <p class="quote-t">"Real success comes from creating impact that lasts longer than you do."</p>
-<p class="quote-a"><strong>Dr. Connor Robertson</strong><br>AI Strategist, Entrepreneur, Author &amp; Business Consultant</p>
+<p class="quote-a"><strong>Dr. Connor Robertson</strong><br>Entrepreneur, Acquisition Strategist, Author &amp; Operator</p>
 </div></section>
 
 <section class="lead-magnet"><div class="ctn">
@@ -1566,9 +1577,9 @@ def page_about():
         "@id": f"{SITE_URL}/about/#faq",
         "mainEntity": [
             {"@type": "Question", "name": "Who is Dr. Connor Robertson?",
-             "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh, PA. He is the founder of Elixir Consulting Group, publisher of The Pittsburgh Wire, host of The Prospecting Show podcast, and creator of The Grant Finder."}},
+             "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh, PA. He is the founder of Elixir Consulting Group, publisher of The Pittsburgh Wire, and host of The Prospecting Show podcast."}},
             {"@type": "Question", "name": "What companies does Dr. Connor Robertson own?",
-             "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson founded and operates Elixir Consulting Group (a business consulting firm), The Pittsburgh Wire (a Pittsburgh business news publication), The Prospecting Show (a business podcast on Spotify and Apple Podcasts), and The Grant Finder (a grant discovery platform)."}},
+             "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson founded and operates Elixir Consulting Group (a business consulting firm), The Pittsburgh Wire (a Pittsburgh business news publication), and The Prospecting Show (a business podcast on Spotify and Apple Podcasts)."}},
             {"@type": "Question", "name": "Where is Dr. Connor Robertson based?",
              "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson is based in Pittsburgh, Pennsylvania. He chose Pittsburgh for its strong business ecosystem, deep talent pool, and collaborative entrepreneurial community."}},
             {"@type": "Question", "name": "What is The Prospecting Show?",
@@ -1586,14 +1597,14 @@ def page_about():
         schema_nodes=[faq_schema]) + breadcrumbs([("Home", "/"), ("About", None)]) + """
 <section class="pg-hero"><div class="ctn">
 <h1>About Dr. Connor Robertson</h1>
-<p>Entrepreneur. Author. AI Strategist. Business Acquisition Expert. Podcast Host. Founder of four companies based in Pittsburgh, PA.</p>
+<p>Entrepreneur. Author. AI Strategist. Business Acquisition Expert. Podcast Host. Based in Pittsburgh, PA.</p>
 </div></section>
 <section class="sec"><div class="ctn">
 <div class="about-photo"><img src="/images/connor-hero.jpg" alt="Dr. Connor Robertson - Pittsburgh entrepreneur, author, AI strategist, and business acquisition expert" loading="lazy"></div>
 <p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, and AI implementation expert based in Pittsburgh, PA. He has built four companies from the ground up, authored six books, hosted over 350 podcast episodes, and helped business owners across North America acquire companies, automate operations, and scale with purpose.</p>
 
 <div class="cred-grid">
-<div class="cred-card"><div class="cred-icon">&#9889;</div><h3>Entrepreneur</h3><p>Founded Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show, and The Grant Finder</p></div>
+<div class="cred-card"><div class="cred-icon">&#9889;</div><h3>Entrepreneur</h3><p>Founded Elixir Consulting Group, The Pittsburgh Wire, and The Prospecting Show</p></div>
 <div class="cred-card"><div class="cred-icon">&#9997;</div><h3>Author</h3><p>Six published books on acquisitions, wealth building, prospecting, and real estate strategy</p></div>
 <div class="cred-card"><div class="cred-icon">&#129302;</div><h3>AI Strategist</h3><p>Helps small and mid-sized businesses deploy AI for automation, lead generation, and competitive advantage</p></div>
 <div class="cred-card"><div class="cred-icon">&#127911;</div><h3>Podcast Host</h3><p>350+ episodes of The Prospecting Show featuring entrepreneurs and business operators</p></div>
@@ -1601,7 +1612,7 @@ def page_about():
 
 <div class="stats">
 <div class="stat"><div class="stat-n">6</div><div class="stat-l">Books Published</div></div>
-<div class="stat"><div class="stat-n">4</div><div class="stat-l">Companies Founded</div></div>
+<div class="stat"><div class="stat-n">3+</div><div class="stat-l">Companies Founded</div></div>
 <div class="stat"><div class="stat-n">350+</div><div class="stat-l">Podcast Episodes</div></div>
 <div class="stat"><div class="stat-n">10K+</div><div class="stat-l">People Impacted</div></div>
 </div>
@@ -1973,7 +1984,6 @@ def page_projects():
         ("The Prospecting Show", "https://www.prospectingshow.com", "A weekly podcast interviewing entrepreneurs about how they built and scaled their businesses."),
         ("The Pittsburgh Wire", "https://thepittsburghwire.com", "An independent digital publication covering Pittsburgh business, real estate, and economic development."),
         ("Elixir Consulting Group", "https://elixirconsultinggroup.com", "Business automation and AI advisory for small and mid-sized business owners."),
-        ("The Grant Finder", "https://thegrantfinder.com", "A grant discovery platform for nonprofits and small businesses."),
     ]
     venture_list = {
         "@type": "ItemList",
@@ -1997,7 +2007,7 @@ def page_projects():
         ],
     }
     return header("Projects & Companies | Dr. Connor Robertson",
-        "The companies and media brands founded by Dr. Connor Robertson: Elixir Consulting Group, The Pittsburgh Wire, The Prospecting Show and The Grant Finder.",
+        "The companies and media brands founded by Dr. Connor Robertson: Elixir Consulting Group, The Pittsburgh Wire, and The Prospecting Show.",
         "/projects/", og_image="/images/dr-connor-robertson-headshot.jpg", page_type="CollectionPage",
         crumbs=[("Home", "/"), ("Projects", None)],
         schema_nodes=[venture_list]) + breadcrumbs([("Home", "/"), ("Projects", None)]) + """
@@ -2030,12 +2040,6 @@ def page_projects():
 <h3 style="font-size:22px;margin-bottom:8px;">Books by Dr. Connor Robertson</h3>
 <p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">Multiple books on entrepreneurship, business acquisitions, and wealth building. Available on Amazon, Barnes &amp; Noble, Google Play, and Apple Books.</p>
 <a href="/books/" style="color:var(--accent,#2563eb);font-weight:600;font-size:14px;">Browse all books &rarr;</a>
-</div>
-
-<div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
-<h3 style="font-size:22px;margin-bottom:8px;">The Grant Finder</h3>
-<p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">A resource helping nonprofits and small businesses discover and access government grants, foundation funding, and alternative financing opportunities.</p>
-<a href="https://thegrantfinder.org" target="_blank" rel="noopener" style="color:var(--accent,#2563eb);font-weight:600;font-size:14px;">Visit thegrantfinder.org &rarr;</a>
 </div>
 
 <div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
@@ -2119,6 +2123,20 @@ def page_blog_index(posts, page_num, total_pages):
 <p>Practical writing on buying businesses, deploying AI, building a prospecting engine, and investing in Pittsburgh. Start with the <a href="/business-acquisitions/">business acquisitions guide</a>, the <a href="/ai-business-strategy/">AI business strategy guide</a>, the <a href="/prospecting-sales/">prospecting and sales guide</a>, or the <a href="/author-platform/">author platform guide</a>.</p></div></section>
 <section class="sec"><div class="ctn"><div class="bgrid">{cards}</div>{pag}</div></section>
 """ + footer()
+
+
+def serp_title(raw_title, add_brand=True):
+    """Return a clean title tag without repeated branding or hard truncation."""
+    clean = strip_tags(raw_title).strip()
+    suffix_re = re.compile(r'\s*\|\s*(?:Dr\.\s*)?Connor Robertson(?:\s*\|\s*drconnorrobertson\.com)?\s*$', re.I)
+    while suffix_re.search(clean):
+        clean = suffix_re.sub("", clean).strip()
+    branded = f"{clean} | Dr. Connor Robertson"
+    if add_brand and len(branded) <= TITLE_MAX:
+        return branded
+    if len(clean) <= TITLE_MAX:
+        return clean
+    return clean[:TITLE_MAX].rsplit(" ", 1)[0].rstrip(" :,-")
 
 
 def page_post(p, all_posts=None):
@@ -2212,12 +2230,7 @@ def page_post(p, all_posts=None):
     # Title tag: prefer the hand-written SEO title, which is kept under the
     # ~60 char SERP limit. Raw post titles run long and get truncated.
     raw_title = p["title"]
-    if seo.get("title"):
-        page_title = seo["title"]
-    elif "connor robertson" in raw_title.lower():
-        page_title = f"{raw_title} | drconnorrobertson.com"
-    else:
-        page_title = f"{raw_title} | Dr. Connor Robertson"
+    page_title = serp_title(seo.get("title") or raw_title)
 
     # Internal linking footer for every blog post
     internal_links = """<div style="margin-top:48px;padding:32px;background:var(--card);border:1px solid var(--border);border-radius:12px">
@@ -2254,7 +2267,7 @@ def write(path, content):
 
 # lastmod for evergreen pages. Bump this when their copy is edited -- stamping
 # every build with today's date trains crawlers to ignore the field entirely.
-STATIC_LASTMOD = "2026-08-21"
+STATIC_LASTMOD = "2026-09-20"
 
 SITEMAP_PRIORITY = {
     "/": ("1.0", "weekly"),
@@ -2398,11 +2411,35 @@ def page_business_acquisitions():
         "mainEntityOfPage": {"@id": f"{SITE_URL}/business-acquisitions/#webpage"},
     }
 
-    return header("Business Acquisitions Guide | Dr. Connor Robertson",
+    faqs = [
+        ("What should a first-time buyer evaluate first?", "Start with acquisition criteria, normalized cash flow, customer and owner concentration, management depth, working-capital needs, and whether the business can support debt service and a reasonable reserve."),
+        ("How do buyers value an owner-operated business?", "Many smaller owner-operated businesses are evaluated using normalized seller's discretionary earnings and a risk-adjusted market multiple. The calculation must be supported by source records and a post-closing cash-flow model."),
+        ("What belongs in acquisition due diligence?", "Financial, tax, legal, commercial, operational, employee, technology, insurance, licensing, real estate, environmental, and transition diligence may apply depending on the company."),
+        ("What makes a business transferable?", "Transferability improves when customers, employees, contracts, processes, data, licenses, and vendor relationships belong to the company rather than depending on the seller personally."),
+    ]
+    faq_schema = {
+        "@type": "FAQPage",
+        "@id": f"{SITE_URL}/business-acquisitions/#faq",
+        "mainEntity": [
+            {"@type": "Question", "name": q,
+             "acceptedAnswer": {"@type": "Answer", "text": a}}
+            for q, a in faqs
+        ],
+    }
+    guide_cards = "".join(
+        f'<div class="pill"><h3><a href="/business-acquisitions/{g["slug"]}/">{esc(g["title"])}</a></h3><p>{esc(g["description"])}</p></div>'
+        for g in ACQUISITION_GUIDES
+    )
+    faq_html = "".join(
+        f'<div class="faq-item fade-in"><h3>{esc(q)}</h3><p>{esc(a)}</p></div>'
+        for q, a in faqs
+    )
+
+    return header("How to Buy a Business: Complete Acquisition Guide",
         "How to buy a business: deal sourcing, structures, due diligence, financing and valuation, from acquisition strategist Dr. Connor Robertson.",
         "/business-acquisitions/", og_image="/images/dr-connor-robertson-headshot.jpg",
         crumbs=[("Home", "/"), ("Business Acquisitions", None)],
-        schema_nodes=[topic_page]) + breadcrumbs([("Home", "/"), ("Business Acquisitions", None)]) + """
+        schema_nodes=[topic_page, faq_schema]) + breadcrumbs([("Home", "/"), ("Business Acquisitions", None)]) + f"""
 <section class="pg-hero"><div class="ctn">
 <h1>Business Acquisitions: The Complete Guide to Buying Businesses</h1>
 <p>Master the frameworks, strategies, and systems that Dr. Connor Robertson uses to acquire businesses, from deal sourcing to integration and scale.</p>
@@ -2435,7 +2472,7 @@ def page_business_acquisitions():
 <p class="fade-in"><strong>SBA Loans:</strong> The Small Business Administration guarantees loans up to $5M for business acquisitions. SBA 7(a) loans typically require 10-20% down and offer 10-year terms. These are the most common financing vehicle for acquisitions under $5M.</p>
 <p class="fade-in"><strong>Seller Financing:</strong> As mentioned above, seller notes reduce the amount of third-party financing needed and demonstrate the seller's confidence in the business's future.</p>
 <p class="fade-in"><strong>Conventional Bank Loans:</strong> Traditional commercial loans may offer better rates than SBA loans for well-qualified buyers with strong collateral and industry experience.</p>
-<p class="fade-in"><strong>Private Equity and Investor Capital:</strong> For larger deals, bringing in equity partners or investors can provide the capital needed while distributing risk.</p>
+<p class="fade-in"><strong>Purchase Structure and Lender Readiness:</strong> The buyer should match verified cash flow with a realistic sources-and-uses schedule, lender requirements, seller financing where appropriate, and enough post-closing liquidity to operate safely.</p>
 
 <h2 class="fade-in">Valuation Methods</h2>
 <p class="fade-in">Business valuation is both art and science. Multiple approaches exist, and the best acquirers use several methods to triangulate fair value.</p>
@@ -2452,6 +2489,19 @@ def page_business_acquisitions():
 <p class="fade-in"><strong>Phase 4, Close and Integrate:</strong> Legal documentation, financing finalization, transition planning, and day-one operations. The first 90 days after closing determine long-term success.</p>
 <p class="fade-in"><strong>Phase 5, Optimize and Scale:</strong> Apply systems thinking to improve operations, reduce owner dependency, and position for growth or additional acquisitions.</p>
 
+<h2 class="fade-in">What I Look for in a Real Deal</h2>
+<p class="fade-in">A good acquisition is not simply a company with profit. I look for earnings that can be traced to source records, customers that are likely to remain, employees who can operate without constant owner intervention, and a price that still works after debt service, taxes, working capital, maintenance spending, and a downside reserve.</p>
+<p class="fade-in">In one publicly discussed $3.5 million acquisition example with approximately $875,000 of seller-reported earnings, the headline multiple was only the beginning. The real work was testing add-backs, management replacement cost, customer durability, working capital, seller transition, and the cash remaining after financing. Buyers should evaluate the operating company they will own after closing, not the presentation used to market it.</p>
+
+<h2 class="fade-in">The Acquisition Decision System</h2>
+<p class="fade-in"><strong>Screen:</strong> Apply written criteria before investing heavily in a target. Industry, geography, earnings, customer concentration, owner dependence, licensing, capital intensity, and management depth should determine whether the opportunity advances.</p>
+<p class="fade-in"><strong>Verify:</strong> Reconcile revenue, normalize earnings, inspect customer and employee concentration, confirm contracts and permits, and document every material assumption.</p>
+<p class="fade-in"><strong>Structure:</strong> Use price, seller financing, contingent consideration, working-capital adjustments, transition obligations, and closing conditions to allocate specific risks. Structure should clarify risk, not hide a weak investment.</p>
+<p class="fade-in"><strong>Operate:</strong> Build the first-100-day plan before signing. The buyer should know who controls cash, who communicates with employees and customers, which seller responsibilities must transfer, and how performance will be measured.</p>
+
+<h2 class="fade-in">Business Acquisition Field Guides</h2>
+<div class="pills fade-in" style="margin-top:24px">{guide_cards}</div>
+
 <div class="quote fade-in" style="margin:48px 0">
 <p class="quote-t">"The best time to buy a business was five years ago. The second best time is right now."</p>
 <p class="quote-a"><strong>Dr. Connor Robertson</strong></p>
@@ -2466,12 +2516,104 @@ def page_business_acquisitions():
 <div class="pill"><h3><a href="/books/#buying-wealth">Buying Wealth (Book)</a></h3><p>A practical guide to building wealth through ownership.</p></div>
 </div>
 
+<h2 class="fade-in" style="margin-top:48px">Frequently Asked Questions</h2>
+<div class="faq-list">{faq_html}</div>
+
 <div style="margin-top:48px;padding:32px;background:var(--card);border-radius:var(--r);text-align:center" class="fade-in">
 <h3>Ready to Make Your First Acquisition?</h3>
 <p style="margin:16px 0;color:var(--text2)">Dr. Connor Robertson helps entrepreneurs acquire businesses through proven frameworks and hands-on guidance.</p>
 <a href="/contact/" class="btn-p" style="display:inline-block;margin-top:12px">Contact Connor</a>
 </div>
 
+</div></section>
+""" + footer()
+
+
+def page_acquisition_guide(guide):
+    """Render one search-intent acquisition guide with visible FAQ and schema."""
+    href = f"/business-acquisitions/{guide['slug']}/"
+    article_id = f"{SITE_URL}{href}#article"
+    published = "2026-09-20"
+
+    section_html = ""
+    for heading, paragraphs in guide["sections"]:
+        section_html += f'<h2 class="fade-in">{esc(heading)}</h2>'
+        section_html += "".join(f'<p class="fade-in">{esc(p)}</p>' for p in paragraphs)
+
+    checklist_html = "".join(f'<li>{esc(item)}</li>' for item in guide["checklist"])
+    faq_html = "".join(
+        f'<div class="faq-item fade-in"><h2 class="faq-q">{esc(q)}</h2><div class="faq-a"><p>{esc(a)}</p></div></div>'
+        for q, a in guide["faqs"]
+    )
+    faq_schema = {
+        "@type": "FAQPage",
+        "@id": f"{SITE_URL}{href}#faq",
+        "mainEntity": [
+            {"@type": "Question", "name": q,
+             "acceptedAnswer": {"@type": "Answer", "text": a}}
+            for q, a in guide["faqs"]
+        ],
+    }
+    article_schema = {
+        "@type": "Article",
+        "@id": article_id,
+        "headline": guide["title"],
+        "description": guide["description"],
+        "datePublished": published,
+        "dateModified": published,
+        "author": {"@id": PERSON_ID},
+        "publisher": {"@id": PERSON_ID},
+        "mainEntityOfPage": {"@id": f"{SITE_URL}{href}#webpage"},
+        "about": [
+            {"@type": "Thing", "name": "Business acquisitions"},
+            {"@type": "Thing", "name": guide["eyebrow"]},
+        ],
+        "inLanguage": "en-US",
+    }
+
+    current_index = next(i for i, g in enumerate(ACQUISITION_GUIDES) if g["slug"] == guide["slug"])
+    related = [
+        ACQUISITION_GUIDES[(current_index + offset) % len(ACQUISITION_GUIDES)]
+        for offset in range(1, min(5, len(ACQUISITION_GUIDES)))
+    ]
+    related_html = "".join(
+        f'<div class="pill"><h3><a href="/business-acquisitions/{g["slug"]}/">{esc(g["title"])}</a></h3><p>{esc(g["description"])}</p></div>'
+        for g in related
+    )
+    extra = """<style>
+.guide-kicker{font-size:.82rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.guide-meta{color:var(--text2);font-size:.92rem;margin-top:18px}
+.guide-check{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:28px 32px;margin:40px 0}
+.guide-check li{margin:10px 0;padding-left:4px}
+.faq-item{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:28px;margin-bottom:18px}
+.faq-q{font-size:1.22rem;margin:0 0 10px}.faq-a p{margin:0;color:#555}
+.guide-note{font-size:.9rem;color:var(--text2);border-left:3px solid var(--accent);padding:12px 16px;margin-top:36px}
+</style>"""
+    crumbs = [("Home", "/"), ("Business Acquisitions", "/business-acquisitions/"), (guide["title"], None)]
+    return header(
+        serp_title(guide["title"]),
+        guide["description"], href,
+        extra=extra,
+        og_image="/images/dr-connor-robertson-business-strategy.jpg",
+        page_type="Article",
+        crumbs=crumbs,
+        schema_nodes=[article_schema, faq_schema],
+    ) + breadcrumbs(crumbs) + f"""
+<section class="pg-hero"><div class="ctn">
+<div class="guide-kicker">{esc(guide['eyebrow'])}</div>
+<h1>{esc(guide['title'])}</h1>
+<p>{esc(guide['lead'])}</p>
+<p class="guide-meta">Written and reviewed by Dr. Connor Robertson | Updated September 20, 2026</p>
+</div></section>
+<section class="sec"><article class="ctn" style="max-width:880px">
+{section_html}
+<div class="guide-check fade-in"><h2>Buyer Checklist</h2><ul>{checklist_html}</ul></div>
+<h2>Frequently Asked Questions</h2>
+{faq_html}
+<p class="guide-note">This guide is educational and does not replace transaction-specific legal, tax, accounting, lending, insurance, or valuation advice from qualified professionals.</p>
+</article></section>
+<section class="sec sec-dk"><div class="ctn"><h2 class="sec-t">Related Acquisition Guides</h2><div class="pills">{related_html}</div>
+<div style="text-align:center;margin-top:36px"><a class="btn-p" href="/business-acquisitions/">View the Complete Acquisition Guide</a></div>
 </div></section>
 """ + footer()
 
@@ -2725,9 +2867,9 @@ def page_author_platform():
 def page_faq():
     faqs = [
         ("Who is Dr. Connor Robertson?",
-         "Dr. Connor Robertson is an entrepreneur, author, podcast host, and business strategist based in Pittsburgh, Pennsylvania. He is the founder of multiple companies including Elixir Consulting Group, The Prospecting Show, The Pittsburgh Wire, The Grant Finder, and Seymour Maison. Connor is widely recognized for his expertise in business acquisitions, real estate investing, and helping business owners scale through strategic advisory services. He has authored six books on business strategy and wealth building, and his podcast, The Prospecting Show, has featured over 178 episodes with top entrepreneurs and business leaders."),
+         "Dr. Connor Robertson is an entrepreneur, author, podcast host, and business strategist based in Pittsburgh, Pennsylvania. He is the founder of multiple companies including Elixir Consulting Group, The Prospecting Show, The Pittsburgh Wire, and Seymour Maison. Connor is widely recognized for his expertise in business acquisitions, real estate investing, and helping business owners scale through strategic advisory services. He has authored six books on business strategy and wealth building, and his podcast, The Prospecting Show, has featured over 178 episodes with top entrepreneurs and business leaders."),
         ("What companies does Dr. Connor Robertson own?",
-         "Dr. Connor Robertson is the founder and owner of several successful companies across diverse industries. These include Elixir Consulting Group, a strategic business advisory firm helping owners with growth, acquisitions, and operational excellence; The Prospecting Show, a top-rated weekly podcast interviewing entrepreneurs about building and scaling businesses; The Pittsburgh Wire, a digital media publication covering Pittsburgh business, real estate, and development news; The Grant Finder, a platform connecting organizations with grant funding opportunities; and Seymour Maison, a luxury t-shirt brand offering premium essentials through a waitlist-only model. He also manages an active real estate investment portfolio."),
+         "Dr. Connor Robertson is the founder and owner of several companies across diverse industries. These include Elixir Consulting Group, a strategic business advisory firm helping owners with growth, acquisitions, and operational excellence; The Prospecting Show, a weekly podcast interviewing entrepreneurs about building and scaling businesses; The Pittsburgh Wire, a digital media publication covering Pittsburgh business, real estate, and development news; and Seymour Maison, a luxury apparel brand. He also manages an active real estate investment portfolio."),
         ("What books has Dr. Connor Robertson written?",
          "Dr. Connor Robertson has authored six books focused on business strategy, acquisitions, and wealth building. His published works include Buying Wealth, which teaches readers how to build wealth through asset acquisition; Creative Acquisitions, a guide to innovative deal structures for purchasing businesses; The 7 Minute Phone Call, a framework for effective prospecting conversations; PadSplit Playbook, a comprehensive guide to co-living real estate investing; Buy The Building Keep The Profits, which covers strategies for business owners to acquire their commercial properties; and Built to Run, a playbook for building businesses with systems that operate independently of the founder."),
         ("Where is Dr. Connor Robertson based?",
@@ -2842,6 +2984,43 @@ HUB_SEO = {
     },
 }
 
+HUB_PILLARS = {
+    "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/": [
+        ("Complete Business Acquisition Guide", "/business-acquisitions/", "The end-to-end framework for screening, valuing, structuring, diligencing, closing, and operating an acquisition."),
+        ("Business Acquisition Due Diligence Checklist", "/business-acquisitions/business-acquisition-due-diligence-checklist/", "A practical checklist for financial, legal, operational, customer, employee, and transition diligence."),
+        ("How to Value a Small Business Using SDE", "/business-acquisitions/how-to-value-a-small-business-using-sde/", "Normalize earnings, test add-backs, select a risk-adjusted multiple, and model post-closing cash flow."),
+        ("The First 100 Days After Closing", "/business-acquisitions/first-100-days-after-buying-a-business/", "Stabilize people, customers, cash, controls, and systems before accelerating change."),
+    ],
+    "/blog/hub-leadership-legacy-dr-connor-robertson/": [
+        ("Business Systems and Owner Independence", "/blog/hub-mindset-momentum-systems-dr-connor-robertson/", "Build a company that runs on clear process, decisions, accountability, and leadership depth."),
+        ("The First 100 Days After an Acquisition", "/business-acquisitions/first-100-days-after-buying-a-business/", "A leadership plan for a stable ownership transition."),
+        ("Preparing a Business for Sale", "/business-acquisitions/prepare-business-for-sale/", "Strengthen management, reporting, transferability, and enterprise value."),
+    ],
+    "/blog/hub-influence-authority-dr-connor-robertson/": [
+        ("Author Platform", "/author-platform/", "Build authority through useful publishing, books, media, and a consistent point of view."),
+        ("Books by Dr. Connor Robertson", "/books/", "Practical books on acquisitions, systems, prospecting, real estate, and wealth building."),
+        ("Media and Press", "/press-media/", "Interviews, features, and third-party coverage."),
+    ],
+    "/blog/hub-mindset-momentum-systems-dr-connor-robertson/": [
+        ("AI Business Strategy", "/ai-business-strategy/", "Deploy supervised automation around clear operating objectives and human accountability."),
+        ("Prospecting and Sales Systems", "/prospecting-sales/", "Build consistent pipeline activity, follow-up, and measurable sales habits."),
+        ("The First 100 Days After an Acquisition", "/business-acquisitions/first-100-days-after-buying-a-business/", "Turn a change of ownership into controlled operational progress."),
+    ],
+    "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/": [
+        ("Pittsburgh Business Acquisition Consultant", "/business-acquisitions/business-acquisition-consultant-pittsburgh/", "Local acquisition strategy grounded in independent financial, legal, tax, and operational diligence."),
+        ("Projects and Companies", "/projects/", "Businesses and media properties built by Dr. Connor Robertson."),
+        ("Pittsburgh Business Writing", "/blog/", "Reporting and commentary on ownership, development, operations, and entrepreneurship."),
+    ],
+}
+
+HUB_KEYWORDS = {
+    "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/": ["acquisition", "buy a business", "seller financing", "due diligence", "valuation", "sde", "working capital"],
+    "/blog/hub-leadership-legacy-dr-connor-robertson/": ["leadership", "team", "legacy", "employee", "management", "community"],
+    "/blog/hub-influence-authority-dr-connor-robertson/": ["authority", "brand", "author", "publishing", "media", "book", "influence"],
+    "/blog/hub-mindset-momentum-systems-dr-connor-robertson/": ["system", "process", "operator", "bottleneck", "automation", "ai", "execution"],
+    "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/": ["pittsburgh", "real estate", "western pennsylvania", "steel city", "local"],
+}
+
 
 def page_resource_hub(label, href, posts):
     intro = RESOURCE_HUB_INTROS.get(href, f"A curated collection of guides and articles from Dr. Connor Robertson on {label}.")
@@ -2849,25 +3028,40 @@ def page_resource_hub(label, href, posts):
     title = seo.get("title") or f"{label} | Dr. Connor Robertson"
     desc = seo.get("desc") or clip(intro)
 
+    keywords = HUB_KEYWORDS.get(href, [])
+    def hub_score(post):
+        text = " ".join([
+            strip_tags(post.get("title", "")),
+            strip_tags(post.get("excerpt", "")),
+            strip_tags(post.get("content", ""))[:2500],
+        ]).lower()
+        return sum(4 if k in strip_tags(post.get("title", "")).lower() else 1 for k in keywords if k in text)
+
+    matched_posts = sorted(posts, key=lambda p: (hub_score(p), p.get("date", "")), reverse=True)
+    matched_posts = [p for p in matched_posts if hub_score(p) > 0][:9]
+    if not matched_posts:
+        matched_posts = posts[:6]
+
     hub_list = {
         "@type": "ItemList",
         "@id": f"{SITE_URL}{href}#itemlist",
-        "numberOfItems": len(posts[:6]),
+        "numberOfItems": len(matched_posts),
         "itemListElement": [
             {"@type": "ListItem", "position": i,
              "url": f"{SITE_URL}{p['relative_url']}", "name": strip_tags(p["title"])}
-            for i, p in enumerate(posts[:6], start=1)
+            for i, p in enumerate(matched_posts, start=1)
         ],
     }
 
+    custom_pillars = HUB_PILLARS.get(href, [(l, h, "In-depth guide from Dr. Connor Robertson.") for l, h in PILLAR_PAGES])
     pillar_cards = "".join(
-        f'<div class="pill"><h3><a href="{h}">{l}</a></h3><p>In-depth pillar guide from Dr. Connor Robertson.</p></div>'
-        for l, h in PILLAR_PAGES
+        f'<div class="pill"><h3><a href="{h}">{esc(l)}</a></h3><p>{esc(d)}</p></div>'
+        for l, h, d in custom_pillars
     )
 
     # Recent articles grid
     art_cards = ""
-    for p in posts[:6]:
+    for p in matched_posts:
         try:
             dt = datetime.fromisoformat(p["date"]).strftime("%B %d, %Y")
         except Exception:
@@ -2892,11 +3086,11 @@ def page_resource_hub(label, href, posts):
 <h1>{esc(label)}</h1><p>{esc(intro)}</p>
 </div></section>
 <section class="sec"><div class="ctn">
-<h2 class="sec-t">Pillar Guides</h2>
+<h2 class="sec-t">Start Here</h2>
 <div class="pills">{pillar_cards}</div>
 </div></section>
 <section class="sec sec-dk"><div class="ctn">
-<h2 class="sec-t">Latest Articles</h2>
+<h2 class="sec-t">Articles for This Topic</h2>
 <div class="bgrid">{art_cards}</div>
 <div style="text-align:center;margin-top:40px"><a href="/blog/" class="btn-p">View All Articles</a></div>
 </div></section>
@@ -2972,7 +3166,7 @@ def llms_txt():
 - Real Estate Investing & Property Strategy
 - AI Business Strategy & Business Automation
 - Entrepreneurship & Scaling Businesses
-- Private Equity & Wealth Building
+- Wealth Building
 - Prospecting & Sales Systems
 - Author Platform & Personal Branding
 - Leadership & Philanthropy
@@ -3079,7 +3273,7 @@ The Prospecting Show is a weekly podcast hosted by Dr. Connor Robertson featurin
 
 4. **Entrepreneurship & Scaling** -- Through Elixir Consulting Group, Connor provides advisory services to small and mid-sized business owners on growth strategy, operational systems, and exit planning.
 
-5. **Private Equity & Wealth Building** -- Connor\\'s "Buying Wealth" philosophy centers on acquiring cash-flowing assets and using leverage responsibly to build long-term wealth.
+5. **Wealth Building** -- Connor\\'s "Buying Wealth" philosophy centers on acquiring cash-flowing assets and using leverage responsibly to build long-term wealth.
 
 6. **Prospecting & Sales Systems** -- With "The 7 Minute Phone Call" and his podcast, Connor teaches entrepreneurs how to build predictable sales pipelines through human connection rather than automation-only approaches.
 
@@ -3297,6 +3491,8 @@ def main():
     write("faq/index.html", page_faq())
     # Pillar/Topic Hub pages
     write("business-acquisitions/index.html", page_business_acquisitions())
+    for guide in ACQUISITION_GUIDES:
+        write(f"business-acquisitions/{guide['slug']}/index.html", page_acquisition_guide(guide))
     write("ai-business-strategy/index.html", page_ai_business_strategy())
     write("prospecting-sales/index.html", page_prospecting_sales())
     write("author-platform/index.html", page_author_platform())
@@ -3304,7 +3500,7 @@ def main():
     for label, href in RESOURCE_HUBS:
         write(f"{href.strip('/')}/index.html", page_resource_hub(label, href, posts))
     write("blog/complete-resource-index-dr-connor-robertson/index.html", page_resource_index(posts))
-    print(f"  {12 + len(RESOURCE_HUBS) + 1} static pages generated (4 pillar pages + FAQ, {len(RESOURCE_HUBS)} resource hubs, 1 resource index)")
+    print(f"  {12 + len(RESOURCE_HUBS) + 1 + len(ACQUISITION_GUIDES)} static pages generated (4 pillar pages, {len(ACQUISITION_GUIDES)} acquisition field guides, FAQ, {len(RESOURCE_HUBS)} resource hubs, 1 resource index)")
 
     # Blog posts
     print(f"\n[6/8] Generating {len(posts)} blog post pages...")
@@ -3327,6 +3523,31 @@ def main():
         else:
             write(f"blog/page/{pg}/index.html", page_blog_index(posts, pg, total_pages))
     print(f"  {total_pages} index pages generated")
+
+    # Copy hand-built evergreen pages before sitemap generation so every live
+    # guide and verification file is included in the final crawl inventory.
+    static_source = BASE_DIR / "static_pages"
+    if static_source.exists():
+        import shutil
+        copied_static = 0
+        for source in static_source.rglob("*"):
+            if not source.is_file() or not source.read_bytes().strip():
+                continue
+            target = DIST / source.relative_to(static_source)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, target)
+            copied_static += 1
+        print(f"  Copied {copied_static} non-empty evergreen files before sitemap generation")
+
+    # Never ship placeholder HTML files. Earlier migrations left newline-only
+    # files under static_pages; removing them prevents crawlable blank pages.
+    removed_placeholders = 0
+    for candidate in DIST.rglob("*.html"):
+        if not candidate.read_bytes().strip():
+            candidate.unlink()
+            removed_placeholders += 1
+    if removed_placeholders:
+        print(f"  Removed {removed_placeholders} blank placeholder pages")
 
     # SEO files
     print("\n[8/8] Generating SEO and config files...")
