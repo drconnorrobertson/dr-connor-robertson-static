@@ -17,6 +17,7 @@ from urllib.error import URLError
 from urllib.parse import urlparse, urljoin
 
 from acquisition_guides import ACQUISITION_GUIDES
+from ai_workflows import CLUSTERS as AI_CLUSTERS, all_guides as ai_guides, validate as validate_ai_guides, render_hub as render_ai_hub, render_guide as render_ai_guide
 
 BASE_DIR = Path(__file__).parent
 DIST = BASE_DIR / "dist"
@@ -2268,6 +2269,7 @@ def write(path, content):
 # lastmod for evergreen pages. Bump this when their copy is edited -- stamping
 # every build with today's date trains crawlers to ignore the field entirely.
 STATIC_LASTMOD = "2026-09-20"
+AI_GUIDES_LASTMOD = "2026-09-22"
 
 SITEMAP_PRIORITY = {
     "/": ("1.0", "weekly"),
@@ -2372,7 +2374,7 @@ def sitemap(posts):
             lastmod, prio, freq = p["date"][:10], "0.6", "monthly"
         else:
             prio, freq = SITEMAP_PRIORITY.get(loc, ("0.6", "monthly"))
-            lastmod = STATIC_LASTMOD
+            lastmod = AI_GUIDES_LASTMOD if loc.startswith("/ai/") else STATIC_LASTMOD
         # Surface the page's primary image so it is eligible for image search.
         img = ""
         m = re.search(r'<meta property="og:image" content="([^"]+)"', html_text)
@@ -2508,6 +2510,11 @@ def page_business_acquisitions():
 </div>
 
 <h2 class="fade-in">Related Resources</h2>
+<h3 class="fade-in">Practical AI workflow guides</h3>
+<p class="fade-in">Choose a narrowly scoped job below. Each hub links to twelve task-specific guides with a starting prompt, source requirements, a review gate, and a way to measure quality.</p>
+<div class="pills fade-in" style="margin-top:24px">
+""" + "".join(f'<div class="pill"><h3><a href="/ai/{c["slug"]}/">{esc(c["title"])}</a></h3><p>{esc(c["description"])}</p></div>' for c in AI_CLUSTERS) + """
+</div>
 <div class="pills fade-in" style="margin-top:24px">
 <div class="pill"><h3><a href="/ai-business-strategy/">AI Business Strategy</a></h3><p>How to use AI to optimize operations after your acquisition.</p></div>
 <div class="pill"><h3><a href="/prospecting-sales/">Prospecting & Sales</a></h3><p>Build the pipeline that feeds your acquisition deal flow.</p></div>
@@ -3104,6 +3111,7 @@ def page_resource_index(posts):
 
     hubs = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in RESOURCE_HUBS)
     pillars = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in PILLAR_PAGES)
+    ai_collections = "".join(f'<li><a href="/ai/{c["slug"]}/">{esc(c["title"])}</a></li>' for c in AI_CLUSTERS)
     main_pages = "".join(f'<li><a href="{h}">{l}</a></li>' for l, h in [
         ("About", "/about/"), ("Projects", "/projects/"), ("Speaker", "/speaker/"),
         ("Books", "/books/"), ("Media Kit", "/media/"), ("Press & Media", "/press-media/"),
@@ -3122,6 +3130,7 @@ def page_resource_index(posts):
 <section class="sec"><div class="ctn">
 <div class="ablock"><h2>Resource Hubs</h2><ul class="link-list">{hubs}</ul></div>
 <div class="ablock"><h2>Pillar Guides</h2><ul class="link-list">{pillars}</ul></div>
+<div class="ablock"><h2>AI Workflow Collections</h2><ul class="link-list">{ai_collections}</ul></div>
 <div class="ablock"><h2>Key Pages</h2><ul class="link-list">{main_pages}</ul></div>
 <div class="ablock"><h2>All Articles</h2><ul class="link-list">{articles}</ul></div>
 </div></section>
@@ -3368,6 +3377,10 @@ def main():
         seen_titles[title_key] = p
         deduped_posts.append(p)
     posts = deduped_posts
+    # Catch collisions with existing posts before generated guides can overwrite a URL.
+    existing_paths = {p["relative_url"] for p in posts}
+    existing_paths.update({f"/business-acquisitions/{g['slug']}/" for g in ACQUISITION_GUIDES})
+    validate_ai_guides(existing_paths)
     if before_dedup != len(posts):
         print(f"  Removed {before_dedup - len(posts)} duplicate posts ({before_dedup} -> {len(posts)})")
         # Update cache with deduped posts
@@ -3494,13 +3507,18 @@ def main():
     for guide in ACQUISITION_GUIDES:
         write(f"business-acquisitions/{guide['slug']}/index.html", page_acquisition_guide(guide))
     write("ai-business-strategy/index.html", page_ai_business_strategy())
+    for cluster in AI_CLUSTERS:
+        write(f"ai/{cluster['slug']}/index.html", render_ai_hub(cluster, header, breadcrumbs, footer))
+    for cluster, guide in ai_guides():
+        write(f"ai/{cluster['slug']}/{guide['slug']}/index.html",
+              render_ai_guide(cluster, guide, header, breadcrumbs, footer, SITE_URL, PERSON_ID))
     write("prospecting-sales/index.html", page_prospecting_sales())
     write("author-platform/index.html", page_author_platform())
     # Resource hub pages (linked from nav on every page)
     for label, href in RESOURCE_HUBS:
         write(f"{href.strip('/')}/index.html", page_resource_hub(label, href, posts))
     write("blog/complete-resource-index-dr-connor-robertson/index.html", page_resource_index(posts))
-    print(f"  {12 + len(RESOURCE_HUBS) + 1 + len(ACQUISITION_GUIDES)} static pages generated (4 pillar pages, {len(ACQUISITION_GUIDES)} acquisition field guides, FAQ, {len(RESOURCE_HUBS)} resource hubs, 1 resource index)")
+    print(f"  {12 + len(RESOURCE_HUBS) + 1 + len(ACQUISITION_GUIDES) + len(AI_CLUSTERS) + sum(1 for _ in ai_guides())} static pages generated (including 5 AI hubs and 60 task guides)")
 
     # Blog posts
     print(f"\n[6/8] Generating {len(posts)} blog post pages...")
