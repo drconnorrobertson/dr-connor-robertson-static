@@ -2253,6 +2253,7 @@ STATIC_LASTMOD = "2026-09-20"
 AI_GUIDES_LASTMOD = "2026-09-22"
 BRAND_LASTMOD = "2026-09-22"
 BRAND_UPDATED_PAGES = {"/", "/about/", "/speaker/", "/projects/", "/faq/"}
+ACQUISITIONS_LASTMOD = "2026-09-22"
 
 SITEMAP_PRIORITY = {
     "/": ("1.0", "weekly"),
@@ -2358,7 +2359,8 @@ def sitemap(posts):
         else:
             prio, freq = SITEMAP_PRIORITY.get(loc, ("0.6", "monthly"))
             lastmod = (AI_GUIDES_LASTMOD if loc.startswith("/ai/") else
-                       BRAND_LASTMOD if loc in BRAND_UPDATED_PAGES else STATIC_LASTMOD)
+                       BRAND_LASTMOD if loc in BRAND_UPDATED_PAGES else
+                       ACQUISITIONS_LASTMOD if loc == "/business-acquisitions/" else STATIC_LASTMOD)
         # Surface the page's primary image so it is eligible for image search.
         img = ""
         m = re.search(r'<meta property="og:image" content="([^"]+)"', html_text)
@@ -2433,37 +2435,37 @@ def page_business_acquisitions():
 <section class="sec"><div class="ctn">
 
 <h2 class="fade-in">Why Buying Beats Building</h2>
-<p class="fade-in">Most entrepreneurs face a critical decision early in their journey: should they build a business from scratch, or acquire an existing one? After years of both building and buying, the answer is clear, for most people, buying is the faster, lower-risk path to wealth and freedom.</p>
-<p class="fade-in">When you acquire a business, you inherit proven revenue streams, existing customer relationships, established operational systems, and a team already in place. An existing business generating $1M in annual revenue might be purchased for 3-5x seller discretionary earnings. Compare that to the 5-10 years and significantly more capital required to build from zero, and the math speaks for itself.</p>
-<p class="fade-in">The strategic advantages compound over time. Immediate cash flow means you can service acquisition debt from day one. Reduced risk means your capital is deployed against proven models rather than unvalidated ideas. An existing team reduces the hiring burden. Established customer relationships provide a foundation for growth rather than starting from an empty pipeline.</p>
+<p class="fade-in">Building and buying create different risks. An acquisition may provide an existing team, customers, and operating history, but the buyer also inherits problems that may be hard to see before closing. The right choice depends on the quality of the target, the buyer's operating skills, financing, and the price.</p>
+<p class="fade-in">Start with a documented acquisition thesis: the industry, geography, cash flow needed after debt service, working-capital reserve, management depth, and risks you will not accept. Verify seller-reported earnings and customer relationships against records. The <a href="https://www.sba.gov/counseling/plan-your-business/" target="_blank" rel="noopener">SBA's business planning guidance</a> also recommends due diligence before buying an existing company.</p>
+<p class="fade-in">Buying can save the time needed to create a company from zero, but it does not make revenue or employee continuity automatic. Model a downside case and decide who will operate the business on day one.</p>
 
 <h2 class="fade-in">Deal Structures That Work</h2>
 <p class="fade-in">Understanding deal structures is where most aspiring acquirers get stuck. The reality is that there are dozens of ways to structure a business purchase, and the best deals often combine multiple approaches to create win-win outcomes for both buyer and seller.</p>
 <h3 class="fade-in">Asset Purchase vs. Stock Purchase</h3>
-<p class="fade-in">In an asset purchase, you buy specific assets of the business, equipment, inventory, customer lists, intellectual property, without taking on the entity itself. This protects you from unknown liabilities and often provides better depreciation benefits. In a stock purchase, you buy the entity outright, including all assets and liabilities. Stock purchases are simpler but carry more risk.</p>
+<p class="fade-in">An asset purchase transfers identified assets and any obligations the agreement or law assigns to the buyer. An equity purchase transfers ownership of the entity. Neither structure automatically removes all liability or guarantees a better tax result. Have deal counsel and tax advisers evaluate contracts, permits, successor liability, allocation, and the seller's entity before choosing a structure.</p>
 <h3 class="fade-in">Seller Financing</h3>
-<p class="fade-in">Seller financing is one of the most powerful tools in creative acquisitions. The seller carries a note for a portion of the purchase price, typically 20-60%, creating alignment between buyer and seller. The seller gets a higher total price and ongoing income. The buyer gets favorable terms and reduced upfront capital requirements. Dr. Robertson covers this extensively in <a href="/books/#creative-acquisitions">Creative Acquisitions</a>.</p>
+<p class="fade-in">A seller note can fund part of a purchase price when both sides agree on the amount, rate, security, subordination, and repayment schedule. It may bridge a financing gap, but terms can also create cash-flow pressure after closing. Model payments in a downside case and check lender requirements. The <a href="/business-acquisitions/seller-financing-business-acquisition/">seller financing guide</a> covers the trade-offs in detail.</p>
 <h3 class="fade-in">Earnouts and Performance-Based Structures</h3>
-<p class="fade-in">Earnouts bridge valuation gaps by tying a portion of the purchase price to future business performance. If the seller believes the business will grow, they accept an earnout because they expect to earn more total. If the buyer is uncertain about projections, they reduce risk by paying only when results materialize.</p>
+<p class="fade-in">An earnout ties part of the consideration to defined future results. It can bridge a disagreement about forecast performance, but vague metrics or buyer control over operations can create disputes. Define the measurement period, accounting rules, access to records, and dispute process before signing. See the <a href="/business-acquisitions/earnout-business-acquisition/">earnout guide</a>.</p>
 
 <h2 class="fade-in">The Due Diligence Framework</h2>
 <p class="fade-in">Due diligence separates successful acquirers from those who overpay for problems. A systematic approach ensures you uncover the real condition of the business before committing capital.</p>
-<p class="fade-in"><strong>Financial Due Diligence:</strong> Verify revenue quality, examine customer concentration, analyze margins by product line, review accounts receivable aging, and confirm that reported earnings match actual cash flow. Look at three years of financials minimum.</p>
+<p class="fade-in"><strong>Financial Due Diligence:</strong> Verify revenue quality, examine customer concentration, analyze margins by product line, review accounts receivable aging, and reconcile reported earnings to source records and cash flow. Choose a review period long enough to capture seasonality, major changes, and a complete operating cycle.</p>
 <p class="fade-in"><strong>Operational Due Diligence:</strong> Assess the team, systems, and processes that make the business run. How dependent is the business on the current owner? What happens if key employees leave? Are standard operating procedures documented?</p>
 <p class="fade-in"><strong>Market Due Diligence:</strong> Evaluate the competitive landscape, market trends, customer satisfaction, and growth potential. Is the industry growing or declining? Are there regulatory risks on the horizon?</p>
 <p class="fade-in"><strong>Legal Due Diligence:</strong> Review contracts, leases, intellectual property, pending litigation, compliance history, and employment agreements. Engage qualified legal counsel for this phase, it is not the place to cut corners.</p>
 
 <h2 class="fade-in">Financing Your Acquisition</h2>
 <p class="fade-in">Most business acquisitions do not require you to write a check for the full purchase price. Understanding financing options allows you to acquire larger businesses with less personal capital at risk.</p>
-<p class="fade-in"><strong>SBA Loans:</strong> The Small Business Administration guarantees loans up to $5M for business acquisitions. SBA 7(a) loans typically require 10-20% down and offer 10-year terms. These are the most common financing vehicle for acquisitions under $5M.</p>
+<p class="fade-in"><strong>SBA 7(a) Loans:</strong> The <a href="https://www.sba.gov/loans/7a-loans/" target="_blank" rel="noopener">SBA 7(a) program</a> can support a change of ownership for eligible borrowers. The SBA guarantees qualifying lender loans; it does not lend directly under this program. Confirm current loan limits, borrower contribution, maturity, fees, and lender conditions before building a purchase plan.</p>
 <p class="fade-in"><strong>Seller Financing:</strong> As mentioned above, seller notes reduce the amount of third-party financing needed and demonstrate the seller's confidence in the business's future.</p>
 <p class="fade-in"><strong>Conventional Bank Loans:</strong> Traditional commercial loans may offer better rates than SBA loans for well-qualified buyers with strong collateral and industry experience.</p>
 <p class="fade-in"><strong>Purchase Structure and Lender Readiness:</strong> The buyer should match verified cash flow with a realistic sources-and-uses schedule, lender requirements, seller financing where appropriate, and enough post-closing liquidity to operate safely.</p>
 
 <h2 class="fade-in">Valuation Methods</h2>
 <p class="fade-in">Business valuation is both art and science. Multiple approaches exist, and the best acquirers use several methods to triangulate fair value.</p>
-<p class="fade-in"><strong>Multiple of SDE:</strong> Seller Discretionary Earnings multiplied by an industry-appropriate multiple (typically 2-4x for small businesses). This is the most common method for businesses under $5M in revenue.</p>
-<p class="fade-in"><strong>Multiple of EBITDA:</strong> For larger businesses, EBITDA multiples (typically 4-8x) provide a more standardized valuation framework. Industry, growth rate, and risk profile determine where in the range a business falls.</p>
+<p class="fade-in"><strong>Multiple of SDE:</strong> Seller's discretionary earnings can help compare owner-operated businesses after defensible adjustments. The multiple depends on size, transferability, growth, concentration, and deal terms; it is not a substitute for a cash-flow model.</p>
+<p class="fade-in"><strong>Multiple of EBITDA:</strong> EBITDA may be useful for larger or professionally managed companies. Normalize it consistently and account for capital spending, working capital, debt service, and management replacement cost before translating a multiple into an offer.</p>
 <p class="fade-in"><strong>Discounted Cash Flow:</strong> Projects future cash flows and discounts them to present value. More complex but accounts for growth trajectory and investment requirements.</p>
 <p class="fade-in"><strong>Asset-Based Valuation:</strong> Values the business based on its tangible and intangible assets. Useful as a floor value or for asset-heavy businesses.</p>
 
@@ -2477,7 +2479,7 @@ def page_business_acquisitions():
 
 <h2 class="fade-in">What I Look for in a Real Deal</h2>
 <p class="fade-in">A good acquisition is not simply a company with profit. I look for earnings that can be traced to source records, customers that are likely to remain, employees who can operate without constant owner intervention, and a price that still works after debt service, taxes, working capital, maintenance spending, and a downside reserve.</p>
-<p class="fade-in">In one publicly discussed $3.5 million acquisition example with approximately $875,000 of seller-reported earnings, the headline multiple was only the beginning. The real work was testing add-backs, management replacement cost, customer durability, working capital, seller transition, and the cash remaining after financing. Buyers should evaluate the operating company they will own after closing, not the presentation used to market it.</p>
+<p class="fade-in">A headline earnings multiple is only the beginning of the analysis. Test add-backs, management replacement cost, customer durability, working capital, seller transition, and the cash remaining after financing. Evaluate the operating company the buyer will own after closing, not only the presentation used to market it.</p>
 
 <h2 class="fade-in">The Acquisition Decision System</h2>
 <p class="fade-in"><strong>Screen:</strong> Apply written criteria before investing heavily in a target. Industry, geography, earnings, customer concentration, owner dependence, licensing, capital intensity, and management depth should determine whether the opportunity advances.</p>
@@ -2488,10 +2490,8 @@ def page_business_acquisitions():
 <h2 class="fade-in">Business Acquisition Field Guides</h2>
 <div class="pills fade-in" style="margin-top:24px">{guide_cards}</div>
 
-<div class="quote fade-in" style="margin:48px 0">
-<p class="quote-t">"The best time to buy a business was five years ago. The second best time is right now."</p>
-<p class="quote-a"><strong>Dr. Connor Robertson</strong></p>
-</div>
+<h2 class="fade-in">Seller Conversations and Team Continuity</h2>
+<p class="fade-in">Use the <a href="/blog/the-first-questions-i-ask-when-meeting-a-seller/">first seller meeting questions</a> to turn an introductory conversation into a document request. Read <a href="/blog/the-psychology-of-business-owners-when-selling-their-companies/">what sellers care about beyond price</a> when planning a respectful negotiation. Before closing, prepare for <a href="/blog/the-importance-of-employee-retention-after-a-business-sale/">employee retention after a business sale</a> so key handoffs and communication have owners.</p>
 
 <h2 class="fade-in">Related Resources</h2>
 <h3 class="fade-in">Practical AI workflow guides</h3>
