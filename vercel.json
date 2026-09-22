@@ -8,7 +8,6 @@
     { "source": "/tag/(.*)", "destination": "/blog/", "statusCode": 301 },
     { "source": "/author/(.*)", "destination": "/about/", "statusCode": 301 },
     { "source": "/page/(.*)", "destination": "/blog/", "statusCode": 301 },
-    { "source": "/blog/page/(.*)", "destination": "/blog/", "statusCode": 301 },
     { "source": "/feed/", "destination": "/blog/", "statusCode": 301 },
     { "source": "/comments/feed/", "destination": "/blog/", "statusCode": 301 },
     { "source": "/(.*)/feed/", "destination": "/blog/", "statusCode": 301 },
