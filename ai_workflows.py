@@ -6,6 +6,71 @@ and measurement. This deliberately avoids duplicating the broad strategy pillar.
 
 from html import escape
 
+# A small, task-specific exercise makes each guide testable before a team adopts it.
+# These are illustrative exercises, not claims about work performed for clients.
+TRIALS = {
+    "chatgpt-weekly-operations-meeting-agenda": "Try it with one overdue action, a declining KPI, and a routine update. The agenda should put the KPI decision first, assign the overdue action to a named role, and move the routine update out of meeting time.",
+    "chatgpt-client-proposal-first-draft": "Give it discovery notes that mention a possible extra service but an approved scope that omits it. The proposal must keep the extra service out of deliverables and mark any missing price or deadline for confirmation.",
+    "chatgpt-sales-call-follow-up-email": "Use notes with a promised document and a tentative next meeting. The email should state the document commitment while treating the meeting date as tentative until it is confirmed.",
+    "chatgpt-customer-complaint-triage": "Include a complaint requesting a refund when the supplied policy does not authorize one. A usable draft acknowledges the problem and routes the remedy request without promising payment.",
+    "chatgpt-draft-sop-from-screen-recording-notes": "Test a process with one missing screen step and one exception path. The SOP should flag the missing click and tell the operator what to do when the normal path fails.",
+    "chatgpt-local-service-faq-drafts": "Provide real questions about travel radius and weekend appointments, but no approved answer for either. The draft should leave both answers pending rather than inventing a radius or availability.",
+    "chatgpt-invoice-dispute-summary": "Use an invoice, a signed scope, and a change request with no approval record. The timeline should show the disputed charge separately and identify approval as missing evidence.",
+    "chatgpt-structured-interview-questions-small-business": "Give the same role scorecard to two interviewers. Both should receive identical core questions and a rubric that scores observable job evidence rather than personal impressions.",
+    "chatgpt-cash-flow-meeting-prep": "Include a receivable that has moved beyond its expected collection date. The brief should trace the change to the forecast row and ask for an owner and revised assumption.",
+    "chatgpt-customer-onboarding-checklist": "Use a signed scope with a kickoff dependent on customer access. The checklist should place access before kickoff and show who verifies that the account works.",
+    "chatgpt-vendor-comparison-table": "Compare two proposals where one omits a renewal term. The table should leave that field unknown, cite the other proposal's term, and avoid awarding a score for the missing fact.",
+    "chatgpt-post-project-retrospective": "Include a delayed milestone and conflicting explanations in team notes. The retrospective should distinguish the dated milestone record from hypotheses and assign a follow-up to test the cause.",
+    "claude-extract-contract-obligations": "Include an original agreement and an amendment that changes a deadline. The register should cite both sections and flag which deadline controls for legal review.",
+    "claude-compare-policy-versions": "Compare drafts with one renumbered section and one changed approval rule. The output should exclude renumbering from substantive changes and identify who follows the new rule.",
+    "claude-board-packet-questions": "Use a packet with a budget variance but no explanation. A useful question should point to the variance table and ask management for the cause before the board votes.",
+    "claude-rfp-requirements-matrix": "Add a mandatory requirement that appears only in an attachment. The matrix should capture it with the attachment reference and keep response ownership visible.",
+    "claude-commercial-lease-clause-summary": "Use a lease with separate base rent, operating expense, and renewal clauses. The summary should keep those obligations distinct and cite the clause for every date or payment trigger.",
+    "claude-synthesize-customer-interviews": "Provide interviews where one customer contradicts the majority. The synthesis should count the pattern, preserve the dissenting evidence, and avoid treating a small sample as market proof.",
+    "claude-due-diligence-document-register": "Add two similarly named files from different periods. The register should identify each period, flag the older version, and show which request remains unanswered.",
+    "claude-incident-timeline-from-notes": "Provide notes with a reported event time and a later log timestamp. The timeline should label which time is observed and which is reported instead of silently choosing one.",
+    "claude-grant-application-evidence-map": "Use a grant question requesting a measured outcome but supply only a narrative claim. The evidence map should identify the missing measurement and the owner who can provide it.",
+    "claude-compare-supplier-agreements": "Compare agreements with different termination notice periods. The table should cite both clauses and show the operational consequence of missing either deadline.",
+    "claude-employee-handbook-qa-draft": "Ask a question that the handbook does not answer. The draft should say the policy is not established in the supplied text and refer the employee to the policy owner.",
+    "claude-quarterly-strategy-memo-draft": "Include an initiative that missed its target and a proposal to expand it. The memo should separate actual results from the expansion case and name the evidence needed for a decision.",
+    "gpt-sales-discovery-note-formatter": "Feed the GPT notes with an explicit customer need and an unstated budget. It should preserve the need, mark budget unknown, and avoid filling the gap with an assumed number.",
+    "gpt-brand-voice-reviewer-business": "Test one approved sample and one off-brand draft. The GPT should point to a specific voice rule for each proposed edit and leave factual claims for a separate source check.",
+    "gpt-service-estimate-intake-checker": "Submit an intake with a service address but no access instructions. The checker should return the missing field and stop before producing a ready-to-send estimate.",
+    "gpt-internal-sop-lookup": "Ask about a procedure that changed in the latest SOP. The GPT should cite the current version and avoid presenting an older file as the rule.",
+    "gpt-meeting-decision-log": "Provide notes containing a suggestion, a decision, and an unassigned action. The log should keep all three categories separate and flag the action owner as missing.",
+    "gpt-support-reply-drafter": "Test a ticket where the customer asks for a policy exception. The draft should acknowledge the request and route the exception to an authorized reviewer without promising it.",
+    "gpt-proposal-scope-checker": "Give the GPT a proposal that adds a deliverable absent from the signed scope. Its output should identify the exact mismatch and withhold a pass until the scope is corrected.",
+    "gpt-content-brief-generator": "Supply one search intent and a list of existing pages. The brief should select one target URL, identify the reader's task, and flag a proposed angle that duplicates an existing page.",
+    "gpt-new-hire-onboarding-qa": "Ask about a benefit that differs by location when the supplied policy covers only one location. The GPT should state that limit and refer the new hire to the appropriate owner.",
+    "gpt-invoice-coding-suggestions": "Include an invoice line that could fit two expense codes. The GPT should show both candidates and the missing evidence; a finance reviewer makes the final coding choice.",
+    "gpt-guest-message-draft-short-term-rental": "Use a reservation with a confirmed check-in time but no approved early arrival. The message should share the confirmed time and avoid offering early access.",
+    "test-custom-gpt-before-team-rollout": "Run a normal request, a missing-data request, and a request outside the GPT's scope. Approval requires a correct result, a visible uncertainty, and a safe refusal or handoff respectively.",
+    "ai-sales-lead-qualification-workflow": "Test a lead with the right industry but no buying timeline. The workflow should keep the lead in a review state and avoid treating missing timing as purchase intent.",
+    "ai-sales-to-delivery-handoff": "Include a deal with an agreed deliverable and an unresolved implementation assumption. The handoff should surface the assumption before delivery accepts a date.",
+    "ai-support-ticket-routing-small-business": "Use a ticket containing a routine billing question and a possible safety concern. The safety escalation should take precedence over the routine category.",
+    "ai-accounts-receivable-follow-up-drafts": "Include a past-due invoice with an open service dispute. The draft should acknowledge the dispute and route it for review rather than sending a generic payment demand.",
+    "ai-weekly-kpi-commentary": "Provide a KPI change caused by a revised definition rather than performance. The commentary should explain the definition break before interpreting the trend.",
+    "ai-inventory-exception-review": "Feed in one apparent stockout caused by a late data sync. The exception brief should flag the timestamp and request verification before recommending a reorder.",
+    "ai-field-service-dispatch-brief": "Use a job with a known fault but no access window. The brief should keep the fault details and mark the access window as a dispatch blocker.",
+    "ai-restaurant-review-response-drafts": "Test a public review alleging a specific service failure. The response should avoid revealing account details and route fact checking to the manager before publication.",
+    "ai-agency-creative-brief-handoff": "Provide a signed campaign goal but two conflicting audience descriptions. The brief should state the conflict and request an owner decision before creative work starts.",
+    "ai-property-maintenance-intake": "Use a request mentioning water near an electrical outlet but no photos. The intake should escalate the potential hazard immediately rather than wait for a complete routine ticket.",
+    "ai-nonprofit-donor-thank-you-drafts": "Include a restricted donation and a general impact story. The note should honor the restriction and avoid claiming that this particular gift funded the story.",
+    "ai-executive-decision-brief": "Compare a lower-cost option with an unverified delivery risk. The brief should show the cost evidence, label the risk assumption, and say what information would change the decision.",
+    "choose-first-ai-pilot-small-business": "Compare a high-volume task with poor source data against a smaller task with clean examples and an available reviewer. The pilot choice should account for review capacity, not volume alone.",
+    "measure-ai-workflow-roi-human-review": "Time a baseline task and an AI-assisted task including prompt preparation, review, corrections, and rework. The calculation should use accepted outputs rather than drafts produced.",
+    "small-business-ai-data-policy-checklist": "Walk through a customer record, a public document, and an internal financial report. Staff should be able to identify which approved tool and permission applies to each.",
+    "redact-customer-data-before-ai-analysis": "Provide a sample record with names, account numbers, and facts needed for analysis. The redacted version should remove identifiers while retaining only the fields needed for the stated question.",
+    "ai-output-review-checklist-business": "Test the checklist on a draft with a wrong date, an unsupported promise, and a missing citation. Reviewers should catch all three before approving use.",
+    "compare-chatgpt-claude-business-task": "Give both tools the same approved document set and output rubric. Compare accuracy, traceability, review effort, and cost on accepted results, not writing style alone.",
+    "human-approval-gates-ai-automation": "Map a workflow that drafts, approves, and sends a customer message. The gate should sit before sending and name who can stop or reverse the action.",
+    "audit-ai-prompt-library-stale-rules": "Add a prompt containing an outdated price and another with an expired policy link. The audit should identify both, record their owners, and prevent reuse until updated.",
+    "build-ai-pilot-evaluation-set": "Build examples with complete, missing, and contradictory source data. The test set should score whether the workflow flags uncertainty as well as whether it gets routine cases right.",
+    "build-versus-buy-ai-workflow-small-business": "Compare a vendor product with a custom workflow using the same acceptance test. Include maintenance, data access, exit, and reviewer cost in both options.",
+    "train-staff-report-ai-errors": "Give staff a polished answer with one fabricated source reference. The exercise should ask them to stop use, preserve the evidence, and report the failure to the workflow owner.",
+    "review-ai-vendor-data-terms-pilot": "Take a pilot involving customer records and a vendor document silent on retention. The review should mark retention unanswered and hold the upload until an authorized owner resolves it.",
+}
+
 CLUSTERS = [
     {
         "slug": "chatgpt-business-workflows",
@@ -132,6 +197,9 @@ def validate(existing_urls):
         raise ValueError("Duplicate AI guide search intent")
     if len(CLUSTERS) != 5 or any(len(c["guides"]) != 12 for c in CLUSTERS):
         raise ValueError("Expected five hubs with twelve unique spokes each")
+    guide_slugs = {g["slug"] for _, g in all_guides()}
+    if guide_slugs != set(TRIALS):
+        raise ValueError(f"Trial mismatch: missing={guide_slugs - set(TRIALS)}, extra={set(TRIALS) - guide_slugs}")
 
 
 def render_hub(cluster, header, breadcrumbs, footer):
@@ -164,18 +232,17 @@ def render_guide(cluster, guide, header, breadcrumbs, footer, site_url, person_i
                "datePublished": "2026-09-22", "dateModified": "2026-09-22",
                "mainEntityOfPage": {"@id": f"{site_url}{path}#webpage"},
                "about": guide["query"], "inLanguage": "en-US"}
-    description = f"{guide['query'].capitalize()}. Required inputs, a practical prompt, human review, and a way to measure the result."
+    description = f"{guide['query'].capitalize()}: source material, a reusable prompt, a trial case, and a human review check."
     return header(guide["title"], description, path, og_image="/images/dr-connor-robertson-headshot.jpg",
                   crumbs=crumbs, schema_nodes=[article]) + breadcrumbs(crumbs) + f'''<section class="pg-hero"><div class="ctn">
-<h1>{e(guide['title'])}</h1><p>A practical workflow for a business owner or team lead. Start with approved source material and end with a reviewed deliverable.</p>
+<h1>{e(guide['title'])}</h1><p>{e(guide['process'])}</p>
 <p class="guide-meta">Published September 22, 2026 · Dr. Connor Robertson</p></div></section>
 <section class="sec"><article class="ctn" style="max-width:880px">
-<h2>When this workflow helps</h2><p>If you are searching for {e(guide['query'])}, first decide who owns the result and where it will be used. A good draft saves preparation time only when the underlying facts are available and a person can inspect the output. This guide is for that specific deliverable; the <a href="{hub}">{e(cluster['title'])} hub</a> collects adjacent tasks.</p>
-<h2>Gather the source material</h2><p>{e(guide['source'])} Use the current approved version. Remove details that the team is not permitted to place in an AI tool, or use a workspace and access controls approved for that data. Keep a link to the original material so reviewers can trace the result.</p>
-<h2>Build the first draft</h2><p>{e(guide['process'])} Start on one representative example, not the entire backlog. If a required fact is missing, ask for a marked gap rather than a plausible completion. Save the output as a draft with the source date and an assigned reviewer.</p>
-<h3>Starting prompt</h3><blockquote><p>{e(guide['prompt'])}</p></blockquote>
-<p>Replace the example input with your own approved documents and specify the output format your team actually uses. Ask for a short list of uncertainties alongside the draft. Keep the source and output together during review so a polished sentence does not hide a missing fact.</p>
-<h2>Review before use</h2><p>{e(guide['review'])} Check names, dates, figures, citations, and commitments against the originals. If a consequential decision or external communication is involved, the designated human owner makes the final call and follows the normal approval path.</p>
-<h2>Measure whether it worked</h2><p>Track {e(guide['measure'])} Compare a small set of completed examples with the previous process. Record corrections, not only time saved; a faster draft that creates rework is not an improvement. Revise the prompt when the same error appears twice.</p>
-<h2>Next steps</h2><p>Return to <a href="{hub}">{e(cluster['title'])}</a> for related tasks, or use the <a href="/ai-business-strategy/">AI business strategy pillar</a> to decide where this workflow belongs in the wider business.</p>
+<h2>What to provide</h2><p>{e(guide['source'])}</p>
+<h2>Starting prompt</h2><blockquote><p>{e(guide['prompt'])}</p></blockquote>
+<h2>Trial case</h2><p>{e(TRIALS[guide['slug']])}</p>
+<h2>Review gate</h2><p>{e(guide['review'])}</p>
+<h2>How to score the result</h2><p>{e(guide['measure'])}</p>
+<p>Use the current approved source and keep it available to the reviewer. Check a small set of finished outputs against the previous process before adopting this workflow.</p>
+<h2>Related workflows</h2><p>Explore <a href="{hub}">{e(cluster['title'])}</a> or the <a href="/ai-business-strategy/">AI business strategy guide</a>.</p>
 <ul class="link-list">{related}</ul></article></section>''' + footer()
