@@ -417,8 +417,8 @@ def normalize_dashes(html_content):
     """
     return html_content.replace(" -- ", ", ")
 
-# Third-party coverage. Referenced rather than owned, but still corroborates the
-# entity, so it stays in sameAs.
+# Third-party coverage for the press page. An article about Connor is not an
+# identity profile and should not be included in Person.sameAs.
 PRESS_PROFILES = [
     "https://www.tasteterminal.com/2026/04/16/connor-robertson-on-ai-marketing-strategy-how-connor-robertson-helps-entrepreneurs-build-audiences-and-close-more-deals/",
     "https://fictiontalk.com/2026/04/16/connor-robertson-on-business-acquisitions-why-connor-robertson-says-buying-beats-building-for-most-entrepreneurs/",
@@ -432,10 +432,14 @@ PRESS_PROFILES = [
     "https://wikialpha.co/wiki/Dr._Connor_Robertson",
 ]
 
-# The single sameAs array used by the Person node. Order matters a little:
-# owned properties first, then profiles Connor controls, then third-party
-# coverage -- consumers that truncate the list keep the strongest signals.
-SAME_AS = OWNED_WEBSITES + list(SOCIAL_LINKS.values()) + PODCAST_PROFILES + PRESS_PROFILES
+# sameAs is for pages that identify Connor himself, not websites for companies
+# he founded, listings for his podcast, or articles about him. Those have their
+# own links and entity relationships elsewhere on the site.
+PERSON_PROFILE_NAMES = (
+    "LinkedIn", "Medium", "Substack", "X (Twitter)", "YouTube", "Threads",
+    "Tumblr", "Facebook", "TikTok", "Crunchbase", "Flipboard", "Skool",
+)
+SAME_AS = [SOCIAL_LINKS[name] for name in PERSON_PROFILE_NAMES]
 
 NAV_ITEMS = [
     ("About", "/about/"),
@@ -1190,7 +1194,7 @@ FOUNDED_ORGS = [
         "name": "The Prospecting Show",
         "url": "https://www.prospectingshow.com",
         "type": "Organization",
-        "desc": "Weekly podcast hosted by Dr. Connor Robertson interviewing entrepreneurs about how they built and scaled their businesses.",
+        "desc": "Interview podcast hosted by Dr. Connor Robertson about how entrepreneurs built and scaled their businesses.",
     },
     {
         "slug": "seymour-maison",
@@ -1220,7 +1224,6 @@ def organization_nodes():
             "url": o["url"],
             "description": o["desc"],
             "founder": {"@id": PERSON_ID},
-            "sameAs": [o["url"]],
         })
     return nodes
 
@@ -1258,15 +1261,6 @@ def site_graph_nodes():
         "knowsAbout": KNOWS_ABOUT,
         "founder": [{"@id": org_id(o["slug"])} for o in FOUNDED_ORGS],
         "worksFor": {"@id": org_id(PRIMARY_ORG["slug"])},
-        "memberOf": [
-            {"@type": "Organization", "name": "Social Venture Partners"},
-            {"@type": "Organization", "name": "Habitat for Humanity"},
-        ],
-        "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "University of Pittsburgh",
-            "sameAs": "https://www.pitt.edu",
-        },
         "mainEntityOfPage": {"@id": f"{SITE_URL}/about/#webpage"},
     }
     website = {
@@ -1520,19 +1514,25 @@ def page_home():
         ("Build Durable Enterprise Value", "Improve revenue quality, management depth, customer retention, and operating discipline so growth becomes transferable value rather than a larger job for the owner."),
     ]
     pcards = "".join(f'<div class="pill"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
-    return header("Dr. Connor Robertson | Business Acquisitions & Operations",
-        "Dr. Connor Robertson helps entrepreneurs acquire, operate, and scale profitable businesses through practical valuation, diligence, structure, and operating systems.",
+    return header("Dr. Connor Robertson | Official Website, Books & Business",
+        "Official website of Dr. Connor Robertson, Pittsburgh entrepreneur, author and AI strategist. Explore his biography, books, podcast and business guides.",
         "/", og_image="/images/dr-connor-robertson-headshot.jpg",
-        page_type="ProfilePage", schema_nodes=[nav_schema]) + f"""
+        page_type="WebPage", page_extra={"mainEntity": {"@id": PERSON_ID}},
+        schema_nodes=[nav_schema]) + f"""
 <section class="hero"><div class="hero-bg"><img src="/images/dr-connor-robertson-headshot.jpg" alt="Dr. Connor Robertson, business acquisition strategist and author" width="1024" height="1024" loading="eager" class="hero-bg-img"></div><div class="hero-ct">
 <h1>Dr. Connor Robertson</h1>
-<p class="tag">Helping entrepreneurs acquire, operate, and scale profitable businesses.</p>
+<p class="tag">Pittsburgh entrepreneur, author, podcast host and AI strategist. Helping owners acquire, operate and grow businesses.</p>
 <div class="hero-btn"><a href="/business-acquisitions/" class="btn-p">Explore Acquisition Guides</a><a href="/speaker/" class="btn-s">Book Me to Speak</a></div>
 <div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
 <h3 style="font-size:22px;margin-bottom:8px;">Buying Wealth</h3>
 <p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">Dr. Robertson\'s book on building wealth through business acquisitions and real estate investing. A practical guide to creating lasting financial freedom.</p>
 <a href="https://buyingwealthbook.com" target="_blank" rel="noopener" style="color:var(--accent,#2563eb);font-weight:600;font-size:14px;">Visit buyingwealthbook.com &rarr;</a>
 </div>
+</div></section>
+<section class="sec"><div class="ctn" style="max-width:1000px">
+<h2>Who is Dr. Connor Robertson?</h2>
+<p>Dr. Connor Robertson is a Canadian-born entrepreneur and business strategist based in Pittsburgh, Pennsylvania. He founded Elixir Consulting Group, publishes The Pittsburgh Wire, hosts The Prospecting Show, and writes about business acquisitions, operating systems and practical AI use. This is his official website and the starting point for his current work.</p>
+<p>Read his <a href="/about/">biography and background</a>, explore his <a href="/books/">published books</a>, browse <a href="/projects/">businesses and projects</a>, or find <a href="/speaker/">speaking topics and booking details</a>. His <a href="/press-media/">press and media page</a> collects outside coverage; the <a href="/blog/">blog</a> contains his business guides and articles.</p>
 </div></section>
 <section class="feat"><div class="ctn">
 <h2>As Featured On</h2>
@@ -1573,49 +1573,30 @@ def page_home():
 
 def page_about():
     # The Person entity is sitewide; /about/ is its mainEntityOfPage.
-    faq_schema = {
-        "@type": "FAQPage",
-        "@id": f"{SITE_URL}/about/#faq",
-        "mainEntity": [
-            {"@type": "Question", "name": "Who is Dr. Connor Robertson?",
-             "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh, PA. He is the founder of Elixir Consulting Group, publisher of The Pittsburgh Wire, and host of The Prospecting Show podcast."}},
-            {"@type": "Question", "name": "What companies does Dr. Connor Robertson own?",
-             "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson founded and operates Elixir Consulting Group (a business consulting firm), The Pittsburgh Wire (a Pittsburgh business news publication), and The Prospecting Show (a business podcast on Spotify and Apple Podcasts)."}},
-            {"@type": "Question", "name": "Where is Dr. Connor Robertson based?",
-             "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson is based in Pittsburgh, Pennsylvania. He chose Pittsburgh for its strong business ecosystem, deep talent pool, and collaborative entrepreneurial community."}},
-            {"@type": "Question", "name": "What is The Prospecting Show?",
-             "acceptedAnswer": {"@type": "Answer", "text": "The Prospecting Show is a weekly business podcast hosted by Dr. Connor Robertson where he interviews entrepreneurs and small business owners about scaling their businesses. It is available on Spotify, Apple Podcasts, YouTube, and all major podcast platforms."}},
-            {"@type": "Question", "name": "What books has Dr. Connor Robertson written?",
-             "acceptedAnswer": {"@type": "Answer", "text": "Dr. Connor Robertson has authored six books including Buying Wealth, The 7 Minute Phone Call, Creative Acquisitions, Built to Run, PadSplit Playbook, and Buy The Building Keep The Profits. They are available on Google Play, Barnes & Noble, and Kobo."}},
-            {"@type": "Question", "name": "How can I contact Dr. Connor Robertson?",
-             "acceptedAnswer": {"@type": "Answer", "text": "You can reach Dr. Connor Robertson through the contact form on drconnorrobertson.com/contact/ for business inquiries, speaking engagements, press and media requests, and partnership opportunities."}},
-        ]
-    }
     return header("Who Is Dr. Connor Robertson? | Bio, Books & Podcast",
-        "Who is Dr. Connor Robertson? AI strategist, entrepreneur, and author helping businesses deploy AI for competitive advantage. Founder of Elixir Consulting Group.",
+        "Biography of Dr. Connor Robertson: Pittsburgh entrepreneur, author of six books, host of The Prospecting Show, and founder of Elixir Consulting Group.",
         "/about/", og_image="/images/connor-about.jpg", page_type="AboutPage",
-        crumbs=[("Home", "/"), ("About", None)],
-        schema_nodes=[faq_schema]) + breadcrumbs([("Home", "/"), ("About", None)]) + """
+        page_extra={"mainEntity": {"@id": PERSON_ID}},
+        crumbs=[("Home", "/"), ("About", None)]) + breadcrumbs([("Home", "/"), ("About", None)]) + """
 <section class="pg-hero"><div class="ctn">
 <h1>About Dr. Connor Robertson</h1>
 <p>Entrepreneur. Author. AI Strategist. Business Acquisition Expert. Podcast Host. Based in Pittsburgh, PA.</p>
 </div></section>
 <section class="sec"><div class="ctn">
 <div class="about-photo"><img src="/images/connor-hero.jpg" alt="Dr. Connor Robertson - Pittsburgh entrepreneur, author, AI strategist, and business acquisition expert" loading="lazy"></div>
-<p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, and AI implementation expert based in Pittsburgh, PA. He has built four companies from the ground up, authored six books, hosted over 350 podcast episodes, and helped business owners across North America acquire companies, automate operations, and scale with purpose.</p>
+<p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, and AI implementation expert based in Pittsburgh, PA. He has founded four ventures, authored six books, and hosted more than 178 episodes of The Prospecting Show. His work focuses on business acquisitions, practical AI adoption, and operating systems.</p>
 
 <div class="cred-grid">
 <div class="cred-card"><div class="cred-icon">&#9889;</div><h3>Entrepreneur</h3><p>Founded Elixir Consulting Group, The Pittsburgh Wire, and The Prospecting Show</p></div>
 <div class="cred-card"><div class="cred-icon">&#9997;</div><h3>Author</h3><p>Six published books on acquisitions, wealth building, prospecting, and real estate strategy</p></div>
 <div class="cred-card"><div class="cred-icon">&#129302;</div><h3>AI Strategist</h3><p>Helps small and mid-sized businesses deploy AI for automation, lead generation, and competitive advantage</p></div>
-<div class="cred-card"><div class="cred-icon">&#127911;</div><h3>Podcast Host</h3><p>350+ episodes of The Prospecting Show featuring entrepreneurs and business operators</p></div>
+<div class="cred-card"><div class="cred-icon">&#127911;</div><h3>Podcast Host</h3><p>178+ episodes of The Prospecting Show featuring entrepreneurs and business operators</p></div>
 </div>
 
 <div class="stats">
 <div class="stat"><div class="stat-n">6</div><div class="stat-l">Books Published</div></div>
-<div class="stat"><div class="stat-n">3+</div><div class="stat-l">Companies Founded</div></div>
-<div class="stat"><div class="stat-n">350+</div><div class="stat-l">Podcast Episodes</div></div>
-<div class="stat"><div class="stat-n">10K+</div><div class="stat-l">People Impacted</div></div>
+<div class="stat"><div class="stat-n">4</div><div class="stat-l">Ventures Founded</div></div>
+<div class="stat"><div class="stat-n">178+</div><div class="stat-l">Podcast Episodes</div></div>
 </div>
 
 <div class="agrid">
@@ -1624,9 +1605,9 @@ def page_about():
 <div class="ablock"><h3>AI, Automation & Modern Growth</h3>
 <p>Connor is at the forefront of helping small businesses adopt artificial intelligence. From automating client communications to building AI-powered lead generation systems, he shows owners how to do more with fewer resources. His approach is practical, not theoretical, focused on tools and workflows that produce ROI within weeks, not months.</p></div>
 <div class="ablock"><h3>Media, Publishing & The Prospecting Show</h3>
-<p>Connor built <a href="https://thepittsburghwire.com" target="_blank" rel="noopener">The Pittsburgh Wire</a> into a leading local business publication and hosts <a href="https://www.prospectingshow.com" target="_blank" rel="noopener">The Prospecting Show</a>, a weekly podcast featuring entrepreneurs sharing real stories of scaling their businesses. He has authored six books including <em>Buying Wealth</em>, <em>The 7 Minute Phone Call</em>, and <em>Creative Acquisitions</em>, all available on <a href="/books/">his books page</a>.</p></div>
+<p>Connor publishes <a href="https://thepittsburghwire.com" target="_blank" rel="noopener">The Pittsburgh Wire</a> and hosts <a href="https://www.prospectingshow.com" target="_blank" rel="noopener">The Prospecting Show</a>, an interview podcast featuring entrepreneurs sharing stories of scaling their businesses. He has authored six books including <em>Buying Wealth</em>, <em>The 7 Minute Phone Call</em>, and <em>Creative Acquisitions</em>, all listed on <a href="/books/">his books page</a>.</p></div>
 <div class="ablock"><h3>Philanthropy & Community Impact</h3>
-<p>Connor's philanthropic work with Social Venture Partners and Habitat for Humanity has helped build over 150 homes and support 40+ global community branches. He believes that building businesses and building communities are inseparable, and that the best entrepreneurs create lasting value beyond the balance sheet.</p></div>
+<p>Connor has supported community work through Social Venture Partners and Habitat for Humanity. He believes that building businesses and building communities are connected, and that entrepreneurs can create lasting value beyond the balance sheet.</p></div>
 </div></div></section>
 
 <section class="cta-banner"><div class="ctn">
@@ -1692,7 +1673,7 @@ def page_speaker():
 <div class="speaker-stats">
 <div class="stat"><div class="stat-n">6</div><div class="stat-l">Books Published</div></div>
 <div class="stat"><div class="stat-n">4</div><div class="stat-l">Companies Founded</div></div>
-<div class="stat"><div class="stat-n">350+</div><div class="stat-l">Podcast Episodes</div></div>
+<div class="stat"><div class="stat-n">178+</div><div class="stat-l">Podcast Episodes</div></div>
 </div>
 </div></section>
 
@@ -1721,7 +1702,7 @@ def page_speaker():
 <h2 class="sec-t">As Heard On</h2>
 <p class="sec-sub">Connor hosts The Prospecting Show and has been a featured guest on podcasts and media outlets reaching millions of listeners.</p>
 <div class="podcast-grid">
-<div class="pod-card"><h3>The Prospecting Show</h3><p>Connor's own weekly podcast, 350+ episodes interviewing entrepreneurs and small business owners about scaling their companies.</p><a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="pod-link">Listen Now &rarr;</a></div>
+<div class="pod-card"><h3>The Prospecting Show</h3><p>Connor's interview podcast, with 178+ episodes on how entrepreneurs and small business owners scale their companies.</p><a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="pod-link">Listen Now &rarr;</a></div>
 <div class="pod-card"><h3>Yahoo Finance</h3><p>Featured for the launch of Elixir Consulting Group's business automation advisory service.</p><a href="https://finance.yahoo.com/sectors/technology/articles/elixir-consulting-group-launches-business-112900872.html" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
 <div class="pod-card"><h3>Business Insider</h3><p>Coverage of Elixir Consulting Group's advisory services for small and mid-sized business owners.</p><a href="https://markets.businessinsider.com/news/stocks/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-midsized-business-owners-1036100299" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
 <div class="pod-card"><h3>The Globe and Mail</h3><p>National coverage of Connor's business consulting and automation advisory work.</p><a href="https://www.theglobeandmail.com/investing/markets/markets-news/Newsfile/1681496/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-mid-sized-business-owners/" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
@@ -1982,7 +1963,7 @@ def page_contact():
 
 def page_projects():
     ventures = [
-        ("The Prospecting Show", "https://www.prospectingshow.com", "A weekly podcast interviewing entrepreneurs about how they built and scaled their businesses."),
+        ("The Prospecting Show", "https://www.prospectingshow.com", "An interview podcast about how entrepreneurs built and scaled their businesses."),
         ("The Pittsburgh Wire", "https://thepittsburghwire.com", "An independent digital publication covering Pittsburgh business, real estate, and economic development."),
         ("Elixir Consulting Group", "https://elixirconsultinggroup.com", "Business automation and AI advisory for small and mid-sized business owners."),
     ]
@@ -2021,7 +2002,7 @@ def page_projects():
 
 <div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
 <h3 style="font-size:22px;margin-bottom:8px;">The Prospecting Show</h3>
-<p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">A weekly podcast interviewing entrepreneurs about how they built and scaled their businesses. 350+ episodes on Spotify, Apple Podcasts, YouTube, and all major platforms.</p>
+<p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">Interviews with entrepreneurs about how they built and scaled their businesses. 178+ episodes available on major podcast platforms.</p>
 <a href="https://prospectingshow.com" target="_blank" rel="noopener" style="color:var(--accent,#2563eb);font-weight:600;font-size:14px;">Visit prospectingshow.com &rarr;</a>
 </div>
 
@@ -2270,6 +2251,8 @@ def write(path, content):
 # every build with today's date trains crawlers to ignore the field entirely.
 STATIC_LASTMOD = "2026-09-20"
 AI_GUIDES_LASTMOD = "2026-09-22"
+BRAND_LASTMOD = "2026-09-22"
+BRAND_UPDATED_PAGES = {"/", "/about/", "/speaker/", "/projects/", "/faq/"}
 
 SITEMAP_PRIORITY = {
     "/": ("1.0", "weekly"),
@@ -2374,7 +2357,8 @@ def sitemap(posts):
             lastmod, prio, freq = p["date"][:10], "0.6", "monthly"
         else:
             prio, freq = SITEMAP_PRIORITY.get(loc, ("0.6", "monthly"))
-            lastmod = AI_GUIDES_LASTMOD if loc.startswith("/ai/") else STATIC_LASTMOD
+            lastmod = (AI_GUIDES_LASTMOD if loc.startswith("/ai/") else
+                       BRAND_LASTMOD if loc in BRAND_UPDATED_PAGES else STATIC_LASTMOD)
         # Surface the page's primary image so it is eligible for image search.
         img = ""
         m = re.search(r'<meta property="og:image" content="([^"]+)"', html_text)
@@ -2876,13 +2860,13 @@ def page_faq():
         ("Who is Dr. Connor Robertson?",
          "Dr. Connor Robertson is an entrepreneur, author, podcast host, and business strategist based in Pittsburgh, Pennsylvania. He is the founder of multiple companies including Elixir Consulting Group, The Prospecting Show, The Pittsburgh Wire, and Seymour Maison. Connor is widely recognized for his expertise in business acquisitions, real estate investing, and helping business owners scale through strategic advisory services. He has authored six books on business strategy and wealth building, and his podcast, The Prospecting Show, has featured over 178 episodes with top entrepreneurs and business leaders."),
         ("What companies does Dr. Connor Robertson own?",
-         "Dr. Connor Robertson is the founder and owner of several companies across diverse industries. These include Elixir Consulting Group, a strategic business advisory firm helping owners with growth, acquisitions, and operational excellence; The Prospecting Show, a weekly podcast interviewing entrepreneurs about building and scaling businesses; The Pittsburgh Wire, a digital media publication covering Pittsburgh business, real estate, and development news; and Seymour Maison, a luxury apparel brand. He also manages an active real estate investment portfolio."),
+         "Dr. Connor Robertson is the founder and owner of several companies across diverse industries. These include Elixir Consulting Group, a strategic business advisory firm helping owners with growth, acquisitions, and operational excellence; The Prospecting Show, an interview podcast interviewing entrepreneurs about building and scaling businesses; The Pittsburgh Wire, a digital media publication covering Pittsburgh business, real estate, and development news; and Seymour Maison, a luxury apparel brand. He also manages an active real estate investment portfolio."),
         ("What books has Dr. Connor Robertson written?",
          "Dr. Connor Robertson has authored six books focused on business strategy, acquisitions, and wealth building. His published works include Buying Wealth, which teaches readers how to build wealth through asset acquisition; Creative Acquisitions, a guide to innovative deal structures for purchasing businesses; The 7 Minute Phone Call, a framework for effective prospecting conversations; PadSplit Playbook, a comprehensive guide to co-living real estate investing; Buy The Building Keep The Profits, which covers strategies for business owners to acquire their commercial properties; and Built to Run, a playbook for building businesses with systems that operate independently of the founder."),
         ("Where is Dr. Connor Robertson based?",
          "Dr. Connor Robertson is based in Pittsburgh, Pennsylvania. Pittsburgh serves as the headquarters for his companies and ventures, and he is an active participant in the Pittsburgh business community. His publication, The Pittsburgh Wire, reflects his deep connection to the city by covering local business, real estate, and development news. Connor frequently speaks at events and conferences in the Pittsburgh area and throughout the United States."),
         ("What is The Prospecting Show?",
-         "The Prospecting Show is a weekly podcast hosted by Dr. Connor Robertson that features in-depth interviews with entrepreneurs, business owners, and industry leaders about building and scaling successful businesses. With over 178 episodes, the show covers topics including sales strategy, business acquisitions, real estate investing, leadership, and operational excellence. The Prospecting Show is available on all major podcast platforms including Spotify, Apple Podcasts, and YouTube. It has become a go-to resource for entrepreneurs looking for practical, actionable advice on business growth."),
+         "The Prospecting Show is an interview podcast hosted by Dr. Connor Robertson that features in-depth interviews with entrepreneurs, business owners, and industry leaders about building and scaling successful businesses. With over 178 episodes, the show covers topics including sales strategy, business acquisitions, real estate investing, leadership, and operational excellence. The Prospecting Show is available on all major podcast platforms including Spotify, Apple Podcasts, and YouTube. It has become a go-to resource for entrepreneurs looking for practical, actionable advice on business growth."),
         ("What is Elixir Consulting Group?",
          "Elixir Consulting Group is a strategic advisory firm founded by Dr. Connor Robertson. The firm specializes in helping business owners achieve growth through acquisitions, partnerships, and operational improvement. Elixir Consulting Group works with entrepreneurs and companies across a range of industries, providing guidance on deal structuring, scaling operations, improving profitability, and building sustainable business systems. Based in Pittsburgh, Pennsylvania, the firm reflects Connor's hands-on approach to business strategy and his belief that disciplined systems and smart acquisitions are the foundation of long-term success."),
         ("What is Dr. Connor Robertson known for?",
@@ -3167,7 +3151,7 @@ def llms_txt():
 
 ## Podcast
 
-- The Prospecting Show: Weekly podcast with 178+ episodes interviewing entrepreneurs about how they built and scaled their businesses. Available on Spotify, Apple Podcasts, and all major platforms.
+- The Prospecting Show: Interview podcast with 178+ episodes interviewing entrepreneurs about how they built and scaled their businesses. Available on Spotify, Apple Podcasts, and all major platforms.
 
 ## Expertise
 
@@ -3266,7 +3250,7 @@ Connor specializes in business acquisitions, real estate investing, AI business 
 
 ## The Prospecting Show (Podcast)
 
-The Prospecting Show is a weekly podcast hosted by Dr. Connor Robertson featuring interviews with entrepreneurs sharing real stories of how they built and scaled their businesses. With over 178 episodes, the show covers topics including business acquisitions, sales systems, real estate investing, leadership, and entrepreneurship.
+The Prospecting Show is an interview podcast hosted by Dr. Connor Robertson featuring interviews with entrepreneurs sharing real stories of how they built and scaled their businesses. With over 178 episodes, the show covers topics including business acquisitions, sales systems, real estate investing, leadership, and entrepreneurship.
 
 - Spotify: https://open.spotify.com/show/4VDPOlbe2RSSqukaSuYniX
 - Apple Podcasts: https://podcasts.apple.com/us/podcast/the-prospecting-show-with-dr-connor-robertson/id1488353384
