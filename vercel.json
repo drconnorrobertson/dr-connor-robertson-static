@@ -23,6 +23,7 @@
     ,{ "source": "/guides/how-to-buy-a-business/", "destination": "/business-acquisitions/", "statusCode": 301 }
     ,{ "source": "/guides/business-acquisition-checklist/", "destination": "/business-acquisitions/business-acquisition-due-diligence-checklist/", "statusCode": 301 }
     ,{ "source": "/blog/seller-financing-explained/", "destination": "/business-acquisitions/seller-financing-business-acquisition/", "statusCode": 301 }
+    ,{ "source": "/operational-drag-in-business/", "destination": "/blog/operational-drag-in-business/", "statusCode": 301 }
   ],
   "headers": [
     {

@@ -2251,6 +2251,7 @@ def write(path, content):
 # every build with today's date trains crawlers to ignore the field entirely.
 STATIC_LASTMOD = "2026-09-20"
 AI_GUIDES_LASTMOD = "2026-09-22"
+AI_PILLAR_LASTMOD = "2026-09-22"
 BRAND_LASTMOD = "2026-09-22"
 BRAND_UPDATED_PAGES = {"/", "/about/", "/speaker/", "/projects/", "/faq/"}
 ACQUISITIONS_LASTMOD = "2026-09-22"
@@ -2359,6 +2360,7 @@ def sitemap(posts):
         else:
             prio, freq = SITEMAP_PRIORITY.get(loc, ("0.6", "monthly"))
             lastmod = (AI_GUIDES_LASTMOD if loc.startswith("/ai/") else
+                       AI_PILLAR_LASTMOD if loc == "/ai-business-strategy/" else
                        BRAND_LASTMOD if loc in BRAND_UPDATED_PAGES else
                        ACQUISITIONS_LASTMOD if loc == "/business-acquisitions/" else STATIC_LASTMOD)
         # Surface the page's primary image so it is eligible for image search.
@@ -2622,70 +2624,49 @@ def page_ai_business_strategy():
         "mainEntityOfPage": {"@id": f"{SITE_URL}/ai-business-strategy/#webpage"},
     }
 
-    return header("AI Business Strategy Guide | Dr. Connor Robertson",
-        "How to deploy AI across marketing, operations and sales for real competitive advantage, without the hype. A practical guide for business owners.",
+    return header("AI Business Strategy for Small Business Owners",
+        "A practical plan for selecting, testing and governing AI workflows in a small business, with ChatGPT, Claude and custom GPT task guides.",
         "/ai-business-strategy/", og_image="/images/dr-connor-robertson-headshot.jpg",
         crumbs=[("Home", "/"), ("AI Business Strategy", None)],
         schema_nodes=[topic_page]) + breadcrumbs([("Home", "/"), ("AI Business Strategy", None)]) + """
 <section class="pg-hero"><div class="ctn">
-<h1>AI Business Strategy: How Entrepreneurs Use AI for Competitive Advantage</h1>
-<p>Practical frameworks for deploying artificial intelligence across marketing, operations, and sales, without the hype.</p>
+<h1>AI Business Strategy for Small Business Owners</h1>
+<p>Choose one measurable job, give it approved source material, and keep a person accountable for the finished result.</p>
 </div></section>
 <section class="sec"><div class="ctn">
 
-<h2 class="fade-in">The Strategic Imperative</h2>
-<p class="fade-in">Artificial intelligence is not a future consideration, it is a present-day competitive weapon. Entrepreneurs who deploy AI strategically today are building advantages that compound over time, while those who wait find themselves playing catch-up against competitors who move faster, respond quicker, and operate more efficiently.</p>
-<p class="fade-in">The opportunity is not about replacing humans with machines. It is about augmenting human decision-making, automating repetitive workflows, and creating systems that scale without proportional increases in headcount or cost. The businesses that win in 2026 and beyond will be those that treat AI as infrastructure, not as a novelty.</p>
+<h2>Start with the workflow, not a tool</h2>
+<p>Write down where a task begins, what a usable result looks like, who reviews it, and what happens after approval. If the process already stalls because an owner is unavailable or the input is incomplete, a faster draft will not remove that delay. Use the <a href="/blog/operational-drag-in-business/">operational drag diagnostic</a> to separate active work from waiting and rework before choosing an AI pilot.</p>
+<p>Pick a task that happens often enough to test, has a stable source of truth, and has a reviewer with time to check outputs. A customer email draft, meeting brief, or document comparison can be a good candidate when the required facts and approval path are clear. A task with unclear authority, highly sensitive data, or no reliable way to judge correctness needs process work first.</p>
 
-<h2 class="fade-in">AI for Marketing Automation</h2>
-<p class="fade-in">Marketing is where most businesses see their first AI wins. The combination of content generation, audience targeting, and performance optimization creates immediate ROI for businesses of any size.</p>
-<p class="fade-in"><strong>Content Systems:</strong> AI enables entrepreneurs to produce high-quality content at 10x the volume of manual creation. Blog posts, social media content, email sequences, video scripts, and advertising copy can all be generated, refined, and optimized using AI tools. The key is building systems, not just using tools occasionally, but creating repeatable workflows that produce consistent output.</p>
-<p class="fade-in"><strong>Audience Intelligence:</strong> AI analyzes customer behavior patterns, identifies high-value segments, predicts churn, and personalizes messaging at scale. What previously required a team of data analysts can now be accomplished with properly configured AI systems.</p>
-<p class="fade-in"><strong>Performance Optimization:</strong> AI continuously tests headlines, images, copy variants, and audience segments to maximize conversion rates. The compounding effect of daily optimization creates significant advantages over competitors who optimize monthly or quarterly.</p>
+<h2>Make the first pilot small and testable</h2>
+<ol>
+<li><strong>Define the deliverable.</strong> Name the artifact the team will use, its required fields, and the person who accepts it.</li>
+<li><strong>Collect a baseline.</strong> Measure a few recent completed examples, including preparation, review, corrections, and total time to an accepted result.</li>
+<li><strong>Choose the source set.</strong> Use current approved documents and remove or protect information your organization has not approved for the tool.</li>
+<li><strong>Write a review gate.</strong> List the errors that would make an output unusable: wrong figures, invented policy, unsupported promises, missing citations, or an incorrect recipient.</li>
+<li><strong>Run a limited trial.</strong> Compare the AI-assisted process with the baseline on similar cases. Record errors and reviewer effort, not just draft speed.</li>
+</ol>
+<p>The <a href="/ai/ai-governance-measurement/choose-first-ai-pilot-small-business/">first AI pilot guide</a> helps choose between candidate tasks. The <a href="/ai/ai-governance-measurement/measure-ai-workflow-roi-human-review/">ROI guide</a> shows how to count only accepted results after human review.</p>
 
-<h2 class="fade-in">AI for Operations</h2>
-<p class="fade-in">Operational efficiency is where AI delivers its most dramatic long-term impact. Every repetitive process in your business is a candidate for AI augmentation or full automation.</p>
-<p class="fade-in"><strong>Workflow Automation:</strong> Invoice processing, data entry, scheduling, inventory management, customer onboarding, and reporting can all be automated using AI agents. The goal is removing yourself and your team from low-value repetitive tasks so you can focus on high-value strategic work.</p>
-<p class="fade-in"><strong>Decision Support:</strong> AI systems can analyze complex data sets, identify patterns, flag anomalies, and recommend actions. Financial forecasting, demand planning, pricing optimization, and resource allocation all benefit from AI-powered analysis.</p>
-<p class="fade-in"><strong>Quality Control:</strong> AI monitors outputs, detects errors, ensures consistency, and maintains standards across your operation. This is particularly valuable as you scale, maintaining quality becomes harder with growth, and AI provides the monitoring layer that catches issues before they reach customers.</p>
-<p class="fade-in">Dr. Robertson's book <a href="/books/#built-to-run">Built to Run</a> provides frameworks for building systems that operate without constant owner involvement, AI accelerates this vision dramatically.</p>
-
-<h2 class="fade-in">AI for Sales Intelligence</h2>
-<p class="fade-in">Sales teams equipped with AI outperform those without it by significant margins. The advantage comes from better targeting, faster research, and more personalized outreach at scale.</p>
-<p class="fade-in"><strong>Prospect Research:</strong> AI can research prospects, identify pain points, map organizational structures, and surface trigger events in minutes rather than hours. This intelligence makes every sales conversation more relevant and valuable.</p>
-<p class="fade-in"><strong>Outreach Personalization:</strong> Generic outreach fails. AI enables personalization at scale, crafting messages that reference specific details about the prospect, their company, and their challenges. Combined with the methodology from <a href="/books/#the-7-minute-phone-call">The 7 Minute Phone Call</a>, AI-powered research makes every call more productive.</p>
-<p class="fade-in"><strong>Pipeline Analytics:</strong> AI predicts which deals will close, identifies stalled opportunities, recommends next actions, and helps sales teams prioritize their time on the highest-probability opportunities.</p>
-
-<h2 class="fade-in">Implementation Roadmap</h2>
-<p class="fade-in">Successful AI implementation follows a predictable pattern. Rushing to deploy complex systems without foundation leads to failure. Here is the phased approach that works:</p>
-<p class="fade-in"><strong>Phase 1, Audit and Prioritize:</strong> Map every process in your business. Identify which are repetitive, rule-based, and high-volume. These are your AI candidates. Prioritize by potential impact and implementation difficulty.</p>
-<p class="fade-in"><strong>Phase 2, Quick Wins:</strong> Start with high-impact, low-complexity implementations. Content generation, email automation, and basic workflow automation typically deliver fastest ROI and build organizational confidence in AI.</p>
-<p class="fade-in"><strong>Phase 3, Core Systems:</strong> Build AI into your core operational workflows. This is where you move from using AI tools to having AI-powered systems that run continuously. CRM automation, financial analysis, customer service, and reporting infrastructure.</p>
-<p class="fade-in"><strong>Phase 4, Competitive Moat:</strong> Deploy AI in ways that create sustainable advantages, proprietary data, custom models, unique workflows, and integrated systems that competitors cannot easily replicate.</p>
-
-<h2 class="fade-in">Avoiding Common Mistakes</h2>
-<p class="fade-in">The biggest mistake entrepreneurs make with AI is treating it as a magic bullet rather than a tool that requires strategy, implementation, and iteration. Other common failures include deploying AI without clear success metrics, automating broken processes (which just creates broken automation faster), and failing to invest in the human oversight that keeps AI systems on track.</p>
-<p class="fade-in">AI works best when paired with clear business objectives, defined processes, and competent human oversight. It amplifies what is already working, it does not fix what is fundamentally broken.</p>
-
-<div class="quote fade-in" style="margin:48px 0">
-<p class="quote-t">"AI does not replace strategy. It accelerates it. The entrepreneurs who win are those who know what to build, AI just helps them build it faster."</p>
-<p class="quote-a"><strong>Dr. Connor Robertson</strong></p>
+<h2>Match the tool to the output</h2>
+<p>Use the same approved test input and acceptance checklist when comparing tools. A conversational draft, a long-document review, and a reusable team assistant have different setup and review needs. The right choice is the one that produces accurate, traceable work at a reasonable total cost for that task. Tool names and features change; retest when your workflow or vendor settings change.</p>
+<div class="pills" style="margin-top:24px">
+<div class="pill"><h3><a href="/ai/chatgpt-business-workflows/">ChatGPT task workflows</a></h3><p>First drafts and structured outputs for meetings, proposals, support, and operations.</p></div>
+<div class="pill"><h3><a href="/ai/claude-business-documents/">Claude document workflows</a></h3><p>Question lists, comparisons, and evidence registers from business documents.</p></div>
+<div class="pill"><h3><a href="/ai/custom-gpts-business/">Custom GPT systems</a></h3><p>Repeatable instructions for a narrow team task, with test cases and an owner.</p></div>
 </div>
 
-<h2 class="fade-in">Related Resources</h2>
-<div class="pills fade-in" style="margin-top:24px">
-<div class="pill"><h3><a href="/business-acquisitions/">Business Acquisitions</a></h3><p>Apply AI to optimize acquired businesses from day one.</p></div>
-<div class="pill"><h3><a href="/prospecting-sales/">Prospecting & Sales</a></h3><p>AI-powered prospecting systems that fill your pipeline.</p></div>
-<div class="pill"><h3><a href="/author-platform/">Author Platform</a></h3><p>Use AI to scale content creation and audience building.</p></div>
-<div class="pill"><h3><a href="/books/#built-to-run">Built to Run (Book)</a></h3><p>Build systems and processes that run without you.</p></div>
-</div>
+<h2>Keep the human decision where it belongs</h2>
+<p>For each workflow, specify what the model may draft, what it must cite or flag as unknown, and what requires approval. A salesperson reviews a client commitment before sending it. Finance reconciles numbers to source records. A contract owner checks obligations against the signed agreement. If the task can trigger an external action, put the approval gate before the action.</p>
+<p>Track failures in a simple log: input type, source version, incorrect output, potential impact, reviewer, and fix. Repeated failures may call for a better source, a narrower scope, or a change to the process rather than a longer prompt. The <a href="/ai/ai-governance-measurement/">AI governance and measurement hub</a> covers data rules, approval gates, evaluation sets, and vendor review.</p>
 
-<div style="margin-top:48px;padding:32px;background:var(--card);border-radius:var(--r);text-align:center" class="fade-in">
-<h3>Want to Deploy AI in Your Business?</h3>
-<p style="margin:16px 0;color:var(--text2)">Dr. Connor Robertson helps entrepreneurs build AI-powered systems that create real competitive advantage.</p>
-<a href="/contact/" class="btn-p" style="display:inline-block;margin-top:12px">Contact Connor</a>
-</div>
+<h2>Build useful adoption across the business</h2>
+<p>After one pilot meets its acceptance standard, document the prompt, source owner, reviewer, allowed data, and measurement. Train the people who will use it on both routine and missing-data examples. Review the workflow when policies, documents, prices, or vendor settings change. Expansion is justified by reliable accepted work, not by the number of prompts or pages created.</p>
+<p>The <a href="/ai/ai-department-playbooks/">department playbooks</a> map narrow uses in sales, support, finance, service, and leadership. Each task guide includes inputs, a starting prompt, a trial case, a review gate, and a measure. Start with the job you actually own; use adjacent guides only when they produce a different deliverable.</p>
 
+<h2>Work with Dr. Connor Robertson</h2>
+<p>For help selecting an AI pilot or designing an accountable business workflow, <a href="/contact/">contact Dr. Connor Robertson</a>. You can also explore his <a href="/business-acquisitions/">business acquisition</a> and <a href="/prospecting-sales/">prospecting</a> resources for the operating context around these AI tasks.</p>
 </div></section>
 """ + footer()
 
