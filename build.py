@@ -731,7 +731,7 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .home-intro-copy a{text-decoration:underline;text-underline-offset:4px;text-decoration-color:#555}
 .home-links{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px}
 .home-links a{font-size:14px;font-weight:700;text-decoration:none}
-.home-links a::after{content:' \2192'}
+.home-links a::after{content:' →'}
 
 /* Featured */
 .feat{padding:48px 0;text-align:center;border-bottom:1px solid var(--border)}
@@ -753,7 +753,7 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .pill h3{font-size:22px;font-weight:700;margin-bottom:16px}
 .pill p{color:var(--text2);font-size:15px;line-height:1.7}
 .pill-link{margin-top:22px;font-size:14px;font-weight:700}
-.pill-link::after{content:' \2192'}
+.pill-link::after{content:' →'}
 
 /* Quote */
 .quote{padding:80px 0;text-align:center;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -1234,7 +1234,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .bcard:hover,.pcard:hover,.network-card:hover,.book-mini:hover,.pod-card:hover,.bk:hover{border-color:rgba(210,165,111,.5);box-shadow:0 16px 38px rgba(0,0,0,.18)}
 .bcard h3,.bk h3,.acard h3,.tcard h3,.pcard h3,.network-card h3,.book-mini h3,.pod-card h3{font-family:'Newsreader',Georgia,serif;font-size:22px;line-height:1.25}
 .post h1{font-family:'Newsreader',Georgia,serif;font-size:clamp(42px,5vw,64px);line-height:1.04}.post .pb{font-size:17px;color:#cbc6bd}.post .pb h2{font-family:'Newsreader',Georgia,serif;font-size:34px;color:#f3eee5}.post .pb h3{font-family:'Newsreader',Georgia,serif;font-size:25px}.post .pb a{color:#e0b986;text-decoration-color:#7b5c3a}
-.ftr{background:#090a09}.ftr-top{grid-template-columns:1.5fr .7fr 1fr}.ftr-col h4{color:var(--accent)}
+.ftr{background:#090a09}.ftr-top{grid-template-columns:1.25fr 1fr 1.5fr}.ftr-col h4{color:var(--accent)}
+.footer-page-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 18px}
+.ftr-col .footer-page-list li{margin:0}
+.ftr-col .footer-page-list a{min-height:36px}
+.social-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 10px}
+.ftr-col .social-list li{margin:0;min-width:0}
+.ftr-col .social-list a{display:flex;min-height:36px;padding:6px 10px;border:1px solid #252720;border-radius:6px;color:#aaa69e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color var(--t),border-color var(--t),background var(--t)}
+.ftr-col .social-list a::after{content:'↗';margin-left:auto;padding-left:8px;color:#6f6d67;font-size:11px}
+.ftr-col .social-list a:hover{color:var(--text);border-color:rgba(210,165,111,.45);background:rgba(210,165,111,.05);opacity:1}
 
 @media(max-width:980px){
   .nav{gap:14px}.nav a{font-size:12px}.hero-ct{grid-template-columns:minmax(0,1fr) minmax(300px,.72fr);gap:44px}.hero h1{font-size:clamp(48px,7vw,68px)}
@@ -1534,8 +1542,8 @@ def footer():
 <div class="ftr-top">
 <div><div class="logo" style="font-size:20px;margin-bottom:4px">Dr. Connor Robertson</div>
 <p class="ftr-tag">Founder of <a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener" style="text-decoration:underline">Elixir Consulting Group</a>, <a href="https://thepittsburghwire.com" target="_blank" rel="noopener" style="text-decoration:underline">The Pittsburgh Wire</a>, and <a href="https://www.prospectingshow.com" target="_blank" rel="noopener" style="text-decoration:underline">The Prospecting Show</a>.</p></div>
-<div class="ftr-col"><h4>Pages</h4><ul>{pages}</ul></div>
-<div class="ftr-col"><h4>Connect</h4><ul>{social}</ul></div>
+<div class="ftr-col ftr-pages"><h4>Pages</h4><ul class="footer-page-list">{pages}</ul></div>
+<div class="ftr-col ftr-connect"><h4>Connect</h4><ul class="social-list">{social}</ul></div>
 </div>
 <div class="ftr-btm">&copy; {datetime.now().year} Dr. Connor Robertson. All Rights Reserved.</div>
 </div></footer>
