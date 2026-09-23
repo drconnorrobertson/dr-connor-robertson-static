@@ -447,6 +447,9 @@ NAV_ITEMS = [
     ("Speaker", "/speaker/"),
     ("Blog", "/blog/"),
     ("Books", "/books/"),
+]
+
+MORE_NAV_ITEMS = [
     ("Media Kit", "/media/"),
     ("Press & Media", "/press-media/"),
     ("FAQ", "/faq/"),
@@ -676,13 +679,15 @@ body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-seri
 a{color:var(--text);text-decoration:none;transition:opacity var(--t)}a:hover{opacity:.8}
 img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .ctn{max-width:var(--mw);margin:0 auto;padding:0 24px}
+.skip-link{position:fixed;top:12px;left:12px;z-index:2000;background:#fff;color:#000;padding:10px 16px;border-radius:var(--r);font-weight:700;transform:translateY(-150%);transition:transform .15s ease}
+.skip-link:focus{transform:translateY(0)}
 
 /* Header */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
 .hdr-in{max-width:var(--mw);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
 .logo{font-size:18px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
 .logo a{color:var(--text)}
-.nav{display:flex;align-items:center;gap:28px;list-style:none}
+.nav{display:flex;align-items:center;gap:24px;list-style:none}
 .nav a{font-size:14px;font-weight:500;color:var(--text2);transition:color var(--t);min-height:44px;display:flex;align-items:center}
 .nav a:hover{color:var(--text);opacity:1}
 .nav-cta{display:inline-block;padding:10px 20px;background:var(--text);color:#000!important;border-radius:var(--r);font-size:14px;font-weight:600;transition:transform var(--t),box-shadow var(--t);min-height:44px;display:flex;align-items:center}
@@ -690,32 +695,47 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .mob-tog{display:none;background:0 0;border:none;color:var(--text);font-size:24px;cursor:pointer;padding:12px;min-width:44px;min-height:44px}
 .has-dd{position:relative}
 .dd{display:none;position:absolute;top:100%;left:0;background:#111;border:1px solid var(--border);border-radius:var(--r);padding:8px 0;min-width:240px;z-index:100}
-.has-dd:hover .dd{display:block}
+.has-dd:hover .dd,.has-dd:focus-within .dd{display:block}
 .dd a{display:block;padding:12px 20px;font-size:13px;color:var(--text2);min-height:44px;display:flex;align-items:center}
 .dd a:hover{color:var(--text);background:rgba(255,255,255,.05)}
 
 /* Hero */
 .hero{position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a 0%,#1a1a2e 50%,#0a0a0a 100%);z-index:0}
-.hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.03) 0%,transparent 70%);z-index:2}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.32) 0%,rgba(0,0,0,.55) 58%,rgba(0,0,0,.88) 100%);z-index:2}
 .hero-ct{position:relative;z-index:3;max-width:800px;width:100%}
+.hero-kicker{display:inline-block;margin-bottom:18px;color:#e2e2e2;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
 .hero h1{font-size:clamp(40px,6vw,72px);font-weight:700;letter-spacing:-.03em;margin-bottom:20px;line-height:1.1}
-.hero .tag{font-size:clamp(16px,2vw,20px);color:var(--text2);margin-bottom:36px;line-height:1.6}
+.hero .tag{font-size:clamp(16px,2vw,20px);color:#e2e2e2;margin:0 auto 36px;line-height:1.6;max-width:720px;text-shadow:0 1px 12px rgba(0,0,0,.45)}
 .hero-btn{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .hero-img{width:180px;height:180px;border-radius:50%;object-fit:cover;margin:0 auto 32px;border:3px solid rgba(255,255,255,.15);max-width:100%}
-.hero-bg-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.45;z-index:1;border-radius:0;border:none}
+.hero-bg-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:.58;z-index:1;border-radius:0;border:none}
 .btn-p{display:inline-flex;padding:14px 32px;background:var(--text);color:#000;border-radius:var(--r);font-weight:600;font-size:15px;transition:transform var(--t),box-shadow var(--t);min-height:44px;align-items:center}
 .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,255,255,.15);opacity:1}
 .btn-s{display:inline-flex;padding:14px 32px;background:rgba(0,0,0,.48);color:var(--text);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);font-weight:600;font-size:15px;transition:background var(--t);min-height:44px;align-items:center}
 .btn-s:hover{background:rgba(255,255,255,.1);opacity:1}
+.hero-proof{display:flex;justify-content:center;gap:34px;margin-top:34px;flex-wrap:wrap}
+.hero-proof-item{min-width:112px}
+.hero-proof strong{display:block;font-size:20px;line-height:1.2}
+.hero-proof span{display:block;margin-top:4px;color:#c8c8c8;font-size:12px;letter-spacing:.02em}
+
+/* Home intro */
+.home-intro{display:grid;grid-template-columns:minmax(260px,.75fr) minmax(0,1.45fr);gap:72px;align-items:start}
+.home-intro h2{font-size:clamp(28px,4vw,46px);letter-spacing:-.025em;line-height:1.15}
+.home-intro-copy{color:var(--text2);font-size:17px}
+.home-intro-copy p+p{margin-top:16px}
+.home-intro-copy a{text-decoration:underline;text-underline-offset:4px;text-decoration-color:#555}
+.home-links{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px}
+.home-links a{font-size:14px;font-weight:700;text-decoration:none}
+.home-links a::after{content:' \2192'}
 
 /* Featured */
 .feat{padding:48px 0;text-align:center;border-bottom:1px solid var(--border)}
 .feat h2{font-size:12px;text-transform:uppercase;letter-spacing:3px;color:var(--muted);margin-bottom:32px}
-.feat-logos{display:flex;align-items:center;justify-content:center;opacity:.7;overflow:hidden;position:relative;width:100%}
+.feat-logos{display:flex;align-items:center;justify-content:center;opacity:.88;overflow:hidden;position:relative;width:100%}
 .feat-logos-track{display:flex;gap:60px;animation:scroll-marquee 20s linear infinite;width:max-content}
 .feat-logos img{height:32px;width:auto;filter:brightness(0) invert(1);opacity:.7}
-.feat-logos span{font-size:16px;font-weight:600;color:var(--text2);letter-spacing:1px}
+.feat-logos span{font-size:16px;font-weight:600;color:#d5d5d5;letter-spacing:.04em}
 
 /* Sections */
 .sec{padding:80px 0}.sec-dk{background:var(--bg2)}
@@ -724,10 +744,12 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 
 /* Pillars */
 .pills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-top:48px}
-.pill{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:40px 32px;transition:transform var(--t),border-color var(--t)}
+.pill{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:40px 32px;transition:transform var(--t),border-color var(--t);display:flex;flex-direction:column}
 .pill:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.15)}
 .pill h3{font-size:22px;font-weight:700;margin-bottom:16px}
 .pill p{color:var(--text2);font-size:15px;line-height:1.7}
+.pill-link{margin-top:22px;font-size:14px;font-weight:700}
+.pill-link::after{content:' \2192'}
 
 /* Quote */
 .quote{padding:80px 0;text-align:center;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -905,6 +927,9 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .hero h1{font-size:clamp(28px,5vw,48px)}
 .hero-img{width:140px;height:140px}
 .hero-bg-img{object-position:center top}
+.hero-proof{gap:20px;margin-top:28px}
+.home-intro{grid-template-columns:1fr;gap:24px}
+.home-intro-copy{font-size:15px}
 .pg-hero{padding:120px 16px 40px}
 .pg-hero h1{font-size:clamp(28px,4vw,42px)}
 .ftr-top{grid-template-columns:1fr;gap:24px}
@@ -917,8 +942,8 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .post h1{font-size:clamp(24px,4vw,36px)}
 .bcard-body{padding:20px 24px}
 .dd{position:static;border:none;background:transparent;padding-left:16px}
-.has-dd .dd{display:none}
-.has-dd:hover .dd{display:none}
+.nav.active{max-height:calc(100vh - 72px);overflow-y:auto}
+.nav.active .has-dd .dd{display:block}
 .agrid{grid-template-columns:1fr;gap:24px}
 .pgrid{grid-template-columns:1fr}
 .network-grid{grid-template-columns:1fr}
@@ -945,6 +970,11 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .hero .tag{font-size:clamp(14px,2vw,16px);margin-bottom:24px}
 .hero-img{width:120px;height:120px;margin:0 auto 20px}
 .hero-bg-img{object-position:center top;opacity:0.4}
+.hero-kicker{font-size:10px;letter-spacing:.14em;margin-bottom:14px}
+.hero-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.hero-proof-item{min-width:0}
+.hero-proof strong{font-size:17px}
+.hero-proof span{font-size:10px}
 .hero-btn{flex-direction:column;width:100%;gap:12px}
 .btn-p,.btn-s{width:100%;justify-content:center;padding:14px 20px}
 .pg-hero{padding:100px 12px 30px}
@@ -1026,6 +1056,7 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 .lm-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:500px;margin:0 auto}
 .lm-form input[type="email"]{flex:1;min-width:240px;padding:14px 20px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);color:var(--text);font-size:15px;font-family:inherit}
 .lm-form input[type="email"]:focus{outline:0;border-color:rgba(255,255,255,.3)}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .lm-form button{padding:14px 28px;background:var(--text);color:#000;border:none;border-radius:var(--r);font-weight:600;font-size:15px;cursor:pointer;font-family:inherit;transition:transform var(--t);white-space:nowrap}
 .lm-form button:hover{transform:translateY(-2px)}
 .lm-note{color:var(--muted);font-size:12px;margin-top:12px}
@@ -1103,11 +1134,6 @@ img{max-width:100%;height:auto;display:block;background:var(--bg2)}
 }
 
 /* ── Layout override fixes ── Sep 2026 ────────────────────────── */
-
-/* Hide inline book preview card in hero */
-.hero-btn + div {
-  display: none !important;
-}
 
 /* Featured logos: proper spacing */
 .feat-logos {
@@ -1303,6 +1329,9 @@ def nav_html():
     # Resources dropdown
     dd = "".join(f'<a href="{h}">{l}</a>' for l, h in RESOURCE_HUBS)
     items += f'<li class="has-dd"><a href="/blog/complete-resource-index-dr-connor-robertson/">Resources</a><div class="dd">{dd}</div></li>'
+    # Secondary utility pages live under one predictable menu on desktop.
+    more_dd = "".join(f'<a href="{h}">{l}</a>' for l, h in MORE_NAV_ITEMS)
+    items += f'<li class="has-dd"><a href="/about/">More</a><div class="dd">{more_dd}</div></li>'
     items += '<li><a href="/contact/" class="nav-cta">Contact Connor</a></li>'
     return items
 
@@ -1398,11 +1427,13 @@ def header(title, desc="", canonical="/", extra="", og_image="", og_type="websit
 {extra}
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="hdr"><div class="hdr-in">
 <div class="logo"><a href="/">Dr. Connor Robertson</a></div>
 <nav><ul class="nav" id="nv">{nav_html()}</ul></nav>
-<button class="mob-tog" onclick="document.getElementById('nv').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+<button class="mob-tog" aria-label="Open menu" aria-controls="nv" aria-expanded="false">&#9776;</button>
 </div></header>
+<main id="main-content">
 """
 
 def footer():
@@ -1410,7 +1441,7 @@ def footer():
     pages = "".join(f'<li><a href="{h}">{l}</a></li>' for h, l in [("/","Home"),("/about/","About"),("/projects/","Projects"),("/speaker/","Speaker"),("/books/","Books"),("/blog/","Blog"),("/media/","Media Kit"),("/press-media/","Press & Media"),("/faq/","FAQ"),("/contact/","Contact")])
     ventures = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{u.replace("https://","").rstrip("/")}</a></li>' for u in OWNED_WEBSITES)
     return f"""
-<footer class="ftr"><div class="ctn">
+</main><footer class="ftr"><div class="ctn">
 <div class="ftr-top">
 <div><div class="logo" style="font-size:20px;margin-bottom:4px">Dr. Connor Robertson</div>
 <p class="ftr-tag">Founder of <a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener" style="text-decoration:underline">Elixir Consulting Group</a>, <a href="https://thepittsburghwire.com" target="_blank" rel="noopener" style="text-decoration:underline">The Pittsburgh Wire</a>, and <a href="https://www.prospectingshow.com" target="_blank" rel="noopener" style="text-decoration:underline">The Prospecting Show</a>.</p></div>
@@ -1421,6 +1452,15 @@ def footer():
 </div></footer>
 <script>
 (function(){{
+  var menuButton=document.querySelector('.mob-tog');
+  var menu=document.getElementById('nv');
+  if(menuButton&&menu){{
+    menuButton.addEventListener('click',function(){{
+      var open=menu.classList.toggle('active');
+      menuButton.setAttribute('aria-expanded',String(open));
+      menuButton.setAttribute('aria-label',open?'Close menu':'Open menu');
+    }});
+  }}
   function reveal(){{
     var els=document.querySelectorAll('.fade-in');
     if(!('IntersectionObserver' in window)){{
@@ -1509,34 +1549,36 @@ def page_home():
         "url": [f"{SITE_URL}{href}" for _, href in PILLAR_PAGES] + [f"{SITE_URL}{href}" for _, href in NAV_ITEMS],
     }
     pillars = [
-        ("Acquire the Right Business", "Define acquisition criteria, evaluate normalized earnings, test valuation, and structure a transaction around verified performance. Start with the <a href=\"/business-acquisitions/\">complete business acquisition guide</a>."),
-        ("Operate What You Buy", "Turn seller-dependent knowledge into documented systems, accountable leadership, reliable reporting, and a focused first-100-day plan."),
-        ("Build Durable Enterprise Value", "Improve revenue quality, management depth, customer retention, and operating discipline so growth becomes transferable value rather than a larger job for the owner."),
+        ("Acquire the Right Business", "Define acquisition criteria, evaluate normalized earnings, test valuation, and structure a transaction around verified performance.", "/business-acquisitions/", "Explore acquisition guides"),
+        ("Operate What You Buy", "Turn seller-dependent knowledge into documented systems, accountable leadership, reliable reporting, and a focused first-100-day plan.", "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/", "Build the operating system"),
+        ("Build Durable Enterprise Value", "Improve revenue quality, management depth, customer retention, and operating discipline so growth becomes transferable value rather than a larger job for the owner.", "/ai-business-strategy/", "Use practical AI"),
     ]
-    pcards = "".join(f'<div class="pill"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
+    pcards = "".join(f'<article class="pill"><h3>{t}</h3><p>{d}</p><a class="pill-link" href="{href}">{label}</a></article>' for t, d, href, label in pillars)
     return header("Dr. Connor Robertson | Official Website, Books & Business",
         "Official website of Dr. Connor Robertson, Pittsburgh entrepreneur, author and AI strategist. Explore his biography, books, podcast and business guides.",
         "/", og_image="/images/dr-connor-robertson-headshot.jpg",
         page_type="WebPage", page_extra={"mainEntity": {"@id": PERSON_ID}},
         schema_nodes=[nav_schema]) + f"""
 <section class="hero"><div class="hero-bg"><img src="/images/dr-connor-robertson-headshot.jpg" alt="Dr. Connor Robertson, business acquisition strategist and author" width="1024" height="1024" loading="eager" class="hero-bg-img"></div><div class="hero-ct">
+<span class="hero-kicker">Business acquisitions &bull; operating systems &bull; practical AI</span>
 <h1>Dr. Connor Robertson</h1>
-<p class="tag">Pittsburgh entrepreneur, author, podcast host and AI strategist. Helping owners acquire, operate and grow businesses.</p>
-<div class="hero-btn"><a href="/business-acquisitions/" class="btn-p">Explore Acquisition Guides</a><a href="/speaker/" class="btn-s">Book Me to Speak</a></div>
-<div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
-<h3 style="font-size:22px;margin-bottom:8px;">Buying Wealth</h3>
-<p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">Dr. Robertson\'s book on building wealth through business acquisitions and real estate investing. A practical guide to creating lasting financial freedom.</p>
-<a href="https://buyingwealthbook.com" target="_blank" rel="noopener" style="color:var(--accent,#2563eb);font-weight:600;font-size:14px;">Visit buyingwealthbook.com &rarr;</a>
+<p class="tag">Practical frameworks for owners who want to buy the right business, build stronger operations, and create value that does not depend on them.</p>
+<div class="hero-btn"><a href="/business-acquisitions/" class="btn-p">Start With the Acquisition Guide</a><a href="/speaker/" class="btn-s">Book Connor to Speak</a></div>
+<div class="hero-proof" aria-label="Selected credentials">
+<div class="hero-proof-item"><strong>6</strong><span>books published</span></div>
+<div class="hero-proof-item"><strong>4</strong><span>ventures founded</span></div>
+<div class="hero-proof-item"><strong>178+</strong><span>podcast episodes</span></div>
 </div>
 </div></section>
-<section class="sec"><div class="ctn" style="max-width:1000px">
-<h2>Who is Dr. Connor Robertson?</h2>
-<p>Dr. Connor Robertson is a Canadian-born entrepreneur and business strategist based in Pittsburgh, Pennsylvania. He founded Elixir Consulting Group, publishes The Pittsburgh Wire, hosts The Prospecting Show, and writes about business acquisitions, operating systems and practical AI use. This is his official website and the starting point for his current work.</p>
-<p>Read his <a href="/about/">biography and background</a>, explore his <a href="/books/">published books</a>, browse <a href="/projects/">businesses and projects</a>, or find <a href="/speaker/">speaking topics and booking details</a>. His <a href="/press-media/">press and media page</a> collects outside coverage; the <a href="/blog/">blog</a> contains his business guides and articles.</p>
+<section class="sec"><div class="ctn home-intro">
+<h2>Operator experience.<br>Useful playbooks.</h2>
+<div class="home-intro-copy"><p>Dr. Connor Robertson is a Canadian-born entrepreneur and business strategist based in Pittsburgh. He founded Elixir Consulting Group, publishes The Pittsburgh Wire, hosts The Prospecting Show, and writes about business acquisitions, operating systems, and practical AI.</p>
+<p>This site brings that work together for owners who value clear decisions, durable systems, and implementation over theory.</p>
+<div class="home-links"><a href="/about/">Read Connor's story</a><a href="/projects/">See current projects</a><a href="/books/">Browse six books</a></div></div>
 </div></section>
 <section class="feat"><div class="ctn">
-<h2>As Featured On</h2>
-<div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Grit Daily</span><span>Apple News</span></div>
+<h2>Selected Media Coverage</h2>
+<a class="feat-logos" href="/press-media/" aria-label="View press and media coverage"><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Grit Daily</span><span>Apple News</span></a>
 </div></section>
 <section class="sec"><div class="ctn">
 <h2 class="sec-t">Practical frameworks for buying businesses, improving operations, and building durable enterprise value.</h2>
@@ -1553,7 +1595,8 @@ def page_home():
 <form class="lm-form" action="https://formspree.io/f/xdkobkzz" method="POST">
 <input type="hidden" name="_subject" value="Lead Magnet Download Request">
 <input type="hidden" name="source" value="homepage-lead-magnet">
-<input type="email" name="email" placeholder="Enter your email address" required>
+<label class="sr-only" for="homepage-guide-email">Email address</label>
+<input id="homepage-guide-email" type="email" name="email" placeholder="Enter your email address" autocomplete="email" required>
 <button type="submit">Get the Free Guide</button>
 </form>
 <p class="lm-note">No spam. Unsubscribe anytime.</p>
@@ -1715,7 +1758,8 @@ def page_speaker():
 <form class="lm-form" action="https://formspree.io/f/xdkobkzz" method="POST">
 <input type="hidden" name="_subject" value="Lead Magnet Download Request">
 <input type="hidden" name="source" value="speaker-page-lead-magnet">
-<input type="email" name="email" placeholder="Enter your email address" required>
+<label class="sr-only" for="speaker-guide-email">Email address</label>
+<input id="speaker-guide-email" type="email" name="email" placeholder="Enter your email address" autocomplete="email" required>
 <button type="submit">Get the Free Guide</button>
 </form>
 <p class="lm-note">No spam. Unsubscribe anytime.</p>
@@ -1734,14 +1778,14 @@ def page_speaker():
 <div class="cform">
 <form action="https://formspree.io/f/xdkobkzz" method="POST">
 <input type="hidden" name="_subject" value="Speaking Inquiry from drconnorrobertson.com">
-<div class="fr"><div class="fg"><label>First Name</label><input type="text" name="first_name" required></div><div class="fg"><label>Last Name</label><input type="text" name="last_name" required></div></div>
-<div class="fg"><label>Email</label><input type="email" name="email" required></div>
-<div class="fg"><label>Organization / Company</label><input type="text" name="company" required></div>
-<div class="fg"><label>Event Name</label><input type="text" name="event_name"></div>
-<div class="fg"><label>Expected Audience Size</label><input type="number" name="event_size" min="0" placeholder="e.g. 200"></div>
-<div class="fg"><label>Event Date (approximate is fine)</label><input type="date" name="event_date"></div>
-<div class="fg"><label>Budget Range</label><select name="budget"><option value="">Select a range</option><option>Under $5,000</option><option>$5,000 - $10,000</option><option>$10,000 - $25,000</option><option>$25,000+</option></select></div>
-<div class="fg"><label>Tell us about your event and what you are looking for</label><textarea name="speaking_request" rows="4" placeholder="Describe your event, audience, and any specific topics you would like Connor to cover..."></textarea></div>
+<div class="fr"><div class="fg"><label for="speaker-first-name">First Name</label><input id="speaker-first-name" type="text" name="first_name" autocomplete="given-name" required></div><div class="fg"><label for="speaker-last-name">Last Name</label><input id="speaker-last-name" type="text" name="last_name" autocomplete="family-name" required></div></div>
+<div class="fg"><label for="speaker-email">Email</label><input id="speaker-email" type="email" name="email" autocomplete="email" required></div>
+<div class="fg"><label for="speaker-company">Organization / Company</label><input id="speaker-company" type="text" name="company" autocomplete="organization" required></div>
+<div class="fg"><label for="speaker-event-name">Event Name</label><input id="speaker-event-name" type="text" name="event_name"></div>
+<div class="fg"><label for="speaker-event-size">Expected Audience Size</label><input id="speaker-event-size" type="number" name="event_size" min="0" placeholder="e.g. 200"></div>
+<div class="fg"><label for="speaker-event-date">Event Date (approximate is fine)</label><input id="speaker-event-date" type="date" name="event_date"></div>
+<div class="fg"><label for="speaker-budget">Budget Range</label><select id="speaker-budget" name="budget"><option value="">Select a range</option><option>Under $5,000</option><option>$5,000 - $10,000</option><option>$10,000 - $25,000</option><option>$25,000+</option></select></div>
+<div class="fg"><label for="speaker-request">Tell us about your event and what you are looking for</label><textarea id="speaker-request" name="speaking_request" rows="4" placeholder="Describe your event, audience, and any specific topics you would like Connor to cover..."></textarea></div>
 <button type="submit" class="fsub">Submit Speaking Inquiry</button>
 </form></div></div></section>
 """ + footer()
