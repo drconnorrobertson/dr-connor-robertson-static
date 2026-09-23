@@ -10,7 +10,8 @@ Usage:
 """
 
 import json, os, re, html, sys, time, hashlib
-from datetime import datetime
+from datetime import datetime, timezone
+from email.utils import format_datetime
 from pathlib import Path
 from urllib.request import Request, urlopen
 from urllib.error import URLError
@@ -27,7 +28,10 @@ DIST = BASE_DIR / "dist"
 # primary domain is ever flipped to the apex, change this one constant (and HOST
 # in submit_indexnow.py) back.
 SITE_URL = "https://www.drconnorrobertson.com"
-WP_API = "https://drconnorrobertson.com/wp-json/wp/v2"
+# The WordPress origin was retired when the static site launched. Keep the
+# importer available for a future migration source, but do not make every
+# production build call an endpoint that now redirects to the static homepage.
+WP_API = ""
 CACHE_FILE = BASE_DIR / "posts_cache.json"
 IMAGE_DIR = DIST / "images"
 WP_DOMAIN = "drconnorrobertson.com"
@@ -1419,6 +1423,7 @@ def header(title, desc="", canonical="/", extra="", og_image="", og_type="websit
 <meta name="robots" content="{robots}">
 {pagination}
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">{gsc}
+<link rel="alternate" type="application/rss+xml" title="Dr. Connor Robertson — Latest Articles" href="/feed.xml">
 <link rel="icon" type="image/jpeg" href="/images/dr-connor-robertson-headshot.jpg">
 <link rel="apple-touch-icon" href="/images/dr-connor-robertson-headshot.jpg">
 {FONT_LINK}
@@ -1618,8 +1623,8 @@ def page_about():
     # The Person entity is sitewide; /about/ is its mainEntityOfPage.
     return header("Who Is Dr. Connor Robertson? | Bio, Books & Podcast",
         "Biography of Dr. Connor Robertson: Pittsburgh entrepreneur, author of six books, host of The Prospecting Show, and founder of Elixir Consulting Group.",
-        "/about/", og_image="/images/connor-about.jpg", page_type="AboutPage",
-        page_extra={"mainEntity": {"@id": PERSON_ID}},
+        "/about/", og_image="/images/connor-about.jpg", page_type="ProfilePage",
+        page_extra={"mainEntity": {"@id": PERSON_ID}, "dateModified": "2026-09-22"},
         crumbs=[("Home", "/"), ("About", None)]) + breadcrumbs([("Home", "/"), ("About", None)]) + """
 <section class="pg-hero"><div class="ctn">
 <h1>About Dr. Connor Robertson</h1>
@@ -2320,11 +2325,10 @@ SITEMAP_PRIORITY = {
 SITEMAP_PRIORITY.update({href: ("0.7", "weekly") for _label, href in RESOURCE_HUBS})
 
 
-# Leftovers from the WordPress site this one replaced. None of these have a
-# real equivalent here, but Google still has thousands of them queued, which is
-# what inflates the "not indexed" count in Search Console. vercel.json redirects
-# them so humans and referral links land somewhere sane, these rules stop
-# crawlers spending budget rediscovering them.
+# Leftovers from the WordPress site this one replaced. Query-string duplicates
+# and retired application paths are blocked. Paths with explicit redirects in
+# vercel.json are intentionally *not* blocked: crawlers must be allowed to fetch
+# those URLs in order to see the permanent redirect and consolidate its signals.
 #
 # The query-string entries matter most: a static host ignores the query, so
 # /?p=123 and friends each return the homepage with a 200, and every distinct
@@ -2344,14 +2348,6 @@ WP_DISALLOW = [
     "/?s=",
     "/?attachment_id=",
     "/?replytocom=",
-    "/category/",
-    "/tag/",
-    "/author/",
-    "/page/",
-    "/feed/",
-    "/comments/",
-    "/*/feed/",
-    "/*/trackback/",
     "/*comment-page-",
 ]
 
@@ -2381,6 +2377,7 @@ def robots_txt():
         f"User-agent: *\n{group}\n\n"
         f"{blocks}\n\n"
         f"Sitemap: {SITE_URL}/sitemap.xml\n"
+        f"Sitemap: {SITE_URL}/feed.xml\n"
     )
 
 
@@ -2424,6 +2421,50 @@ def sitemap(posts):
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
         '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
         f"{body}\n</urlset>\n"
+    )
+
+
+def rss_feed(posts, limit=20):
+    """Generate a compact recent-content feed for crawlers and subscribers."""
+    items = []
+    for p in posts[:limit]:
+        try:
+            published = datetime.fromisoformat(p["date"].replace("Z", "+00:00"))
+            if published.tzinfo is None:
+                published = published.replace(tzinfo=timezone.utc)
+        except (KeyError, TypeError, ValueError):
+            published = datetime.now(timezone.utc)
+        url = f"{SITE_URL}{p['relative_url']}"
+        description = clip(p.get("excerpt", ""), 300)
+        items.append(
+            "  <item>\n"
+            f"    <title>{esc(strip_tags(p['title']))}</title>\n"
+            f"    <link>{esc(url)}</link>\n"
+            f"    <guid isPermaLink=\"true\">{esc(url)}</guid>\n"
+            f"    <pubDate>{format_datetime(published)}</pubDate>\n"
+            f"    <description>{esc(description)}</description>\n"
+            "  </item>"
+        )
+    latest = datetime.now(timezone.utc)
+    if posts:
+        try:
+            latest = datetime.fromisoformat(posts[0]["date"].replace("Z", "+00:00"))
+            if latest.tzinfo is None:
+                latest = latest.replace(tzinfo=timezone.utc)
+        except (KeyError, TypeError, ValueError):
+            pass
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
+        '<channel>\n'
+        '  <title>Dr. Connor Robertson — Latest Articles</title>\n'
+        f'  <link>{SITE_URL}/blog/</link>\n'
+        '  <description>Recent articles on business acquisitions, operating systems, practical AI, and entrepreneurship.</description>\n'
+        '  <language>en-US</language>\n'
+        f'  <lastBuildDate>{format_datetime(latest)}</lastBuildDate>\n'
+        f'  <atom:link href="{SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>\n'
+        + "\n".join(items) +
+        '\n</channel>\n</rss>\n'
     )
 
 
@@ -3339,19 +3380,26 @@ def main():
         with open(CACHE_FILE) as f:
             wp_posts = json.load(f)
         print(f"  Loaded {len(wp_posts)} posts from cache")
-    elif not no_fetch:
+    elif not no_fetch and WP_API:
         try:
             wp_posts = fetch_all_posts()
             print(f"  Fetched {len(wp_posts)} posts from WP API")
-            with open(CACHE_FILE, "w") as f:
-                json.dump(wp_posts, f)
-            print("  Cached to posts_cache.json")
+            if wp_posts:
+                with open(CACHE_FILE, "w") as f:
+                    json.dump(wp_posts, f)
+                print("  Cached to posts_cache.json")
+            elif CACHE_FILE.exists():
+                with open(CACHE_FILE) as f:
+                    wp_posts = json.load(f)
+                print(f"  Empty API response; preserved and loaded {len(wp_posts)} cached posts")
         except Exception as e:
             print(f"  Could not fetch from WP API: {e}")
             if CACHE_FILE.exists():
                 with open(CACHE_FILE) as f:
                     wp_posts = json.load(f)
                 print(f"  Fell back to {len(wp_posts)} cached posts")
+    elif not WP_API:
+        print("  WordPress origin retired; using versioned manual content only")
 
     # Merge: manual posts take precedence over WP posts (by slug)
     manual_slugs = {p["slug"] for p in manual_posts}
@@ -3397,9 +3445,9 @@ def main():
             json.dump(posts, f)
 
     # Fetch pages content
-    print("\n[2/8] Fetching WP pages...")
+    print("\n[2/8] Loading legacy WP pages...")
     wp_pages = []
-    if not no_fetch:
+    if not no_fetch and WP_API:
         try:
             wp_pages = fetch_all_pages()
             print(f"  Fetched {len(wp_pages)} pages")
@@ -3419,7 +3467,7 @@ def main():
     download_headshots()
 
     # Download all media assets
-    print("\n[4/8] Downloading images from WordPress...")
+    print("\n[4/8] Preparing article images...")
     img_count = 0
 
     # Download featured images from posts
@@ -3456,7 +3504,7 @@ def main():
                         img_count += 1
 
     # Try to download all media from WP media library
-    if not no_fetch:
+    if not no_fetch and WP_API:
         try:
             all_media = fetch_all_media()
             print(f"  Found {len(all_media)} media items in WP library")
@@ -3579,6 +3627,7 @@ def main():
     # SEO files
     print("\n[8/8] Generating SEO and config files...")
     write("sitemap.xml", sitemap(posts))
+    write("feed.xml", rss_feed(posts))
     write("robots.txt", robots_txt())
     write("llms.txt", llms_txt())
     write("llms.md", llms_md())
@@ -3620,7 +3669,7 @@ def main():
         ]
     }
     write("vercel.json", json.dumps(vercel, indent=2))
-    print("  sitemap.xml, robots.txt, 404.html, vercel.json")
+    print("  sitemap.xml, feed.xml, robots.txt, 404.html, vercel.json")
 
     total_files = sum(1 for _ in DIST.rglob("*") if _.is_file())
     print(f"\n{'=' * 60}")

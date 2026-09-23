@@ -225,8 +225,24 @@ def render_guide(cluster, guide, header, breadcrumbs, footer, site_url, person_i
     path = f"{hub}{guide['slug']}/"
     e = escape
     crumbs = [("Home", "/"), ("AI Business Strategy", "/ai-business-strategy/"), (cluster["title"], hub), (guide["title"], None)]
-    siblings = [g for g in cluster["guides"] if g[1] != guide["slug"]]
-    related = "".join(f'<li><a href="{hub}{g[1]}/">{e(g[0])}</a></li>' for g in siblings[:3])
+    guides = cluster["guides"]
+    index = next(i for i, g in enumerate(guides) if g[1] == guide["slug"])
+    # Rotate contextual links instead of sending every page to the same first
+    # three siblings. Every guide now receives several crawlable inbound links.
+    related_guides = []
+    for offset in (-2, -1, 1, 2, 3):
+        candidate = guides[(index + offset) % len(guides)]
+        if candidate[1] != guide["slug"] and candidate not in related_guides:
+            related_guides.append(candidate)
+    related = "".join(f'<li><a href="{hub}{g[1]}/">{e(g[0])}</a></li>' for g in related_guides)
+    previous = guides[index - 1] if index > 0 else None
+    following = guides[index + 1] if index + 1 < len(guides) else None
+    previous_url = f"{hub}{previous[1]}/" if previous else ""
+    next_url = f"{hub}{following[1]}/" if following else ""
+    sequence = '<nav aria-label="Workflow guide sequence" style="display:flex;justify-content:space-between;gap:24px;margin-top:36px;padding-top:24px;border-top:1px solid var(--border)">'
+    sequence += (f'<a rel="prev" href="{previous_url}">&larr; {e(previous[0])}</a>' if previous else '<span></span>')
+    sequence += (f'<a rel="next" href="{next_url}">{e(following[0])} &rarr;</a>' if following else '<span></span>')
+    sequence += '</nav>'
     article = {"@type": "TechArticle", "@id": f"{site_url}{path}#guide", "headline": guide["title"],
                "author": {"@id": person_id}, "publisher": {"@id": person_id},
                "datePublished": "2026-09-22", "dateModified": "2026-09-22",
@@ -234,7 +250,8 @@ def render_guide(cluster, guide, header, breadcrumbs, footer, site_url, person_i
                "about": guide["query"], "inLanguage": "en-US"}
     description = f"{guide['query'].capitalize()}: source material, a reusable prompt, a trial case, and a human review check."
     return header(guide["title"], description, path, og_image="/images/dr-connor-robertson-headshot.jpg",
-                  crumbs=crumbs, schema_nodes=[article]) + breadcrumbs(crumbs) + f'''<section class="pg-hero"><div class="ctn">
+                  crumbs=crumbs, schema_nodes=[article], prev_url=previous_url,
+                  next_url=next_url) + breadcrumbs(crumbs) + f'''<section class="pg-hero"><div class="ctn">
 <h1>{e(guide['title'])}</h1><p>{e(guide['process'])}</p>
 <p class="guide-meta">Published September 22, 2026 · Dr. Connor Robertson</p></div></section>
 <section class="sec"><article class="ctn" style="max-width:880px">
@@ -245,4 +262,4 @@ def render_guide(cluster, guide, header, breadcrumbs, footer, site_url, person_i
 <h2>How to score the result</h2><p>{e(guide['measure'])}</p>
 <p>Use the current approved source and keep it available to the reviewer. Check a small set of finished outputs against the previous process before adopting this workflow.</p>
 <h2>Related workflows</h2><p>Explore <a href="{hub}">{e(cluster['title'])}</a> or the <a href="/ai-business-strategy/">AI business strategy guide</a>.</p>
-<ul class="link-list">{related}</ul></article></section>''' + footer()
+<ul class="link-list">{related}</ul>{sequence}</article></section>''' + footer()
