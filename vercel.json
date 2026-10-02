@@ -4,42 +4,145 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "redirects": [
-    { "source": "/category/(.*)", "destination": "/blog/", "statusCode": 301 },
-    { "source": "/tag/(.*)", "destination": "/blog/", "statusCode": 301 },
-    { "source": "/author/(.*)", "destination": "/about/", "statusCode": 301 },
-    { "source": "/page/(.*)", "destination": "/blog/", "statusCode": 301 },
-    { "source": "/feed/", "destination": "/blog/", "statusCode": 301 },
-    { "source": "/comments/feed/", "destination": "/blog/", "statusCode": 301 },
-    { "source": "/(.*)/feed/", "destination": "/blog/", "statusCode": 301 },
-    { "source": "/(.*)/trackback/", "destination": "/blog/", "statusCode": 301 },
-    { "source": "/wp-json/(.*)", "destination": "/", "statusCode": 301 },
-    { "source": "/wp-admin/(.*)", "destination": "/", "statusCode": 301 },
-    { "source": "/wp-includes/(.*)", "destination": "/", "statusCode": 301 },
-    { "source": "/wp-content/(.*)", "destination": "/", "statusCode": 301 },
-    { "source": "/wp-login.php", "destination": "/", "statusCode": 301 },
-    { "source": "/xmlrpc.php", "destination": "/", "statusCode": 301 },
-    { "source": "/wp-sitemap.xml", "destination": "/sitemap.xml", "statusCode": 301 },
-    { "source": "/wp-sitemap-(.*).xml", "destination": "/sitemap.xml", "statusCode": 301 }
-    ,{ "source": "/guides/how-to-buy-a-business/", "destination": "/business-acquisitions/", "statusCode": 301 }
-    ,{ "source": "/guides/business-acquisition-checklist/", "destination": "/business-acquisitions/business-acquisition-due-diligence-checklist/", "statusCode": 301 }
-    ,{ "source": "/blog/seller-financing-explained/", "destination": "/business-acquisitions/seller-financing-business-acquisition/", "statusCode": 301 }
-    ,{ "source": "/operational-drag-in-business/", "destination": "/blog/operational-drag-in-business/", "statusCode": 301 }
+    {
+      "source": "/category/(.*)",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/(.*)",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/author/(.*)",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/page/(.*)",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/feed/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/comments/feed/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/(.*)/feed/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/(.*)/trackback/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-json/(.*)",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-admin/(.*)",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-includes/(.*)",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-content/(.*)",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-login.php",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/xmlrpc.php",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-sitemap.xml",
+      "destination": "/sitemap.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-sitemap-(.*).xml",
+      "destination": "/sitemap.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/guides/how-to-buy-a-business/",
+      "destination": "/business-acquisitions/",
+      "statusCode": 301
+    },
+    {
+      "source": "/guides/business-acquisition-checklist/",
+      "destination": "/business-acquisitions/business-acquisition-due-diligence-checklist/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/seller-financing-explained/",
+      "destination": "/business-acquisitions/seller-financing-business-acquisition/",
+      "statusCode": 301
+    },
+    {
+      "source": "/operational-drag-in-business/",
+      "destination": "/blog/operational-drag-in-business/",
+      "statusCode": 301
+    },
+    {
+      "source": "/speaking/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
       ]
     },
     {
       "source": "/images/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ]

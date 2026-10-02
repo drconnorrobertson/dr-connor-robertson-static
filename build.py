@@ -17,6 +17,7 @@ from urllib.request import Request, urlopen
 from urllib.error import URLError
 from urllib.parse import urlparse, urljoin
 
+from brand_pages import render_pages as render_brand_pages
 from acquisition_guides import ACQUISITION_GUIDES
 from ai_workflows import CLUSTERS as AI_CLUSTERS, all_guides as ai_guides, validate as validate_ai_guides, render_hub as render_ai_hub, render_guide as render_ai_guide
 
@@ -454,6 +455,7 @@ NAV_ITEMS = [
 ]
 
 MORE_NAV_ITEMS = [
+    ("Podcast", "/podcast/"),
     ("Media Kit", "/media/"),
     ("Press & Media", "/press-media/"),
     ("FAQ", "/faq/"),
@@ -1535,7 +1537,7 @@ def header(title, desc="", canonical="/", extra="", og_image="", og_type="websit
 
 def footer():
     social = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in SOCIAL_LINKS.items())
-    pages = "".join(f'<li><a href="{h}">{l}</a></li>' for h, l in [("/","Home"),("/about/","About"),("/projects/","Projects"),("/speaker/","Speaker"),("/books/","Books"),("/blog/","Blog"),("/media/","Media Kit"),("/press-media/","Press & Media"),("/faq/","FAQ"),("/contact/","Contact")])
+    pages = "".join(f'<li><a href="{h}">{l}</a></li>' for h, l in [("/","Home"),("/about/","About"),("/projects/","Projects"),("/speaker/","Speaker"),("/books/","Books"),("/podcast/","Podcast"),("/blog/","Blog"),("/media/","Media Kit"),("/press-media/","Press & Media"),("/faq/","FAQ"),("/contact/","Contact")])
     ventures = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{u.replace("https://","").rstrip("/")}</a></li>' for u in OWNED_WEBSITES)
     return f"""
 </main><footer class="ftr"><div class="ctn">
@@ -1665,7 +1667,7 @@ def page_home():
 <div class="hero-proof" aria-label="Selected credentials">
 <div class="hero-proof-item"><strong>6</strong><span>books published</span></div>
 <div class="hero-proof-item"><strong>4</strong><span>ventures founded</span></div>
-<div class="hero-proof-item"><strong>178+</strong><span>podcast episodes</span></div>
+<div class="hero-proof-item"><strong>179</strong><span>podcast archive entries</span></div>
 </div>
 </div>
 <figure class="hero-portrait"><img src="/images/connor-business.jpg" alt="Dr. Connor Robertson in Pittsburgh" width="1024" height="1024" loading="eager"><figcaption><span>Based in Pittsburgh</span><strong>Entrepreneur, author &amp; operator</strong></figcaption></figure>
@@ -1727,13 +1729,13 @@ def page_about():
 </div></section>
 <section class="sec"><div class="ctn">
 <div class="about-photo"><img src="/images/connor-hero.jpg" alt="Dr. Connor Robertson - Pittsburgh entrepreneur, author, AI strategist, and business acquisition expert" loading="lazy"></div>
-<p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, and AI implementation expert based in Pittsburgh, PA. He has founded four ventures, authored six books, and hosted more than 178 episodes of The Prospecting Show. His work focuses on business acquisitions, practical AI adoption, and operating systems.</p>
+<p class="sec-sub" style="max-width:900px">Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, and AI implementation expert based in Pittsburgh, PA. He has founded four ventures, authored six books, and hosted more than 178 numbered episodes of The Prospecting Show. His work focuses on business acquisitions, practical AI adoption, and operating systems.</p>
 
 <div class="cred-grid">
 <div class="cred-card"><div class="cred-icon">&#9889;</div><h3>Entrepreneur</h3><p>Founded Elixir Consulting Group, The Pittsburgh Wire, and The Prospecting Show</p></div>
 <div class="cred-card"><div class="cred-icon">&#9997;</div><h3>Author</h3><p>Six published books on acquisitions, wealth building, prospecting, and real estate strategy</p></div>
 <div class="cred-card"><div class="cred-icon">&#129302;</div><h3>AI Strategist</h3><p>Helps small and mid-sized businesses deploy AI for automation, lead generation, and competitive advantage</p></div>
-<div class="cred-card"><div class="cred-icon">&#127911;</div><h3>Podcast Host</h3><p>178+ episodes of The Prospecting Show featuring entrepreneurs and business operators</p></div>
+<div class="cred-card"><div class="cred-icon">&#127911;</div><h3>Podcast Host</h3><p>179 archived feed entries of The Prospecting Show featuring entrepreneurs and business operators</p></div>
 </div>
 
 <div class="stats">
@@ -1845,7 +1847,7 @@ def page_speaker():
 <h2 class="sec-t">As Heard On</h2>
 <p class="sec-sub">Connor hosts The Prospecting Show and has been a featured guest on podcasts and media outlets reaching millions of listeners.</p>
 <div class="podcast-grid">
-<div class="pod-card"><h3>The Prospecting Show</h3><p>Connor's interview podcast, with 178+ episodes on how entrepreneurs and small business owners scale their companies.</p><a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="pod-link">Listen Now &rarr;</a></div>
+<div class="pod-card"><h3>The Prospecting Show</h3><p>Connor's interview podcast, with 179 archived feed entries on how entrepreneurs and small business owners scale their companies.</p><a href="https://www.prospectingshow.com" target="_blank" rel="noopener" class="pod-link">Listen Now &rarr;</a></div>
 <div class="pod-card"><h3>Yahoo Finance</h3><p>Featured for the launch of Elixir Consulting Group's business automation advisory service.</p><a href="https://finance.yahoo.com/sectors/technology/articles/elixir-consulting-group-launches-business-112900872.html" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
 <div class="pod-card"><h3>Business Insider</h3><p>Coverage of Elixir Consulting Group's advisory services for small and mid-sized business owners.</p><a href="https://markets.businessinsider.com/news/stocks/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-midsized-business-owners-1036100299" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
 <div class="pod-card"><h3>The Globe and Mail</h3><p>National coverage of Connor's business consulting and automation advisory work.</p><a href="https://www.theglobeandmail.com/investing/markets/markets-news/Newsfile/1681496/elixir-consulting-group-launches-business-automation-advisory-service-for-small-and-mid-sized-business-owners/" target="_blank" rel="noopener" class="pod-link">Read More &rarr;</a></div>
@@ -1953,7 +1955,8 @@ def page_books():
 def page_press():
     cards = ""
     for title, url, source in PRESS_ARTICLES:
-        cards += f'<div class="pcard"><div><h3>{esc(title)}</h3><p class="src">{esc(source)}</p></div><a href="{url}" target="_blank" rel="noopener" class="rl">Read &rarr;</a></div>\n'
+        label = source + (' · Syndicated company announcement' if 'Launches Business Automation Advisory Service' in title else '')
+        cards += f'<div class="pcard"><div><h3>{esc(title)}</h3><p class="src">{esc(label)}</p></div><a href="{url}" target="_blank" rel="noopener" class="rl">Read &rarr;</a></div>\n'
 
     # One ItemList of externally published coverage. These articles live on other
     # domains, so they are listed as referenced works rather than declared as this
@@ -1989,7 +1992,7 @@ def page_press():
         schema_nodes=[press_list]) + breadcrumbs([("Home", "/"), ("Press & Media", None)]) + f"""
 <section class="pg-hero"><div class="ctn">
 <div style="text-align:center;margin-bottom:2rem;"><img src="/images/connor-press.jpg" alt="Dr. Connor Robertson - Press" width="300" height="300" loading="lazy" style="border-radius:50%;width:180px;height:180px;object-fit:cover;box-shadow:0 4px 20px rgba(0,0,0,0.15);"></div>
-<h1>Press &amp; Media</h1><p>Dr. Connor Robertson's insights and features across leading publications.</p>
+<h1>Press &amp; Media</h1><p>Published profiles, media features, and company announcements. Explore the original sources below.</p>
 </div></section>
 <section class="sec"><div class="ctn">
 <div class="feat" style="padding:48px 0;margin-bottom:48px;border-bottom:none"><div class="feat-logos"><span>CXO Dispatch</span><span>C-Suite Brief</span><span>NY Wire</span><span>BLK News</span><span>Famous Times</span><span>Economic Insider</span><span>Taste Terminal</span><span>Fiction Talk</span><span>NewsBlaze</span><span>The Rogue Mag</span><span>InEntertainment</span><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Grit Daily</span><span>Apple News</span></div></div>
@@ -2146,7 +2149,7 @@ def page_projects():
 
 <div style="background:var(--bg-card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:32px;transition:box-shadow .2s;">
 <h3 style="font-size:22px;margin-bottom:8px;">The Prospecting Show</h3>
-<p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">Interviews with entrepreneurs about how they built and scaled their businesses. 178+ episodes available on major podcast platforms.</p>
+<p style="color:var(--text-secondary,#6b7280);font-size:14px;line-height:1.7;margin-bottom:16px;">Interviews with entrepreneurs about how they built and scaled their businesses. 179 archived feed entries available on major podcast platforms.</p>
 <a href="https://prospectingshow.com" target="_blank" rel="noopener" style="color:var(--accent,#2563eb);font-weight:600;font-size:14px;">Visit prospectingshow.com &rarr;</a>
 </div>
 
@@ -2396,8 +2399,8 @@ def write(path, content):
 STATIC_LASTMOD = "2026-09-20"
 AI_GUIDES_LASTMOD = "2026-09-22"
 AI_PILLAR_LASTMOD = "2026-09-22"
-BRAND_LASTMOD = "2026-09-22"
-BRAND_UPDATED_PAGES = {"/", "/about/", "/speaker/", "/projects/", "/faq/"}
+BRAND_LASTMOD = "2026-10-02"
+BRAND_UPDATED_PAGES = {"/about/", "/speaker/", "/projects/", "/faq/", "/books/", "/podcast/", "/press-media/", "/"}
 ACQUISITIONS_LASTMOD = "2026-09-22"
 
 SITEMAP_PRIORITY = {
@@ -2497,7 +2500,7 @@ def sitemap(posts):
             prio, freq = SITEMAP_PRIORITY.get(loc, ("0.6", "monthly"))
             lastmod = (AI_GUIDES_LASTMOD if loc.startswith("/ai/") else
                        AI_PILLAR_LASTMOD if loc == "/ai-business-strategy/" else
-                       BRAND_LASTMOD if loc in BRAND_UPDATED_PAGES else
+                       BRAND_LASTMOD if loc in BRAND_UPDATED_PAGES or loc.startswith(("/books/", "/projects/", "/podcast/")) else
                        ACQUISITIONS_LASTMOD if loc == "/business-acquisitions/" else STATIC_LASTMOD)
         # Surface the page's primary image so it is eligible for image search.
         img = ""
@@ -3019,7 +3022,7 @@ def page_author_platform():
 def page_faq():
     faqs = [
         ("Who is Dr. Connor Robertson?",
-         "Dr. Connor Robertson is an entrepreneur, author, podcast host, and business strategist based in Pittsburgh, Pennsylvania. He is the founder of multiple companies including Elixir Consulting Group, The Prospecting Show, The Pittsburgh Wire, and Seymour Maison. Connor is widely recognized for his expertise in business acquisitions, real estate investing, and helping business owners scale through strategic advisory services. He has authored six books on business strategy and wealth building, and his podcast, The Prospecting Show, has featured over 178 episodes with top entrepreneurs and business leaders."),
+         "Dr. Connor Robertson is an entrepreneur, author, podcast host, and business strategist based in Pittsburgh, Pennsylvania. He is the founder of multiple companies including Elixir Consulting Group, The Prospecting Show, The Pittsburgh Wire, and Seymour Maison. Connor is widely recognized for his expertise in business acquisitions, real estate investing, and helping business owners scale through strategic advisory services. He has authored six books on business strategy and wealth building, and his podcast, The Prospecting Show, had 179 published feed entries when verified on October 2, 2026."),
         ("What companies does Dr. Connor Robertson own?",
          "Dr. Connor Robertson is the founder and owner of several companies across diverse industries. These include Elixir Consulting Group, a strategic business advisory firm helping owners with growth, acquisitions, and operational excellence; The Prospecting Show, an interview podcast interviewing entrepreneurs about building and scaling businesses; The Pittsburgh Wire, a digital media publication covering Pittsburgh business, real estate, and development news; and Seymour Maison, a luxury apparel brand. He also manages an active real estate investment portfolio."),
         ("What books has Dr. Connor Robertson written?",
@@ -3027,7 +3030,7 @@ def page_faq():
         ("Where is Dr. Connor Robertson based?",
          "Dr. Connor Robertson is based in Pittsburgh, Pennsylvania. Pittsburgh serves as the headquarters for his companies and ventures, and he is an active participant in the Pittsburgh business community. His publication, The Pittsburgh Wire, reflects his deep connection to the city by covering local business, real estate, and development news. Connor frequently speaks at events and conferences in the Pittsburgh area and throughout the United States."),
         ("What is The Prospecting Show?",
-         "The Prospecting Show is an interview podcast hosted by Dr. Connor Robertson that features in-depth interviews with entrepreneurs, business owners, and industry leaders about building and scaling successful businesses. With over 178 episodes, the show covers topics including sales strategy, business acquisitions, real estate investing, leadership, and operational excellence. The Prospecting Show is available on all major podcast platforms including Spotify, Apple Podcasts, and YouTube. It has become a go-to resource for entrepreneurs looking for practical, actionable advice on business growth."),
+         "The Prospecting Show is an interview podcast hosted by Dr. Connor Robertson that features in-depth interviews with entrepreneurs, business owners, and industry leaders about building and scaling successful businesses. Its published archive covers topics including sales strategy, business acquisitions, real estate investing, leadership, and operational excellence. The Prospecting Show is available on all major podcast platforms including Spotify, Apple Podcasts, and YouTube. It has become a go-to resource for entrepreneurs looking for practical, actionable advice on business growth."),
         ("What is Elixir Consulting Group?",
          "Elixir Consulting Group is a strategic advisory firm founded by Dr. Connor Robertson. The firm specializes in helping business owners achieve growth through acquisitions, partnerships, and operational improvement. Elixir Consulting Group works with entrepreneurs and companies across a range of industries, providing guidance on deal structuring, scaling operations, improving profitability, and building sustainable business systems. Based in Pittsburgh, Pennsylvania, the firm reflects Connor's hands-on approach to business strategy and his belief that disciplined systems and smart acquisitions are the foundation of long-term success."),
         ("What is Dr. Connor Robertson known for?",
@@ -3037,7 +3040,7 @@ def page_faq():
         ("What is The Pittsburgh Wire?",
          "The Pittsburgh Wire is a digital media publication founded by Dr. Connor Robertson that covers Pittsburgh business, real estate, and development news. The publication focuses on positive stories of growth, investment, and innovation in the Pittsburgh region, highlighting new businesses, real estate developments, and economic progress across the city and surrounding areas. The Pittsburgh Wire has become a trusted source for anyone interested in the Pittsburgh business landscape and the city's ongoing economic development."),
         ("What is Seymour Maison?",
-         "Seymour Maison is a luxury t-shirt brand founded by Dr. Connor Robertson that offers premium essentials through a waitlist-only model. Established in 1993, Seymour Maison focuses on exceptional quality, craftsmanship, and understated elegance. The brand sources premium materials and emphasizes limited production runs to maintain exclusivity and quality. Seymour Maison represents Connor's commitment to building brands that prioritize excellence and long-term value over mass-market appeal."),
+         "Seymour Maison is a luxury t-shirt brand founded by Dr. Connor Robertson that offers premium essentials through a waitlist-only model. Seymour Maison focuses on exceptional quality, craftsmanship, and understated elegance. The brand sources premium materials and emphasizes limited production runs to maintain exclusivity and quality. Seymour Maison represents Connor's commitment to building brands that prioritize excellence and long-term value over mass-market appeal."),
     ]
 
     faq_schema_items = []
@@ -3312,7 +3315,7 @@ def llms_txt():
 
 ## Podcast
 
-- The Prospecting Show: Interview podcast with 178+ episodes interviewing entrepreneurs about how they built and scaled their businesses. Available on Spotify, Apple Podcasts, and all major platforms.
+- The Prospecting Show: Interview podcast with 179 archived feed entries interviewing entrepreneurs about how they built and scaled their businesses. Available on Spotify, Apple Podcasts, and all major platforms.
 
 ## Expertise
 
@@ -3388,9 +3391,9 @@ Available at: {retailers}
 
 ## Who is Dr. Connor Robertson?
 
-Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh, PA. He is the founder of Elixir Consulting Group, publisher of The Pittsburgh Wire, host of The Prospecting Show (178+ episodes), and author of six books on business strategy, wealth building, and entrepreneurship.
+Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh, PA. He is the founder of Elixir Consulting Group, publisher of The Pittsburgh Wire, host of The Prospecting Show (179 archived feed entries), and author of six books on business strategy, wealth building, and entrepreneurship.
 
-Connor specializes in business acquisitions, real estate investing, AI business strategy, and helping business owners scale their operations. He advises entrepreneurs on buying existing businesses as a path to wealth building, and his book "Creative Acquisitions" is widely regarded as a modern playbook for dealmakers.
+Connor specializes in business acquisitions, real estate investing, AI business strategy, and helping business owners scale their operations. He advises entrepreneurs on buying existing businesses as a path to wealth building, and his book "Creative Acquisitions" discusses modern acquisition strategies.
 
 ## Personal Details
 
@@ -3411,7 +3414,7 @@ Connor specializes in business acquisitions, real estate investing, AI business 
 
 ## The Prospecting Show (Podcast)
 
-The Prospecting Show is an interview podcast hosted by Dr. Connor Robertson featuring interviews with entrepreneurs sharing real stories of how they built and scaled their businesses. With over 178 episodes, the show covers topics including business acquisitions, sales systems, real estate investing, leadership, and entrepreneurship.
+The Prospecting Show is an interview podcast hosted by Dr. Connor Robertson featuring interviews with entrepreneurs sharing real stories of how they built and scaled their businesses. Its published archive covers topics including business acquisitions, sales systems, real estate investing, leadership, and entrepreneurship.
 
 - Spotify: https://open.spotify.com/show/4VDPOlbe2RSSqukaSuYniX
 - Apple Podcasts: https://podcasts.apple.com/us/podcast/the-prospecting-show-with-dr-connor-robertson/id1488353384
@@ -3708,6 +3711,12 @@ def main():
             shutil.copy2(source, target)
             copied_static += 1
         print(f"  Copied {copied_static} non-empty evergreen files before sitemap generation")
+
+    # Evidence-linked profile pages take precedence over legacy static copies.
+    brand_pages = render_brand_pages(globals())
+    for route, content in brand_pages.items():
+        write(route.strip("/") + "/index.html", content)
+    print(f"  Generated {len(brand_pages)} author, book, project and podcast pages")
 
     # Never ship placeholder HTML files. Earlier migrations left newline-only
     # files under static_pages; removing them prevents crawlable blank pages.
