@@ -1,5 +1,5 @@
 {
-  "buildCommand": "python3 build.py",
+  "buildCommand": "python3 build.py && node scripts/optimize-media.mjs dist",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": true,
