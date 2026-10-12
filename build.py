@@ -2501,7 +2501,8 @@ def sitemap(posts):
             lastmod, prio, freq = p["date"][:10], "0.6", "monthly"
         else:
             prio, freq = SITEMAP_PRIORITY.get(loc, ("0.6", "monthly"))
-            lastmod = (AI_GUIDES_LASTMOD if loc.startswith("/ai/") else
+            lastmod = ("2026-10-12" if loc in ("/about/", "/books/", "/speaker/", "/media/", "/press-media/") else
+                       AI_GUIDES_LASTMOD if loc.startswith("/ai/") else
                        AI_PILLAR_LASTMOD if loc == "/ai-business-strategy/" else
                        BRAND_LASTMOD if loc in BRAND_UPDATED_PAGES or loc.startswith(("/books/", "/projects/", "/podcast/")) else
                        ACQUISITIONS_LASTMOD if loc == "/business-acquisitions/" else STATIC_LASTMOD)
@@ -3720,6 +3721,10 @@ def main():
     for route, content in brand_pages.items():
         write(route.strip("/") + "/index.html", content)
     print(f"  Generated {len(brand_pages)} author, book, project and podcast pages")
+
+    from personal_asset_pages import render_pages as render_personal_assets
+    for route, content in render_personal_assets(globals()).items():
+        write(route.strip("/") + "/index.html", content)
 
     # Never ship placeholder HTML files. Earlier migrations left newline-only
     # files under static_pages; removing them prevents crawlable blank pages.
