@@ -1678,6 +1678,7 @@ def page_home():
 <h2>Operator experience.<br>Useful playbooks.</h2>
 <div class="home-intro-copy"><p>Dr. Connor Robertson is a Canadian-born entrepreneur and business strategist based in Pittsburgh. He founded Elixir Consulting Group, publishes The Pittsburgh Wire, hosts The Prospecting Show, and writes about business acquisitions, operating systems, and practical AI.</p>
 <p>This site brings that work together for owners who value clear decisions, durable systems, and implementation over theory.</p>
+<p>Explore <a href="https://www.prospectingshow.com/">The Prospecting Show with Dr. Connor Robertson</a> for sales and prospecting resources, or visit the <a href="https://www.drconnorrobertsonbooks.com/">Dr. Connor Robertson book collection</a> for book descriptions and reading resources.</p>
 <div class="home-links"><a href="/about/">Read Connor's story</a><a href="/projects/">See current projects</a><a href="/books/">Browse six books</a></div></div>
 </div></section>
 <section class="feat"><div class="ctn">
