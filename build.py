@@ -3733,6 +3733,9 @@ def main():
     # SEO files
     print("\n[8/8] Generating SEO and config files...")
     write("sitemap.xml", sitemap(posts))
+    # Keep the historical Search Console submission readable after the migration.
+    # Use a URL set, not a sitemap index pointing to another sitemap index.
+    write("sitemap_index.xml", sitemap(posts))
     write("feed.xml", rss_feed(posts))
     write("robots.txt", robots_txt())
     write("llms.txt", llms_txt())
