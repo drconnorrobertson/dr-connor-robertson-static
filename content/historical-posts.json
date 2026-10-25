@@ -1,0 +1,67 @@
+[
+  {
+    "slug": "why-i-always-build-management-dashboards-after-acquisitions",
+    "relative_url": "/blog/why-i-always-build-management-dashboards-after-acquisitions/",
+    "title": "Management Dashboards After an Acquisition: A Practical Setup",
+    "date": "2025-12-17T09:00:00",
+    "modified": "2026-10-24T23:55:55-04:00",
+    "featured_image": "",
+    "categories": [
+      "Operations"
+    ],
+    "excerpt": "<p>Build a source-linked post-acquisition scorecard with a metric dictionary, reconciliation checks, decision ownership, and an AI review workflow.</p>",
+    "content_file": "content/historical/management-dashboards.html"
+  },
+  {
+    "slug": "the-most-common-red-flags-i-see-in-small-business-deals",
+    "relative_url": "/blog/the-most-common-red-flags-i-see-in-small-business-deals/",
+    "title": "Small Business Deal Red Flags: Turn Warning Signs Into Evidence",
+    "date": "2025-11-07T09:00:00",
+    "modified": "2026-10-24T23:55:55-04:00",
+    "featured_image": "",
+    "categories": [
+      "Business Acquisitions"
+    ],
+    "excerpt": "<p>Turn acquisition warning signs into an evidence-linked issue register with reviewer ownership, closure conditions, and a post-close handoff.</p>",
+    "content_file": "content/historical/acquisition-red-flags.html"
+  },
+  {
+    "slug": "scale-without-breaking-the-business",
+    "relative_url": "/blog/scale-without-breaking-the-business/",
+    "title": "Scaling Without Chaos: A Capacity and Quality Plan",
+    "date": "2025-08-18T09:00:00",
+    "modified": "2026-10-24T23:55:55-04:00",
+    "featured_image": "",
+    "categories": [
+      "Operations"
+    ],
+    "excerpt": "<p>Plan business growth with a clear delivery stream, capacity checks, review ownership, and a bounded expansion test.</p>",
+    "content_file": "content/historical/scaling-without-chaos.html"
+  },
+  {
+    "slug": "dr-connor-robertson-system-vs-talent",
+    "relative_url": "/dr-connor-robertson-system-vs-talent/",
+    "title": "Systems and Talent: Build Repeatable Business Operations",
+    "date": "2025-08-05T09:00:00",
+    "modified": "2026-10-24T23:55:55-04:00",
+    "featured_image": "",
+    "categories": [
+      "Business Systems"
+    ],
+    "excerpt": "<p>Test whether a process transfers across qualified teammates, while preserving judgment, authority, and clear acceptance standards.</p>",
+    "content_file": "content/historical/systems-and-talent.html"
+  },
+  {
+    "slug": "the-psychology-of-paid-attention-how-dr-connor-robertson-engineers-ads-people-actually-want-to-see",
+    "relative_url": "/blog/the-psychology-of-paid-attention-how-dr-connor-robertson-engineers-ads-people-actually-want-to-see/",
+    "title": "Speed vs Perfection in Business: Shorten Time to Accepted Work",
+    "date": "2025-11-22T09:00:00",
+    "modified": "2026-10-24T23:55:55-04:00",
+    "featured_image": "",
+    "categories": [
+      "Business Systems"
+    ],
+    "excerpt": "<p>Shorten business execution time by resolving missing decisions, defining acceptance, and measuring review, waiting, and correction effort.</p>",
+    "content_file": "content/historical/speed-and-perfection.html"
+  }
+]

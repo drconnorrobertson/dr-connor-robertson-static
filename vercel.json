@@ -1,5 +1,5 @@
 {
-  "buildCommand": "python3 build.py && node scripts/optimize-media.mjs dist && node scripts/buyer-intent-release.cjs dist && python3 scripts/verify-ai-library.py && node scripts/verify-ai-tools.cjs",
+  "buildCommand": "python3 build.py && node scripts/optimize-media.mjs dist && node scripts/buyer-intent-release.cjs dist && python3 scripts/verify-ai-library.py && node scripts/verify-ai-tools.cjs && python3 scripts/verify-historical-recovery.py",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": true,
@@ -107,6 +107,11 @@
     {
       "source": "/speaking/",
       "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/dr-connor-robertson-founder-bottleneck-scaling/",
+      "destination": "/the-systems-playbook-how-to-stop-being-the-bottleneck-in-your-own-business/",
       "statusCode": 301
     }
   ],

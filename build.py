@@ -2294,6 +2294,11 @@ def page_post(p, all_posts=None):
     else:
         og_image = "/images/dr-connor-robertson-headshot.jpg"
 
+    updated_html = ""
+    if p.get("modified"):
+        updated_date = datetime.fromisoformat(p["modified"]).strftime("%B %d, %Y")
+        updated_html = f'<p class="pm">Updated <time datetime="{esc(p["modified"][:10])}">{updated_date}</time> · Revised edition of a historical article</p>'
+
     # Rewrite images in post content
     content = rewrite_image_urls(p["content"])
 
@@ -2314,7 +2319,7 @@ def page_post(p, all_posts=None):
         "author": {"@id": PERSON_ID},
         "publisher": {"@id": PERSON_ID},
         "datePublished": p["date"],
-        "dateModified": p["date"],
+        "dateModified": p.get("modified", p["date"]),
         "description": meta_desc,
         "wordCount": word_count,
         "inLanguage": "en-US",
@@ -2358,7 +2363,7 @@ def page_post(p, all_posts=None):
                     f'read the full <a href="{hub_href}" style="text-decoration:underline">{esc(hub_label)}</a>.</p>')
 
     article_meta = (f'<meta property="article:published_time" content="{esc(p["date"])}">'
-                    f'<meta property="article:modified_time" content="{esc(p["date"])}">'
+                    f'<meta property="article:modified_time" content="{esc(p.get("modified", p["date"]))}">'
                     f'<meta property="article:author" content="Dr. Connor Robertson">'
                     + "".join(f'<meta property="article:section" content="{esc(strip_tags(c))}">'
                               for c in p.get("categories", [])[:1]))
@@ -2383,6 +2388,7 @@ def page_post(p, all_posts=None):
 {feat_img_html}
 <h1>{p["title"]}</h1>
 <p class="pm"><time datetime="{esc(p["date"][:10])}">{dt}</time> &middot; <a href="/about/" style="color:var(--muted);text-decoration:underline">Dr. Connor Robertson</a></p>
+{updated_html}
 <div class="pb">{content}</div>
 {hub_html}
 {faq_html}
@@ -2502,7 +2508,7 @@ def sitemap(posts):
             continue
         p = post_by_url.get(loc)
         if p:
-            lastmod, prio, freq = p["date"][:10], "0.6", "monthly"
+            lastmod, prio, freq = p.get("modified", p["date"])[:10], "0.6", "monthly"
         else:
             prio, freq = SITEMAP_PRIORITY.get(loc, ("0.6", "monthly"))
             lastmod = ("2026-10-12" if loc in ("/about/", "/books/", "/speaker/", "/media/", "/press-media/") else
@@ -3151,6 +3157,8 @@ HUB_SEO = {
 
 HUB_PILLARS = {
     "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/": [
+        ("Acquisition Red Flag Issue Register", "/blog/the-most-common-red-flags-i-see-in-small-business-deals/", "Turn warning signs into evidence requests, reviewer decisions, and closure conditions."),
+        ("Post-Acquisition Management Dashboard", "/blog/why-i-always-build-management-dashboards-after-acquisitions/", "Build a metric dictionary and a reconciled operating scorecard."),
         ("Complete Business Acquisition Guide", "/business-acquisitions/", "The end-to-end framework for screening, valuing, structuring, diligencing, closing, and operating an acquisition."),
         ("Business Acquisition Due Diligence Checklist", "/business-acquisitions/business-acquisition-due-diligence-checklist/", "A practical checklist for financial, legal, operational, customer, employee, and transition diligence."),
         ("How to Value a Small Business Using SDE", "/business-acquisitions/how-to-value-a-small-business-using-sde/", "Normalize earnings, test add-backs, select a risk-adjusted multiple, and model post-closing cash flow."),
@@ -3167,6 +3175,9 @@ HUB_PILLARS = {
         ("Media and Press", "/press-media/", "Interviews, features, and third-party coverage."),
     ],
     "/blog/hub-mindset-momentum-systems-dr-connor-robertson/": [
+        ("Scaling Without Chaos", "/blog/scale-without-breaking-the-business/", "Compare accepted workload, delivery capacity, and review constraints before expanding."),
+        ("Systems and Talent", "/dr-connor-robertson-system-vs-talent/", "Test whether the process transfers across qualified teammates."),
+        ("Speed vs Perfection", "/blog/the-psychology-of-paid-attention-how-dr-connor-robertson-engineers-ads-people-actually-want-to-see/", "Shorten the full path to accepted work, including waiting and correction."),
         ("AI Business Strategy", "/ai-business-strategy/", "Deploy supervised automation around clear operating objectives and human accountability."),
         ("Prospecting and Sales Systems", "/prospecting-sales/", "Build consistent pipeline activity, follow-up, and measurable sales habits."),
         ("The First 100 Days After an Acquisition", "/business-acquisitions/first-100-days-after-buying-a-business/", "Turn a change of ownership into controlled operational progress."),
@@ -3496,6 +3507,18 @@ def main():
         print(f"  Loaded {len(manual_posts)} manual posts")
     else:
         print("\n[1/8] Fetching posts...")
+
+    # Historical search recovery: preserve source URLs and original publication dates.
+    historical_file = BASE_DIR / "content/historical-posts.json"
+    if historical_file.exists():
+        historical_posts = json.loads(historical_file.read_text())
+        for post in historical_posts:
+            post["content"] = (BASE_DIR / post["content_file"]).read_text()
+        historical_paths = {post["relative_url"] for post in historical_posts}
+        if len(historical_paths) != len(historical_posts) or historical_paths & {post["relative_url"] for post in manual_posts}:
+            raise ValueError("Historical content URL collision")
+        manual_posts.extend(historical_posts)
+        print(f"  Loaded {len(historical_posts)} restored historical articles")
 
     # Also load WP API posts or cache to merge with manual posts
     wp_posts = []

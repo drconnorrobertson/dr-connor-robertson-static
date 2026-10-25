@@ -1,0 +1,59 @@
+{
+  "audited_on": "2026-10-24",
+  "evidence_limits": "Public search visibility is not historical click or impression data. Six live HTTP 404 responses verified before editing.",
+  "pages": [
+    {
+      "path": "/blog/why-i-always-build-management-dashboards-after-acquisitions/",
+      "action": "restore",
+      "before_status": 404,
+      "expected_status": 200,
+      "original_publication_date": "2025-12-17",
+      "evidence": "Public search result and cached historical page",
+      "title": "Management Dashboards After an Acquisition: A Practical Setup"
+    },
+    {
+      "path": "/blog/the-most-common-red-flags-i-see-in-small-business-deals/",
+      "action": "restore",
+      "before_status": 404,
+      "expected_status": 200,
+      "original_publication_date": "2025-11-07",
+      "evidence": "Public search result and cached historical page",
+      "title": "Small Business Deal Red Flags: Turn Warning Signs Into Evidence"
+    },
+    {
+      "path": "/blog/scale-without-breaking-the-business/",
+      "action": "restore",
+      "before_status": 404,
+      "expected_status": 200,
+      "original_publication_date": "2025-08-18",
+      "evidence": "Public search result and cached historical page",
+      "title": "Scaling Without Chaos: A Capacity and Quality Plan"
+    },
+    {
+      "path": "/dr-connor-robertson-system-vs-talent/",
+      "action": "restore",
+      "before_status": 404,
+      "expected_status": 200,
+      "original_publication_date": "2025-08-05",
+      "evidence": "Public search result and cached historical page",
+      "title": "Systems and Talent: Build Repeatable Business Operations"
+    },
+    {
+      "path": "/blog/the-psychology-of-paid-attention-how-dr-connor-robertson-engineers-ads-people-actually-want-to-see/",
+      "action": "restore",
+      "before_status": 404,
+      "expected_status": 200,
+      "original_publication_date": "2025-11-22",
+      "evidence": "Public search result and cached historical page",
+      "title": "Speed vs Perfection in Business: Shorten Time to Accepted Work"
+    },
+    {
+      "path": "/dr-connor-robertson-founder-bottleneck-scaling/",
+      "action": "redirect",
+      "before_status": 404,
+      "expected_status": 301,
+      "destination": "/the-systems-playbook-how-to-stop-being-the-bottleneck-in-your-own-business/",
+      "evidence": "Public search result title and excerpt; existing destination covers founder bottlenecks and owner independence"
+    }
+  ]
+}

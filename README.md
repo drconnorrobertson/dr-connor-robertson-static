@@ -43,3 +43,9 @@ node scripts/verify-ai-tools.cjs
 ```
 
 The checks cover 43 implementation pages, 92 unique guide URLs, canonical metadata, sitemap inclusion, structured data, internal links and fragments, directory search/category/reset behavior, and readiness checklist states. Search performance could not be measured during this release because GSC Wizard required an active subscription. No ranking gains are claimed.
+
+## Historical search recovery
+
+Historical articles are loaded from `content/historical-posts.json` and their HTML bodies in `content/historical/`. The build preserves their original publication dates, displays the revised edition date, and uses the actual modification date in schema and the sitemap. The founder bottleneck alias has one relevant permanent redirect in `vercel.json`.
+
+`python3 scripts/verify-historical-recovery.py` verifies the five restored outputs, metadata, source links, multiple inbound links, and redirect configuration. `content/historical-recovery-manifest.json` records all six URLs and their verified pre-release 404 state. See `LEGACY_CONTENT_MAP.md` for intent ownership and evidence limitations.
