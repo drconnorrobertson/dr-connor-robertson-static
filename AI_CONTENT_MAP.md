@@ -106,3 +106,42 @@ These phrases are editorial targets, not measured search volumes or ranking clai
 - [OpenAI: ChatGPT Business data and sharing](https://help.openai.com/en/articles/8798634)
 - [Anthropic: Claude Projects](https://support.anthropic.com/en/articles/9517075-what-are-projects)
 - [Google Search: spam policies](https://developers.google.com/search/docs/essentials/spam-policies)
+
+
+## October 24, 2026 implementation expansion
+
+The `/ai/implementation/` library owns production implementation decisions. Existing task workflow URLs retain their original intent. This release adds 24 pages: the library, three collections, 18 playbooks, templates, and a browser-only ROI calculator.
+
+### AI Agents and Integrations
+
+| Deliverable | Assigned URL |
+| --- | --- |
+| An architecture decision record | `/ai/implementation/agents-and-integrations/workflow-or-agent/` |
+| A tool specification with validation rules | `/ai/implementation/agents-and-integrations/agent-tool-contracts/` |
+| A retry and duplicate-prevention plan | `/ai/implementation/agents-and-integrations/idempotency-and-retries/` |
+| An approval record tied to an exact proposed action | `/ai/implementation/agents-and-integrations/human-approval-inbox/` |
+| An operator runbook for interrupted automation | `/ai/implementation/agents-and-integrations/agent-runbooks/` |
+| A run-level operating dashboard specification | `/ai/implementation/agents-and-integrations/agent-observability/` |
+
+### AI Knowledge Bases and Evaluation
+
+| Deliverable | Assigned URL |
+| --- | --- |
+| A register of approved source documents | `/ai/implementation/knowledge-and-evaluation/knowledge-source-register/` |
+| An access-aware retrieval test plan | `/ai/implementation/knowledge-and-evaluation/retrieval-permissions/` |
+| A claim-to-evidence review sheet | `/ai/implementation/knowledge-and-evaluation/citation-verification/` |
+| A versioned test set with acceptance criteria | `/ai/implementation/knowledge-and-evaluation/evaluation-dataset-design/` |
+| A release comparison and rollback decision | `/ai/implementation/knowledge-and-evaluation/model-change-regression/` |
+| An abstention and escalation policy | `/ai/implementation/knowledge-and-evaluation/abstention-and-escalation/` |
+
+### AI Content Operations and Team Rollout
+
+| Deliverable | Assigned URL |
+| --- | --- |
+| A publication-ready claim and source ledger | `/ai/implementation/content-and-rollout/content-evidence-ledger/` |
+| An interview-derived editorial package | `/ai/implementation/content-and-rollout/interview-to-content-system/` |
+| A ranked content refresh backlog | `/ai/implementation/content-and-rollout/content-refresh-triage/` |
+| A four-week rollout plan with release gates | `/ai/implementation/content-and-rollout/thirty-day-ai-rollout/` |
+| An operating ownership and maintenance register | `/ai/implementation/content-and-rollout/ai-workflow-ownership/` |
+| A vendor trial and purchasing decision sheet | `/ai/implementation/content-and-rollout/ai-procurement-scorecard/` |
+

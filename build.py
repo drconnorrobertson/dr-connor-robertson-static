@@ -17,6 +17,7 @@ from urllib.request import Request, urlopen
 from urllib.error import URLError
 from urllib.parse import urlparse, urljoin
 
+from ai_implementation import render_pages as render_implementation_pages
 from brand_pages import render_pages as render_brand_pages
 from acquisition_guides import ACQUISITION_GUIDES
 from ai_workflows import CLUSTERS as AI_CLUSTERS, all_guides as ai_guides, validate as validate_ai_guides, render_hub as render_ai_hub, render_guide as render_ai_guide
@@ -1423,6 +1424,7 @@ def nav_html():
     items = ""
     for label, href in NAV_ITEMS:
         items += f'<li><a href="{href}">{label}</a></li>'
+    items += '<li><a href="/ai/implementation/">AI Library</a></li>'
     # Topics dropdown (pillar pages)
     tdd = "".join(f'<a href="{h}">{l}</a>' for l, h in PILLAR_PAGES)
     items += f'<li class="has-dd"><a href="/business-acquisitions/">Topics</a><div class="dd">{tdd}</div></li>'
@@ -2401,7 +2403,7 @@ def write(path, content):
 # every build with today's date trains crawlers to ignore the field entirely.
 STATIC_LASTMOD = "2026-09-20"
 AI_GUIDES_LASTMOD = "2026-09-22"
-AI_PILLAR_LASTMOD = "2026-09-22"
+AI_PILLAR_LASTMOD = "2026-10-24"
 BRAND_LASTMOD = "2026-10-02"
 BRAND_UPDATED_PAGES = {"/about/", "/speaker/", "/projects/", "/faq/", "/books/", "/podcast/", "/press-media/", "/"}
 ACQUISITIONS_LASTMOD = "2026-09-22"
@@ -2502,6 +2504,7 @@ def sitemap(posts):
         else:
             prio, freq = SITEMAP_PRIORITY.get(loc, ("0.6", "monthly"))
             lastmod = ("2026-10-12" if loc in ("/about/", "/books/", "/speaker/", "/media/", "/press-media/") else
+                       "2026-10-24" if loc.startswith("/ai/implementation/") else
                        AI_GUIDES_LASTMOD if loc.startswith("/ai/") else
                        AI_PILLAR_LASTMOD if loc == "/ai-business-strategy/" else
                        BRAND_LASTMOD if loc in BRAND_UPDATED_PAGES or loc.startswith(("/books/", "/projects/", "/podcast/")) else
@@ -2822,6 +2825,7 @@ def page_ai_business_strategy():
 </div></section>
 <section class="sec"><div class="ctn">
 
+<h2>Put AI into operation</h2><p>Explore the <a href="/ai/implementation/">AI Implementation Library</a> for 18 implementation playbooks on agents, knowledge bases, evaluation, content operations, and team rollout. Use the <a href="/ai/implementation/roi-calculator/">ROI calculator</a> and <a href="/ai/implementation/templates/">implementation templates</a> to plan the work.</p>
 <h2>Start with the workflow, not a tool</h2>
 <p>Write down where a task begins, what a usable result looks like, who reviews it, and what happens after approval. If the process already stalls because an owner is unavailable or the input is incomplete, a faster draft will not remove that delay. Use the <a href="/blog/operational-drag-in-business/">operational drag diagnostic</a> to separate active work from waiting and rework before choosing an AI pilot.</p>
 <p>Pick a task that happens often enough to test, has a stable source of truth, and has a reviewer with time to check outputs. A customer email draft, meeting brief, or document comparison can be a good candidate when the required facts and approval path are clear. A task with unclear authority, highly sensitive data, or no reliable way to judge correctness needs process work first.</p>
@@ -3302,6 +3306,15 @@ def llms_txt():
 
 > Dr. Connor Robertson is an entrepreneur, author of six books on business strategy and wealth building, podcast host, and business strategist based in Pittsburgh, PA.
 
+## AI Implementation Resources
+
+- Library: https://www.drconnorrobertson.com/ai/implementation/
+- Agents and integrations: https://www.drconnorrobertson.com/ai/implementation/agents-and-integrations/
+- Knowledge and evaluation: https://www.drconnorrobertson.com/ai/implementation/knowledge-and-evaluation/
+- Content and rollout: https://www.drconnorrobertson.com/ai/implementation/content-and-rollout/
+- ROI calculator: https://www.drconnorrobertson.com/ai/implementation/roi-calculator/
+- Templates: https://www.drconnorrobertson.com/ai/implementation/templates/
+
 ## Identity
 
 - Full Name: Dr. Connor Robertson
@@ -3666,6 +3679,8 @@ def main():
     for guide in ACQUISITION_GUIDES:
         write(f"business-acquisitions/{guide['slug']}/index.html", page_acquisition_guide(guide))
     write("ai-business-strategy/index.html", page_ai_business_strategy())
+    for path, content in render_implementation_pages(header, breadcrumbs, footer, SITE_URL, PERSON_ID).items():
+        write(path.strip("/") + "/index.html", content)
     for cluster in AI_CLUSTERS:
         write(f"ai/{cluster['slug']}/index.html", render_ai_hub(cluster, header, breadcrumbs, footer))
     for cluster, guide in ai_guides():
