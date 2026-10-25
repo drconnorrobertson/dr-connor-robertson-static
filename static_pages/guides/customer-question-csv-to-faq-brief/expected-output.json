@@ -1,0 +1,64 @@
+[
+  {
+    "topic": "rescheduling",
+    "observed_request_rows": 3,
+    "source_request_ids": [
+      "R001",
+      "R002",
+      "R003"
+    ],
+    "wording_variants": [
+      {
+        "normalized_question": "can i move my appointment, please?",
+        "request_ids": [
+          "R001",
+          "R002"
+        ]
+      },
+      {
+        "normalized_question": "how do i request a different appointment time?",
+        "request_ids": [
+          "R003"
+        ]
+      }
+    ],
+    "answer_records": {
+      "A-DEMO-01": {
+        "text": "Demonstration only: contact the fictional scheduling team with your reference. Do not publish this as a real company policy.",
+        "source": "fictional-approved-notes#scheduling",
+        "version": "demo-1"
+      }
+    },
+    "review_status": "Draft evidence brief; human scope and publication review required"
+  },
+  {
+    "topic": "service-area",
+    "observed_request_rows": 2,
+    "source_request_ids": [
+      "R004",
+      "R005"
+    ],
+    "wording_variants": [
+      {
+        "normalized_question": "do you serve café street?",
+        "request_ids": [
+          "R004"
+        ]
+      },
+      {
+        "normalized_question": "is my address inside your service area?",
+        "request_ids": [
+          "R005"
+        ]
+      }
+    ],
+    "answer_records": {
+      "A-DEMO-02": {
+        "text": "Demonstration only: the fictional team must confirm exact-address coverage. No actual service area is asserted.",
+        "source": "fictional-approved-notes#coverage",
+        "version": "demo-1"
+      }
+    },
+    "review_status": "Draft evidence brief; human scope and publication review required"
+  }
+]
