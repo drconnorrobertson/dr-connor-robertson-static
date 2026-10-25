@@ -17,6 +17,7 @@ from urllib.request import Request, urlopen
 from urllib.error import URLError
 from urllib.parse import urlparse, urljoin
 
+from ai_growth import render_pages as render_growth_pages
 from ai_implementation import render_pages as render_implementation_pages
 from brand_pages import render_pages as render_brand_pages
 from acquisition_guides import ACQUISITION_GUIDES
@@ -1691,6 +1692,7 @@ def page_home():
 <h2 class="sec-t">Practical frameworks for buying businesses, improving operations, and building durable enterprise value.</h2>
 <div class="pills">{pcards}</div>
 </div></section>
+<section class="sec"><div class="ctn"><h2>Put AI to work in your business</h2><p>Explore 92 practical AI guides for workflows, agents, knowledge bases, content operations, and industry implementation.</p><div class="pills"><article class="pill"><h3><a href="/ai/implementation/directory/">Find your AI workflow</a></h3><p>Search the complete directory by task or collection.</p></article><article class="pill"><h3><a href="/ai/implementation/industries/">AI by industry</a></h3><p>Eight operating plans with source requirements and worked exceptions.</p></article><article class="pill"><h3><a href="/ai/implementation/readiness-planner/">Plan your first pilot</a></h3><p>Check prerequisites and prepare a practical next-step plan.</p></article></div></div></section>
 <section class="quote"><div class="ctn">
 <p class="quote-t">"Real success comes from creating impact that lasts longer than you do."</p>
 <p class="quote-a"><strong>Dr. Connor Robertson</strong><br>Entrepreneur, Acquisition Strategist, Author &amp; Operator</p>
@@ -3286,6 +3288,7 @@ def page_resource_index(posts):
 <section class="sec"><div class="ctn">
 <div class="ablock"><h2>Resource Hubs</h2><ul class="link-list">{hubs}</ul></div>
 <div class="ablock"><h2>Pillar Guides</h2><ul class="link-list">{pillars}</ul></div>
+<div class="ablock"><h2>AI Implementation Resources</h2><ul class="link-list"><li><a href="/ai/implementation/directory/">Search all AI guides</a></li><li><a href="/ai/implementation/industries/">AI by industry</a></li><li><a href="/ai/implementation/decisions/">AI architecture decisions</a></li><li><a href="/ai/implementation/glossary/">AI business glossary</a></li><li><a href="/ai/implementation/readiness-planner/">Pilot readiness planner</a></li></ul></div>
 <div class="ablock"><h2>AI Workflow Collections</h2><ul class="link-list">{ai_collections}</ul></div>
 <div class="ablock"><h2>Key Pages</h2><ul class="link-list">{main_pages}</ul></div>
 <div class="ablock"><h2>All Articles</h2><ul class="link-list">{articles}</ul></div>
@@ -3308,6 +3311,11 @@ def llms_txt():
 
 ## AI Implementation Resources
 
+- Searchable directory: https://www.drconnorrobertson.com/ai/implementation/directory/
+- Industry plans: https://www.drconnorrobertson.com/ai/implementation/industries/
+- Architecture decisions: https://www.drconnorrobertson.com/ai/implementation/decisions/
+- Business glossary: https://www.drconnorrobertson.com/ai/implementation/glossary/
+- Readiness planner: https://www.drconnorrobertson.com/ai/implementation/readiness-planner/
 - Library: https://www.drconnorrobertson.com/ai/implementation/
 - Agents and integrations: https://www.drconnorrobertson.com/ai/implementation/agents-and-integrations/
 - Knowledge and evaluation: https://www.drconnorrobertson.com/ai/implementation/knowledge-and-evaluation/
@@ -3679,6 +3687,8 @@ def main():
     for guide in ACQUISITION_GUIDES:
         write(f"business-acquisitions/{guide['slug']}/index.html", page_acquisition_guide(guide))
     write("ai-business-strategy/index.html", page_ai_business_strategy())
+    for path, content in render_growth_pages(header, breadcrumbs, footer, SITE_URL, PERSON_ID).items():
+        write(path.strip("/") + "/index.html", content)
     for path, content in render_implementation_pages(header, breadcrumbs, footer, SITE_URL, PERSON_ID).items():
         write(path.strip("/") + "/index.html", content)
     for cluster in AI_CLUSTERS:

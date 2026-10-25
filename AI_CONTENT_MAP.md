@@ -145,3 +145,34 @@ The `/ai/implementation/` library owns production implementation decisions. Exis
 | An operating ownership and maintenance register | `/ai/implementation/content-and-rollout/ai-workflow-ownership/` |
 | A vendor trial and purchasing decision sheet | `/ai/implementation/content-and-rollout/ai-procurement-scorecard/` |
 
+## Industry, architecture, and discovery expansion
+
+This release adds 19 pages and connects 92 distinct guides through `/ai/implementation/directory/`. Industry pages own a multi-workflow operating plan; existing task pages retain ownership of the single-task instructions. Architecture decision pages own technical choice criteria, not vendor rankings. No keyword-demand estimates were available: GSC Wizard returned a subscription requirement.
+
+### Industry operating plans
+
+- AI for Home Service Businesses: `/ai/implementation/industries/home-service-businesses/`
+- AI for Marketing Agencies: `/ai/implementation/industries/marketing-agencies/`
+- AI for Property Management Operations: `/ai/implementation/industries/property-management/`
+- AI for Business Acquisition Teams: `/ai/implementation/industries/business-acquisition-teams/`
+- AI for Professional Service Firms: `/ai/implementation/industries/professional-service-firms/`
+- AI for Ecommerce Operations: `/ai/implementation/industries/ecommerce-operations/`
+- AI for Nonprofit Operations: `/ai/implementation/industries/nonprofit-operations/`
+- AI for Podcast and Media Teams: `/ai/implementation/industries/podcast-and-media-teams/`
+
+### Architecture decisions
+
+- RAG vs Fine-Tuning for Business AI: `/ai/implementation/decisions/rag-vs-fine-tuning/`
+- Keyword vs Semantic vs Hybrid Search for AI Knowledge Bases: `/ai/implementation/decisions/keyword-vs-semantic-search/`
+- Batch vs Real-Time AI Processing: `/ai/implementation/decisions/batch-vs-realtime-ai/`
+- Prompt Engineering vs Context Engineering: `/ai/implementation/decisions/prompt-vs-context-engineering/`
+- Structured AI Outputs vs Free-Text Responses: `/ai/implementation/decisions/structured-output-vs-free-text/`
+- Single-Agent vs Multi-Agent Business Systems: `/ai/implementation/decisions/single-agent-vs-multi-agent/`
+
+### Discovery and planning
+
+- Directory: `/ai/implementation/directory/`
+- Sixteen-term glossary: `/ai/implementation/glossary/`
+- Readiness planner: `/ai/implementation/readiness-planner/`
+
+The directory uses server-rendered links and progressive browser filtering. No guide depends on JavaScript for discoverability. The planner is an explicit checklist, not a validated score. All scenarios are illustrative.

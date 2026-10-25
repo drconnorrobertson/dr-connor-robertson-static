@@ -215,6 +215,7 @@ def render_hub(cluster, header, breadcrumbs, footer):
 <p>{escape(cluster['intro'])}</p><p>{escape(cluster['decision'])}</p>
 <p>Each page covers one outcome with required inputs, a method, a starting prompt, a review gate, and a metric. Test the draft on a small, approved sample before making it part of a team process. Record the human owner and update the workflow when policy or source documents change.</p>
 <h2>Choose the deliverable you need</h2><div class="pills">{cards}</div>
+<h2>Move from a task to an operating system</h2><p><a href="/ai/implementation/directory/">Search the full AI guide directory</a> or explore <a href="/ai/implementation/industries/">industry implementation plans</a> for source requirements, review ownership, and exception handling across related workflows.</p>
 <h2>Explore another workflow family</h2><ul class="link-list">{peers}</ul>
 <p>For prioritization and deployment across the company, read the <a href="/ai-business-strategy/">AI business strategy guide</a>.</p>
 </div></section>''' + footer()
