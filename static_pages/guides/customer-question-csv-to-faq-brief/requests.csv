@@ -1,0 +1,6 @@
+request_id,question,topic,answer_id
+R001,"Can I move my appointment, please?",rescheduling,A-DEMO-01
+R002,"  Can I move my appointment, please?  ",rescheduling,A-DEMO-01
+R003,How do I request a different appointment time?,rescheduling,A-DEMO-01
+R004,Do you serve Café Street?,service-area,A-DEMO-02
+R005,Is my address inside your service area?,service-area,A-DEMO-02
