@@ -176,3 +176,6 @@ This release adds 19 pages and connects 92 distinct guides through `/ai/implemen
 - Readiness planner: `/ai/implementation/readiness-planner/`
 
 The directory uses server-rendered links and progressive browser filtering. No guide depends on JavaScript for discoverability. The planner is an explicit checklist, not a validated score. All scenarios are illustrative.
+
+## October 26, 2026 existing-guide depth update
+The assigned weekly-operations-agenda URL retains its September 22 publication date. Its authoritative long-form override is static_pages/ai/chatgpt-business-workflows/chatgpt-weekly-operations-meeting-agenda/index.html, copied by the established build after generated AI guides and before sitemap creation. No new guide or duplicate query is added. Includes fictional source notes and a local agenda time-budget utility.
