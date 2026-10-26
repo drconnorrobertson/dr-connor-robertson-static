@@ -2519,6 +2519,8 @@ def sitemap(posts):
                        ACQUISITIONS_LASTMOD if loc == "/business-acquisitions/" else STATIC_LASTMOD)
         if loc in {"/guides/customer-question-csv-to-faq-brief/", "/ai/implementation/"}:
             lastmod = "2026-10-25"
+        if loc == "/ai/implementation/knowledge-and-evaluation/evaluation-dataset-design/":
+            lastmod = "2026-10-26"
         if loc == "/ai/implementation/knowledge-and-evaluation/citation-verification/":
             lastmod = "2026-10-26"
         if loc == "/ai/chatgpt-business-workflows/chatgpt-weekly-operations-meeting-agenda/":
