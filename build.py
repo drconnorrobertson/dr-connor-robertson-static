@@ -2519,6 +2519,8 @@ def sitemap(posts):
                        ACQUISITIONS_LASTMOD if loc == "/business-acquisitions/" else STATIC_LASTMOD)
         if loc in {"/guides/customer-question-csv-to-faq-brief/", "/ai/implementation/"}:
             lastmod = "2026-10-25"
+        if loc == "/ai/chatgpt-business-workflows/chatgpt-weekly-operations-meeting-agenda/":
+            lastmod = "2026-10-26"
         # Surface the page's primary image so it is eligible for image search.
         img = ""
         m = re.search(r'<meta property="og:image" content="([^"]+)"', html_text)
