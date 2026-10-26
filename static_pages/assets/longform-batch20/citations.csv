@@ -1,0 +1,6 @@
+fictional_claim_id,claim,source_context,teaching_label,limit
+C1,Every customer receives weekend support,Premium customers may request weekend support,contradicted,Fictional source and judgment
+C2,Premium customers may request weekend support,Premium customers may request weekend support,full,Not an actual service
+C3,Response guaranteed within two hours,No response interval guaranteed,absent,No actual model output
+C4,Weekend support is available,Premium restriction and applicable agreement,partial,Restriction omitted
+C5,Premium customers may request subject to applicable agreement,Premium eligibility;check applicable agreement,full,Fictional judgment only
