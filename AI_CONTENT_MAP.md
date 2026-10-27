@@ -183,3 +183,5 @@ The assigned weekly-operations-agenda URL retains its September 22 publication d
 
 ## October 27, 2026 existing abstention-owner depth update
 The assigned abstention-and-escalation URL retains its October 24 publication and query ownership. A long-form static_pages override adds six original fictional decision scenarios, not model observations or actual policies. Existing retrieval-permissions, citation, dataset, release-comparison and approval owners remain separate. No new route is added.
+
+Batch 77 editorial expansion: the existing `/ai/implementation/decisions/prompt-vs-context-engineering/` owner now distinguishes instruction, source-selection and retained-state interventions with six original fictional cases. No new route or observed model results.
