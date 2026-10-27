@@ -179,3 +179,7 @@ The directory uses server-rendered links and progressive browser filtering. No g
 
 ## October 26, 2026 existing-guide depth update
 The assigned weekly-operations-agenda URL retains its September 22 publication date. Its authoritative long-form override is static_pages/ai/chatgpt-business-workflows/chatgpt-weekly-operations-meeting-agenda/index.html, copied by the established build after generated AI guides and before sitemap creation. No new guide or duplicate query is added. Includes fictional source notes and a local agenda time-budget utility.
+
+
+## October 27, 2026 existing abstention-owner depth update
+The assigned abstention-and-escalation URL retains its October 24 publication and query ownership. A long-form static_pages override adds six original fictional decision scenarios, not model observations or actual policies. Existing retrieval-permissions, citation, dataset, release-comparison and approval owners remain separate. No new route is added.

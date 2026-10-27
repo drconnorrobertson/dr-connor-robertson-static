@@ -2527,6 +2527,8 @@ def sitemap(posts):
             lastmod = "2026-10-26"
         if loc == "/ai/implementation/knowledge-and-evaluation/model-change-regression/":
             lastmod = "2026-10-26"
+        if loc == "/ai/implementation/knowledge-and-evaluation/abstention-and-escalation/":
+            lastmod = "2026-10-27"
         # Surface the page's primary image so it is eligible for image search.
         img = ""
         m = re.search(r'<meta property="og:image" content="([^"]+)"', html_text)

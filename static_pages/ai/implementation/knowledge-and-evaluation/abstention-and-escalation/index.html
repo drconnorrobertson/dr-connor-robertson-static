@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teach an AI Assistant When to Say It Does Not Know</title>
+<meta name="description" content="Define when to answer, clarify, escalate an evidence problem or withhold an unauthorized action, using six original fictional business-assistant scenarios.">
+<link rel="canonical" href="https://www.drconnorrobertson.com/ai/implementation/knowledge-and-evaluation/abstention-and-escalation/">
+<meta property="og:title" content="Teach an AI Assistant When to Say It Does Not Know">
+<meta property="og:description" content="Define when to answer, clarify, escalate an evidence problem or withhold an unauthorized action, using six original fictional business-assistant scenarios.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.drconnorrobertson.com/ai/implementation/knowledge-and-evaluation/abstention-and-escalation/">
+<meta property="og:site_name" content="Dr. Connor Robertson">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Teach an AI Assistant When to Say It Does Not Know">
+<meta name="twitter:description" content="Define when to answer, clarify, escalate an evidence problem or withhold an unauthorized action, using six original fictional business-assistant scenarios.">
+<meta name="twitter:site" content="@DrConnorRE">
+
+<meta name="author" content="Dr Connor Robertson website editorial">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="alternate" type="application/rss+xml" title="Dr. Connor Robertson — Latest Articles" href="/feed.xml">
+<link rel="icon" type="image/jpeg" href="/images/dr-connor-robertson-headshot.jpg">
+<link rel="apple-touch-icon" href="/images/dr-connor-robertson-headshot.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"></noscript>
+<style>
+:root{--bg:#000;--bg2:#0a0a0a;--card:#111;--text:#fff;--text2:#b0b0b0;--muted:#888;--border:#222;--r:8px;--mw:1200px;--t:.3s ease}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:16px}
+a{color:var(--text);text-decoration:none;transition:opacity var(--t)}a:hover{opacity:.8}
+img{max-width:100%;height:auto;display:block;background:var(--bg2)}
+.ctn{max-width:var(--mw);margin:0 auto;padding:0 24px}
+.skip-link{position:fixed;top:12px;left:12px;z-index:2000;background:#fff;color:#000;padding:10px 16px;border-radius:var(--r);font-weight:700;transform:translateY(-150%);transition:transform .15s ease}
+.skip-link:focus{transform:translateY(0)}
+
+/* Header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.hdr-in{max-width:var(--mw);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-size:18px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+.logo a{color:var(--text)}
+.nav{display:flex;align-items:center;gap:24px;list-style:none}
+.nav a{font-size:14px;font-weight:500;color:var(--text2);transition:color var(--t);min-height:44px;display:flex;align-items:center}
+.nav a:hover{color:var(--text);opacity:1}
+.nav-cta{display:inline-block;padding:10px 20px;background:var(--text);color:#000!important;border-radius:var(--r);font-size:14px;font-weight:600;transition:transform var(--t),box-shadow var(--t);min-height:44px;display:flex;align-items:center}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(255,255,255,.15);opacity:1}
+.mob-tog{display:none;background:0 0;border:none;color:var(--text);font-size:24px;cursor:pointer;padding:12px;min-width:44px;min-height:44px}
+.has-dd{position:relative}
+.dd{display:none;position:absolute;top:100%;left:0;background:#111;border:1px solid var(--border);border-radius:var(--r);padding:8px 0;min-width:240px;z-index:100}
+.has-dd:hover .dd,.has-dd:focus-within .dd{display:block}
+.dd a{display:block;padding:12px 20px;font-size:13px;color:var(--text2);min-height:44px;display:flex;align-items:center}
+.dd a:hover{color:var(--text);background:rgba(255,255,255,.05)}
+
+/* Hero */
+.hero{position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a0a0a 0%,#1a1a2e 50%,#0a0a0a 100%);z-index:0}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.32) 0%,rgba(0,0,0,.55) 58%,rgba(0,0,0,.88) 100%);z-index:2}
+.hero-ct{position:relative;z-index:3;max-width:800px;width:100%}
+.hero-kicker{display:inline-block;margin-bottom:18px;color:#e2e2e2;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.hero h1{font-size:clamp(40px,6vw,72px);font-weight:700;letter-spacing:-.03em;margin-bottom:20px;line-height:1.1}
+.hero .tag{font-size:clamp(16px,2vw,20px);color:#e2e2e2;margin:0 auto 36px;line-height:1.6;max-width:720px;text-shadow:0 1px 12px rgba(0,0,0,.45)}
+.hero-btn{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero-img{width:180px;height:180px;border-radius:50%;object-fit:cover;margin:0 auto 32px;border:3px solid rgba(255,255,255,.15);max-width:100%}
+.hero-bg-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:.58;z-index:1;border-radius:0;border:none}
+.btn-p{display:inline-flex;padding:14px 32px;background:var(--text);color:#000;border-radius:var(--r);font-weight:600;font-size:15px;transition:transform var(--t),box-shadow var(--t);min-height:44px;align-items:center}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,255,255,.15);opacity:1}
+.btn-s{display:inline-flex;padding:14px 32px;background:rgba(0,0,0,.48);color:var(--text);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);font-weight:600;font-size:15px;transition:background var(--t);min-height:44px;align-items:center}
+.btn-s:hover{background:rgba(255,255,255,.1);opacity:1}
+.hero-proof{display:flex;justify-content:center;gap:34px;margin-top:34px;flex-wrap:wrap}
+.hero-proof-item{min-width:112px}
+.hero-proof strong{display:block;font-size:20px;line-height:1.2}
+.hero-proof span{display:block;margin-top:4px;color:#c8c8c8;font-size:12px;letter-spacing:.02em}
+
+/* Home intro */
+.home-intro{display:grid;grid-template-columns:minmax(260px,.75fr) minmax(0,1.45fr);gap:72px;align-items:start}
+.home-intro h2{font-size:clamp(28px,4vw,46px);letter-spacing:-.025em;line-height:1.15}
+.home-intro-copy{color:var(--text2);font-size:17px}
+.home-intro-copy p+p{margin-top:16px}
+.home-intro-copy a{text-decoration:underline;text-underline-offset:4px;text-decoration-color:#555}
+.home-links{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px}
+.home-links a{font-size:14px;font-weight:700;text-decoration:none}
+.home-links a::after{content:' →'}
+
+/* Featured */
+.feat{padding:48px 0;text-align:center;border-bottom:1px solid var(--border)}
+.feat h2{font-size:12px;text-transform:uppercase;letter-spacing:3px;color:var(--muted);margin-bottom:32px}
+.feat-logos{display:flex;align-items:center;justify-content:center;opacity:.88;overflow:hidden;position:relative;width:100%}
+.feat-logos-track{display:flex;gap:60px;animation:scroll-marquee 20s linear infinite;width:max-content}
+.feat-logos img{height:32px;width:auto;filter:brightness(0) invert(1);opacity:.7}
+.feat-logos span{font-size:16px;font-weight:600;color:#d5d5d5;letter-spacing:.04em}
+
+/* Sections */
+.sec{padding:80px 0}.sec-dk{background:var(--bg2)}
+.sec-t{font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-.02em;margin-bottom:20px;line-height:1.2}
+.sec-sub{color:var(--text2);font-size:17px;max-width:700px;margin-bottom:48px}
+
+/* Pillars */
+.pills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-top:48px}
+.pill{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:40px 32px;transition:transform var(--t),border-color var(--t);display:flex;flex-direction:column}
+.pill:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.15)}
+.pill h3{font-size:22px;font-weight:700;margin-bottom:16px}
+.pill p{color:var(--text2);font-size:15px;line-height:1.7}
+.pill-link{margin-top:22px;font-size:14px;font-weight:700}
+.pill-link::after{content:' →'}
+
+/* Quote */
+.quote{padding:80px 0;text-align:center;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.quote-t{font-size:clamp(20px,3vw,32px);font-weight:500;font-style:italic;max-width:800px;margin:0 auto 24px;line-height:1.5}
+.quote-a{color:var(--muted);font-size:15px}
+.quote-a strong{color:var(--text2);font-weight:600}
+
+/* Page Hero */
+.pg-hero{padding:140px 24px 60px;text-align:center;background:linear-gradient(180deg,#000 0%,var(--bg2) 100%)}
+.pg-hero h1{font-size:clamp(32px,5vw,56px);font-weight:700;letter-spacing:-.02em;margin-bottom:16px}
+.pg-hero p{color:var(--text2);font-size:17px;max-width:700px;margin:0 auto}
+
+/* Stats */
+.stats{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin:48px 0}
+.stat{text-align:center}.stat-n{font-size:48px;font-weight:700}.stat-l{font-size:13px;color:var(--muted);margin-top:4px}
+.about-photo{text-align:center;margin-bottom:32px}.about-photo img{width:220px;height:220px;border-radius:50%;object-fit:cover;border:4px solid var(--border);max-width:100%}
+
+/* Grid blocks */
+.agrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px;margin-top:48px}
+.ablock h3{font-size:22px;font-weight:700;margin-bottom:12px}
+.ablock p{color:var(--text2);font-size:15px;line-height:1.8}
+
+/* Blog */
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
+.bcard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform var(--t),border-color var(--t);display:flex;flex-direction:column}
+.bcard:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.15)}
+.bcard-img{width:100%;height:200px;object-fit:cover}
+.bcard-body{padding:24px 32px 32px}
+.bcard h3{font-size:18px;font-weight:600;margin-bottom:12px;line-height:1.4}
+.bcard .exc{color:var(--text2);font-size:14px;line-height:1.7;flex:1;margin-bottom:16px}
+.bcard .meta{font-size:12px;color:var(--muted)}
+.pag{display:flex;gap:8px;justify-content:center;margin-top:48px;flex-wrap:wrap}
+.pag a,.pag span{display:inline-flex;padding:10px 16px;border:1px solid var(--border);border-radius:var(--r);font-size:14px;color:var(--text2);min-height:44px;min-width:44px;align-items:center;justify-content:center}
+.pag .cur{background:var(--text);color:#000;border-color:var(--text);font-weight:600}
+
+/* Post */
+.post{max-width:760px;margin:0 auto;padding:120px 24px 80px}
+.post-feat{width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:32px}
+.post h1{font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.02em;margin-bottom:12px;line-height:1.2}
+.post .pm{color:var(--muted);font-size:14px;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.post .pb{font-size:16px;line-height:1.85;color:var(--text2)}
+.post .pb h2{font-size:26px;font-weight:700;color:var(--text);margin:48px 0 16px}
+.post .pb h3{font-size:20px;font-weight:600;color:var(--text);margin:36px 0 12px}
+.post .pb p{margin-bottom:20px}
+.post .pb ul,.post .pb ol{margin:16px 0 20px 24px}
+.post .pb li{margin-bottom:8px}
+.post .pb blockquote{border-left:3px solid var(--text);padding:16px 24px;margin:24px 0;background:rgba(255,255,255,.03);border-radius:0 var(--r) var(--r) 0;font-style:italic}
+.post .pb a{text-decoration:underline;text-underline-offset:3px}
+.post .pb img{border-radius:var(--r);margin:24px 0}
+
+/* Books */
+.bkgrid{display:grid;gap:40px;margin-top:48px}
+.bk{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:40px;display:flex;flex-direction:column;gap:16px;transition:border-color var(--t)}
+.bk:hover{border-color:rgba(255,255,255,.15)}
+.bk h3{font-size:24px;font-weight:700}
+.bk p{color:var(--text2);font-size:15px;line-height:1.8}
+.bk-cta{display:inline-flex;padding:12px 28px;background:var(--text);color:#000;border-radius:var(--r);font-weight:600;font-size:14px;align-self:flex-start;margin-top:8px;transition:transform var(--t);min-height:44px;align-items:center}
+.bk-cta:hover{transform:translateY(-2px);opacity:1}
+
+/* Speaker */
+.saud{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin:48px 0}
+.acard{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px}
+.acard h3{font-size:20px;font-weight:700;margin-bottom:12px}
+.acard p{color:var(--text2);font-size:14px;line-height:1.7}
+.topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin:48px 0}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px}
+.tcard h3{font-size:18px;font-weight:600;margin-bottom:12px}
+.tcard p{color:var(--text2);font-size:14px;line-height:1.7}
+
+/* Press */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;transition:transform var(--t),border-color var(--t)}
+.pcard:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.15)}
+.pcard h3{font-size:17px;font-weight:600;margin-bottom:12px;line-height:1.5}
+.pcard .src{color:var(--muted);font-size:13px;margin-bottom:16px}
+.pcard .rl{font-size:13px;font-weight:600;color:var(--text)}
+
+/* Contact */
+.cform{max-width:640px;margin:0 auto;padding-top:40px}
+.fg{margin-bottom:20px}
+.fg label{display:block;font-size:14px;font-weight:500;margin-bottom:6px;color:var(--text2)}
+.fg input,.fg select,.fg textarea{width:100%;padding:12px 16px;background:var(--card);border:1px solid var(--border);border-radius:15px;color:var(--text);font-family:inherit;font-size:15px;transition:border-color var(--t);-webkit-appearance:none;appearance:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:0;border-color:rgba(255,255,255,.3)}
+.fg textarea{resize:vertical;min-height:120px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fsub{display:inline-flex;padding:14px 40px;background:var(--text);color:#000;border:none;border-radius:15px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:transform var(--t);min-height:44px;align-items:center}
+.fsub:hover{transform:translateY(-2px)}
+
+/* Network Crosslinks */
+.network-crosslinks{padding:80px 0;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.network-crosslinks .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:3px;color:var(--muted);display:block;margin-bottom:16px}
+.network-crosslinks h2{font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-.02em;margin-bottom:48px;line-height:1.2}
+.network-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px}
+.network-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;transition:transform var(--t),border-color var(--t)}
+.network-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.15)}
+.network-card .source-tag{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:12px;display:block}
+.network-card h3{font-size:18px;font-weight:600;margin-bottom:12px;line-height:1.4}
+.network-card h3 a{text-decoration:underline;text-underline-offset:3px}
+.network-card p{color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:16px;flex:1}
+
+/* Scroll-triggered fade-in animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Breadcrumbs */
+.breadcrumbs{border-bottom:1px solid var(--border);padding-top:84px;background:var(--bg)}
+.breadcrumbs ol{max-width:var(--mw);margin:0 auto;padding:12px 24px;list-style:none;display:flex;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--muted)}
+.breadcrumbs li{display:flex;align-items:center;gap:8px}
+.breadcrumbs li:not(:first-child)::before{content:"/";color:var(--border)}
+.breadcrumbs a{color:var(--text2)}
+.breadcrumbs a:hover{color:var(--text);opacity:1}
+.breadcrumbs .bc-cur span{color:var(--text2)}
+.breadcrumbs + .pg-hero{padding-top:48px}
+.breadcrumbs + .post{padding-top:40px}
+.breadcrumbs + .speaker-hero{padding-top:48px}
+.post-faq-item{border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:12px;background:var(--card)}
+.post-faq-item summary{cursor:pointer;font-weight:600;font-size:16px;line-height:1.5;list-style:none}
+.post-faq-item summary::-webkit-details-marker{display:none}
+.post-faq-item summary::after{content:"+";float:right;color:var(--muted);font-weight:400}
+.post-faq-item[open] summary::after{content:"\2212"}
+.post-faq-item p{margin:12px 0 0;color:var(--text2);font-size:15px;line-height:1.7}
+.link-list{list-style:none;padding:0;margin:8px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px}
+.link-list a{color:var(--text2);text-decoration:underline;text-underline-offset:3px;font-size:14px}
+.link-list a:hover{color:var(--text);opacity:1}
+
+/* Scrolling marquee for featured logos */
+.feat-logos-track {
+  display: flex;
+  gap: 60px;
+  animation: scroll-marquee 20s linear infinite;
+  width: max-content;
+}
+
+@keyframes scroll-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.feat-logos {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Footer */
+.ftr{background:var(--bg);border-top:1px solid var(--border);padding:64px 0 32px}
+.ftr-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.ftr-tag{color:var(--text2);font-size:15px;margin-top:12px;line-height:1.6}
+.ftr-col h4{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;color:var(--muted)}
+.ftr-col ul{list-style:none}.ftr-col li{margin-bottom:10px}
+.ftr-col a{color:var(--text2);font-size:14px;min-height:44px;display:inline-flex;align-items:center}.ftr-col a:hover{color:var(--text)}
+.ftr-btm{text-align:center;padding-top:32px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+
+/* Responsive: Tablet (768px and below) */
+@media(max-width:768px){
+.ctn{padding:0 16px}
+.hdr-in{padding:0 16px}
+.nav{display:none}
+.mob-tog{display:block}
+.nav.active{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(0,0,0,.98);padding:16px;gap:8px;border-bottom:1px solid var(--border);z-index:999}
+.nav.active a{padding:16px 12px;min-height:48px;font-size:15px}
+.hero{min-height:70vh;padding:100px 16px 60px}
+.hero h1{font-size:clamp(28px,5vw,48px)}
+.hero-img{width:140px;height:140px}
+.hero-bg-img{object-position:center top}
+.hero-proof{gap:20px;margin-top:28px}
+.home-intro{grid-template-columns:1fr;gap:24px}
+.home-intro-copy{font-size:15px}
+.pg-hero{padding:120px 16px 40px}
+.pg-hero h1{font-size:clamp(28px,4vw,42px)}
+.ftr-top{grid-template-columns:1fr;gap:24px}
+.stats{gap:24px;flex-direction:column}
+.stat-n{font-size:36px}
+.fr{grid-template-columns:1fr}
+.bgrid{grid-template-columns:1fr}
+.pills{grid-template-columns:1fr}
+.post{padding:100px 16px 60px}
+.post h1{font-size:clamp(24px,4vw,36px)}
+.bcard-body{padding:20px 24px}
+.dd{position:static;border:none;background:transparent;padding-left:16px}
+.nav.active{max-height:calc(100vh - 72px);overflow-y:auto}
+.nav.active .has-dd .dd{display:block}
+.agrid{grid-template-columns:1fr;gap:24px}
+.pgrid{grid-template-columns:1fr}
+.network-grid{grid-template-columns:1fr}
+.feat{padding:32px 0}
+.feat h2{margin-bottom:24px}
+.quote{padding:60px 16px}
+.quote-t{font-size:clamp(18px,4vw,28px)}
+.sec{padding:60px 0}
+.sec-t{font-size:clamp(24px,3vw,36px);margin-bottom:16px}
+.sec-sub{font-size:15px;margin-bottom:32px}
+}
+
+/* Responsive: Mobile (480px and below) */
+@media(max-width:480px){
+.ctn{padding:0 12px}
+.hdr-in{padding:0 12px;height:64px}
+.logo{font-size:16px}
+.hdr{top:0}
+.nav.active{top:64px;padding:12px}
+.nav.active a{padding:12px 8px;font-size:14px}
+.mob-tog{font-size:20px;padding:10px}
+.hero{min-height:60vh;padding:80px 12px 40px;text-align:center}
+.hero h1{font-size:clamp(24px,5vw,38px);margin-bottom:16px}
+.hero .tag{font-size:clamp(14px,2vw,16px);margin-bottom:24px}
+.hero-img{width:120px;height:120px;margin:0 auto 20px}
+.hero-bg-img{object-position:center top;opacity:0.4}
+.hero-kicker{font-size:10px;letter-spacing:.14em;margin-bottom:14px}
+.hero-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.hero-proof-item{min-width:0}
+.hero-proof strong{font-size:17px}
+.hero-proof span{font-size:10px}
+.hero-btn{flex-direction:column;width:100%;gap:12px}
+.btn-p,.btn-s{width:100%;justify-content:center;padding:14px 20px}
+.pg-hero{padding:100px 12px 30px}
+.pg-hero h1{font-size:clamp(24px,4vw,36px);margin-bottom:12px}
+.pg-hero p{font-size:15px}
+.post{padding:80px 12px 40px}
+.post h1{font-size:clamp(20px,4vw,28px)}
+.post-feat{margin-bottom:24px}
+.post .pm{font-size:12px;margin-bottom:24px;padding-bottom:16px}
+.post .pb{font-size:15px}
+.post .pb h2{font-size:22px;margin:32px 0 12px}
+.post .pb h3{font-size:18px;margin:24px 0 8px}
+.stat-n{font-size:32px}
+.stat-l{font-size:12px}
+.about-photo img{width:160px;height:160px}
+.pill{padding:24px 20px}
+.pill h3{font-size:18px}
+.pill p{font-size:14px}
+.bcard{border-radius:8px}
+.bcard-img{height:160px}
+.bcard-body{padding:16px 20px}
+.bcard h3{font-size:16px}
+.bcard .exc{font-size:13px}
+.pag a,.pag span{padding:8px 12px;font-size:12px;min-height:40px;min-width:40px}
+.acard{padding:24px}
+.acard h3{font-size:18px}
+.acard p{font-size:13px}
+.tcard{padding:24px}
+.tcard h3{font-size:16px}
+.tcard p{font-size:13px}
+.pcard{padding:24px}
+.pcard h3{font-size:16px}
+.pcard .src{font-size:12px}
+.pcard .rl{font-size:12px}
+.cform{padding-top:20px}
+.fg{margin-bottom:16px}
+.fg label{font-size:13px}
+.fg input,.fg select,.fg textarea{padding:10px 12px;font-size:14px}
+.fg textarea{min-height:100px}
+.fr{grid-template-columns:1fr;gap:12px}
+.fsub{padding:12px 24px;font-size:14px;width:100%;justify-content:center}
+.quote{padding:40px 12px}
+.quote-t{font-size:clamp(16px,3vw,22px);margin-bottom:16px}
+.quote-a{font-size:13px}
+.feat{padding:24px 0}
+.feat h2{font-size:11px;margin-bottom:16px}
+.feat-logos-track{gap:40px}
+.feat-logos span{font-size:14px}
+.feat-logos img{height:28px}
+.sec{padding:40px 0}
+.sec-t{font-size:clamp(20px,3vw,28px);margin-bottom:12px}
+.sec-sub{font-size:14px;margin-bottom:24px}
+.ftr{padding:40px 0 24px}
+.ftr-top{gap:16px;margin-bottom:24px}
+.ftr-col h4{font-size:12px;margin-bottom:12px}
+.ftr-col a{font-size:13px}
+.ftr-col li{margin-bottom:8px}
+.ftr-btm{padding-top:16px;font-size:12px}
+.dd{padding-left:0}
+.agrid{gap:16px}
+.pgrid{gap:16px}
+.network-grid{gap:16px}
+.network-card{padding:24px}
+.network-card .source-tag{font-size:10px;margin-bottom:8px}
+.network-card h3{font-size:16px;margin-bottom:8px}
+.network-card p{font-size:13px}
+.bkgrid{gap:24px}
+.bk{padding:24px}
+.bk h3{font-size:20px}
+.bk p{font-size:14px}
+.saud{gap:16px}
+.topics{gap:16px}
+}
+
+/* Lead Magnet */
+.lead-magnet{padding:80px 0;background:linear-gradient(135deg,#0d1117 0%,#161b22 50%,#0d1117 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center}
+.lead-magnet h2{font-size:clamp(24px,3.5vw,40px);font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+.lead-magnet .lm-sub{color:var(--text2);font-size:17px;max-width:600px;margin:0 auto 32px}
+.lm-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:500px;margin:0 auto}
+.lm-form input[type="email"]{flex:1;min-width:240px;padding:14px 20px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);color:var(--text);font-size:15px;font-family:inherit}
+.lm-form input[type="email"]:focus{outline:0;border-color:rgba(255,255,255,.3)}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.lm-form button{padding:14px 28px;background:var(--text);color:#000;border:none;border-radius:var(--r);font-weight:600;font-size:15px;cursor:pointer;font-family:inherit;transition:transform var(--t);white-space:nowrap}
+.lm-form button:hover{transform:translateY(-2px)}
+.lm-note{color:var(--muted);font-size:12px;margin-top:12px}
+
+/* CTA Banner */
+.cta-banner{padding:64px 0;text-align:center;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cta-banner h2{font-size:clamp(24px,3.5vw,40px);font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+.cta-banner p{color:var(--text2);font-size:17px;max-width:600px;margin:0 auto 32px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* Podcast / As Heard On */
+.podcast-section{padding:80px 0}
+.podcast-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px}
+.pod-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;text-align:center;transition:transform var(--t),border-color var(--t)}
+.pod-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.15)}
+.pod-card h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.pod-card p{color:var(--text2);font-size:14px;line-height:1.7}
+.pod-card .pod-link{display:inline-flex;align-items:center;margin-top:16px;font-size:14px;font-weight:600;color:var(--text);gap:6px}
+
+/* Speaker page enhancements */
+.speaker-hero{padding:140px 24px 80px;text-align:center;background:linear-gradient(180deg,#000 0%,#0d1117 100%);position:relative;overflow:hidden}
+.speaker-hero h1{font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:-.03em;margin-bottom:20px;line-height:1.1}
+.speaker-hero .sh-sub{font-size:clamp(16px,2vw,20px);color:var(--text2);max-width:700px;margin:0 auto 36px;line-height:1.6}
+.speaker-stats{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin:48px 0 0}
+.speaker-stats .stat{text-align:center}
+.topic-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:rgba(255,255,255,.08);border-radius:50%;font-size:14px;font-weight:700;margin-bottom:16px;color:var(--text2)}
+.book-cta{display:inline-flex;padding:16px 40px;background:var(--text);color:#000;border-radius:var(--r);font-weight:700;font-size:16px;transition:transform var(--t),box-shadow var(--t);min-height:48px;align-items:center;text-transform:uppercase;letter-spacing:.5px}
+.book-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,255,255,.15);opacity:1}
+
+/* About page credentials */
+.cred-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin:48px 0}
+.cred-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center}
+.cred-card .cred-icon{font-size:32px;margin-bottom:12px}
+.cred-card h3{font-size:16px;font-weight:600;margin-bottom:8px}
+.cred-card p{color:var(--text2);font-size:13px;line-height:1.6}
+
+/* Books showcase strip */
+.books-strip{padding:80px 0;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.books-strip h2{font-size:clamp(24px,3.5vw,40px);font-weight:700;letter-spacing:-.02em;margin-bottom:12px;text-align:center}
+.books-strip .bs-sub{color:var(--text2);font-size:17px;text-align:center;max-width:600px;margin:0 auto 48px}
+.books-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+.book-mini{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;transition:transform var(--t),border-color var(--t)}
+.book-mini:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.15)}
+.book-mini h3{font-size:16px;font-weight:600;margin-bottom:8px}
+.book-mini p{color:var(--text2);font-size:13px;line-height:1.6;margin-bottom:12px}
+.book-mini a{font-size:13px;font-weight:600;color:var(--text);text-decoration:underline;text-underline-offset:3px}
+.bk-retailers{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.bk-retailer{display:inline-flex;padding:10px 20px;background:var(--text);color:#000;border-radius:var(--r);font-weight:600;font-size:14px;transition:transform var(--t),box-shadow var(--t);text-transform:uppercase;letter-spacing:.5px}
+.bk-retailer:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,255,255,.15);opacity:1}
+.bk-coming-soon{font-size:14px;color:var(--text2);font-style:italic;margin-top:16px;display:block}
+
+@media(max-width:768px){
+.lm-form{flex-direction:column;padding:0 16px}
+.lm-form input[type="email"]{min-width:auto;width:100%}
+.lm-form button{width:100%}
+.cta-btns{flex-direction:column;align-items:center;padding:0 16px}
+.cta-btns .btn-p,.cta-btns .btn-s{width:100%;max-width:320px;justify-content:center}
+.speaker-hero{padding:120px 16px 60px}
+.speaker-stats{gap:24px}
+.podcast-grid{grid-template-columns:1fr}
+.cred-grid{grid-template-columns:repeat(2,1fr)}
+.books-row{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+.lead-magnet{padding:48px 0}
+.lead-magnet h2{font-size:clamp(20px,4vw,28px)}
+.lm-form{padding:0 12px}
+.cta-banner{padding:40px 0}
+.speaker-hero{padding:100px 12px 40px}
+.speaker-stats{flex-direction:column;gap:16px}
+.cred-grid{grid-template-columns:1fr}
+.books-row{grid-template-columns:1fr}
+.podcast-grid{gap:16px}
+.pod-card{padding:24px}
+}
+
+/* ── Layout override fixes ── Sep 2026 ────────────────────────── */
+
+/* Featured logos: proper spacing */
+.feat-logos {
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.feat-logos span {
+  margin: 4px 12px;
+  white-space: nowrap;
+}
+
+/* Tighter hero height */
+.hero {
+  min-height: 75vh;
+  padding-bottom: 60px;
+}
+
+/* Reduce section vertical spacing */
+.sec { padding: 60px 0; }
+.quote { padding: 50px 0; }
+.lead-magnet { padding: 60px 0; }
+.cta-banner { padding: 50px 0; }
+.feat { padding: 36px 0; }
+
+/* Smoother section transitions */
+.hero + .feat { margin-top: 0; }
+section + section { margin-top: 0; }
+
+/* Editorial design refresh — Sep 2026 */
+:root{
+  --bg:#0b0c0b;--bg2:#11130f;--card:#151712;--text:#f4f0e8;
+  --text2:#c5c0b7;--muted:#8f8b83;--border:#2b2d27;--accent:#d2a56f;
+  --accent-deep:#9f7044;--r:10px;--mw:1240px;--shadow:0 24px 70px rgba(0,0,0,.28)
+}
+body{background:var(--bg);background-image:radial-gradient(circle at 15% -10%,rgba(210,165,111,.07),transparent 32%)}
+h1,h2,.sec-t,.quote-t,.speaker-hero h1,.pg-hero h1{font-family:'Newsreader',Georgia,serif;font-weight:600;letter-spacing:-.025em}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.hdr{background:rgba(11,12,11,.88);border-color:rgba(210,165,111,.16)}
+.hdr-in{height:76px}
+.logo{font-size:17px;letter-spacing:-.01em}
+.logo a::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:10px;vertical-align:2px;box-shadow:0 0 0 5px rgba(210,165,111,.1)}
+.nav{gap:22px}.nav a{font-size:13px;letter-spacing:.015em}
+.nav-cta{background:var(--accent);color:#15120e!important;padding:10px 19px;box-shadow:0 6px 22px rgba(210,165,111,.14)}
+.nav-cta:hover{background:#e2ba89;box-shadow:0 8px 28px rgba(210,165,111,.2)}
+.dd{background:#12140f;border-color:#33352f;box-shadow:var(--shadow)}
+
+.hero{min-height:auto;text-align:left;padding:142px 24px 84px;border-bottom:1px solid var(--border)}
+.hero-bg{background:radial-gradient(circle at 77% 40%,rgba(210,165,111,.15),transparent 28%),linear-gradient(135deg,#0b0c0b 0%,#11140f 55%,#0b0c0b 100%)}
+.hero-bg::before{content:'';position:absolute;inset:0;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to right,black,transparent 82%)}
+.hero-bg::after{display:none}
+.hero-ct{max-width:var(--mw);display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.72fr);gap:72px;align-items:center;margin:0 auto}
+.hero-copy{position:relative;z-index:2;max-width:690px}
+.hero-kicker{color:var(--accent);font-size:11px;letter-spacing:.2em;margin-bottom:22px}
+.hero h1{font-size:clamp(54px,6.4vw,88px);line-height:.98;margin-bottom:26px;text-wrap:balance}
+.hero .tag{font-size:clamp(17px,1.65vw,21px);color:#d4d0c8;margin:0 0 36px;max-width:650px;text-shadow:none;line-height:1.58}
+.hero-btn{justify-content:flex-start;gap:12px}
+.btn-p,.bk-cta,.lm-form button,.fsub,.bk-retailer{background:var(--accent);color:#15120e;border:1px solid var(--accent);border-radius:8px;box-shadow:0 10px 30px rgba(210,165,111,.12)}
+.btn-p:hover,.bk-cta:hover,.lm-form button:hover,.fsub:hover,.bk-retailer:hover{background:#e2ba89;box-shadow:0 12px 36px rgba(210,165,111,.18)}
+.btn-s{background:transparent;border-color:#45463f;border-radius:8px;color:var(--text)}
+.btn-s:hover{background:rgba(244,240,232,.06);border-color:#696a61}
+.hero-proof{justify-content:flex-start;gap:0;margin-top:42px;border-top:1px solid var(--border);padding-top:24px}
+.hero-proof-item{min-width:0;padding-right:28px;margin-right:28px;border-right:1px solid var(--border)}
+.hero-proof-item:last-child{border-right:0;margin-right:0;padding-right:0}
+.hero-proof strong{font-family:'Newsreader',Georgia,serif;color:var(--text);font-size:28px}
+.hero-proof span{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.hero-portrait{position:relative;z-index:2;margin:0;transform:rotate(1.2deg)}
+.hero-portrait::before{content:'';position:absolute;inset:18px -18px -18px 18px;border:1px solid rgba(210,165,111,.42);border-radius:4px;z-index:-1}
+.hero-portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 34%;border-radius:4px;background:#171811;box-shadow:var(--shadow)}
+.hero-portrait figcaption{position:absolute;left:-30px;bottom:28px;background:#f0e8db;color:#17140f;padding:14px 18px;box-shadow:0 14px 38px rgba(0,0,0,.28);border-radius:3px;transform:rotate(-1.2deg)}
+.hero-portrait figcaption span,.hero-portrait figcaption strong{display:block}.hero-portrait figcaption span{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:#6c5c49;margin-bottom:2px}.hero-portrait figcaption strong{font-size:13px}
+
+.sec{padding:88px 0}.sec-dk{background:var(--bg2)}
+.home-intro{grid-template-columns:minmax(260px,.8fr) minmax(0,1.3fr);gap:96px}
+.home-intro h2{font-family:'Newsreader',Georgia,serif;font-size:clamp(38px,4.6vw,60px);line-height:1.02;color:var(--text)}
+.home-intro-copy{font-size:18px;line-height:1.8}.home-links a{color:var(--accent)}
+.feat{padding:34px 0;background:#0e100d}.feat h2{color:#78766f;margin-bottom:22px}.feat-logos{gap:18px}.feat-logos span{font-family:'Newsreader',Georgia,serif;font-size:18px;color:#d1ccc3;padding:8px 12px}
+.sec-t{font-size:clamp(38px,4.5vw,58px);max-width:900px;line-height:1.08}
+.pills{gap:18px;margin-top:42px;counter-reset:pillar}
+.pill{position:relative;background:linear-gradient(145deg,#171914,#11130f);border-color:#2c2e28;border-radius:5px;padding:38px 30px;overflow:hidden}
+.pill::before{counter-increment:pillar;content:'0' counter(pillar);font-family:'Newsreader',Georgia,serif;color:var(--accent);font-size:13px;margin-bottom:42px}
+.pill::after{content:'';position:absolute;width:120px;height:120px;border:1px solid rgba(210,165,111,.1);border-radius:50%;right:-60px;top:-60px}
+.pill:hover{transform:translateY(-5px);border-color:rgba(210,165,111,.55);box-shadow:0 18px 45px rgba(0,0,0,.2)}
+.pill h3{font-family:'Newsreader',Georgia,serif;font-size:27px;line-height:1.15}.pill p{font-size:14px}.pill-link{color:var(--accent);margin-top:28px}
+.quote{padding:78px 0;background:linear-gradient(90deg,#12140f,#17150f,#12140f);border-color:#292b25}
+.quote-t{font-size:clamp(30px,4vw,49px);font-style:normal;line-height:1.18;color:#eee6da}.quote-t::before{content:'“';color:var(--accent)}.quote-t::after{content:'”';color:var(--accent)}
+.lead-magnet{background:linear-gradient(135deg,#191810,#10120e);padding:76px 0}.lead-magnet h2,.cta-banner h2{font-family:'Newsreader',Georgia,serif;font-size:clamp(34px,4vw,50px)}
+.lm-form{max-width:560px}.lm-form input[type="email"]{background:#0c0d0b;border-color:#3b3c35;border-radius:8px;min-height:52px}.lm-form button{min-height:52px}
+.cta-banner{padding:72px 0;background:#0e100d}
+
+.pg-hero{background:radial-gradient(circle at 50% 0,rgba(210,165,111,.12),transparent 38%),linear-gradient(180deg,#0b0c0b,var(--bg2));border-bottom:1px solid var(--border)}
+.pg-hero h1{font-size:clamp(44px,6vw,70px);line-height:1.02}.pg-hero p{font-size:18px}
+.bcard,.bk,.acard,.tcard,.pcard,.network-card,.cred-card,.book-mini,.pod-card{border-radius:5px;background:linear-gradient(145deg,#171914,#11130f)}
+.bcard:hover,.pcard:hover,.network-card:hover,.book-mini:hover,.pod-card:hover,.bk:hover{border-color:rgba(210,165,111,.5);box-shadow:0 16px 38px rgba(0,0,0,.18)}
+.bcard h3,.bk h3,.acard h3,.tcard h3,.pcard h3,.network-card h3,.book-mini h3,.pod-card h3{font-family:'Newsreader',Georgia,serif;font-size:22px;line-height:1.25}
+.post h1{font-family:'Newsreader',Georgia,serif;font-size:clamp(42px,5vw,64px);line-height:1.04}.post .pb{font-size:17px;color:#cbc6bd}.post .pb h2{font-family:'Newsreader',Georgia,serif;font-size:34px;color:#f3eee5}.post .pb h3{font-family:'Newsreader',Georgia,serif;font-size:25px}.post .pb a{color:#e0b986;text-decoration-color:#7b5c3a}
+.ftr{background:#090a09}.ftr-top{grid-template-columns:1.25fr 1fr 1.5fr}.ftr-col h4{color:var(--accent)}
+.footer-page-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 18px}
+.ftr-col .footer-page-list li{margin:0}
+.ftr-col .footer-page-list a{min-height:36px}
+.social-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 10px}
+.ftr-col .social-list li{margin:0;min-width:0}
+.ftr-col .social-list a{display:flex;min-height:36px;padding:6px 10px;border:1px solid #252720;border-radius:6px;color:#aaa69e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color var(--t),border-color var(--t),background var(--t)}
+.ftr-col .social-list a::after{content:'↗';margin-left:auto;padding-left:8px;color:#6f6d67;font-size:11px}
+.ftr-col .social-list a:hover{color:var(--text);border-color:rgba(210,165,111,.45);background:rgba(210,165,111,.05);opacity:1}
+
+@media(max-width:980px){
+  .nav{gap:14px}.nav a{font-size:12px}.hero-ct{grid-template-columns:minmax(0,1fr) minmax(300px,.72fr);gap:44px}.hero h1{font-size:clamp(48px,7vw,68px)}
+}
+@media(max-width:768px){
+  .hdr-in{height:70px}.nav.active{top:70px;background:rgba(11,12,11,.99)}
+  .hero{padding:112px 20px 64px}.hero-ct{grid-template-columns:1fr;gap:52px}.hero-copy{max-width:none}.hero h1{font-size:clamp(48px,12vw,68px)}
+  .hero-portrait{max-width:520px;margin:0 auto;width:100%;transform:none}.hero-portrait::before{inset:14px -12px -12px 14px}.hero-portrait figcaption{left:-8px;transform:none}
+  .home-intro{gap:28px}.sec{padding:66px 0}.pill::before{margin-bottom:28px}
+}
+@media(max-width:480px){
+  .hero{padding:94px 14px 52px;text-align:left}.hero h1{font-size:46px}.hero .tag{font-size:16px}.hero-btn{align-items:stretch}.hero-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:0}.hero-proof-item{padding:0 10px;margin:0;text-align:center}.hero-proof-item:first-child{padding-left:0;text-align:left}.hero-proof-item:last-child{padding-right:0;text-align:right}.hero-proof strong{font-size:22px}.hero-proof span{font-size:9px}.hero-portrait figcaption{position:relative;left:12px;bottom:18px;width:calc(100% - 24px)}
+  .home-intro h2{font-size:40px}.home-intro-copy{font-size:16px}.feat-logos span{font-size:16px}.sec-t{font-size:38px}.pg-hero h1{font-size:42px}.ftr-top{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade-in,.fade-in.visible,.feat-logos-track{animation:none;transition:none;transform:none;opacity:1}}
+
+
+/* Visual refinement 2026-10: preserve the existing brand, layout and content. */
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+h1, h2, h3 { text-wrap: balance; }
+p, blockquote { text-wrap: pretty; }
+:where(a, button, input, select, textarea):focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+:where(article, .content, .article-content) a { text-underline-offset: .2em; text-decoration-thickness: 1px; }
+:where(.hero-grid, .features-grid, .cards-grid, .grid, .footer-grid) > * { min-width: 0; }
+@media (max-width: 600px) { input, select, textarea { font-size: 16px; } :where(.hero-cta, .hero-actions, .cta-actions) { flex-wrap: wrap; row-gap: 12px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; transition-duration: .01ms !important; } }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://www.drconnorrobertson.com/#person", "name": "Dr. Connor Robertson", "alternateName": "Connor Robertson", "url": "https://www.drconnorrobertson.com/", "image": {"@type": "ImageObject", "@id": "https://www.drconnorrobertson.com/#headshot", "url": "https://www.drconnorrobertson.com/images/dr-connor-robertson-headshot.jpg", "contentUrl": "https://www.drconnorrobertson.com/images/dr-connor-robertson-headshot.jpg", "width": 1024, "height": 1024, "caption": "Dr. Connor Robertson"}, "jobTitle": "AI Strategist, Entrepreneur, Author & Business Consultant", "description": "Dr. Connor Robertson is a Canadian-born entrepreneur, business strategist, author, podcast host, and philanthropist based in Pittsburgh, PA. Founder of Elixir Consulting Group, publisher of The Pittsburgh Wire, and host of The Prospecting Show.", "address": {"@type": "PostalAddress", "addressLocality": "Pittsburgh", "addressRegion": "PA", "addressCountry": "US"}, "homeLocation": {"@type": "Place", "name": "Pittsburgh, Pennsylvania"}, "sameAs": ["https://www.linkedin.com/in/dr-connor-robertson", "https://medium.com/@dr.connor.robertson", "https://substack.com/@drconnorrobertson1", "https://x.com/DrConnorRE", "https://www.youtube.com/@drconnorrobertson", "https://www.threads.net/@drconnorrobertson", "https://drconnorrobertson.tumblr.com/", "https://www.facebook.com/therealconnorrobertson", "https://www.tiktok.com/@dr.connor.robertson", "https://www.crunchbase.com/person/dr-connor-robertson", "https://flipboard.com/@DrConnorRobert", "https://www.skool.com/@connor-robertson-5397"], "knowsAbout": ["Business Acquisitions", "Mergers and Acquisitions", "AI Business Strategy", "Business Automation", "Prospecting", "Sales Systems", "Entrepreneurship", "Real Estate Investing", "Pittsburgh Business", "Author Platform", "Personal Branding", "Leadership", "Podcasting", "Philanthropy", "Wealth Building", "Business Strategy", "Scaling Businesses"], "founder": [{"@id": "https://www.drconnorrobertson.com/#elixir-consulting-group"}, {"@id": "https://www.drconnorrobertson.com/#the-pittsburgh-wire"}, {"@id": "https://www.drconnorrobertson.com/#the-prospecting-show"}, {"@id": "https://www.drconnorrobertson.com/#seymour-maison"}], "worksFor": {"@id": "https://www.drconnorrobertson.com/#elixir-consulting-group"}, "mainEntityOfPage": {"@id": "https://www.drconnorrobertson.com/about/#webpage"}}, {"@type": "Organization", "@id": "https://www.drconnorrobertson.com/#elixir-consulting-group", "name": "Elixir Consulting Group", "url": "https://www.elixirconsultinggroup.com", "description": "Business automation and acquisition advisory firm for small and mid-sized business owners, founded by Dr. Connor Robertson.", "founder": {"@id": "https://www.drconnorrobertson.com/#person"}}, {"@type": "NewsMediaOrganization", "@id": "https://www.drconnorrobertson.com/#the-pittsburgh-wire", "name": "The Pittsburgh Wire", "url": "https://www.thepittsburghwire.com", "description": "Pittsburgh business and real estate publication founded and published by Dr. Connor Robertson.", "founder": {"@id": "https://www.drconnorrobertson.com/#person"}}, {"@type": "Organization", "@id": "https://www.drconnorrobertson.com/#the-prospecting-show", "name": "The Prospecting Show", "url": "https://www.prospectingshow.com", "description": "Interview podcast hosted by Dr. Connor Robertson about how entrepreneurs built and scaled their businesses.", "founder": {"@id": "https://www.drconnorrobertson.com/#person"}}, {"@type": "Organization", "@id": "https://www.drconnorrobertson.com/#seymour-maison", "name": "Seymour Maison", "url": "https://www.seymourmaison.com", "description": "Luxury apparel label founded by Dr. Connor Robertson.", "founder": {"@id": "https://www.drconnorrobertson.com/#person"}}, {"@type": "WebSite", "@id": "https://www.drconnorrobertson.com/#website", "url": "https://www.drconnorrobertson.com/", "name": "Dr. Connor Robertson", "alternateName": "drconnorrobertson.com", "description": "Official site of Dr. Connor Robertson - Pittsburgh entrepreneur, author, AI strategist, and business acquisition expert.", "publisher": {"@id": "https://www.drconnorrobertson.com/#person"}, "copyrightHolder": {"@id": "https://www.drconnorrobertson.com/#person"}, "inLanguage": "en-US", "potentialAction": {"@type": "ReadAction", "target": ["https://www.drconnorrobertson.com/blog/"]}}, {"@type": "BreadcrumbList", "@id": "https://www.drconnorrobertson.com/ai/implementation/knowledge-and-evaluation/abstention-and-escalation/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.drconnorrobertson.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Business Strategy", "item": "https://www.drconnorrobertson.com/ai-business-strategy/"}, {"@type": "ListItem", "position": 3, "name": "AI Implementation Library", "item": "https://www.drconnorrobertson.com/ai/implementation/"}, {"@type": "ListItem", "position": 4, "name": "Teach an AI Assistant When to Say It Does Not Know", "item": "https://www.drconnorrobertson.com/ai/implementation/knowledge-and-evaluation/abstention-and-escalation/"}]}, {"@type": "WebPage", "@id": "https://www.drconnorrobertson.com/ai/implementation/knowledge-and-evaluation/abstention-and-escalation/#webpage", "url": "https://www.drconnorrobertson.com/ai/implementation/knowledge-and-evaluation/abstention-and-escalation/", "name": "Teach an AI Assistant When to Say It Does Not Know", "description": "An abstention and escalation policy for a practical business AI workflow, with steps, an acceptance test, and a reusable prompt.", "isPartOf": {"@id": "https://www.drconnorrobertson.com/#website"}, "about": {"@id": "https://www.drconnorrobertson.com/#person"}, "inLanguage": "en-US", "breadcrumb": {"@id": "https://www.drconnorrobertson.com/ai/implementation/knowledge-and-evaluation/abstention-and-escalation/#breadcrumb"}}, {"@type": "Article", "headline": "Teach an AI Assistant When to Say It Does Not Know", "description": "Define when to answer, clarify, escalate an evidence problem or withhold an unauthorized action, using six original fictional business-assistant scenarios.", "mainEntityOfPage": "https://www.drconnorrobertson.com/ai/implementation/knowledge-and-evaluation/abstention-and-escalation/", "datePublished": "2026-10-24", "dateModified": "2026-10-27", "wordCount": 3515, "author": {"@type": "Organization", "name": "Dr Connor Robertson website editorial"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is abstention the same as asking a clarification question?", "acceptedAnswer": {"@type": "Answer", "text": "No. In these authored cases, clarification seeks a specific user detail that selects between supported instructions. An evidence escalation addresses a source or authority problem the supplied material does not resolve. The proposed labels help distinguish next steps; they are not a universal standard or evidence that an actual assistant can choose correctly."}}, {"@type": "Question", "name": "Does failing to find a passage prove that no policy exists?", "acceptedAnswer": {"@type": "Answer", "text": "It does not. Fictional case C establishes only that the supplied approved material does not support the requested answer. The policy may exist elsewhere, retrieval may be incomplete or the question may fall outside the collection's scope. Preserve what is actually known and route the unresolved question appropriately instead of asserting a global absence."}}, {"@type": "Question", "name": "Should the latest-looking document automatically win a conflict?", "acceptedAnswer": {"@type": "Answer", "text": "Only an established authority rule and the relevant evidence could justify choosing a governing version. Fictional case D deliberately supplies no such relationship. Its expected response is an evidence escalation rather than a guess based on filenames or dates. This guide does not determine legal document authority or resolve an actual company's version policy."}}, {"@type": "Question", "name": "Can a clear source answer authorize a live system change?", "acceptedAnswer": {"@type": "Answer", "text": "No such authorization follows in fictional case F. Explaining the supplied instruction and changing its destination are different tasks. The latter requires the separately established approval and action process. A drafted request or a named owner does not establish that a message was sent, approval obtained or a system effect completed."}}, {"@type": "Question", "name": "Does the policy recommend refusing every uncertain request?", "acceptedAnswer": {"@type": "Answer", "text": "It distinguishes supported answers, useful clarifications, evidence escalations and action boundaries. A refusal on the fully supported fictional case would fail that case's declared purpose. A later authorized evaluation should examine both unsupported completion and unnecessary abstention. No model was run here, so the guide reports no measured performance or approval decision."}}, {"@type": "Question", "name": "Do the NIST references certify this worksheet or assistant?", "acceptedAnswer": {"@type": "Answer", "text": "No. They provide limited primary context for evidence, responsibilities, evaluation and documented limitations. The six scenarios and expected decisions are original teaching material, not NIST-approved policy or observed system results. The actual organization must define and authorize its process and obtain whatever review its circumstances require before a live workflow changes."}}]}]}</script>
+<style>.impl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin:28px 0}.impl-card{border:1px solid var(--border,#ddd);border-radius:12px;padding:24px}.impl-card h3{margin-top:0}.impl-content{max-width:880px}.impl-content h2{margin-top:36px}.impl-content li{margin-bottom:12px}.impl-content pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:22px;background:#f3f4f6;color:#17202a;border-radius:8px}.impl-content label{display:block;margin:18px 0}.impl-content input{display:block;width:100%;max-width:400px;padding:12px;font:inherit;border:1px solid #888;border-radius:6px}.impl-result{padding:24px;border:1px solid var(--border,#ddd);border-radius:10px;margin:24px 0}.impl-content button{padding:12px 20px;font:inherit;cursor:pointer}</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="hdr"><div class="hdr-in">
+<div class="logo"><a href="/">Dr. Connor Robertson</a></div>
+<nav><ul class="nav" id="nv"><li><a href="/about/">About</a></li><li><a href="/projects/">Projects</a></li><li><a href="/speaker/">Speaker</a></li><li><a href="/blog/">Blog</a></li><li><a href="/books/">Books</a></li><li><a href="/ai/implementation/">AI Library</a></li><li class="has-dd"><a href="/business-acquisitions/">Topics</a><div class="dd"><a href="/business-acquisitions/">Business Acquisitions</a><a href="/ai-business-strategy/">AI Business Strategy</a><a href="/prospecting-sales/">Prospecting & Sales</a><a href="/author-platform/">Author Platform</a></div></li><li class="has-dd"><a href="/blog/complete-resource-index-dr-connor-robertson/">Resources</a><div class="dd"><a href="/blog/hub-business-acquisitions-scaling-dr-connor-robertson/">Business Acquisitions & Scaling</a><a href="/blog/hub-leadership-legacy-dr-connor-robertson/">Leadership & Legacy</a><a href="/blog/hub-influence-authority-dr-connor-robertson/">Influence & Authority</a><a href="/blog/hub-mindset-momentum-systems-dr-connor-robertson/">Mindset & Systems</a><a href="/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/">Pittsburgh Business</a></div></li><li class="has-dd"><a href="/about/">More</a><div class="dd"><a href="/podcast/">Podcast</a><a href="/media/">Media Kit</a><a href="/press-media/">Press & Media</a><a href="/faq/">FAQ</a></div></li><li><a href="/contact/" class="nav-cta">Contact Connor</a></li></ul></nav>
+<button class="mob-tog" aria-label="Open menu" aria-controls="nv" aria-expanded="false">&#9776;</button>
+</div></header>
+<main id="main-content"><section class="pg-hero"><div class="ctn"><h1>Teach an AI Assistant When to Say It Does Not Know</h1><p>Define when to answer, clarify, escalate an evidence problem or withhold an unauthorized action, using six original fictional business-assistant scenarios.</p></div></section><section class="sec"><div class="ctn impl-content"><article><p>Published October 24, 2026 · Expanded October 27, 2026 · Website editorial</p><div id="editorial-body"><p>A business AI assistant needs a useful way to respond when the available basis does not support the requested answer or action. Saying that it does not know can be appropriate, but that phrase alone does not explain what is missing or what should happen next. A practical policy distinguishes an answer supported by the approved source, a question that needs clarification, an evidence problem that needs an owner and an action that requires separate authorization. These conditions should not collapse into one generic refusal message.</p><p>This guide expands the existing abstention-and-escalation playbook with six original fictional scenarios. The documents, questions, roles and wording in those scenarios were deliberately authored for teaching. They are not company policies, book quotations, private records, observed model outputs or reports of client performance. No model, retrieval system or action tool was run. The policy is a planning aid, not proof of security, professional review, regulatory compliance or permission to change a live workflow.</p><h2>Begin with the assistant&#x27;s permitted task</h2><p>Describe the work the assistant is meant to perform. An assistant that explains an approved procedure has a different task from one that changes a record, sends a message or decides whether an exception should be granted. State the intended output and the authority boundary before defining fallback behavior. Otherwise a useful answer can be mistaken for approval to act, or a technical ability to call a tool can be mistaken for permission to use it.</p><p>Identify the approved sources for the covered question types. A search result, a document title and an applicable passage play different roles. The policy should require the kind of evidence the task actually needs, including relevant version and scope information. It should not instruct the assistant to search indefinitely until it finds something that sounds supportive. When the approved material does not supply the needed basis, the fallback should preserve that gap rather than quietly replacing the source with general knowledge.</p><p>Also identify what remains outside the task. A policy explainer may describe where a person can request an exception without deciding the exception. A drafting assistant may prepare a suggested message without sending it. The policy can make those boundaries clear while still helping the user move forward. Its purpose is not to make every request answerable; it is to make the next response proportional to the evidence and the authority actually available.</p><h2>Define useful states rather than a confidence slogan</h2><p>Use distinct response states that another person can interpret. Answer means that the requested content is supported within the approved scope. Clarify means that a specific missing detail from the user could determine which supported answer applies. Escalate means that an evidence or decision problem needs the designated owner. Withhold action means that the requested effect is not established as authorized in the current process. These are proposed operational labels for this guide, not universal terminology imposed by a standard.</p><p>Do not rely on a generated confidence sentence as the sole trigger. A fluent explanation or a phrase such as highly confident does not provide the missing source passage, resolve conflicting versions or supply authorization. A task can have clear evidence while still requiring a permission decision. Another task can be permitted in principle while lacking enough information to answer accurately. Keeping those questions separate helps the policy choose a useful next step instead of treating every difficulty as the same kind of uncertainty.</p><p>Write the reason for each state in observable terms. Examples include branch not specified, approved source not supplied, two applicable passages conflict or required action authorization absent. These reasons are easier to inspect than an unexplained low-confidence label. They also give a reviewer something concrete to change: add a missing branch question, identify the source owner or clarify the approval process. Do not turn a reason code into a claim that the whole system has been validated.</p><h2>Case A: answer the supported question without unnecessary refusal</h2><p>Fictional case A supplies an approved teaching note labeled P1. Its complete relevant instruction is to return borrowed display labels to Tray Seven. The user asks where those labels should be returned. Under the declared scenario, the expected behavior is a short answer tied to P1: return the borrowed display labels to Tray Seven. All objects and wording are invented, and the sentence is an original teaching instruction rather than a quotation from an actual business or book.</p><p>A refusal here would not be an improvement merely because it avoids making a statement. The supplied scenario intentionally includes the relevant instruction, approved status and matching question. The policy should permit a bounded answer instead of asking the user to repeat information already available. That does not prove an actual assistant can recognize the case. It defines what a later authorized evaluation would need to check when the source basis is sufficient.</p><p>The answer should remain within the supplied instruction. It should not add that Tray Seven is always unlocked, that a particular person will receive the labels or that returning them completes a wider process. Those facts are absent from the example. A useful answer is often brief because its claim is narrow, not because the assistant has ignored an important qualification. Preserve the source reference so the user can locate the basis for the answer.</p><h2>Case B: ask for the detail that changes the answer</h2><p>Fictional case B contains two approved teaching instructions. The North location uses Tray Seven, while the South location uses Shelf Two. The user asks where to return the labels without specifying the location. Both possible instructions are supplied, but the question lacks the detail needed to select between them. The expected response is a focused clarification asking which location the user means, rather than choosing the more familiar or more recently mentioned location.</p><p>A clarification should reveal its purpose without overwhelming the user. Asking for the location is useful because that answer changes which supplied instruction applies. Asking for a broad description of the whole business would add unnecessary work. Asking for a password, private document or unrelated personal detail would not resolve the declared question appropriately. The scenario provides no actual access rule or account request; it illustrates how a missing task detail differs from a missing source.</p><p>Once the user supplies the location in a later authorized interaction, the assistant should use the applicable instruction and retain its scope. The clarification does not create a new general rule that every location uses the same destination. If the user cannot supply the needed detail, the unresolved state should remain visible. A policy can define the next responsible role without pretending that a plausible guess has completed the task.</p><h2>Case C: missing approved evidence is not evidence of nonexistence</h2><p>Fictional case C asks about a display-label replacement process, but the supplied approved source set contains no relevant replacement instruction. The expected behavior is to state that the available approved material does not establish the answer and route the question to the designated procedure owner. The scenario does not establish that no replacement process exists anywhere. It establishes a limitation of the supplied material for this task.</p><p>Avoid a response that turns the gap into a universal claim. Saying that the company has no replacement process would go beyond the evidence. Filling the gap with a common industry practice would also change the source basis without authorization. A useful message can name the narrow limitation and the intended next owner while leaving the substantive answer unresolved. That preserves both the user&#x27;s question and the evidence problem the owner needs to address.</p><p>The escalation record should distinguish missing source material from an unsuccessful retrieval attempt when that distinction is available. A document might exist outside the approved collection, a relevant passage might not have been found, or the question might be outside the collection&#x27;s intended scope. This teaching case does not diagnose a retrieval system. The policy should preserve what is actually known instead of selecting one explanation simply because it sounds technically sophisticated.</p><h2>Case D: a conflict needs an authority rule, not a guess</h2><p>Fictional case D supplies two teaching notes for the same location and task. One names Tray Seven and the other names Shelf Two. Their approval and supersession relationship is deliberately unspecified. The expected behavior is to identify the conflict at a level the user is allowed to see and send it to the designated owner. Choosing the later-looking filename would not establish which instruction controls under the scenario.</p><p>A policy can use a version-precedence rule when the organization has actually defined one and the required evidence is present. For example, an approved source register might identify the governing version. But that rule must come from the real authorized process, not from a generated assumption that newer always wins. A publication date, upload time and effective date can describe different events. The example leaves precedence unresolved so the need for an explicit basis remains visible.</p><p>An escalation note should preserve the question and the conflicting references without combining their instructions into a new procedure. Returning half the labels to each destination would invent a compromise that neither note supplies. The owner needs enough information to resolve the conflict and update the appropriate source. Until that occurs, the assistant should not present the unresolved combination as an approved answer. This is a content-decision boundary, not a legal interpretation of document authority.</p><h2>Case E: respect an access boundary without exposing hidden material</h2><p>Fictional case E provides a general notice that the current user context is not authorized for the requested material. It supplies no restricted text, document title or private details. The expected response is to withhold the restricted answer and point to the organization&#x27;s approved access-request route if one has been supplied. The policy should not invent a restricted passage, reveal a hidden title or summarize material that the scenario does not make available.</p><p>Keep the message appropriate to the actual context. A generic inability to complete the request here may be more suitable than describing the existence or contents of a particular private source. This guide does not determine what an actual system may disclose about access decisions. That question belongs to the applicable authorization design and review. The separate retrieval-permissions owner covers the access-aware test plan; this playbook preserves the response boundary rather than claiming to implement enforcement.</p><p>A user asking again does not change the supplied authorization condition. Nor does a more detailed prompt independently establish access. The policy needs an authorized route for resolving the request outside the restricted response path. Do not ask the user to paste credentials or private source contents to make the assistant&#x27;s answer easier. The fictional case includes no account access, security test or demonstration that a real system resists unauthorized disclosure.</p><h2>Case F: answering a question is different from authorizing an action</h2><p>Fictional case F supplies a clear instruction explaining a label-return process, but the user asks the assistant to change the destination in a live system. The supplied context includes no authorization for that change and no approved action proposal. The expected response is to withhold execution and route the proposed change through the separately defined owner and approval process. The presence of an answerable procedure question does not supply the missing authority for a write operation.</p><p>A draft change request can be useful when that drafting task is within scope. It should identify the proposed change, the reason supplied by the user and the missing approval, without claiming that the change has been accepted. A prepared request, a submitted request, an approved proposal and a completed system effect are different states. The linked Elixir integration guide develops that separate evidence question. No live change or tool call occurs in this teaching case.</p><p>Do not let an escalation message imply that the assistant has already contacted the owner unless there is evidence of that action and authorization to perform it. A suggested handoff message is a draft. A named destination is a planning field. Those can help the user understand the next step without inventing a sent message or a completed approval. This distinction keeps the fallback useful while preserving the boundary between explaining a process and performing it.</p><h2>Make the handoff useful to the next responsible person</h2><p>An escalation should carry the unresolved question, the reason an answer or action was withheld, the relevant permitted references and the decision needed next. Name the destination role in the actual policy rather than relying on someone will review this. Also define what happens if that role is unavailable. A queue with no accepted responsibility can leave the user with a more elaborate version of the same unanswered question.</p><p>Keep facts separate from interpretations in the handoff. A source passage was not supplied describes the available evidence. The source must have been deleted is a proposed explanation requiring additional support. Two notes name different destinations describes a conflict. The newer note is correct requires an applicable authority rule. These distinctions help the recipient investigate the right issue rather than beginning with a confident but unsupported diagnosis.</p><p>Preserve the user&#x27;s original question and any material constraints. A shortened handoff that drops the location or requested action can send the next person back to the beginning. At the same time, include only information appropriate for the destination and permitted by the process. This guide specifies no actual retention or disclosure rule. Its purpose is to make the content of a useful handoff inspectable without claiming that copying everything is always appropriate.</p><h2>Write the fallback message around a specific next step</h2><p>A clear clarification names the missing detail. A clear evidence escalation identifies the source limitation. A clear action boundary distinguishes a draft from execution. These messages need not sound identical. Avoid a long generic disclaimer when a short explanation of the actual gap will help the user continue. The policy should define the information to preserve and the unsupported claims to avoid, while allowing wording that fits the specific task.</p><p>Consider the difference between saying I cannot help and saying the supplied approved notes do not identify the replacement process; the procedure owner needs to confirm the applicable instruction. The latter is an original example of a more informative handoff, not an observed assistant response. It names both the gap and the decision needed. It still does not promise a response time, claim the owner has been contacted or invent the missing instruction.</p><p>For a clarification, explain the choice the missing detail controls. In the fictional two-location case, the next question is which location applies because the approved instructions differ by location. Once that detail is supplied, the answer can remain short and source-bound. Repeatedly asking broad questions after the needed detail is already present would add friction without improving the stated basis. A useful policy therefore defines when to stop asking as well as when to ask.</p><h2>Evaluate useful answers and unnecessary abstentions together</h2><p>An assistant that withholds every answer avoids some unsupported statements by doing none of the intended work. That does not establish a useful implementation. A later authorized evaluation should include supported questions alongside missing-source, ambiguous, conflicting and action-boundary cases. Define expected behavior before examining the proposed output. The six cases in this guide provide authored expectations only; no outputs were generated and no system&#x27;s answer rate, accuracy or refusal rate was measured.</p><p>Review the decision and the content separately. An output can select answer while adding an unsupported claim. It can select escalate while asserting a false reason for escalation. It can ask the right clarification while requesting information that is unnecessary for the task. A single label is therefore not the whole acceptance criterion. Inspect whether the response preserves the relevant evidence, scope, unresolved condition and next responsibility under the declared case.</p><p>Keep development cases distinct from later evaluation evidence. If the same case is used repeatedly to revise the prompt or source rules, that history matters when interpreting a later successful result on it. The existing dataset-design and release-comparison guides own those broader questions. This playbook does not create a second test-set owner or claim that six examples establish general performance. It defines response boundaries that those separate evaluation processes can examine.</p><h2>Use primary guidance without turning a citation into certification</h2><p>NIST&#x27;s Generative AI Profile discusses confabulation as confidently presented erroneous or false content and includes suggestions about evaluating capability claims and checking sources. That context supports the need to keep a response tied to its evidence. It does not establish that the labels or messages in this guide are an approved NIST policy. The source is broader than this fictional business task and should not be presented as validation of a particular assistant.</p><p>The NIST AI RMF Core organizes risk-management activity through govern, map, measure and manage, and describes the accompanying playbook as voluntary. Its actions are not an ordered compliance checklist. This guide uses that limited context for specifying responsibilities and review rather than claiming that completing a worksheet satisfies the framework. No professional review, security certification or operating approval has been performed for the fictional policy.</p><p>Use those sources as a reason to document the actual task and its limits, not as a substitute for making the decisions. The business still needs to identify its approved material, authority rules, responsible roles and authorized actions. A citation cannot fill those fields by implication. If the material remains unresolved, the policy should preserve the unresolved condition instead of attaching a respected source name to an assumption.</p><h2>Maintain the policy when its source or task changes</h2><p>Define review triggers tied to meaningful changes. A new source version, a changed access rule, a different tool effect or a revised ownership arrangement can change the appropriate response even if the user&#x27;s words remain the same. Retain the policy version with the relevant examples so a reviewer can understand which rules were in force. Do not treat a previously acceptable answer as permanently applicable after its supporting conditions change.</p><p>Record disagreements and unresolved cases as material for the responsible owner. They can reveal that the question scope, source authority or expected handoff is unclear. A revision should explain which condition changed rather than silently rewriting the earlier expectation. The goal is a policy that another person can inspect and maintain, not a growing list of generic refusal phrases copied into a prompt.</p><p>A useful final policy can be concise once these decisions are clear: what can be answered, which missing details justify clarification, which evidence conflicts need an owner and which actions remain outside current authorization. Keep the source references and examples alongside it. That combination gives the assistant a bounded task and gives the people responsible for it a practical way to examine the next response without claiming that the planning document itself has made the system reliable.</p><h2>Frequently asked questions</h2><h3>Is abstention the same as asking a clarification question?</h3><p>No. In these authored cases, clarification seeks a specific user detail that selects between supported instructions. An evidence escalation addresses a source or authority problem the supplied material does not resolve. The proposed labels help distinguish next steps; they are not a universal standard or evidence that an actual assistant can choose correctly.</p><h3>Does failing to find a passage prove that no policy exists?</h3><p>It does not. Fictional case C establishes only that the supplied approved material does not support the requested answer. The policy may exist elsewhere, retrieval may be incomplete or the question may fall outside the collection&#x27;s scope. Preserve what is actually known and route the unresolved question appropriately instead of asserting a global absence.</p><h3>Should the latest-looking document automatically win a conflict?</h3><p>Only an established authority rule and the relevant evidence could justify choosing a governing version. Fictional case D deliberately supplies no such relationship. Its expected response is an evidence escalation rather than a guess based on filenames or dates. This guide does not determine legal document authority or resolve an actual company&#x27;s version policy.</p><h3>Can a clear source answer authorize a live system change?</h3><p>No such authorization follows in fictional case F. Explaining the supplied instruction and changing its destination are different tasks. The latter requires the separately established approval and action process. A drafted request or a named owner does not establish that a message was sent, approval obtained or a system effect completed.</p><h3>Does the policy recommend refusing every uncertain request?</h3><p>It distinguishes supported answers, useful clarifications, evidence escalations and action boundaries. A refusal on the fully supported fictional case would fail that case&#x27;s declared purpose. A later authorized evaluation should examine both unsupported completion and unnecessary abstention. No model was run here, so the guide reports no measured performance or approval decision.</p><h3>Do the NIST references certify this worksheet or assistant?</h3><p>No. They provide limited primary context for evidence, responsibilities, evaluation and documented limitations. The six scenarios and expected decisions are original teaching material, not NIST-approved policy or observed system results. The actual organization must define and authorize its process and obtain whatever review its circumstances require before a live workflow changes.</p></div><section><h2>Original fictional decision cases</h2><p><a href="/assets/longform-batch67/fictional-decision-cases.csv" download>Download six deliberately authored decision cases (CSV)</a>. No model execution, clients, private records, actual company instructions or observed outputs. P1, Tray Seven and Shelf Two are original teaching material, not book quotations.</p><table><caption>Six deliberately authored decision scenarios, not observed model results or actual company policies</caption><thead><tr><th scope="col">Case</th><th scope="col">Declared gap</th><th scope="col">Expected decision</th><th scope="col">Next role</th><th scope="col">Evidence boundary</th></tr></thead><tbody><tr><th scope="row">A</th><td>approved matching instruction</td><td>answer</td><td>none needed</td><td>P1 supports return destination only</td></tr><tr><th scope="row">B</th><td>location unspecified</td><td>clarify</td><td>requesting user</td><td>do not choose between North and South</td></tr><tr><th scope="row">C</th><td>approved source not supplied</td><td>escalate</td><td>procedure owner</td><td>not global policy nonexistence</td></tr><tr><th scope="row">D</th><td>conflicting notes no precedence</td><td>escalate</td><td>procedure owner</td><td>do not guess governing version</td></tr><tr><th scope="row">E</th><td>authorization boundary</td><td>withhold</td><td>approved access route if supplied</td><td>no restricted content or hidden title</td></tr><tr><th scope="row">F</th><td>change action not authorized</td><td>withhold</td><td>action owner and approval process</td><td>draft is not sent or approved or executed</td></tr></tbody></table></section><section><h2>Primary sources and editorial scope</h2><ul><li><a href="https://airc.nist.gov/airmf-resources/airmf/5-sec-core/">NIST AI RMF1.0 Core and voluntary playbook context, not certification or a compliance checklist</a></li><li><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf">NIST Generative AI Profile: limited confabulation/evidence/evaluation context, not validation of this policy</a></li></ul><p>Sources read October 27, 2026. AI-assisted website editorial; original scenario boundaries reviewed against the declared teaching conditions. No named professional review, observed model results, client outcomes, certification, compliance finding, deployment approval or institutional endorsement.</p></section><section><h2>Related implementation questions</h2><ul><li><a href="/ai/implementation/knowledge-and-evaluation/retrieval-permissions/">Keep the separate access-aware retrieval test plan</a></li><li><a href="/ai/implementation/knowledge-and-evaluation/citation-verification/">Check the separate claim-to-evidence question</a></li><li><a href="/ai/implementation/knowledge-and-evaluation/evaluation-dataset-design/">Version the separate evaluation case set</a></li><li><a href="/ai/implementation/agents-and-integrations/human-approval-inbox/">Keep approval tied to an exact proposed action</a></li><li><a href="https://www.elixirconsultinggroup.com/blog/ai-tool-integration-strategy-2026/">Distinguish a drafted handoff from sent messages and completed effects</a></li></ul></section></article></div></section></main><footer class="ftr"><div class="ctn">
+<div class="ftr-top">
+<div><div class="logo" style="font-size:20px;margin-bottom:4px">Dr. Connor Robertson</div>
+<p class="ftr-tag">Founder of <a href="https://elixirconsultinggroup.com" target="_blank" rel="noopener" style="text-decoration:underline">Elixir Consulting Group</a>, <a href="https://thepittsburghwire.com" target="_blank" rel="noopener" style="text-decoration:underline">The Pittsburgh Wire</a>, and <a href="https://www.prospectingshow.com" target="_blank" rel="noopener" style="text-decoration:underline">The Prospecting Show</a>.</p></div>
+<div class="ftr-col ftr-pages"><h4>Pages</h4><ul class="footer-page-list"><li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/projects/">Projects</a></li><li><a href="/speaker/">Speaker</a></li><li><a href="/books/">Books</a></li><li><a href="/podcast/">Podcast</a></li><li><a href="/blog/">Blog</a></li><li><a href="/media/">Media Kit</a></li><li><a href="/press-media/">Press & Media</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+<div class="ftr-col ftr-connect"><h4>Connect</h4><ul class="social-list"><li><a href="https://www.linkedin.com/in/dr-connor-robertson" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://medium.com/@dr.connor.robertson" target="_blank" rel="noopener">Medium</a></li><li><a href="https://substack.com/@drconnorrobertson1" target="_blank" rel="noopener">Substack</a></li><li><a href="https://x.com/DrConnorRE" target="_blank" rel="noopener">X (Twitter)</a></li><li><a href="https://www.youtube.com/@drconnorrobertson" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://www.threads.net/@drconnorrobertson" target="_blank" rel="noopener">Threads</a></li><li><a href="https://drconnorrobertson.tumblr.com/" target="_blank" rel="noopener">Tumblr</a></li><li><a href="https://open.spotify.com/show/4VDPOlbe2RSSqukaSuYniX" target="_blank" rel="noopener">Spotify</a></li><li><a href="https://podcasts.apple.com/us/podcast/the-prospecting-show-with-dr-connor-robertson/id1488353384" target="_blank" rel="noopener">Apple Podcasts</a></li><li><a href="https://www.facebook.com/therealconnorrobertson" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.instagram.com/creative_acquisitions/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@dr.connor.robertson" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://www.crunchbase.com/person/dr-connor-robertson" target="_blank" rel="noopener">Crunchbase</a></li><li><a href="https://flipboard.com/@DrConnorRobert" target="_blank" rel="noopener">Flipboard</a></li><li><a href="https://www.skool.com/@connor-robertson-5397" target="_blank" rel="noopener">Skool</a></li></ul></div>
+</div>
+<div class="ftr-btm">&copy; 2026 Dr. Connor Robertson. All Rights Reserved.</div>
+</div></footer>
+<script>
+(function(){
+  var menuButton=document.querySelector('.mob-tog');
+  var menu=document.getElementById('nv');
+  if(menuButton&&menu){
+    menuButton.addEventListener('click',function(){
+      var open=menu.classList.toggle('active');
+      menuButton.setAttribute('aria-expanded',String(open));
+      menuButton.setAttribute('aria-label',open?'Close menu':'Open menu');
+    });
+  }
+  function reveal(){
+    var els=document.querySelectorAll('.fade-in');
+    if(!('IntersectionObserver' in window)){
+      for(var i=0;i<els.length;i++){els[i].classList.add('visible');}
+      return;
+    }
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+      });
+    },{rootMargin:'0px 0px -50px 0px',threshold:0.05});
+    els.forEach(function(el){obs.observe(el);});
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',reveal);}else{reveal();}
+})();
+</script>
+</body></html>
