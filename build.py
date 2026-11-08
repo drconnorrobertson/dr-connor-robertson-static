@@ -2799,7 +2799,7 @@ def page_acquisition_guide(guide):
         serp_title(guide["title"]),
         guide["description"], href,
         extra=extra,
-        og_image="/images/dr-connor-robertson-business-strategy.jpg",
+        og_image="/images/dr-connor-robertson-business-strategy.d7e984f2051e.webp",
         page_type="Article",
         crumbs=crumbs,
         schema_nodes=[article_schema, faq_schema],
