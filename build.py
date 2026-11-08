@@ -365,7 +365,7 @@ OWNED_WEBSITES = [
     "https://www.thepittsburghwire.com",
     "https://www.prospectingshow.com",
     "https://www.buyingwealthbook.com",
-    "https://builttorunbook.com",
+    "https://www.builttorunbook.net/",
     "https://www.seymourmaison.com",
 ]
 
@@ -651,7 +651,7 @@ BOOKS = [
         "title": "Built to Run",
         "desc": "Build systems and processes that let your business operate without constant owner involvement. A framework for creating scalable, owner-independent operations.",
         "retailers": [
-            ("Official Site", "https://builttorunbook.com"),
+            ("Official Site", "https://www.builttorunbook.net/"),
         ],
     },
     {
