@@ -126,7 +126,7 @@ def render_pages(b):
         body+=section('Who this book is for',paragraph(e(guide['audience'])))
         body+=section('A practical reading guide',paragraph(e(guide['context']))+paragraph('Use these questions to connect the topic to your own situation. They are companion reading prompts, rather than quotations from the book.')+'<ul>'+''.join(f'<li>{e(q)}</li>' for q in guide['questions'])+'</ul>')
         body+=section('Read the book and explore available previews',paragraph('Visit the official listing below to check the current edition, available formats, and any sample offered by the seller.'))
-        body+=resources(book['retailers'])
+        body+=resources([(url, label) for label, url in book['retailers']])
         body+=section('About the author',paragraph('Dr. Connor Robertson is a Pittsburgh-based entrepreneur, author, and host of The Prospecting Show. His writing connects business ownership with the operating responsibilities that follow it. Explore his '+link('/about/','biography')+' and '+link('/books/','other books')+' for related work.'))
         body+=section('Continue exploring',resources(guide['next']))+contact('Ask about this book')
         node={'@type':'Book','@id':site+path+'#book','name':book['title'],'author':{'@id':person},'url':site+path,'description':book['desc'],'inLanguage':'en','sameAs':[u for label,u in book['retailers']]}
