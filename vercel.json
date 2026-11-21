@@ -15,12 +15,12 @@
       "statusCode": 301
     },
     {
-      "source": "/prospecting-sales/Press & Media",
+      "source": "/prospecting-sales/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/prospecting-sales/Press & Media/",
+      "source": "/prospecting-sales/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -75,12 +75,12 @@
       "statusCode": 301
     },
     {
-      "source": "/about/Media Kit",
+      "source": "/about/Media%20Kit",
       "destination": "/media/",
       "statusCode": 301
     },
     {
-      "source": "/about/Media Kit/",
+      "source": "/about/Media%20Kit/",
       "destination": "/media/",
       "statusCode": 301
     },
@@ -95,12 +95,12 @@
       "statusCode": 301
     },
     {
-      "source": "/prospecting-sales/Media Kit",
+      "source": "/prospecting-sales/Media%20Kit",
       "destination": "/media/",
       "statusCode": 301
     },
     {
-      "source": "/prospecting-sales/Media Kit/",
+      "source": "/prospecting-sales/Media%20Kit/",
       "destination": "/media/",
       "statusCode": 301
     },
@@ -185,12 +185,12 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/Press & Media",
+      "source": "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/Press & Media/",
+      "source": "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -215,12 +215,12 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/why-i-focus-on-designing-my-default-state-instead-of-relying-on-high-performance-peaks/Press & Media",
+      "source": "/blog/why-i-focus-on-designing-my-default-state-instead-of-relying-on-high-performance-peaks/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/why-i-focus-on-designing-my-default-state-instead-of-relying-on-high-performance-peaks/Press & Media/",
+      "source": "/blog/why-i-focus-on-designing-my-default-state-instead-of-relying-on-high-performance-peaks/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -235,22 +235,22 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/hub-mindset-momentum-systems-dr-connor-robertson/Press & Media",
+      "source": "/blog/hub-mindset-momentum-systems-dr-connor-robertson/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/hub-mindset-momentum-systems-dr-connor-robertson/Press & Media/",
+      "source": "/blog/hub-mindset-momentum-systems-dr-connor-robertson/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/hub-influence-authority-dr-connor-robertson/Media Kit",
+      "source": "/blog/hub-influence-authority-dr-connor-robertson/Media%20Kit",
       "destination": "/media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/hub-influence-authority-dr-connor-robertson/Media Kit/",
+      "source": "/blog/hub-influence-authority-dr-connor-robertson/Media%20Kit/",
       "destination": "/media/",
       "statusCode": 301
     },
@@ -285,12 +285,12 @@
       "statusCode": 301
     },
     {
-      "source": "/Press & Media",
+      "source": "/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/Press & Media/",
+      "source": "/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -325,12 +325,12 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/hub-mindset-momentum-systems-dr-connor-robertson/Media Kit",
+      "source": "/blog/hub-mindset-momentum-systems-dr-connor-robertson/Media%20Kit",
       "destination": "/media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/hub-mindset-momentum-systems-dr-connor-robertson/Media Kit/",
+      "source": "/blog/hub-mindset-momentum-systems-dr-connor-robertson/Media%20Kit/",
       "destination": "/media/",
       "statusCode": 301
     },
@@ -365,22 +365,22 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/complete-resource-index-dr-connor-robertson/Press & Media",
+      "source": "/blog/complete-resource-index-dr-connor-robertson/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/complete-resource-index-dr-connor-robertson/Press & Media/",
+      "source": "/blog/complete-resource-index-dr-connor-robertson/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/why-buying-a-business-beats-building-one-in-2026/Press & Media",
+      "source": "/why-buying-a-business-beats-building-one-in-2026/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/why-buying-a-business-beats-building-one-in-2026/Press & Media/",
+      "source": "/why-buying-a-business-beats-building-one-in-2026/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -425,12 +425,12 @@
       "statusCode": 301
     },
     {
-      "source": "/faq/Media Kit",
+      "source": "/faq/Media%20Kit",
       "destination": "/media/",
       "statusCode": 301
     },
     {
-      "source": "/faq/Media Kit/",
+      "source": "/faq/Media%20Kit/",
       "destination": "/media/",
       "statusCode": 301
     },
@@ -455,12 +455,12 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/Media Kit",
+      "source": "/blog/Media%20Kit",
       "destination": "/media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/Media Kit/",
+      "source": "/blog/Media%20Kit/",
       "destination": "/media/",
       "statusCode": 301
     },
@@ -505,12 +505,12 @@
       "statusCode": 301
     },
     {
-      "source": "/the-prospecting-show/12-apps-and-1-with-keith-westman-of-otus/Press & Media",
+      "source": "/the-prospecting-show/12-apps-and-1-with-keith-westman-of-otus/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/the-prospecting-show/12-apps-and-1-with-keith-westman-of-otus/Press & Media/",
+      "source": "/the-prospecting-show/12-apps-and-1-with-keith-westman-of-otus/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -635,12 +635,12 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/why-i-study-cultural-fit-before-buying-a-business/Press & Media",
+      "source": "/blog/why-i-study-cultural-fit-before-buying-a-business/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/why-i-study-cultural-fit-before-buying-a-business/Press & Media/",
+      "source": "/blog/why-i-study-cultural-fit-before-buying-a-business/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -675,22 +675,22 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/dr-connor-robertson-entrepreneur-connection/Press & Media",
+      "source": "/blog/dr-connor-robertson-entrepreneur-connection/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/dr-connor-robertson-entrepreneur-connection/Press & Media/",
+      "source": "/blog/dr-connor-robertson-entrepreneur-connection/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/the-importance-of-employee-retention-after-a-business-sale/Press & Media",
+      "source": "/blog/the-importance-of-employee-retention-after-a-business-sale/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/the-importance-of-employee-retention-after-a-business-sale/Press & Media/",
+      "source": "/blog/the-importance-of-employee-retention-after-a-business-sale/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -725,12 +725,12 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/guest-avatar-profiles-guide-str-purchase-decisions/Press & Media",
+      "source": "/blog/guest-avatar-profiles-guide-str-purchase-decisions/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/guest-avatar-profiles-guide-str-purchase-decisions/Press & Media/",
+      "source": "/blog/guest-avatar-profiles-guide-str-purchase-decisions/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -755,12 +755,12 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/Press & Media",
+      "source": "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/Press & Media/",
+      "source": "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -795,12 +795,12 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/information-flow-scalability/Press & Media",
+      "source": "/blog/information-flow-scalability/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/information-flow-scalability/Press & Media/",
+      "source": "/blog/information-flow-scalability/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -835,22 +835,22 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/how-founders-build-fragile-businesses/Press & Media",
+      "source": "/blog/how-founders-build-fragile-businesses/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/how-founders-build-fragile-businesses/Press & Media/",
+      "source": "/blog/how-founders-build-fragile-businesses/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/choose-best-city-mid-term-rentals-2025/Press & Media",
+      "source": "/blog/choose-best-city-mid-term-rentals-2025/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/choose-best-city-mid-term-rentals-2025/Press & Media/",
+      "source": "/blog/choose-best-city-mid-term-rentals-2025/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -965,12 +965,12 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/dr-connor-robertson-content-strategy/Press & Media",
+      "source": "/blog/dr-connor-robertson-content-strategy/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/dr-connor-robertson-content-strategy/Press & Media/",
+      "source": "/blog/dr-connor-robertson-content-strategy/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -995,22 +995,22 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/why-i-prioritize-reducing-micro-interruptions-more-than-increasing-productivity/Press & Media",
+      "source": "/blog/why-i-prioritize-reducing-micro-interruptions-more-than-increasing-productivity/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/why-i-prioritize-reducing-micro-interruptions-more-than-increasing-productivity/Press & Media/",
+      "source": "/blog/why-i-prioritize-reducing-micro-interruptions-more-than-increasing-productivity/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/about/Press & Media",
+      "source": "/about/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/about/Press & Media/",
+      "source": "/about/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -1025,12 +1025,12 @@
       "statusCode": 301
     },
     {
-      "source": "/books/Media Kit",
+      "source": "/books/Media%20Kit",
       "destination": "/media/",
       "statusCode": 301
     },
     {
-      "source": "/books/Media Kit/",
+      "source": "/books/Media%20Kit/",
       "destination": "/media/",
       "statusCode": 301
     },
@@ -1055,12 +1055,12 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/dr-connor-robertson-daily-habits/Press & Media",
+      "source": "/blog/dr-connor-robertson-daily-habits/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/dr-connor-robertson-daily-habits/Press & Media/",
+      "source": "/blog/dr-connor-robertson-daily-habits/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -1075,12 +1075,12 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/why-i-study-competitor-dynamics-before-acquiring-a-business/Press & Media",
+      "source": "/blog/why-i-study-competitor-dynamics-before-acquiring-a-business/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/why-i-study-competitor-dynamics-before-acquiring-a-business/Press & Media/",
+      "source": "/blog/why-i-study-competitor-dynamics-before-acquiring-a-business/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -1145,12 +1145,12 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/why-i-eliminate-noise-ruthlessly-so-my-mind-can-stay-clear-and-fast/Press & Media",
+      "source": "/blog/why-i-eliminate-noise-ruthlessly-so-my-mind-can-stay-clear-and-fast/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/why-i-eliminate-noise-ruthlessly-so-my-mind-can-stay-clear-and-fast/Press & Media/",
+      "source": "/blog/why-i-eliminate-noise-ruthlessly-so-my-mind-can-stay-clear-and-fast/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -1185,22 +1185,22 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/evaluate-mechanical-systems-real-estate/Press & Media",
+      "source": "/blog/evaluate-mechanical-systems-real-estate/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/evaluate-mechanical-systems-real-estate/Press & Media/",
+      "source": "/blog/evaluate-mechanical-systems-real-estate/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/dr-connor-robertson-priorities/Press & Media",
+      "source": "/blog/dr-connor-robertson-priorities/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/dr-connor-robertson-priorities/Press & Media/",
+      "source": "/blog/dr-connor-robertson-priorities/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -1215,12 +1215,12 @@
       "statusCode": 301
     },
     {
-      "source": "/the-prospecting-show/the-offshore-arbitrage-with-brett-trembly-2/Press & Media",
+      "source": "/the-prospecting-show/the-offshore-arbitrage-with-brett-trembly-2/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/the-prospecting-show/the-offshore-arbitrage-with-brett-trembly-2/Press & Media/",
+      "source": "/the-prospecting-show/the-offshore-arbitrage-with-brett-trembly-2/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -1345,12 +1345,12 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/the-continuity-code-how-dr-connor-robertson-keeps-every-ad-connected-for-infinite-scalability/Press & Media",
+      "source": "/blog/the-continuity-code-how-dr-connor-robertson-keeps-every-ad-connected-for-infinite-scalability/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/the-continuity-code-how-dr-connor-robertson-keeps-every-ad-connected-for-infinite-scalability/Press & Media/",
+      "source": "/blog/the-continuity-code-how-dr-connor-robertson-keeps-every-ad-connected-for-infinite-scalability/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
@@ -1405,22 +1405,22 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/profitable-bedroom-bathroom-ratios-short-term-rentals/Press & Media",
+      "source": "/blog/profitable-bedroom-bathroom-ratios-short-term-rentals/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/blog/profitable-bedroom-bathroom-ratios-short-term-rentals/Press & Media/",
+      "source": "/blog/profitable-bedroom-bathroom-ratios-short-term-rentals/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/the-prospecting-show/building-relationships-that-convert-with-ryan-fox/Press & Media",
+      "source": "/the-prospecting-show/building-relationships-that-convert-with-ryan-fox/Press%20&%20Media",
       "destination": "/press-media/",
       "statusCode": 301
     },
     {
-      "source": "/the-prospecting-show/building-relationships-that-convert-with-ryan-fox/Press & Media/",
+      "source": "/the-prospecting-show/building-relationships-that-convert-with-ryan-fox/Press%20&%20Media/",
       "destination": "/press-media/",
       "statusCode": 301
     },
