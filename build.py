@@ -3848,6 +3848,18 @@ def main():
     write("vercel.json", json.dumps(vercel, indent=2))
     print("  sitemap.xml, feed.xml, robots.txt, 404.html, vercel.json")
 
+    # Apply after copying evergreen pages so legacy and generated layouts agree.
+    mobile_css = """@media(max-width:768px){
+.home-intro{grid-template-columns:minmax(0,1fr);gap:24px}
+.home-intro>*{min-width:0}
+.fg input,.fg select,.fg textarea,.lm-form input[type="email"]{font-size:16px;min-width:0;max-width:100%}
+}"""
+    write("assets/mobile-layout.css", mobile_css)
+    for mobile_page in DIST.rglob("*.html"):
+        markup = mobile_page.read_text()
+        if "/assets/mobile-layout.css" not in markup:
+            mobile_page.write_text(markup.replace("</head>", '<link rel="stylesheet" href="/assets/mobile-layout.css?v=20261120">\n</head>', 1))
+
     total_files = sum(1 for _ in DIST.rglob("*") if _.is_file())
     print(f"\n{'=' * 60}")
     print(f"Build complete! {total_files} files in dist/")
