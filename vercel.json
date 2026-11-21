@@ -5,6 +5,1566 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/prospecting-sales/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/prospecting-sales/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about/Projects",
+      "destination": "/projects/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about/Projects/",
+      "destination": "/projects/",
+      "statusCode": 301
+    },
+    {
+      "source": "/prospecting-sales/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/prospecting-sales/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about/Blog",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about/Blog/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/business-acquisitions/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/business-acquisitions/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/prospecting-sales/Projects",
+      "destination": "/projects/",
+      "statusCode": 301
+    },
+    {
+      "source": "/prospecting-sales/Projects/",
+      "destination": "/projects/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about/Media Kit",
+      "destination": "/media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about/Media Kit/",
+      "destination": "/media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/business-acquisitions/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/business-acquisitions/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/prospecting-sales/Media Kit",
+      "destination": "/media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/prospecting-sales/Media Kit/",
+      "destination": "/media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/business-acquisitions/Projects",
+      "destination": "/projects/",
+      "statusCode": 301
+    },
+    {
+      "source": "/business-acquisitions/Projects/",
+      "destination": "/projects/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-always-build-management-dashboards-after-acquisitions/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-always-build-management-dashboards-after-acquisitions/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/technology-platforms-that-power-modern-co-living/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/technology-platforms-that-power-modern-co-living/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/faq/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/faq/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/Books",
+      "destination": "/books/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/Books/",
+      "destination": "/books/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/FAQ",
+      "destination": "/faq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/FAQ/",
+      "destination": "/faq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-always-build-management-dashboards-after-acquisitions/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-always-build-management-dashboards-after-acquisitions/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-clarity-advantage-why-the-best-entrepreneurs-work-less-than-you-think/FAQ",
+      "destination": "/faq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-clarity-advantage-why-the-best-entrepreneurs-work-less-than-you-think/FAQ/",
+      "destination": "/faq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-focus-on-designing-my-default-state-instead-of-relying-on-high-performance-peaks/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-focus-on-designing-my-default-state-instead-of-relying-on-high-performance-peaks/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-clarity-advantage-why-the-best-entrepreneurs-work-less-than-you-think/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-clarity-advantage-why-the-best-entrepreneurs-work-less-than-you-think/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-mindset-momentum-systems-dr-connor-robertson/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-mindset-momentum-systems-dr-connor-robertson/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-influence-authority-dr-connor-robertson/Media Kit",
+      "destination": "/media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-influence-authority-dr-connor-robertson/Media Kit/",
+      "destination": "/media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pittsburgh-the-underrated-city-smart-entrepreneurs-are-betting-on/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pittsburgh-the-underrated-city-smart-entrepreneurs-are-betting-on/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/speaker/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/speaker/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/Projects",
+      "destination": "/projects/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/Projects/",
+      "destination": "/projects/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/complete-resource-index-dr-connor-robertson/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/complete-resource-index-dr-connor-robertson/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-mindset-momentum-systems-dr-connor-robertson/Media Kit",
+      "destination": "/media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-mindset-momentum-systems-dr-connor-robertson/Media Kit/",
+      "destination": "/media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-focus-on-designing-my-default-state-instead-of-relying-on-high-performance-peaks/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-focus-on-designing-my-default-state-instead-of-relying-on-high-performance-peaks/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-mindset-momentum-systems-dr-connor-robertson/Projects",
+      "destination": "/projects/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-mindset-momentum-systems-dr-connor-robertson/Projects/",
+      "destination": "/projects/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-business-strategy/Books",
+      "destination": "/books/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-business-strategy/Books/",
+      "destination": "/books/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/complete-resource-index-dr-connor-robertson/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/complete-resource-index-dr-connor-robertson/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/why-buying-a-business-beats-building-one-in-2026/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/why-buying-a-business-beats-building-one-in-2026/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-impact-of-habitat-for-humanity-a-path-to-community-transformation/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-impact-of-habitat-for-humanity-a-path-to-community-transformation/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-business-strategy/Projects",
+      "destination": "/projects/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-business-strategy/Projects/",
+      "destination": "/projects/",
+      "statusCode": 301
+    },
+    {
+      "source": "/books/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/books/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-business-strategy/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-business-strategy/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/faq/Media Kit",
+      "destination": "/media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/faq/Media Kit/",
+      "destination": "/media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-role-of-vendor-negotiations-in-improving-margins/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-role-of-vendor-negotiations-in-improving-margins/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/Media Kit",
+      "destination": "/media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/Media Kit/",
+      "destination": "/media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact/Blog",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact/Blog/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/1031-exchange-2026/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/1031-exchange-2026/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/from-clicks-to-conversations-how-dr-connor-robertson-builds-dialogue-driven-paid-campaigns/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/from-clicks-to-conversations-how-dr-connor-robertson-builds-dialogue-driven-paid-campaigns/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-role-of-social-venture-partners-in-driving-sustainable/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-role-of-social-venture-partners-in-driving-sustainable/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/12-apps-and-1-with-keith-westman-of-otus/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/12-apps-and-1-with-keith-westman-of-otus/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/leadership-entrepreneurship/why-philanthropy-strengthens-pittsburghs-business-ecosystem-by-dr-connor-robertson/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/leadership-entrepreneurship/why-philanthropy-strengthens-pittsburghs-business-ecosystem-by-dr-connor-robertson/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/episode-9-operational-excellence-and-process-discipline/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/episode-9-operational-excellence-and-process-discipline/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/from-clicks-to-conversations-how-dr-connor-robertson-builds-dialogue-driven-paid-campaigns/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/from-clicks-to-conversations-how-dr-connor-robertson-builds-dialogue-driven-paid-campaigns/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/episode-54-real-estate-investing-with-spencer-gatten/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/episode-54-real-estate-investing-with-spencer-gatten/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/launch-short-term-rental/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/launch-short-term-rental/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/getting-your-systems-straight-with-ron-medlin/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/getting-your-systems-straight-with-ron-medlin/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-design-my-life-around-reducing-cognitive-load-instead-of-increasing-willpower/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-design-my-life-around-reducing-cognitive-load-instead-of-increasing-willpower/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-mistakes-i-see-buyers-make-when-entering-private-equity-deals/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-mistakes-i-see-buyers-make-when-entering-private-equity-deals/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pittsburgh-real-estate/my-2025-guide-to-navigating-pittsburghs-housing-affordability-crisis-by-dr-connor-robertson/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pittsburgh-real-estate/my-2025-guide-to-navigating-pittsburghs-housing-affordability-crisis-by-dr-connor-robertson/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-psychology-of-paid-attention-how-dr-connor-robertson-engineers-ads-people-actually-want-to-see/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-psychology-of-paid-attention-how-dr-connor-robertson-engineers-ads-people-actually-want-to-see/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dr-connor-robertson-simplify-complexity/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dr-connor-robertson-simplify-complexity/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-study-cultural-fit-before-buying-a-business/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-study-cultural-fit-before-buying-a-business/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dr-connor-robertson-strategic-clarity/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dr-connor-robertson-strategic-clarity/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pittsburgh-the-underrated-city-smart-entrepreneurs-are-betting-on/FAQ",
+      "destination": "/faq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pittsburgh-the-underrated-city-smart-entrepreneurs-are-betting-on/FAQ/",
+      "destination": "/faq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/leadership-entrepreneurship/why-private-equity-deals-in-pittsburgh-differ-from-other-u-s-markets-my-view-as-dr-connor-robertson/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/leadership-entrepreneurship/why-private-equity-deals-in-pittsburgh-differ-from-other-u-s-markets-my-view-as-dr-connor-robertson/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dr-connor-robertson-entrepreneur-connection/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dr-connor-robertson-entrepreneur-connection/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-importance-of-employee-retention-after-a-business-sale/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-importance-of-employee-retention-after-a-business-sale/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-influence-authority-dr-connor-robertson/FAQ",
+      "destination": "/faq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-influence-authority-dr-connor-robertson/FAQ/",
+      "destination": "/faq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/scaling-trust-how-dr-connor-robertson-builds-paid-ad-campaigns-that-feel-personal-at-scale/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/scaling-trust-how-dr-connor-robertson-builds-paid-ad-campaigns-that-feel-personal-at-scale/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-treat-consistency-as-a-physics-problem-instead-of-a-motivation-problem/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-treat-consistency-as-a-physics-problem-instead-of-a-motivation-problem/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/guest-avatar-profiles-guide-str-purchase-decisions/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/guest-avatar-profiles-guide-str-purchase-decisions/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/operational-drag-in-business/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/operational-drag-in-business/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/information-flow-scalability/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/information-flow-scalability/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-compounding-effect-of-focus-why-elimination-is-the-new-productivity/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-compounding-effect-of-focus-why-elimination-is-the-new-productivity/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/speaker/Books",
+      "destination": "/books/",
+      "statusCode": 301
+    },
+    {
+      "source": "/speaker/Books/",
+      "destination": "/books/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-psychology-of-business-owners-when-selling-their-companies/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-psychology-of-business-owners-when-selling-their-companies/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-founders-build-fragile-businesses/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-founders-build-fragile-businesses/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/choose-best-city-mid-term-rentals-2025/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/choose-best-city-mid-term-rentals-2025/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/organizational-design-determines-growth/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/organizational-design-determines-growth/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pittsburgh-real-estate/dr-connor-robertsons-guide-to-real-estate-consulting-in-a-competitive-pittsburgh-market/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pittsburgh-real-estate/dr-connor-robertsons-guide-to-real-estate-consulting-in-a-competitive-pittsburgh-market/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/parking-availability-short-term-rental-performance/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/parking-availability-short-term-rental-performance/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-dr-connor-robertson-creates-scalable-business-systems/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-dr-connor-robertson-creates-scalable-business-systems/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/long-term-content-strategy-modern-business/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/long-term-content-strategy-modern-business/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-local-business-owners-need-simple-digital-systems/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-local-business-owners-need-simple-digital-systems/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/endless-output-how-dr-connor-robertson-turns-consistency-into-compounding-growth/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/endless-output-how-dr-connor-robertson-turns-consistency-into-compounding-growth/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-i-think-about-vendor-relationships-in-acquisitions/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-i-think-about-vendor-relationships-in-acquisitions/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/evaluating-crime-data-rental-property-purchases/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/evaluating-crime-data-rental-property-purchases/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/philanthropy-community-impact/the-role-of-affordable-housing-in-pittsburghs-economic-growth-my-analysis-as-dr-connor-robertson/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/philanthropy-community-impact/the-role-of-affordable-housing-in-pittsburghs-economic-growth-my-analysis-as-dr-connor-robertson/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/founder-evolution-growth/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/founder-evolution-growth/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dr-connor-robertson-content-strategy/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dr-connor-robertson-content-strategy/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/vendor-network-real-estate/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/vendor-network-real-estate/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-build-an-expert-reputation-online/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-to-build-an-expert-reputation-online/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-prioritize-reducing-micro-interruptions-more-than-increasing-productivity/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-prioritize-reducing-micro-interruptions-more-than-increasing-productivity/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/best-guest-amenities-under-500-boost-bookings/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/best-guest-amenities-under-500-boost-bookings/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/books/Media Kit",
+      "destination": "/media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/books/Media Kit/",
+      "destination": "/media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/page/44/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/page/44/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/beyond-metrics-how-dr-connor-robertson-measures-paid-ad-success-through-meaning-not-just-numbers/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/beyond-metrics-how-dr-connor-robertson-measures-paid-ad-success-through-meaning-not-just-numbers/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dr-connor-robertson-daily-habits/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dr-connor-robertson-daily-habits/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-wealthy-households-pay-taxes-over-decades/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-wealthy-households-pay-taxes-over-decades/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-study-competitor-dynamics-before-acquiring-a-business/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-study-competitor-dynamics-before-acquiring-a-business/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/home-office-deduction-2026/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/home-office-deduction-2026/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/rental-staff-onboarding/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/rental-staff-onboarding/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/faris-ghani-entrepreneurial-highlight/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/faris-ghani-entrepreneurial-highlight/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/Blog",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/Blog/",
+      "destination": "/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/Books",
+      "destination": "/books/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/Books/",
+      "destination": "/books/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/grouping-elections-and-activity-aggregation/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/grouping-elections-and-activity-aggregation/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-eliminate-noise-ruthlessly-so-my-mind-can-stay-clear-and-fast/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-eliminate-noise-ruthlessly-so-my-mind-can-stay-clear-and-fast/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/behavioral-targeting-done-right-how-dr-connor-robertson-uses-intent-not-interruption-to-drive-paid-ad-conversions/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/behavioral-targeting-done-right-how-dr-connor-robertson-uses-intent-not-interruption-to-drive-paid-ad-conversions/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/short-term-rental-photography/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/short-term-rental-photography/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/evaluating-crime-data-rental-property-purchases/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/evaluating-crime-data-rental-property-purchases/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/evaluate-mechanical-systems-real-estate/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/evaluate-mechanical-systems-real-estate/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dr-connor-robertson-priorities/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dr-connor-robertson-priorities/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/renovation-timeline-contractors/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/renovation-timeline-contractors/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/the-offshore-arbitrage-with-brett-trembly-2/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/the-offshore-arbitrage-with-brett-trembly-2/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/measurement-discipline-over-metrics/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/measurement-discipline-over-metrics/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/best-cities-to-buy-short-term-rentals-for-cash-flow-2025/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/best-cities-to-buy-short-term-rentals-for-cash-flow-2025/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-co-living-solves-workforce-housing-shortages/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/how-co-living-solves-workforce-housing-shortages/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/layout-flexibility-real-estate/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/layout-flexibility-real-estate/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/building-affordable-homes-in-new-york-and-ontario/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/building-affordable-homes-in-new-york-and-ontario/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/message-momentum-how-dr-connor-robertson-keeps-paid-ad-campaigns-moving-long-after-the-click/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/message-momentum-how-dr-connor-robertson-keeps-paid-ad-campaigns-moving-long-after-the-click/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dr-connor-robertson-clarity/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dr-connor-robertson-clarity/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/off-market-short-term-rental-deals/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/off-market-short-term-rental-deals/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/message-momentum-how-dr-connor-robertson-keeps-paid-ad-campaigns-moving-long-after-the-click/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/message-momentum-how-dr-connor-robertson-keeps-paid-ad-campaigns-moving-long-after-the-click/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/what-business-growth-really-means/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/what-business-growth-really-means/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/business-growth-long-game/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/business-growth-long-game/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/message-momentum-how-dr-connor-robertson-keeps-paid-ad-campaigns-moving-long-after-the-click/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/message-momentum-how-dr-connor-robertson-keeps-paid-ad-campaigns-moving-long-after-the-click/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-continuity-code-how-dr-connor-robertson-keeps-every-ad-connected-for-infinite-scalability/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-continuity-code-how-dr-connor-robertson-keeps-every-ad-connected-for-infinite-scalability/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/incentives-matter-growth/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/incentives-matter-growth/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-focus-on-predictability-over-intensity-in-every-area-of-my-life/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-focus-on-predictability-over-intensity-in-every-area-of-my-life/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/bonus-depreciation-and-accelerated-write-offs/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/bonus-depreciation-and-accelerated-write-offs/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/incentive-alignment-performance/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/incentive-alignment-performance/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-study-my-own-patterns-more-than-i-study-other-peoples-tactics/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-study-my-own-patterns-more-than-i-study-other-peoples-tactics/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/profitable-bedroom-bathroom-ratios-short-term-rentals/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/profitable-bedroom-bathroom-ratios-short-term-rentals/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/building-relationships-that-convert-with-ryan-fox/Press & Media",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/building-relationships-that-convert-with-ryan-fox/Press & Media/",
+      "destination": "/press-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-authenticity-is-the-ultimate-business-strategy/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-authenticity-is-the-ultimate-business-strategy/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-credibility-compass-how-dr-connor-robertson-uses-directional-marketing-to-lead-every-search-result/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-credibility-compass-how-dr-connor-robertson-uses-directional-marketing-to-lead-every-search-result/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-remove-motivation-windows-and-replace-them-with-structural-permanence/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-remove-motivation-windows-and-replace-them-with-structural-permanence/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/calculate-total-cost-turnover-short-term-rentals/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/calculate-total-cost-turnover-short-term-rentals/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-treat-consistency-as-a-physics-problem-instead-of-a-motivation-problem/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-i-treat-consistency-as-a-physics-problem-instead-of-a-motivation-problem/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/real-estate-maintenance-systems/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/real-estate-maintenance-systems/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/metrics-clarity-execution/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/metrics-clarity-execution/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/cash-without-drama/Contact",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/cash-without-drama/Contact/",
+      "destination": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/cash-without-drama/Home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/cash-without-drama/Home/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/cash-without-drama/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/cash-without-drama/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/eos-implementation-and-growing-a-business-michael-halperin/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/eos-implementation-and-growing-a-business-michael-halperin/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-calm-companies-win-the-hidden-power-of-stability-in-scaling/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/why-calm-companies-win-the-hidden-power-of-stability-in-scaling/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/neighborhood-for-short-term-rental/About",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/neighborhood-for-short-term-rental/About/",
+      "destination": "/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/building-relationships-that-convert-with-ryan-fox/Speaker",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-prospecting-show/building-relationships-that-convert-with-ryan-fox/Speaker/",
+      "destination": "/speaker/",
+      "statusCode": 301
+    },
+    {
       "source": "/category/(.*)",
       "destination": "/blog/",
       "statusCode": 301
