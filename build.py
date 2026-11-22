@@ -15,7 +15,7 @@ from email.utils import format_datetime
 from pathlib import Path
 from urllib.request import Request, urlopen
 from urllib.error import URLError
-from urllib.parse import urlparse, urljoin
+from urllib.parse import urlparse, urljoin, parse_qsl, urlencode
 
 from ai_growth import render_pages as render_growth_pages
 from ai_implementation import render_pages as render_implementation_pages
@@ -85,6 +85,23 @@ def url_to_local_path(url):
         local = basename
     return f"/images/{local}"
 
+def image_request_url(url):
+    """Keep extensionless Unsplash photo assets consistently JPEG encoded."""
+    parsed = urlparse(url)
+    if parsed.hostname == "images.unsplash.com" and parsed.path.startswith("/photo-"):
+        query = [(key, value) for key, value in parse_qsl(parsed.query, keep_blank_values=True) if key != "fm"]
+        query.append(("fm", "jpg"))
+        return parsed._replace(query=urlencode(query)).geturl()
+    return url
+
+
+def verify_photo_content_types(root):
+    """The photo-* HTTP rule requires every matching asset to be JPEG."""
+    for photo in (root / "images").glob("photo-*"):
+        if photo.is_file() and not photo.read_bytes().startswith(b"\xff\xd8\xff"):
+            raise ValueError(f"Photo asset is not JPEG: {photo.name}")
+
+
 def download_image(url):
     """Download an image and save it locally. Returns the local path."""
     if url in downloaded_images:
@@ -99,7 +116,7 @@ def download_image(url):
         return local_path
 
     try:
-        req = Request(url, headers={"User-Agent": "StaticSiteBuilder/1.0"})
+        req = Request(image_request_url(url), headers={"User-Agent": "StaticSiteBuilder/1.0"})
         resp = urlopen(req, timeout=15)
         data = resp.read()
 
@@ -3836,6 +3853,8 @@ def main():
         write(GSC_VERIFICATION, f"google-site-verification: {GSC_VERIFICATION}")
         print(f"  GSC verification file: {GSC_VERIFICATION}")
 
+    verify_photo_content_types(DIST)
+
     # Vercel config in dist
     vercel = {
         "cleanUrls": True,
@@ -3850,6 +3869,9 @@ def main():
             ]},
             {"source": "/images/(.*)", "headers": [
                 {"key": "Cache-Control", "value": "public, max-age=31536000, immutable"},
+            ]},
+            {"source": "/images/photo-(.*)", "headers": [
+                {"key": "Content-Type", "value": "image/jpeg"},
             ]},
         ]
     }
