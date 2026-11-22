@@ -578,19 +578,25 @@ POST_SEO = {
              "No. The cost of earning attention is low but consistency is what compounds: a well-written article can drive traffic for five years, and a steady presence in one or two formats you can actually sustain beats spreading yourself across all of them."),
         ],
     },
-    "why-investors-are-quietly-moving-into-pittsburgh-real-estate-in-2026": {
-        "title": "Pittsburgh Real Estate Investing: The 2026 Case",
-        "desc": "Why quiet capital is moving into Pittsburgh: a $240K median price, top-tier price-to-rent ratios, and a $740M North Shore development pipeline.",
-        "hub": ("Pittsburgh business and real estate resources", "/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/"),
-        "faqs": [
-            ("Is Pittsburgh a good market for real estate investors in 2026?",
-             "Pittsburgh's median home price sits around $240,000 in early 2026 against a national median near $415,000, roughly a 41% discount, in a metro anchored by UPMC, Carnegie Mellon, Duquesne, and Pitt. Price-to-rent ratios rank among the most favorable in any major US metro, so cash flow is the base case and appreciation is the bonus."),
-            ("What major real estate development is happening in Pittsburgh?",
-             "Piatt Companies broke ground on the Esplanade, a $740 million, 15-acre mixed-use development on the North Shore waterfront in the Chateau neighborhood, including 750 housing units, retail, entertainment anchors, and a Transit Revitalization Investment District."),
-            ("Why do out-of-state investors overlook Pittsburgh?",
-             "Most capital maps to Phoenix, Nashville, and South Florida, with the bolder allocators looking at Raleigh or Columbus. Pittsburgh's reputation lags its economics, and that gap between perception and fundamentals is exactly the pricing inefficiency a small group of quiet buyers is working right now."),
-        ],
-    },
+    'why-investors-are-quietly-moving-into-pittsburgh-real-estate-in-2026': {'title': 'Pittsburgh Real Estate Research: Verify the Parcel and the Project',
+     'desc': 'Research a Pittsburgh property using parcel records, permitted-use checks, comparable '
+             'evidence and dated development sources. Includes an Esplanade timeline review.',
+     'hub': ('Pittsburgh business and real estate resources',
+             '/blog/hub-pittsburgh-business-real-estate-dr-connor-robertson/'),
+     'faqs': [('Does a nearby development establish a property investment return?',
+               'No. A project timeline does not establish another property’s rent, occupancy or resale '
+               'value. Record the relevant milestone, source date and unresolved dependencies '
+               'separately from current property evidence.'),
+              ('Where can I start researching a Pittsburgh parcel?',
+               'Use the Allegheny County Real Estate Portal to identify the parcel and municipality. '
+               'For property within the City of Pittsburgh, consult its zoning and occupancy-record '
+               'resources for the intended use; confirm the applicable process for the specific '
+               'location.'),
+              ('Which Esplanade opening date should a property forecast use?',
+               'The project FAQ and Vision pages reviewed November 22, 2026 described different '
+               'riverfront-opening years. Retain both observations and obtain a dated clarification '
+               'for the relevant phase instead of treating either projection as an operating '
+               'amenity.')]},
 }
 
 PRESS_ARTICLES = [

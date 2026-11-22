@@ -1,0 +1,8 @@
+scope,question,source_url,source_observation,reviewed_date,parcel_id,municipality,status,responsible_person,next_action
+Property review template,Parcel identity,https://realestate.alleghenycounty.us/search,,,,,Unresolved,,
+Property review template,Current and intended use,https://www.pittsburghpa.gov/Business-Development/City-Planning/Zoning,,,,,Unresolved,,
+Property review template,Occupancy records and property certification,https://www.pittsburghpa.gov/Business-Development/City-Planning/Zoning/Zoning-FAQ,,,,,Unresolved,,
+Property review template,Comparable evidence,,,,,,Unresolved,,
+Property review template,Operating items and professional review,,,,,,Unresolved,,
+Development source observation; not a parcel finding,Riverfront opening,https://esplanade-pgh.com/faq/,Timeline answer describes riverfront opening in 2028; condominium tower follows,2026-11-22,,,Projection; timing discrepancy unresolved,,Obtain dated phase clarification
+Development source observation; not a parcel finding,Riverfront opening,https://esplanade-pgh.com/plan/,Timeline describes expected 2029 Phase 1 and 1A completion including riverfront opening,2026-11-22,,,Projection; timing discrepancy unresolved,,Obtain dated phase clarification
