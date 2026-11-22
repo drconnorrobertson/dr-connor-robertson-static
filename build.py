@@ -498,19 +498,21 @@ POST_SEO = {
              "Start with one workflow, the most painful repetitive task in the business, rather than automating everything at once. Treat the agent like a new team member with a defined role, clear guardrails, and regular review, not something you turn loose on autopilot."),
         ],
     },
-    "the-age-of-the-ai-agent-why-entrepreneurs-who-wait-get-left-behind": {
-        "title": "The Age of the AI Agent: Why Waiting Costs You",
-        "desc": "AI agents compound with use. Why entrepreneurs deploying now build a lead that late starters spend the following year trying to close.",
-        "hub": ("AI business strategy guide", "/ai-business-strategy/"),
-        "faqs": [
-            ("Why does deploying AI agents early actually matter?",
-             "Agents improve with use: the more context they accumulate, the better their outputs become. A business that starts building agentic workflows early in the year has months of refined, context-rich automation by year end, while a business that starts late begins from zero."),
-            ("What do entrepreneurs who succeed with AI agents do differently?",
-             "They start with one workflow instead of everything at once, lead response and follow-up is the most common first choice because it is measurable and directly affects revenue. They document their processes first, since agents follow structured instructions rather than reading your mind. And they treat agents as infrastructure with roles and feedback loops, not a tool used sporadically."),
-            ("Is AI still too expensive for a small business?",
-             "That objection stopped holding roughly 18 months ago. Model costs have dropped more than 90% since early 2024, which puts capability that once required an enterprise budget within reach of a solo operator or a five-person team."),
-        ],
-    },
+    'the-age-of-the-ai-agent-why-entrepreneurs-who-wait-get-left-behind': {'title': 'AI Agent Pilot: Measure Accepted Work Before Expanding',
+     'desc': 'Evaluate an AI agent pilot with task boundaries, accepted-work checks, review and '
+             'correction time, and a fictional capacity-cost comparison.',
+     'hub': ('AI business strategy guide', '/ai-business-strategy/'),
+     'faqs': [('What should an AI agent pilot measure?',
+               'Measure accepted work, total review and correction effort, manual fallbacks, '
+               'monitoring and recurring costs. Keep quality failures and action-boundary violations '
+               'separate from time calculations.'),
+              ('Does starting an AI agent earlier guarantee an advantage?',
+               'No. Repeated use does not automatically improve accuracy. Evaluate a defined task '
+               'against its manual baseline and retain evidence before expanding the scope.'),
+              ('Does released time equal cash savings?',
+               'No. Released time is capacity. Its financial value depends on actual use, and an '
+               'existing payroll expense does not disappear automatically. Include recurring and '
+               'one-time costs in the decision.')]},
     "the-new-org-chart-leading-human-ai-teams-2026": {
         "title": "Leading Human-AI Teams: The New Org Chart for 2026",
         "desc": "AI agents now hold roles, not just features. How founders structure, lead, and set standards for blended human-AI teams in 2026.",

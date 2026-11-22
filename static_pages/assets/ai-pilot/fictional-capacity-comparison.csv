@@ -1,0 +1,4 @@
+scenario,tasks,baseline_minutes_per_task,review_minutes_per_task,corrected_tasks,correction_minutes_per_task,fallback_tasks,fallback_minutes_per_task,monitoring_minutes,recurring_cost_usd,assumed_hourly_capacity_value_usd,baseline_minutes,human_minutes,released_minutes,capacity_value_usd,capacity_value_less_recurring_cost_usd
+Draft pilot,200,6,2,20,5,10,6,90,200,30,1200,650,550,275.00,75.00
+Review-heavy pilot,200,6,4,40,5,20,6,120,200,30,1200,1240,-40,-20.00,-220.00
+Higher recurring cost,200,6,2,20,5,10,6,90,350,30,1200,650,550,275.00,-75.00
