@@ -2931,6 +2931,49 @@ TOPICS.extend([('acquisition-service-parts-compatibility-register',
    'work.'),
   ['acquisition-opening-inventory-reconciliation', 'acquisition-backlog-due-diligence'])])
 
+TOPICS.extend([('acquisition-customer-forecast-accuracy',
+  'Customer Forecast Accuracy Review in Acquisition Diligence',
+  'Validate whether customer-provided forecasts are a useful basis for the buyer’s purchasing and staffing '
+  'plan.',
+  'Compare each forecast version with actual orders in the same horizon. Separate forecasts from binding '
+  'commitments.',
+  [('Create a dated sample',
+    'Collect the forecast supplied before the planning date, actual releases, and any approved volume '
+    'commitments. Use consistent products and units.'),
+   ('Calculate directional error',
+    'A buyer samples three months forecast at 400 units each. Releases are 350, 280 and 320. Actual volume '
+    'is 950 against 1,200 forecast, or roughly 21% below the forecast over the period.'),
+   ('Test the operating effect',
+    'Review which supplier orders and staffing decisions depended on the forecast. Model excess inventory '
+    'and revised buying triggers if the pattern persists.')],
+  ['Preserve forecast versions',
+   'Match releases on like units',
+   'Calculate directional error',
+   'Model stock exposure'],
+  ('Can the buyer use a revised forecast to judge past accuracy?',
+   'Use the forecast that was available when the decision was made. Later revisions are useful for '
+   'explaining changes.'),
+  ['acquisition-customer-contracted-minimums', 'acquisition-replacement-inventory-cost']),
+ ('acquisition-post-close-reporting-controls',
+  'Post-Close Reporting Controls for Business Buyers',
+  'Verify that the buyer’s first operating reports reconcile to source records and support the same '
+  'decisions.',
+  'Prioritize reports that drive cash, staffing or customer commitments and define which figures must be '
+  'verified.',
+  [('Write down the reporting basis',
+    'Capture the period, filters, unit definitions, source owner and known exclusions. Preserve the '
+    'comparison version from before closing.'),
+   ('Walk a first-week mismatch',
+    'A buyer’s open work report shows 220 jobs and the seller’s closing snapshot shows 230. Confirm that '
+    'seven jobs closed after cutoff and three failed the import before declaring the records reconciled.'),
+   ('Assign ongoing review',
+    'Have the intended operator reproduce the result and approve temporary exceptions. Give disputed figures '
+    'an owner and update downstream decisions when the supporting numbers change.')],
+  ['Document report definitions', 'Reconcile timing', 'Investigate missing records', 'Assign a review owner'],
+  ('Can a close match in total prove the reports agree?',
+   'Trace a sample of individual records and categories to catch offsetting differences in the aggregate.'),
+  ['acquisition-customer-reporting-obligations', 'acquisition-first-week-issue-triage'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
