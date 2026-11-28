@@ -2664,6 +2664,50 @@ TOPICS.extend([('acquisition-unmatched-goods-receipts',
    'materially more expensive per hour.'),
   ['acquisition-contractor-capacity-review', 'acquisition-field-service-billing-terms'])])
 
+TOPICS.extend([('acquisition-customer-address-exception-review',
+  'Customer Address Exception Review Before an Acquisition',
+  'Verify shipping and billing address exceptions before the buyer issues labels or invoices.',
+  'Focus on multi-site accounts and orders whose delivery location differs from the account default.',
+  [('Compare approved address sources',
+    'Match open orders, service sites, authorized customer instructions and historical delivery proof. Use '
+    'approved access and retain only required information.'),
+   ('Test a plausible error',
+    'A fictional buyer imports one address per customer, but a sample account places orders for three '
+    'facilities. Check that the correct site follows each order and the invoice still reaches the correct '
+    'payer.'),
+   ('Validate after closing',
+    'Trace a representative test shipment and invoice. Give fulfillment and billing a shared exception owner '
+    'for discrepancies.')],
+  ['Match open orders to sites',
+   'Verify approved exceptions',
+   'Test shipment and billing',
+   'Assign a correction owner'],
+  ('Should a historic ship-to address replace an order-specific address?',
+   'Confirm the applicable instruction in the approved order and resolve conflicts with the account owner.'),
+  ['acquisition-customer-master-handoff', 'acquisition-order-entry-cutover']),
+ ('acquisition-returnable-container-obligations',
+  'Returnable Container Obligations in Acquisition Diligence',
+  'Reconcile reusable packaging in circulation and assess related deposits, losses and purchasing needs.',
+  'Separate owned, customer-owned and vendor-owned containers before evaluating availability or recovery.',
+  [('Build a circulation schedule',
+    'Record units sent, received, overdue, damaged and subject to deposits. Match records to customer and '
+    'vendor statements where available.'),
+   ('Estimate a shortage',
+    'A fictional operator reports 400 reusable bins including 120 at customer sites. Only 70 of those are '
+    'scheduled for return before a peak order. Model replacement and recovery scenarios for any uncovered '
+    'need.'),
+   ('Assign post-close reconciliation',
+    'Have the deal team confirm which rights and liabilities transfer. Give operations an owner for cycle '
+    'counts and finance an owner for closing deposit reconciliation.')],
+  ['Separate ownership groups',
+   'Reconcile circulating units',
+   'Model peak shortages',
+   'Check deposit treatment'],
+  ('Are bins at customer locations immediately available?',
+   'Use verified return timing and condition before counting those containers as available for the next '
+   'order.'),
+  ['acquisition-consignment-inventory-review', 'acquisition-opening-inventory-reconciliation'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
