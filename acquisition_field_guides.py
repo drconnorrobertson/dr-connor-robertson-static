@@ -1448,6 +1448,69 @@ TOPICS.extend([('acquisition-accounts-payable-cutover',
    'coexist with a future billing error.'),
   ['acquisition-customer-contract-rate-review', 'acquisition-billing-cutover'])])
 
+TOPICS.extend([('acquisition-contract-auto-renewal-exposure',
+  'Auto-Renewal Exposure in Acquisition Due Diligence',
+  'Identify vendor contracts near automatic renewal and estimate the cost of missing notice dates.',
+  'Begin with signed recurring agreements and put notice deadlines on the deal timeline.',
+  [('Build a notice calendar',
+    'Record renewal term, notice period, required delivery method, dates and authorized sender. Ask counsel '
+    'to verify material timing and obligations.'),
+   ('Model a missed decision',
+    'A fictional supplier agreement renews for 12 months at $2,000 monthly. Its notice deadline falls one '
+    'week before close. Compare using the contract, negotiating a change, or budgeting the $24,000 '
+    'commitment if the seller takes no approved action.'),
+   ('Assign a decision before close',
+    'Have the deal team agree who can act and what evidence confirms delivery. Transfer unresolved '
+    'commitments into the operating calendar.')],
+  ['Collect signed amendments', 'Verify notice dates', 'Price renewal scenarios', 'Confirm action ownership'],
+  ('Should notices be sent automatically?',
+   'Have authorized personnel review whether renewal is desirable and confirm who may send any notice under '
+   'the agreement.'),
+  ['acquisition-supplier-payment-terms', 'acquisition-third-party-permissions']),
+ ('acquisition-customer-installation-backlog',
+  'Customer Installation Backlog Review Before Buying a Business',
+  'Validate the resource needs and deadlines for installations already promised to customers.',
+  'Connect pending installations to customer commitments, site readiness and actual field capacity.',
+  [('Build an installation register',
+    'Record site, approved work, required crew skills, equipment, access date, and next customer milestone. '
+    'Flag jobs whose prerequisites are incomplete.'),
+   ('Calculate a capacity gap',
+    'A fictional buyer inherits 18 installs averaging four crew hours. Two crews each have 28 install hours '
+    'available before the commitments fall due, leaving 16 uncovered hours before travel. Confirm which '
+    'promised slots can move with customer approval.'),
+   ('Verify first-week readiness',
+    'Have scheduling confirm each customer window and the backlog owner. Put subcontractor or overtime costs '
+    'into the transition budget only when coverage is feasible.')],
+  ['Verify promised dates',
+   'Confirm job prerequisites',
+   'Calculate crew capacity',
+   'Assign customer communication'],
+  ('Should all pending jobs receive an installation slot?',
+   'Distinguish confirmed commitments from jobs awaiting site readiness or approval before reserving scarce '
+   'crew time.'),
+  ['acquisition-backlog-due-diligence', 'acquisition-service-staffing-coverage']),
+ ('acquisition-vendor-master-handoff',
+  'Vendor Master Handoff for Business Acquisitions',
+  'Transfer approved supplier records and preserve verification for new payment or contact details.',
+  'Agree which vendor records the buyer needs and which team can approve them before the first payable run.',
+  [('Define the authorized record set',
+    'Map supplier identifiers, open items, approved contacts, status and reference documentation. Use '
+    'restricted procedures for sensitive data and preserve required history.'),
+   ('Test a possible duplicate',
+    'A fictional export lists two vendors with the same trading name and distinct approved legal entities. '
+    'Accounts payable keeps them separate and verifies which record owns each open balance.'),
+   ('Verify the first payment cycle',
+    'Match a sample invoice to the intended supplier and apply current verification procedures for '
+    'remittance changes. Reconcile rejected records and assign an owner to resolve them.')],
+  ['Define authorized data scope',
+   'Identify possible duplicates',
+   'Verify supplier mappings',
+   'Test the first cycle'],
+  ('Can the buyer trust all imported payment instructions?',
+   'Follow established verification and approval procedures before relying on any instructions, especially '
+   'changes received near the cutover.'),
+  ['acquisition-accounts-payable-cutover', 'acquisition-cash-disbursement-controls'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
