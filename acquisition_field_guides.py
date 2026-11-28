@@ -1384,6 +1384,70 @@ TOPICS.extend([('acquisition-merchant-settlement-cutover',
    'required date.'),
   ['acquisition-service-level-commitments', 'handover-readiness-evidence'])])
 
+TOPICS.extend([('acquisition-accounts-payable-cutover',
+  'Accounts Payable Cutover for Small Business Acquisitions',
+  'Reconcile unpaid supplier invoices, pending payments and first-week approvals around closing.',
+  'Build a dated cutoff schedule jointly with the authorized finance and deal teams.',
+  [('Build a supplier invoice register',
+    'Take a snapshot of open invoices, credits, receipt references, due dates and payments already '
+    'scheduled. Capture the proposed responsible entity for review.'),
+   ('Trace payment in flight',
+    'A fictional company initiates an $8,000 payment Thursday and closes Friday before the bank settles it. '
+    'The team marks the invoice pending, tracks the settlement, and agrees who handles it if the payment '
+    'fails.'),
+   ('Validate the first approval cycle',
+    'Confirm approved roles and bank or payment provider access through normal channels. Reconcile the '
+    'opening and first-week balances and give every difference an owner.')],
+  ['Capture open invoices',
+   'Flag payments in flight',
+   'Confirm entity responsibility',
+   'Reconcile first-week balances'],
+  ('Why include invoices already entered for payment?',
+   'Payment initiation and settlement happen at different times. Track both events to prevent a duplicate '
+   'payment or missed obligation.'),
+  ['acquisition-cash-disbursement-controls', 'acquisition-merchant-settlement-cutover']),
+ ('acquisition-service-dispatch-system-test',
+  'Dispatch System Readiness Test After an Acquisition',
+  'Verify the buyer can assign, change and close representative service jobs in the approved environment.',
+  'Select the jobs that most clearly show whether dispatch can serve customers from the first operating day.',
+  [('Design representative tests',
+    'Choose a routine appointment, an urgent reschedule and a job requiring a specific skill or part. Define '
+    'observable results and use authorized test data.'),
+   ('Exercise a reroute',
+    'A fictional test moves a technician across two routes after a customer cancels. Verify the revised '
+    'window, crew notice, visibility of unaffected jobs and how the system records a rollback.'),
+   ('Record release conditions',
+    'Assign an owner for each defect. Decide with operating leaders which problems must be addressed before '
+    'release and verify the approved fallback before the first live shift.')],
+  ['Choose a representative job', 'Exercise a schedule change', 'Validate notices', 'Reconcile the fallback'],
+  ('Does successful sign-in establish readiness?',
+   'Require the intended users to complete the dispatch actions and demonstrate exception handling with '
+   'approved records.'),
+  ['handover-readiness-evidence', 'acquisition-customer-support-cutover']),
+ ('acquisition-recurring-invoice-rate-sampling',
+  'Recurring Invoice Rate Sampling in Acquisition Diligence',
+  'Check upcoming recurring bills against approved customer rates and renewal dates before operating '
+  'handoff.',
+  'Focus the sample on recurring charges whose timing or pricing changed near closing.',
+  [('Define a risk-based sample',
+    'Take accounts with recent renewals, open price disputes, volume tiers and planned increases. Use '
+    'approved agreements, changes and prior invoices.'),
+   ('Recalculate a sample invoice',
+    'A fictional contract bills $500 for the first five units and $80 for each additional unit. Seven units '
+    'should bill $660 before other agreed charges. Check for a stale flat rate or a volume tier applied to '
+    'all units.'),
+   ('Resolve mismatches before cutover',
+    'Document whether the rate or the supporting data is wrong. Have authorized staff confirm fixes, run a '
+    'sample bill and retain sign-off before the first recurring batch.')],
+  ['Sample recent amendments',
+   'Recalculate a tiered bill',
+   'Resolve unsupported rates',
+   'Verify the next run'],
+  ('Is a clean live balance enough?',
+   'Recompute upcoming invoices from written terms and the applicable usage. A reconciled prior balance can '
+   'coexist with a future billing error.'),
+  ['acquisition-customer-contract-rate-review', 'acquisition-billing-cutover'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
