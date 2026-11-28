@@ -748,6 +748,73 @@ TOPICS.extend([('acquisition-channel-revenue-dependence',
    'Use availability by time and skill. Total headcount can hide a gap on a critical shift.'),
   ['acquisition-service-level-commitments', 'handover-readiness-evidence'])])
 
+TOPICS.extend([('acquisition-sales-commission-plan-review',
+  'Sales Commission Plan Review Before Buying a Business',
+  'Test how sales incentives, repayment triggers and payout timing affect margins and transition cash.',
+  'Use the written plans and actual payout history to understand the economics of the sales engine being '
+  'acquired.',
+  [('Map the earning triggers',
+    'Record commission bases, tiers, payout dates, treatment of returns, splits and exceptions. Compare the '
+    'plan approved for each period with historical payments.'),
+   ('Test the cost on one deal',
+    'A fictional seller pays 5% on collected revenue. A $100,000 order is initially billed but only $80,000 '
+    'has been collected. Under that example the result is $4,000 on current collections, with the remaining '
+    'amount conditional on later payment.'),
+   ('Review changes and closing responsibility',
+    'Have qualified advisers assess obligations and the intended treatment across closing. Budget for any '
+    'planned changes and estimate what happens if core producers leave.')],
+  ['Collect signed plans',
+   'Trace actual payouts',
+   'Model returns and delays',
+   'Discuss transition treatment'],
+  ('Why check prior payouts alongside written terms?',
+   'Actual payouts can reveal exceptions or practices that are absent from the documents and relevant to '
+   'transition planning.'),
+  ['employee-accruals-acquisition-diligence', 'acquisition-sales-pipeline-quality']),
+ ('acquisition-data-migration-reconciliation',
+  'Customer Data Migration Reconciliation for Acquisitions',
+  'Verify that customer and order records survive an approved system migration with their relationships '
+  'intact.',
+  'Use authorized export and import procedures, then verify coverage with agreed record counts and test '
+  'cases.',
+  [('Define the data baseline',
+    'Record exported and excluded fields, entity counts, creation and update cutoffs, and relationship keys. '
+    'Obtain authorized access through the intended process and avoid replicating unnecessary personal data.'),
+   ('Test duplicates and attachments',
+    'A fictional buyer imports 11,000 source contacts and sees 10,850 in the target. Check whether '
+    'documented merges explain 150 fewer contacts, then sample the links to orders and attachments.'),
+   ('Sign off the operating handoff',
+    'Require the account owner to find a test customer, open its most recent order, and verify the fields '
+    'used for service and billing. Document unresolved gaps and who decides whether they delay cutover.')],
+  ['Document allowed scope', 'Reconcile record counts', 'Check relationships', 'Get operating sign-off'],
+  ('Can exact counts prove a sound migration?',
+   'Counts should reconcile, and field accuracy, relationships, permissions and workflow usability need '
+   'separate checks.'),
+  ['acquisition-software-license-transfer', 'handover-readiness-evidence']),
+ ('acquisition-customer-contract-exception-log',
+  'Customer Contract Exception Log for Acquisition Diligence',
+  'Find customer-specific promises that may change renewal risk, delivery cost or responsibility after '
+  'closing.',
+  'Identify deviations from standard sales terms and record the evidence for each material exception.',
+  [('Compare contracts and actual practices',
+    'Review signed schedules, amendments, invoicing and account notes. Document which source establishes an '
+    'exception and who can explain unresolved differences.'),
+   ('Estimate operating impact',
+    'A fictional customer gets no-charge emergency visits under an amendment. The account records show 12 '
+    'visits at $220 estimated direct cost each. The buyer places a $2,640 annual assumption in the model and '
+    'tests a higher-usage case.'),
+   ('Transfer decisions with the account',
+    'Ask counsel and the diligence team to review binding terms. Give the account and delivery owners a '
+    'dated record of applicable promises and exceptions to standard procedures.')],
+  ['Collect approved amendments',
+   'Compare service history',
+   'Estimate direct costs',
+   'Assign an account owner'],
+  ('What if a promise only appears in account notes?',
+   'Preserve the evidence, verify the history, and get advice on whether and how it affects the deal and '
+   'operating plan.'),
+  ['acquisition-service-level-commitments', 'acquisition-customer-contract-rate-review'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
