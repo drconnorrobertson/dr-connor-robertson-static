@@ -2845,6 +2845,47 @@ TOPICS.extend([('acquisition-revenue-cutoff-sampling',
    'capacity.'),
   ['acquisition-dock-receiving-capacity', 'acquisition-post-close-inventory-buffer'])])
 
+TOPICS.extend([('acquisition-parts-reorder-parameter-review',
+  'Parts Reorder Parameter Review Before an Acquisition',
+  'Check whether inherited part replenishment settings reflect current demand, supplier lead times and '
+  'minimum orders.',
+  'Sample items whose absence blocks core operations. Compare system parameters with observed demand and '
+  'current supplier evidence.',
+  [('Verify the settings',
+    'Record reorder level, pack size, lead time, committed stock and who reviews parameter changes.'),
+   ('Test a changed supply assumption',
+    'A buyer uses 12 units weekly and finds replenishment now takes three weeks rather than two. At average '
+    'use, lead-time demand rises from 24 to 36 units before any buffer. Check whether the setting accounts '
+    'for the extra 12.'),
+   ('Estimate the transition effect',
+    'Model the stock and cash impact of revised parameters. Ask the operating owner to confirm who reviews '
+    'first-cycle shortages or excess.')],
+  ['Verify current settings', 'Test longer lead times', 'Model cash tied up', 'Assign first-cycle ownership'],
+  ('Should the buyer replace all parameters at once?',
+   'Start with settings that materially affect service or cash. Test corrections against source evidence '
+   'before broad changes.'),
+  ['acquisition-post-close-inventory-buffer', 'acquisition-replacement-inventory-cost']),
+ ('acquisition-equipment-accessory-dependence',
+  'Equipment Accessory Dependence in Acquisition Diligence',
+  'Verify that specialized accessories and attachments are available where the buyer needs them.',
+  'Map tools, fixtures and accessories to the jobs and equipment they support.',
+  [('Identify essential dependencies',
+    'Record compatible equipment, quantity, ownership, condition and approved alternatives. Verify location '
+    'and whether several jobs share the same accessory.'),
+   ('Test competing demand',
+    'Two crews have suitable base units but share one approved attachment. Both need it on opening day. '
+    'Check whether an approved rental or a customer-accepted schedule change can cover the conflict.'),
+   ('Confirm responsibility and costs',
+    'Assign the buyer-side operating owner and verify transfer or rental arrangements. Keep unsupported '
+    'capacity assumptions outside the baseline.')],
+  ['List essential attachments',
+   'Verify approved compatibility',
+   'Check simultaneous work',
+   'Plan a supported fallback'],
+  ('Does ownership of the main machine prove readiness?',
+   'Check the equipment and accessories needed for the actual work, including anything held off-site.'),
+  ['acquisition-service-kit-readiness', 'acquisition-fixed-asset-ownership'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
