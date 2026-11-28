@@ -2439,7 +2439,7 @@ AI_GUIDES_LASTMOD = "2026-09-22"
 AI_PILLAR_LASTMOD = "2026-10-24"
 BRAND_LASTMOD = "2026-10-02"
 BRAND_UPDATED_PAGES = {"/about/", "/speaker/", "/projects/", "/faq/", "/books/", "/podcast/", "/press-media/", "/"}
-ACQUISITIONS_LASTMOD = "2026-09-22"
+ACQUISITIONS_LASTMOD = "2026-11-27"
 
 SITEMAP_PRIORITY = {
     "/": ("1.0", "weekly"),
@@ -2525,6 +2525,10 @@ def sitemap(posts):
     """
     post_by_url = {p["relative_url"]: p for p in posts}
     urls = []
+    acquisition_dates = {
+        f"/business-acquisitions/{guide['slug']}/": guide["published"]
+        for guide in ACQUISITION_GUIDES if "published" in guide
+    }
     for f in sorted(DIST.rglob("index.html")):
         rel = f.relative_to(DIST).parent
         loc = "/" if str(rel) == "." else f"/{rel.as_posix()}/"
@@ -2542,6 +2546,7 @@ def sitemap(posts):
                        AI_PILLAR_LASTMOD if loc == "/ai-business-strategy/" else
                        BRAND_LASTMOD if loc in BRAND_UPDATED_PAGES or loc.startswith(("/books/", "/projects/", "/podcast/")) else
                        ACQUISITIONS_LASTMOD if loc == "/business-acquisitions/" else STATIC_LASTMOD)
+        lastmod = acquisition_dates.get(loc, lastmod)
         if loc in {"/guides/customer-question-csv-to-faq-brief/", "/ai/implementation/"}:
             lastmod = "2026-10-25"
         if loc == "/ai/implementation/knowledge-and-evaluation/evaluation-dataset-design/":
@@ -2770,7 +2775,7 @@ def page_acquisition_guide(guide):
     """Render one search-intent acquisition guide with visible FAQ and schema."""
     href = f"/business-acquisitions/{guide['slug']}/"
     article_id = f"{SITE_URL}{href}#article"
-    published = "2026-09-20"
+    published = guide.get("published", "2026-09-20")
 
     section_html = ""
     for heading, paragraphs in guide["sections"]:
@@ -2809,10 +2814,14 @@ def page_acquisition_guide(guide):
     }
 
     current_index = next(i for i, g in enumerate(ACQUISITION_GUIDES) if g["slug"] == guide["slug"])
-    related = [
-        ACQUISITION_GUIDES[(current_index + offset) % len(ACQUISITION_GUIDES)]
-        for offset in range(1, min(5, len(ACQUISITION_GUIDES)))
-    ]
+    if "related" in guide:
+        by_slug = {item["slug"]: item for item in ACQUISITION_GUIDES}
+        related = [by_slug[slug] for slug in guide["related"]]
+    else:
+        related = [
+            ACQUISITION_GUIDES[(current_index + offset) % len(ACQUISITION_GUIDES)]
+            for offset in range(1, min(5, len(ACQUISITION_GUIDES)))
+        ]
     related_html = "".join(
         f'<div class="pill"><h3><a href="/business-acquisitions/{g["slug"]}/">{esc(g["title"])}</a></h3><p>{esc(g["description"])}</p></div>'
         for g in related
@@ -2840,7 +2849,7 @@ def page_acquisition_guide(guide):
 <div class="guide-kicker">{esc(guide['eyebrow'])}</div>
 <h1>{esc(guide['title'])}</h1>
 <p>{esc(guide['lead'])}</p>
-<p class="guide-meta">Written and reviewed by Dr. Connor Robertson | Updated September 20, 2026</p>
+<p class="guide-meta">{f'Published {published}' if "published" in guide else "Written and reviewed by Dr. Connor Robertson | Updated September 20, 2026"}</p>
 </div></section>
 <section class="sec"><article class="ctn" style="max-width:880px">
 {section_html}
