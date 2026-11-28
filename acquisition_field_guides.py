@@ -1184,6 +1184,72 @@ TOPICS.extend([('acquisition-equipment-lease-obligations',
    'Check the share beyond promised dates and inspect long-tail delays alongside the average.'),
   ['acquisition-backlog-due-diligence', 'acquisition-supplier-payment-terms'])])
 
+TOPICS.extend([('acquisition-outsourced-payroll-handoff',
+  'Outsourced Payroll Provider Handoff in an Acquisition',
+  'Plan payroll provider responsibilities and first-cycle evidence without exchanging credentials or '
+  'exposing employee files.',
+  'Coordinate with authorized payroll owners and advisers to identify the first cycle each team owns.',
+  [('Build the pay-cycle calendar',
+    'Record pay-period and submission cutoffs, responsible employer or business entity, approved signers and '
+    'vendor support. Confirm which qualified adviser handles jurisdiction-specific questions.'),
+   ('Walk through the first cycle',
+    'A buyer closes Thursday and the next payroll submission is due Monday. The payroll lead documents who '
+    'validates hours, who authorizes the file, and what confirmation will show the provider accepted it.'),
+   ('Establish continuity evidence',
+    'Use authorized test procedures and retain only necessary summary evidence in the diligence log. Confirm '
+    'responsible owners for failed items and employee inquiries.')],
+  ['Map first pay dates',
+   'Confirm provider ownership',
+   'Test authorized workflow',
+   'Verify exception contacts'],
+  ('Should the buyer adopt the seller’s login?',
+   'Obtain approved access through the provider and verify the intended roles through the deal process.'),
+  ['day-one-acquisition-continuity-checklist', 'employee-accruals-acquisition-diligence']),
+ ('acquisition-returns-authorization-cutover',
+  'Returns Authorization Cutover When Buying a Business',
+  'Transfer open returns and promised dispositions without losing refund or replacement commitments.',
+  'Start with returns already promised and establish which authorized team can approve each next step.',
+  [('Build the open returns register',
+    'Record the original sale, authorization date, item condition, expected disposition, deadlines and '
+    'settlement status. Match physical returns to customer and finance records.'),
+   ('Walk a split case through closing',
+    'A customer’s replacement was shipped before close but the original unit arrives after close. Identify '
+    'who checks receipt and whether the agreement calls for a refund, a stock adjustment or closure only.'),
+   ('Reconcile the first week',
+    'Have advisers confirm which obligations transfer and give operating leads responsibility for unresolved '
+    'cases. Verify credits and replacement records against the original order.')],
+  ['List open returns',
+   'Match customer promises',
+   'Confirm settlement ownership',
+   'Review first-week exceptions'],
+  ('Why include replacements already shipped?',
+   'The business may still need to inspect the original unit, update stock, or settle a charge when it '
+   'arrives.'),
+  ['acquisition-customer-refund-exposure', 'acquisition-billing-cutover']),
+ ('acquisition-supplier-onboarding-timing',
+  'Supplier Onboarding Timing in Acquisition Diligence',
+  'Estimate when the buyer can place its first accepted order with essential suppliers.',
+  'Map the administrative and operational steps suppliers require before they accept orders from the '
+  'purchasing entity.',
+  [('Identify required approvals',
+    'Request the supplier’s authorized onboarding process, account lead time, credit requirements, ordering '
+    'method and cutoff. Compare those dates with key material requirements.'),
+   ('Run a dated supply scenario',
+    'A buyer needs materials 18 days after closing. Account setup takes 10 days and delivery takes 12 after '
+    'order. Identify a four-day gap and evaluate whether previously authorized orders or temporary stock can '
+    'cover it.'),
+   ('Assign continuity checks',
+    'Have the deal team approve correspondence and responsibilities. Verify the first test order, delivery '
+    'promise and approved payment setup before treating the dependency as resolved.')],
+  ['List essential suppliers',
+   'Confirm lead times',
+   'Model the readiness gap',
+   'Verify first-order ownership'],
+  ('Is an approved application enough to show readiness?',
+   'Confirm the supplier can accept the buyer’s order under the documented terms and provide a delivery '
+   'date.'),
+  ['acquisition-third-party-permissions', 'acquisition-open-purchase-orders'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
