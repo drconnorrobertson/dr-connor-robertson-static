@@ -2974,6 +2974,45 @@ TOPICS.extend([('acquisition-customer-forecast-accuracy',
    'Trace a sample of individual records and categories to catch offsetting differences in the aggregate.'),
   ['acquisition-customer-reporting-obligations', 'acquisition-first-week-issue-triage'])])
 
+TOPICS.extend([('acquisition-shipping-cutoff-capacity',
+  'Shipping Cutoff Capacity in Acquisition Diligence',
+  'Test whether the buyer can meet daily carrier pickups with the staff, packaging and release times '
+  'available.',
+  'Model the real time between approved order release and the confirmed carrier cutoff.',
+  [('Assemble the cutoff evidence',
+    'Record order arrival patterns, carrier pickup times, picking and packing rates, and exceptions that '
+    'require review.'),
+   ('Test the peak-hour load',
+    'A fictional warehouse can pack 36 orders per hour and has 90 minutes before pickup. It can handle 54 '
+    'orders at that rate before exceptions. A queue of 67 leaves 13 orders requiring earlier release, added '
+    'capacity or a revised promise.'),
+   ('Carry the gap into the plan',
+    'Check the available alternatives with operations. Keep capacity gains in a separate scenario until the '
+    'team demonstrates them with comparable orders.')],
+  ['Verify carrier cutoffs', 'Measure packing capacity', 'Stress-test a peak', 'Assign the first-week owner'],
+  ('Can an average daily packing rate prove the cutoff is achievable?',
+   'Check the work that arrives during the actual window. A daily average can obscure a late-afternoon '
+   'queue.'),
+  ['acquisition-order-fulfillment-lead-time', 'acquisition-dock-receiving-capacity']),
+ ('acquisition-service-scrap-cost',
+  'Service Parts Scrap Cost Review Before an Acquisition',
+  'Estimate the recurring cost of damaged and unusable service parts after verified recoveries.',
+  'Distinguish parts written off during service work from returned parts and separate stock-count '
+  'corrections.',
+  [('Group costs by reason',
+    'Tie scrap entries to service records, part cost, lot and any approved supplier credit. Check how the '
+    'seller recorded disposal costs.'),
+   ('Reconcile a sample month',
+    'A fictional operator writes off $4,600 of parts and receives $1,300 in documented supplier credits. The '
+    'period has $3,300 in net part cost before any disposal or review labor.'),
+   ('Test whether the cost persists',
+    'Ask which damage patterns recur and which changes have already reduced them. Verify that proposed '
+    'forecast adjustments do not deduct the same supplier credit twice.')],
+  ['Trace entries to jobs', 'Verify part costs', 'Reconcile recoveries', 'Test recurring causes'],
+  ('Should the buyer adjust the forecast for a claimed improvement?',
+   'Require comparable results after the change before carrying it into the baseline.'),
+  ['acquisition-inventory-shrink-review', 'acquisition-warranty-supplier-recovery'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
