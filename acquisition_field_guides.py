@@ -1576,6 +1576,68 @@ TOPICS.extend([('acquisition-supplier-minimum-purchase',
    'handoff.'),
   ['acquisition-customer-support-cutover', 'acquisition-customer-service-credit-exposure'])])
 
+TOPICS.extend([('acquisition-seller-training-milestones',
+  'Seller Training Milestones After an Acquisition',
+  'Translate seller transition hours into specific training outcomes the buyer can verify.',
+  'Start with tasks the team cannot yet perform independently and specify who must demonstrate each one.',
+  [('Prioritize tasks by operational exposure',
+    'Map recurring workflows, approval exceptions, customer introductions and undocumented records. Tie each '
+    'session to the job the new owner needs to perform.'),
+   ('Define a completion test',
+    'A fictional buyer schedules two walkthroughs for a monthly supplier order. The buyer demonstrates a '
+    'sample order using approved access, explains who approves a variance, and verifies where the record '
+    'will be stored.'),
+   ('Review unresolved tasks before hours expire',
+    'Record evidence and outstanding dependencies at each milestone. Arrange interim coverage for critical '
+    'tasks and discuss any agreement changes through the authorized deal team.')],
+  ['List critical tasks',
+   'Name a learner and verifier',
+   'Record completion evidence',
+   'Plan interim coverage'],
+  ('Should hours alone count as completion?',
+   'Use hours for scheduling and verify separately that the responsible person can perform the task under '
+   'expected conditions.'),
+  ['owner-dependence-due-diligence', 'handover-readiness-evidence']),
+ ('acquisition-return-freight-cost',
+  'Return Freight Cost Exposure in Acquisition Diligence',
+  'Reconcile return shipping to credits and test which channels or product lines bear the cost.',
+  'Start with orders returned in a completed cohort, including no-charge replacements and partial returns.',
+  [('Collect charge and policy records',
+    'Compare carrier bills, return authorizations, customer credits and supplier recoveries. Record who paid '
+    'under the policy and who paid in practice.'),
+   ('Test unit economics by channel',
+    'A fictional channel has 150 returns, each averaging $18 of buyer-paid inbound freight. The baseline is '
+    '$2,700 before handling. Separate $450 in verified reimbursements to estimate $2,250 in net freight.'),
+   ('Check future policy assumptions',
+    'Review material commitments with advisers and compare the cost under retained or altered sales '
+    'channels. Ask operations to verify which return causes they can address.')],
+  ['Match freight to returns', 'Verify reimbursements', 'Compute net cost', 'Model channel differences'],
+  ('Is the refund total enough to estimate exposure?',
+   'Trace freight, handling and recoveries separately to understand the operational cost of a return.'),
+  ['acquisition-returns-authorization-cutover', 'acquisition-expedited-shipping-cost']),
+ ('acquisition-inventory-obsolescence-review',
+  'Inventory Obsolescence Review Before Buying a Business',
+  'Evaluate whether slow or superseded stock can sell and how that affects expected recovery.',
+  'Review inventory by item history, usable condition and realistic customer demand.',
+  [('Build the aging and movement view',
+    'Identify last receipts and sales, substitutions, current demand, restrictions, and how each item was '
+    'valued by the seller.'),
+   ('Estimate recovery under distinct scenarios',
+    'A fictional business holds 300 units at $20 each. Regular demand supports 100 units and a buyer has a '
+    'supported clearance offer of $8 for the remaining 200, before handling. Model both outcomes rather than '
+    'relying on the $6,000 booked total.'),
+   ('Confirm disposition and forecasts',
+    'Have qualified advisers assess deal treatment. Assign an operating owner to verify demand and determine '
+    'timing and costs for approved disposal or clearance.')],
+  ['Compare movement and age',
+   'Verify usable condition',
+   'Model supported recovery',
+   'Confirm deal treatment'],
+  ('Should all slow stock be valued at zero?',
+   'Tie estimated recovery to condition, documented demand, approved uses, and relevant disposal or selling '
+   'costs.'),
+  ['inventory-due-diligence-small-business', 'acquisition-inventory-shrink-review'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
