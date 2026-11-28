@@ -2107,6 +2107,49 @@ TOPICS.extend([('acquisition-customer-master-handoff',
    'Confirm which windows still apply and which changes the customer authorized.'),
   ['acquisition-route-coverage-readiness', 'acquisition-dispatch-travel-cost'])])
 
+TOPICS.extend([('acquisition-supplier-freight-terms',
+  'Supplier Freight Terms Review in Acquisition Diligence',
+  'Recalculate landed costs when freight responsibilities, minimum order rules or delivery points may change '
+  'after closing.',
+  'Collect current supplier and carrier evidence before assuming the buyer will inherit historical shipping '
+  'economics.',
+  [('Map the delivered-cost components',
+    'Compare quoted price, destination, free-freight thresholds, volume and recent surcharges. Identify who '
+    'pays for insurance, handling and delivery exceptions under the relevant documents.'),
+   ('Model one smaller order',
+    'A fictional supplier charges $180 freight when an order is below $3,000. The buyer expects typical '
+    'orders of $2,400. Compare paying freight, consolidating orders, or carrying additional inventory and '
+    'its cash cost.'),
+   ('Verify support for the transition case',
+    'Ask advisers to review contractual obligations. Confirm available rates through authorized channels and '
+    'show unsupported freight offsets separately.')],
+  ['Collect recent invoices',
+   'Verify freight thresholds',
+   'Model order-size alternatives',
+   'Confirm post-close terms'],
+  ('Does free freight always improve cash flow?',
+   'Buying extra stock solely to cross a threshold can tie up cash and increase carrying costs. Compare the '
+   'total cost under each option.'),
+  ['acquisition-replacement-inventory-cost', 'acquisition-supplier-minimum-purchase']),
+ ('acquisition-post-close-inventory-buffer',
+  'Post-Close Inventory Buffer Planning for Business Buyers',
+  'Estimate how much extra inventory can bridge verified supplier or receiving delays after closing.',
+  'Use a dated schedule of demand and replenishment to identify a temporary stock gap.',
+  [('Establish the usable opening position',
+    'Start from the reconciled count, subtract held or customer-owned items, and map scheduled receipts. '
+    'Separate safety stock already included in the operating forecast.'),
+   ('Calculate a minimum bridge',
+    'A fictional buyer uses 30 units weekly and expects a three-week gap before the first new receipt. It '
+    'has 60 usable units. Secure at least 30 more units or an approved equivalent supply, then test whether '
+    'demand could rise.'),
+   ('Set release and review dates',
+    'Assign purchasing responsibility and document who may use reserved stock. Revisit after the first '
+    'reliable delivery and avoid carrying a permanent buffer in the model without evidence.')],
+  ['Reconcile usable stock', 'Map first receipts', 'Calculate the temporary gap', 'Set a review date'],
+  ('Should the buyer apply the same buffer to every item?',
+   'Prioritize items whose absence stops committed work and whose replenishment dates remain uncertain.'),
+  ['acquisition-opening-inventory-reconciliation', 'acquisition-supplier-onboarding-timing'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
