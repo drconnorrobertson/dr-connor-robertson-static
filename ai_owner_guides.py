@@ -91,6 +91,22 @@ GUIDES = [
 
 
 PRACTICE = {
+    "chatgpt-vs-claude-for-small-business": """<h2>Run a side-by-side renewal test</h2>
+<p>Copy the same fictional packet and prompt into separate fresh conversations. Give each tool the same inputs and access to sources. Have a colleague label the outputs A and B before the reviewer reads them.</p>
+<pre>Signed agreement §4: Renews July 1, 2027 unless written notice is received by May 31, 2027.
+Signed agreement §7: Renewal price is $600 per month for 30 seats.
+Usage export, April 30: 18 of 30 seats used in the prior 30 days.
+Vendor email, May 4: We can discuss a smaller seat package.
+No signed amendment is included.</pre>
+<p><strong>Expected answer:</strong> Notice is due May 31, 2027. The existing renewal price is $600 per month. Twelve seats had no recorded use. The email identifies a negotiation option, and the price or terms of a smaller package remain unconfirmed.</p>
+<table><thead><tr><th scope="col">Check</th><th scope="col">What earns a pass</th></tr></thead><tbody>
+<tr><td>Deadline</td><td>May 31, 2027 is identified as the notice deadline and cited to §4.</td></tr>
+<tr><td>Price and usage</td><td>The draft cites §7 and the April export for $600 per month and 18 of 30 seats used.</td></tr>
+<tr><td>Uncertainty</td><td>The draft treats a smaller package as an option and asks for written terms.</td></tr>
+<tr><td>Review effort</td><td>Record minutes from opening the draft to approval, including corrections.</td></tr>
+</tbody></table>
+<h2>Test what happens when the evidence is incomplete</h2>
+<p>Run a second round with the May 31 date removed from the packet. A usable draft should tell the contract owner to verify the notice deadline before deciding. Score each round separately. If both tools pass the required facts and uncertainty checks, compare review time and workspace cost per approved brief. If neither passes, revise the instructions and test again before using either in the renewal process.</p>""",
     "codex-for-business-owners": """<h2>Choose your first Codex project</h2>
 <table><thead><tr><th scope="col">Candidate</th><th scope="col">First release</th><th scope="col">Evidence to review</th></tr></thead><tbody>
 <tr><td>Operations reporting</td><td>Read a copy of a daily export and show late orders.</td><td>Reconcile the report against the existing spreadsheet and explain every unmatched order.</td></tr>
