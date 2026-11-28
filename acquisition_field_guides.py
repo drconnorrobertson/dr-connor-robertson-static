@@ -1058,6 +1058,69 @@ TOPICS.extend([('acquisition-customer-service-credit-exposure',
    'Review whether the underlying cause persists and how the buyer would meet the same commitments.'),
   ['supplier-concentration-acquisition', 'acquisition-gross-margin-bridge'])])
 
+TOPICS.extend([('acquisition-customer-price-escalation',
+  'Customer Price Escalation Clauses in Acquisition Diligence',
+  'Map what customer agreements actually permit the business to charge as operating costs change.',
+  'Separate proposed increases, permitted increases, and changes already reflected in actual customer bills.',
+  [('Build an escalation calendar',
+    'Record terms, calculation base, notice window, effective date and caps from the signed documents. '
+    'Verify the contract version and invoice owner.'),
+   ('Test offset timing',
+    'A fictional operator expects supplier costs to rise by $30,000 annually. A potential customer increase '
+    'offsets $18,000 at a full run rate, but takes effect six months later. Model the delay separately from '
+    'the eventual contribution.'),
+   ('Verify before forecasting',
+    'Ask qualified advisers to review material clauses and confirm how notices are handled. Reconcile '
+    'forecast amounts to invoices as increases take effect.')],
+  ['Collect terms and amendments',
+   'Verify dates and caps',
+   'Model timing and margin',
+   'Confirm notice ownership'],
+  ('Can the buyer assume a full-year offset?',
+   'Only model a full-year effect in periods when the higher rate applies to the relevant orders.'),
+  ['acquisition-customer-contract-rate-review', 'acquisition-price-increase-exposure']),
+ ('acquisition-warranty-supplier-recovery',
+  'Supplier Warranty Recovery in Acquisition Diligence',
+  'Reconcile supplier reimbursements against warranty costs and check whether claims remain collectible.',
+  'Use the work order and supplier claim as separate records, then link them for analysis.',
+  [('Trace eligible claims',
+    'Gather supplier terms, approval records, affected parts, claim deadlines, and credits. Separate '
+    'submitted claims from accepted or paid claims.'),
+   ('Test net exposure',
+    'A fictional seller records $38,000 of gross warranty costs and $12,000 in expected supplier recovery. '
+    'The buyer finds evidence of $8,000 accepted by the supplier and models the remaining $4,000 as a '
+    'separate outcome.'),
+   ('Verify transition ownership',
+    'Ask the deal team to confirm which balances and responsibilities transfer. Give an authorized team '
+    'member the next action and deadline for unresolved claims.')],
+  ['Gather claim terms', 'Tie claims to work orders', 'Reconcile credits', 'Assign follow-up'],
+  ('Is expected supplier recovery the same as a settled credit?',
+   'Track expected, approved, and settled amounts independently until the transaction is reconciled.'),
+  ['acquisition-warranty-claims-review', 'acquisition-supplier-rebate-reconciliation']),
+ ('acquisition-overtime-coverage-cost',
+  'Overtime Coverage Cost Review Before Buying a Business',
+  'Check whether overtime is driven by seasonal demand, staffing gaps or training requirements before '
+  'forecasting labor costs.',
+  'Review paid hours by shift and work type alongside jobs completed, schedules and planned headcount.',
+  [('Reconcile the labor evidence',
+    'Compare payroll summaries, scheduled shifts and job records for comparable periods. Identify seasonal '
+    'peaks, vacant shifts and unusual customer commitments.'),
+   ('Model a coverage alternative',
+    'A fictional operation uses 160 overtime hours monthly at a loaded rate of $48. It expects to replace '
+    '100 hours with regular coverage at $34. The direct modeled saving is $1,400 before considering hiring, '
+    'training, scheduling and coverage costs.'),
+   ('Check post-close feasibility',
+    'Have operations test whether the intended staffing plan covers the same work and service windows. '
+    'Retain a downside case until the additional coverage is demonstrated.')],
+  ['Align records and periods',
+   'Classify overtime causes',
+   'Calculate alternative coverage',
+   'Validate service capacity'],
+  ('Should overtime be removed as a one-time cost?',
+   'Assess whether the underlying work and staffing conditions persist before making any diligence '
+   'adjustment.'),
+  ['acquisition-service-staffing-coverage', 'acquisition-contractor-capacity-review'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
