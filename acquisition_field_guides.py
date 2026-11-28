@@ -2274,6 +2274,47 @@ TOPICS.extend([('acquisition-bank-reconciliation-cutover',
    'separate credit.'),
   ['acquisition-customer-contract-rate-review', 'acquisition-recurring-invoice-rate-sampling'])])
 
+TOPICS.extend([('acquisition-dock-receiving-capacity',
+  'Dock Receiving Capacity Review Before Buying a Business',
+  'Test whether receiving windows, inspections and staffing can absorb the inbound load after closing.',
+  'Use real inbound appointments and match the proposed capacity to delivery commitments.',
+  [('Build the dock schedule',
+    'Record booked slots, dock restrictions, unloading duration, inspection capacity and average backlog of '
+    'unposted goods.'),
+   ('Stress-test an inbound peak',
+    'A fictional buyer expects seven loads Monday. Each requires 45 minutes at the only suitable dock. That '
+    'is 5 hours and 15 minutes of dock time before setup or delays. Check actual staffing and whether '
+    'critical loads can move earlier.'),
+   ('Confirm first-week ownership',
+    'Verify who controls bookings and handles rejected or delayed deliveries. Put any temporary labor or '
+    'storage costs into the transition forecast.')],
+  ['Confirm dock restrictions', 'Estimate load time', 'Model overlap', 'Assign receiving decisions'],
+  ('Can the buyer infer capacity from dock count?',
+   'Check which loads, staff and inspection steps each dock can support during the intended operating '
+   'hours.'),
+  ['acquisition-inventory-in-transit', 'acquisition-opening-inventory-reconciliation']),
+ ('acquisition-subscription-billing-proration',
+  'Subscription Billing Proration Review in Acquisition Diligence',
+  'Test whether partial-cycle subscription charges and credits follow documented terms before billing moves '
+  'to the buyer.',
+  'Start with accounts whose activation, expansion or cancellation falls within a billing period.',
+  [('Map partial-period rules',
+    'Record rate, billing period, permitted rounding, timezone and whether service dates are inclusive. '
+    'Compare signed terms with configuration.'),
+   ('Recalculate a sample change',
+    'A fictional plan costs $300 for a 30-day period. A mid-cycle add-on costing $120 per full period '
+    'applies to 10 of those days. Under straight daily proration, it adds $40 before taxes or credits.'),
+   ('Verify opening and next-cycle results',
+    'Compare approved samples with setup in the buyer system. Have advisers and billing staff resolve '
+    'material differences and confirm who issues any correction.')],
+  ['Collect proration terms',
+   'Confirm dates and rounding',
+   'Recompute a sample charge',
+   'Check the next full invoice'],
+  ('Should a partial charge become the next recurring rate?',
+   'Confirm how the agreement prices a full cycle. The prorated amount relates only to its partial period.'),
+  ['acquisition-recurring-invoice-rate-sampling', 'acquisition-billing-cutover'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
