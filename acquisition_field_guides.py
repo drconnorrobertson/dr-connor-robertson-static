@@ -2530,6 +2530,51 @@ TOPICS.extend([('acquisition-purchase-price-variance',
    'Verify ongoing customer demand and ability to serve the work before including it in a forecast.'),
   ['acquisition-sales-pipeline-quality', 'acquisition-service-staffing-coverage'])])
 
+TOPICS.extend([('acquisition-customer-approval-latency',
+  'Customer Approval Latency in Acquisition Diligence',
+  'Measure how waiting for customer decisions affects project schedules and expected collections.',
+  'Check whether the seller’s forecasts account for dependencies customers control before production, '
+  'delivery or billing can proceed.',
+  [('Reconstruct approval timelines',
+    'Record when a complete request was sent, when the customer responded, and which milestone depended on '
+    'it. Separate internal preparation time and customer review time.'),
+   ('Test a cash timing assumption',
+    'A fictional operator forecasts invoicing on day 20. Comparable approvals take 12 days after a '
+    'submission made on day 15, pushing likely approval to day 27. Model the seven-day difference before '
+    'applying collection terms.'),
+   ('Validate the operating response',
+    'Identify accounts with repeated delays and verify which information can be sent earlier. Ask the deal '
+    'team to review material contract dependencies and retain a delay scenario.')],
+  ['Identify dependent milestones',
+   'Use complete submission dates',
+   'Compare historical approval time',
+   'Review collection timing'],
+  ('Is the average approval time enough?',
+   'Inspect slow cases and customer-specific patterns when single approvals materially affect cash or '
+   'capacity.'),
+  ['acquisition-customer-acceptance-backlog', 'acquisition-work-in-progress-review']),
+ ('acquisition-supplier-quality-hold-exposure',
+  'Supplier Quality Hold Exposure Before Buying a Business',
+  'Determine which inbound stock cannot yet support open orders and estimate the cost of resolving material '
+  'holds.',
+  'Use receiving and inspection evidence to distinguish physical stock from material available for '
+  'production or sale.',
+  [('Build the held-stock schedule',
+    'Record item, lot, quantity, inspection requirements, review owner, affected order and any approved '
+    'alternative. Confirm whether suppliers accepted disputed quantities.'),
+   ('Model available and blocked material',
+    'A fictional warehouse has 240 units on hand, of which 70 are held. Confirmed orders need 200 before new '
+    'stock arrives, producing a 30-unit shortfall unless the held units clear or the buyer sources approved '
+    'alternatives.'),
+   ('Verify the transition decision',
+    'Ask qualified owners to confirm which inspections and supplier responses remain open. Have advisers '
+    'review material costs and carry the projected shortage into the delivery plan.')],
+  ['Separate held stock', 'Link affected orders', 'Evaluate release evidence', 'Price feasible alternatives'],
+  ('Does a physical count establish usable stock?',
+   'A count verifies quantity at the cutoff. Check release, ownership and condition before treating those '
+   'units as usable.'),
+  ['acquisition-opening-inventory-reconciliation', 'inventory-due-diligence-small-business'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
