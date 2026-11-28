@@ -2708,6 +2708,52 @@ TOPICS.extend([('acquisition-customer-address-exception-review',
    'order.'),
   ['acquisition-consignment-inventory-review', 'acquisition-opening-inventory-reconciliation'])])
 
+TOPICS.extend([('acquisition-damaged-stock-recovery',
+  'Damaged Stock Recovery in Acquisition Diligence',
+  'Assess whether damaged stock can be repaired, returned, resold or recovered through claims.',
+  'Review damaged stock as its own population and request evidence for each material recovery assumption.',
+  [('Map supported dispositions',
+    'Record condition, quantity, book amount, approved supplier return terms, repair quotes and relevant '
+    'claim evidence. Have qualified staff confirm usable condition.'),
+   ('Estimate net recovery',
+    'A fictional buyer finds 50 damaged units. Twenty have an approved $30 supplier credit each, while '
+    'preparing them for return costs $140. Record the $460 modeled net recovery separately from the other 30 '
+    'units.'),
+   ('Assign post-close responsibility',
+    'Ask advisers to review agreed inventory treatment and transfer of claims. Give each unresolved group an '
+    'owner and a decision date.')],
+  ['Identify damaged units',
+   'Verify approved recovery',
+   'Subtract handling costs',
+   'Confirm closing responsibility'],
+  ('Should book value determine expected recovery?',
+   'Estimate from supported disposition proceeds and associated costs, and discuss formal valuation '
+   'treatment with advisers.'),
+  ['acquisition-inventory-obsolescence-review', 'acquisition-supplier-return-authorization']),
+ ('acquisition-service-kit-readiness',
+  'Service Kit Readiness Before Buying a Business',
+  'Confirm that vehicles and service kits contain the materials required for the first scheduled jobs.',
+  'Begin with the planned first-week work and tie each job type to the equipment, tools and consumables it '
+  'needs.',
+  [('Build the readiness list',
+    'Record each required item, approved substitute, quantity on hand, storage location and who can issue '
+    'it. Separate items already reserved for other work.'),
+   ('Test the first route',
+    'A fictional buyer sees six service kits available, but only four include the adapters needed for five '
+    'scheduled installs. Assign four complete kits and arrange an approved fifth adapter before confirming '
+    'the schedule.'),
+   ('Verify the handoff',
+    'Ask a qualified crew lead to review a representative load and confirm replacements. Reflect documented '
+    'shortages in the first-week schedule and budget.')],
+  ['Map jobs to kit requirements',
+   'Verify available components',
+   'Resolve shortages',
+   'Confirm the first route'],
+  ('Does a kit count prove the contents are ready?',
+   'Check the parts and equipment required by the scheduled job. Similar kits can support different '
+   'applications.'),
+  ['acquisition-route-coverage-readiness', 'acquisition-equipment-spare-parts-dependence'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
