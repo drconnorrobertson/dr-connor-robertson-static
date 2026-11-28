@@ -1511,6 +1511,71 @@ TOPICS.extend([('acquisition-contract-auto-renewal-exposure',
    'changes received near the cutover.'),
   ['acquisition-accounts-payable-cutover', 'acquisition-cash-disbursement-controls'])])
 
+TOPICS.extend([('acquisition-supplier-minimum-purchase',
+  'Supplier Minimum Purchase Commitments in Acquisition Diligence',
+  'Identify minimum purchase clauses, shortfall exposure and timing before finalizing a buyer’s forecast.',
+  'Start with current executed supplier agreements and the purchases counted under each commitment.',
+  [('Build a commitment schedule',
+    'Record the measurement period, eligible purchases, true-up calculation, expiration, and counterparty. '
+    'Match each obligation to a forecast line and actual purchase history.'),
+   ('Estimate potential shortfall',
+    'A fictional contract requires 10,000 qualifying units for the year and charges $4 for each unit below '
+    'the minimum. A buyer forecasts 8,600 units. Under the stated assumptions, the shortfall charge would be '
+    '$5,600.'),
+   ('Compare documented options',
+    'Consider planned demand, carrying costs, and any permitted renegotiation. Ask the deal team to review '
+    'contractual treatment and record who owns the next threshold decision.')],
+  ['Verify minimum terms',
+   'Reconcile eligible purchases',
+   'Calculate the shortfall',
+   'Assign the next decision'],
+  ('Can purchase forecasts substitute for eligible units?',
+   'Use the contract’s eligibility terms and compare with dated actual purchases before determining the '
+   'gap.'),
+  ['acquisition-supplier-payment-terms', 'acquisition-supplier-rebate-reconciliation']),
+ ('acquisition-customer-acceptance-backlog',
+  'Customer Acceptance Backlog in Acquisition Diligence',
+  'Identify delivered work still waiting for acceptance and test the effect on invoicing and cash.',
+  'Separate orders awaiting delivery from work already delivered that still needs customer sign-off.',
+  [('Build the acceptance queue',
+    'Track delivery evidence, required approval, responsible account owner, billing trigger, and unresolved '
+    'objections. Reconcile to open projects and invoice records.'),
+   ('Trace delayed cash',
+    'A fictional project earns a $22,000 final billing when the customer approves documentation. Work is '
+    'finished, but a missing inspection report delays acceptance two weeks. Reflect the delay in the cash '
+    'forecast and assign the missing input.'),
+   ('Carry commitments through closing',
+    'Have advisers review material acceptance and billing terms. Give the buyer a dated queue with a '
+    'specified person to complete evidence and contact authorized customer representatives.')],
+  ['Separate delivery and acceptance',
+   'Confirm billing triggers',
+   'Model collection timing',
+   'Transfer follow-up ownership'],
+  ('Can delivered work be treated as unconditional cash?',
+   'Check whether acceptance or another contractual step must occur before invoicing or collection.'),
+  ['acquisition-work-in-progress-review', 'acquisition-billing-cutover']),
+ ('acquisition-open-service-escalations',
+  'Open Customer Escalations Review Before an Acquisition',
+  'Review the most material customer issues and assign responsibility for remedies, communications, and '
+  'follow-up.',
+  'Start with escalations that could disrupt a renewal, produce a remedy cost, or strain service capacity '
+  'after closing.',
+  [('Build an evidence-based issue register',
+    'Capture account, problem, impacted service, promised response, known cost, responsible owner and '
+    'relevant agreement. Distinguish requested remedies from approved ones.'),
+   ('Walk a major account issue',
+    'A fictional buyer finds an account awaiting a replacement visit and requesting a $6,000 credit. Verify '
+    'whether the credit was approved, confirm who owns the visit, and model the documented remedy separately '
+    'from the open request.'),
+   ('Verify transition actions',
+    'Align responsibility with the deal team and transfer only authorized records. Give the first operating '
+    'week a due-date review for unresolved escalations.')],
+  ['List material issues', 'Verify prior promises', 'Identify cost scenarios', 'Assign follow-through'],
+  ('Should every open ticket enter the diligence log?',
+   'Include issues material to continuity or economics and put ordinary cases in the approved support '
+   'handoff.'),
+  ['acquisition-customer-support-cutover', 'acquisition-customer-service-credit-exposure'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
