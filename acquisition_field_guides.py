@@ -1885,6 +1885,70 @@ TOPICS.extend([('acquisition-dispatch-travel-cost',
    'impact.'),
   ['day-one-acquisition-continuity-checklist', 'handover-readiness-evidence'])])
 
+TOPICS.extend([('acquisition-opening-inventory-reconciliation',
+  'Opening Inventory Reconciliation After an Acquisition',
+  'Compare the closing count with the buyer’s first inventory balances and resolve quantity and ownership '
+  'differences.',
+  'Use a single cutoff and a documented source for the closing inventory population.',
+  [('Align the count and import',
+    'Capture approved count files, excluded property, item conversions, receiving and shipment activity '
+    'around close. Retain the reference for every adjustment.'),
+   ('Trace a first-day difference',
+    'A fictional buyer imports 420 units but the signed count shows 400. Trace the extra 20 to a receipt '
+    'recorded after the agreed cutoff and verify whether it should be a separate opening-day transaction.'),
+   ('Close exceptions with evidence',
+    'Record the approved correction, responsible owner and supporting records. Have advisers review closing '
+    'adjustments and avoid using the inventory system to settle disputed deal terms.')],
+  ['Agree the cutoff',
+   'Check units and ownership',
+   'Trace post-cutoff movements',
+   'Document approved corrections'],
+  ('Can the buyer overwrite the opening count with a later count?',
+   'Keep both snapshots and reconcile intervening movements so the difference stays traceable.'),
+  ['inventory-due-diligence-small-business', 'acquisition-inventory-in-transit']),
+ ('acquisition-supplier-price-file-cutover',
+  'Supplier Price File Cutover in Business Acquisitions',
+  'Verify purchase prices and effective dates before the buyer issues its first orders.',
+  'Build the approved supplier price set from agreed rate files and executable purchasing terms.',
+  [('Map records to item and supplier',
+    'Record currency, purchase unit, volume tiers, freight treatment, effective dates and signed '
+    'references.'),
+   ('Test a first-order result',
+    'A fictional price file lists $120 per case of 12. An import treats the amount as an each price. Test '
+    'the total for two cases and resolve the conversion before authorizing a live order.'),
+   ('Plan the exception process',
+    'Reconcile a sample order acknowledgement and invoice to the approved file. Give price discrepancies an '
+    'owner and review cutoff-period terms with deal advisers.')],
+  ['Verify purchase units',
+   'Record prices and dates',
+   'Test a first purchase',
+   'Reconcile supplier confirmation'],
+  ('Why compare the acknowledgement after cutover?',
+   'It confirms whether the supplier accepted the price and terms the buyer used in the order.'),
+  ['acquisition-price-increase-exposure', 'acquisition-vendor-master-handoff']),
+ ('acquisition-route-coverage-readiness',
+  'Route Coverage Readiness Before a Service Acquisition',
+  'Check whether each inherited customer route has qualified staffing, transport and usable site access.',
+  'Use the first full schedule after closing and identify who can handle both routine visits and exceptions.',
+  [('Match commitments to assigned capacity',
+    'Confirm customer windows, service areas, equipment, travel and skill needs. Identify routes that rely '
+    'on seller staff or an unconfirmed contractor.'),
+   ('Review a cross-route gap',
+    'A fictional business assigns one technician to two nearby jobs, but both sites require a 9 a.m. '
+    'arrival. Confirm whether one customer can accept a later window or whether a second qualified '
+    'technician must be scheduled.'),
+   ('Verify on the first operating day',
+    'Ask the assigned scheduler to run an approved representative test, review unresolved access '
+    'restrictions and name a backup for each critical route.')],
+  ['Collect the first schedule',
+   'Confirm actual commitments',
+   'Identify conflicting assignments',
+   'Name qualified backup coverage'],
+  ('Should routes be redesigned before close?',
+   'Use the readiness check to establish workable initial coverage, then validate redesign assumptions '
+   'against post-close results.'),
+  ['acquisition-service-staffing-coverage', 'acquisition-dispatch-travel-cost'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
