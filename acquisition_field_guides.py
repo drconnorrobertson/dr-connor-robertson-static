@@ -2315,6 +2315,49 @@ TOPICS.extend([('acquisition-dock-receiving-capacity',
    'Confirm how the agreement prices a full cycle. The prorated amount relates only to its partial period.'),
   ['acquisition-recurring-invoice-rate-sampling', 'acquisition-billing-cutover'])])
 
+TOPICS.extend([('acquisition-parts-traceability-readiness',
+  'Parts Traceability Readiness Before Buying a Service Business',
+  'Verify that the buyer can identify which parts were installed at which customers and reconcile the '
+  'remaining stock.',
+  'Identify the products and workflows where an equipment complaint or supplier notice calls for traceable '
+  'evidence.',
+  [('Select a representative lot',
+    'Find the receipt, transfers, technician inventory and customer work orders. Record missing identifiers '
+    'and who can verify them.'),
+   ('Reconcile the population',
+    'A fictional buyer traces a lot of 70 units. Fifty were installed, 15 remain in stock and five are '
+    'absent from completed jobs. Ask whether returns or write-offs explain the gap and verify the source '
+    'records.'),
+   ('Confirm ownership after closing',
+    'Assign a buyer-side owner for approved records and continuity checks. Refer applicable customer and '
+    'supplier responsibilities to the deal team.')],
+  ['Collect lot references',
+   'Match receipts to installations',
+   'Trace missing units',
+   'Assign continuity ownership'],
+  ('Can a purchase invoice identify where parts were installed?',
+   'Use the invoice as receipt evidence and verify use through item movement and work order records.'),
+  ['inventory-due-diligence-small-business', 'acquisition-customer-reporting-obligations']),
+ ('acquisition-after-hours-coverage-cost',
+  'After-Hours Coverage Cost in Acquisition Diligence',
+  'Estimate how standby labor and callout coverage affect the economics of service contracts.',
+  'Start with documented out-of-hours obligations and actual call and payroll records.',
+  [('Separate standby and callout expenses',
+    'Compare contracted coverage, paid standby, callout labor, travel and third-party support. Group '
+    'activity by service window and by account.'),
+   ('Stress-test the cost',
+    'A fictional operator pays $480 a week in standby and typically has four callouts at $120 direct cost '
+    'each. The estimated weekly baseline is $960 before travel. Test an eight-callout week and any staffing '
+    'limits.'),
+   ('Test continuity before adjusting forecasts',
+    'Verify qualified backups and the first post-close coverage schedule. Check whether the buyer’s assumed '
+    'savings preserve response commitments.')],
+  ['Map contracted hours', 'Reconcile direct costs', 'Test a peak week', 'Confirm backup coverage'],
+  ('Can the buyer count standby as idle time available for other work?',
+   'Check the availability and response constraints before assuming the same person can reliably cover '
+   'another assignment.'),
+  ['acquisition-service-staffing-coverage', 'acquisition-overtime-coverage-cost'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
