@@ -18,6 +18,7 @@ from urllib.error import URLError
 from urllib.parse import urlparse, urljoin, parse_qsl, urlencode
 
 from ai_growth import render_pages as render_growth_pages
+from ai_owner_guides import render_pages as render_owner_ai_pages
 from ai_implementation import render_pages as render_implementation_pages
 from brand_pages import render_pages as render_brand_pages
 from acquisition_guides import ACQUISITION_GUIDES
@@ -1450,10 +1451,10 @@ def nav_html():
     items = ""
     for label, href in NAV_ITEMS:
         items += f'<li><a href="{href}">{label}</a></li>'
-    items += '<li><a href="/ai/implementation/">AI Library</a></li>'
+    items += '<li><a href="/ai/business-owners/">AI for Business Owners</a></li>'
     # Topics dropdown (pillar pages)
     tdd = "".join(f'<a href="{h}">{l}</a>' for l, h in PILLAR_PAGES)
-    items += f'<li class="has-dd"><a href="/business-acquisitions/">Topics</a><div class="dd">{tdd}</div></li>'
+    items += f'<li class="has-dd"><a href="/ai-business-strategy/">Topics</a><div class="dd">{tdd}</div></li>'
     # Resources dropdown
     dd = "".join(f'<a href="{h}">{l}</a>' for l, h in RESOURCE_HUBS)
     items += f'<li class="has-dd"><a href="/blog/complete-resource-index-dr-connor-robertson/">Resources</a><div class="dd">{dd}</div></li>'
@@ -1678,22 +1679,22 @@ def page_home():
         "url": [f"{SITE_URL}{href}" for _, href in PILLAR_PAGES] + [f"{SITE_URL}{href}" for _, href in NAV_ITEMS],
     }
     pillars = [
-        ("Acquire the Right Business", "Define acquisition criteria, evaluate normalized earnings, test valuation, and structure a transaction around verified performance.", "/business-acquisitions/", "Explore acquisition guides"),
-        ("Operate What You Buy", "Turn seller-dependent knowledge into documented systems, accountable leadership, reliable reporting, and a focused first-100-day plan.", "/blog/hub-business-acquisitions-scaling-dr-connor-robertson/", "Build the operating system"),
-        ("Build Durable Enterprise Value", "Improve revenue quality, management depth, customer retention, and operating discipline so growth becomes transferable value rather than a larger job for the owner.", "/ai-business-strategy/", "Use practical AI"),
+        ("Build Internal Tools With Codex", "Turn repeatable spreadsheet work into small tools your team can test and maintain.", "/ai/business-owners/codex-for-business-owners/", "Explore Codex for owners"),
+        ("Run Weekly Workflows With ChatGPT", "Prepare owner briefs, review metrics, and turn approved source material into drafts your team can check.", "/ai/business-owners/chatgpt-for-business-owners/", "Explore ChatGPT for owners"),
+        ("Review Business Documents With Claude", "Compare policy packets, organize evidence, and identify where a source needs clarification.", "/ai/business-owners/claude-for-business-owners/", "Explore Claude for owners"),
     ]
     pcards = "".join(f'<article class="pill"><h3>{t}</h3><p>{d}</p><a class="pill-link" href="{href}">{label}</a></article>' for t, d, href, label in pillars)
     return header("Dr. Connor Robertson | Official Website, Books & Business",
-        "Official website of Dr. Connor Robertson, Pittsburgh entrepreneur, author and AI strategist. Explore his biography, books, podcast and business guides.",
+        "Explore Dr. Connor Robertson’s practical Codex, ChatGPT, and Claude guides for business owners, plus his books, speaking, and acquisition resources.",
         "/", og_image="/images/dr-connor-robertson-headshot.jpg",
         page_type="WebPage", page_extra={"mainEntity": {"@id": PERSON_ID}},
         schema_nodes=[nav_schema]) + f"""
 <section class="hero"><div class="hero-bg" aria-hidden="true"></div><div class="hero-ct">
 <div class="hero-copy">
-<span class="hero-kicker">Business acquisitions &bull; operating systems &bull; practical AI</span>
+<span class="hero-kicker">Codex &bull; ChatGPT &bull; Claude for business owners</span>
 <h1>Dr. Connor Robertson</h1>
-<p class="tag">Practical frameworks for owners who want to buy the right business, build stronger operations, and create value that does not depend on them.</p>
-<div class="hero-btn"><a href="/business-acquisitions/" class="btn-p">Start With the Acquisition Guide</a><a href="/speaker/" class="btn-s">Book Connor to Speak</a></div>
+<p class="tag">Practical guides for using AI to run a business, build internal tools, and improve the work your team does every week.</p>
+<div class="hero-btn"><a href="/ai/business-owners/" class="btn-p">Explore AI for Business Owners</a><a href="/speaker/" class="btn-s">Book Connor to Speak</a></div>
 <div class="hero-proof" aria-label="Selected credentials">
 <div class="hero-proof-item"><strong>6</strong><span>books published</span></div>
 <div class="hero-proof-item"><strong>4</strong><span>ventures founded</span></div>
@@ -1714,10 +1715,10 @@ def page_home():
 <a class="feat-logos" href="/press-media/" aria-label="View press and media coverage"><span>Yahoo Finance</span><span>The Globe and Mail</span><span>Business Insider</span><span>Grit Daily</span><span>Apple News</span></a>
 </div></section>
 <section class="sec"><div class="ctn">
-<h2 class="sec-t">Practical frameworks for buying businesses, improving operations, and building durable enterprise value.</h2>
+<h2 class="sec-t">Use AI in the work your business already does</h2>
 <div class="pills">{pcards}</div>
 </div></section>
-<section class="sec"><div class="ctn"><h2>Put AI to work in your business</h2><p>Explore 92 practical AI guides for workflows, agents, knowledge bases, content operations, and industry implementation.</p><div class="pills"><article class="pill"><h3><a href="/ai/implementation/directory/">Find your AI workflow</a></h3><p>Search the complete directory by task or collection.</p></article><article class="pill"><h3><a href="/ai/implementation/industries/">AI by industry</a></h3><p>Eight operating plans with source requirements and worked exceptions.</p></article><article class="pill"><h3><a href="/ai/implementation/readiness-planner/">Plan your first pilot</a></h3><p>Check prerequisites and prepare a practical next-step plan.</p></article></div></div></section>
+<section class="sec"><div class="ctn"><h2>Plan and implement your AI workflows</h2><p>Explore 92 practical AI guides for workflows, agents, knowledge bases, content operations, and industry implementation.</p><div class="pills"><article class="pill"><h3><a href="/ai/implementation/directory/">Find your AI workflow</a></h3><p>Search the complete directory by task or collection.</p></article><article class="pill"><h3><a href="/ai/implementation/industries/">AI by industry</a></h3><p>Eight operating plans with source requirements and worked exceptions.</p></article><article class="pill"><h3><a href="/ai/implementation/readiness-planner/">Plan your first pilot</a></h3><p>Check prerequisites and prepare a practical next-step plan.</p></article></div></div></section>
 <section class="quote"><div class="ctn">
 <p class="quote-t">"Real success comes from creating impact that lasts longer than you do."</p>
 <p class="quote-a"><strong>Dr. Connor Robertson</strong><br>Entrepreneur, Acquisition Strategist, Author &amp; Operator</p>
@@ -3769,6 +3770,8 @@ def main():
         write(f"business-acquisitions/{guide['slug']}/index.html", page_acquisition_guide(guide))
     write("ai-business-strategy/index.html", page_ai_business_strategy())
     for path, content in render_growth_pages(header, breadcrumbs, footer, SITE_URL, PERSON_ID).items():
+        write(path.strip("/") + "/index.html", content)
+    for path, content in render_owner_ai_pages(header, breadcrumbs, footer).items():
         write(path.strip("/") + "/index.html", content)
     for path, content in render_implementation_pages(header, breadcrumbs, footer, SITE_URL, PERSON_ID).items():
         write(path.strip("/") + "/index.html", content)
