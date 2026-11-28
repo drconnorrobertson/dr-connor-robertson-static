@@ -1949,6 +1949,65 @@ TOPICS.extend([('acquisition-opening-inventory-reconciliation',
    'against post-close results.'),
   ['acquisition-service-staffing-coverage', 'acquisition-dispatch-travel-cost'])])
 
+TOPICS.extend([('acquisition-customer-portal-readiness',
+  'Customer Portal Readiness After an Acquisition',
+  'Verify that authorized buyer-side users can receive orders, view deadlines and perform agreed customer '
+  'workflows.',
+  'Identify portals that gate a material customer workflow and agree the authorized continuity process with '
+  'the deal team.',
+  [('Build a portal dependency register',
+    'Record account owner, authorized onboarding contact, allowed user roles, open orders, notice settings '
+    'and expected readiness date.'),
+   ('Test a representative operating task',
+    'A fictional buyer can view orders in a customer portal but the role cannot acknowledge them. The '
+    'account owner obtains the correct authorization and verifies the workflow using an approved sample.'),
+   ('Confirm first-week escalation',
+    'Name the person who monitors incoming work and who handles permission issues. Keep only process and '
+    'test evidence in the shared register.')],
+  ['List important portals', 'Confirm approved roles', 'Test the required task', 'Assign notice ownership'],
+  ('Does viewing an order prove readiness?',
+   'Verify the actions the buyer must perform, such as acknowledgment, scheduling updates or retrieving '
+   'approval records.'),
+  ['acquisition-order-entry-cutover', 'acquisition-third-party-permissions']),
+ ('acquisition-customer-loss-bridge',
+  'Customer Loss Bridge in Acquisition Diligence',
+  'Explain lost revenue by separating customers who left, reduced their orders, or changed their purchasing '
+  'schedule.',
+  'Use comparable periods and reconcile the customer level result to the total change in revenue.',
+  [('Build comparable account populations',
+    'Group related accounts and separate new, retained, reinstated and apparently lost customers. Check '
+    'cutoff and billing effects before classifying them.'),
+   ('Explain the dollar change',
+    'A fictional business loses $100,000 from departed accounts and $60,000 from customers buying less, '
+    'while new customers add $90,000. The net bridge shows a $70,000 decline before other changes.'),
+   ('Test ongoing exposure',
+    'Inspect material losses for common products, sales channels or service issues. Model whether the losses '
+    'are likely to repeat based on evidence rather than assuming a reversal.')],
+  ['Align account IDs', 'Reconcile gains and losses', 'Verify material reasons', 'Update forecast scenarios'],
+  ('How should paused buyers be treated?',
+   'Track them separately where the underlying customer evidence supports a pause rather than a confirmed '
+   'departure.'),
+  ['acquisition-customer-cohort-retention', 'acquisition-channel-revenue-dependence']),
+ ('acquisition-equipment-inspection-backlog',
+  'Equipment Inspection Backlog in Acquisition Diligence',
+  'Identify pending inspections and operating constraints that may carry into the buyer’s first weeks.',
+  'Review equipment essential to service delivery alongside the target’s inspection schedule and completed '
+  'records.',
+  [('Build the inspection due-list',
+    'Capture asset, due date, inspection type, record source, qualified owner and whether restrictions apply '
+    'until inspection. Have qualified advisers interpret applicable requirements.'),
+   ('Model a scheduling constraint',
+    'A fictional buyer finds two lifts with inspections due before a booked service project. Verify '
+    'qualified inspection capacity and schedule an approved substitute if the assets cannot be used in '
+    'time.'),
+   ('Assign handover follow-through',
+    'Confirm who owns each open item and how the business verifies readiness before scheduling work. Reflect '
+    'supported downtime and inspection costs in the transition plan.')],
+  ['Map critical assets', 'Verify due dates', 'Arrange qualified review', 'Confirm usable capacity'],
+  ('Can the buyer rely on an undated inspection sticker?',
+   'Find the underlying service record and ask a qualified owner to verify status and restrictions.'),
+  ['maintenance-capex-acquisition', 'acquisition-equipment-downtime-review'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
