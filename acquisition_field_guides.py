@@ -2193,6 +2193,45 @@ TOPICS.extend([('acquisition-equipment-rental-cost-normalization',
    'forecast.'),
   ['acquisition-customer-contract-rate-review', 'acquisition-unbilled-service-visits'])])
 
+TOPICS.extend([('acquisition-freight-accessorial-exposure',
+  'Freight Accessorial Cost Exposure in Acquisition Diligence',
+  'Review supplemental carrier charges and check whether they belong in the buyer’s recurring cost model.',
+  'Separate base freight from fees driven by delivery conditions and shipment records.',
+  [('Build the fee register',
+    'Group extra charges by carrier, lane, customer and reason. Compare invoices with agreements and '
+    'delivery evidence.'),
+   ('Verify a recurring fee',
+    'A seller incurs $7,200 of liftgate charges across 120 shipments. Verify which sites need a liftgate and '
+    'whether $60 per shipment remains supported under the buyer’s current quote.'),
+   ('Model changes explicitly',
+    'Estimate the fees under retained delivery patterns and keep untested routing or equipment savings '
+    'separate from the baseline.')],
+  ['Collect carrier invoices', 'Verify charge reasons', 'Estimate recurring costs', 'Review alternatives'],
+  ('Should one-off carrier fees be excluded?',
+   'Check whether the event can recur under comparable shipment and delivery conditions.'),
+  ['acquisition-supplier-freight-terms', 'acquisition-expedited-shipping-cost']),
+ ('acquisition-unapplied-cash-cutover',
+  'Unapplied Customer Cash Cutover in Business Acquisitions',
+  'Trace unmatched receipts and assign resolution owners before loading opening customer balances.',
+  'Reconcile deposits with customer and invoice records around the agreed cutoff.',
+  [('Build the unmatched receipt list',
+    'Record deposit date, reference, payer, amount and candidate invoices without guessing how to apply the '
+    'payment.'),
+   ('Test a split receipt',
+    'A fictional $12,000 receipt could cover an $8,000 invoice and a $4,000 deposit. Confirm the remittance '
+    'evidence and preserve both purposes in the transfer record.'),
+   ('Verify the post-close workflow',
+    'Have the deal accountant confirm treatment and give the operating owner an approved process for '
+    'unresolved items and customer inquiries.')],
+  ['Reconcile bank deposits',
+   'Retrieve remittance evidence',
+   'Confirm transfer treatment',
+   'Assign unresolved items'],
+  ('Can the buyer apply an uncertain receipt to the oldest invoice?',
+   'Use the approved policy and customer evidence before applying cash, especially if the receipt may relate '
+   'to a deposit or disputed balance.'),
+  ['acquisition-billing-cutover', 'accounts-receivable-aging-due-diligence'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
