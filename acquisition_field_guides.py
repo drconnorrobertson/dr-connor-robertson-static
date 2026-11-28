@@ -2800,6 +2800,51 @@ TOPICS.extend([('acquisition-customer-owned-tooling-register',
    'lot as available for that order.'),
   ['inventory-due-diligence-small-business', 'acquisition-inventory-obsolescence-review'])])
 
+TOPICS.extend([('acquisition-revenue-cutoff-sampling',
+  'Revenue Cutoff Sampling in Acquisition Diligence',
+  'Trace orders, shipment or service evidence, invoices and subsequent credits around an agreed reporting '
+  'date.',
+  'Choose a sample on both sides of the cutoff and obtain source records through approved channels.',
+  [('Build the event timeline',
+    'Record order date, fulfillment, customer acceptance where applicable, invoice and credits. Ask the '
+    'diligence accountant which accounting policy should be tested.'),
+   ('Trace a period-end exception',
+    'A fictional order is invoiced June 29, ships July 2 and is accepted July 5. Record all three dates and '
+    'have the reviewer assess how the agreement and accounting policy apply before using the reported '
+    'amount.'),
+   ('Reconcile the model',
+    'Group supported timing differences and unresolved items separately. Check whether the same item appears '
+    'in working-capital or closing schedules.')],
+  ['Sample both periods',
+   'Verify delivery evidence',
+   'Check subsequent credits',
+   'Escalate disputed treatment'],
+  ('Does the invoice date settle the cutoff?',
+   'Review the relevant accounting policy, contractual terms and evidence of performance with the deal '
+   'accountant.'),
+  ['acquisition-revenue-reconciliation', 'acquisition-customer-acceptance-backlog']),
+ ('acquisition-warehouse-slot-capacity',
+  'Warehouse Slot Capacity Review Before Buying a Business',
+  'Verify usable warehouse capacity after allowing for held inventory, staging and seasonal demand.',
+  'Use a location-level capacity map and confirm what each storage area can support.',
+  [('Count usable positions',
+    'Separate active storage, temporary staging, blocked areas and locations reserved for customers. Verify '
+    'size, weight and handling restrictions with the responsible team.'),
+   ('Model a receiving peak',
+    'A fictional site has 500 marked positions, 460 usable during a peak week, and 430 occupied. A scheduled '
+    'receipt needs 50 positions, leaving a 20-position gap unless supported outbound work releases space.'),
+   ('Validate the transition plan',
+    'Confirm when stock can move and what overflow storage costs. Include only qualified and approved space '
+    'in a first-week scenario.')],
+  ['Map usable positions',
+   'Check restrictions',
+   'Compare receipts and outbound work',
+   'Confirm overflow ownership'],
+  ('Can marked locations be counted as available space?',
+   'Check occupancy, staging needs and operating restrictions before counting the locations in available '
+   'capacity.'),
+  ['acquisition-dock-receiving-capacity', 'acquisition-post-close-inventory-buffer'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
