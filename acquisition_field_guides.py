@@ -3094,6 +3094,48 @@ TOPICS.extend([('acquisition-customer-purchase-order-capacity',
    'Check the time through inspection and release. Unloading can be faster while the release queue grows.'),
   ['acquisition-dock-receiving-capacity', 'acquisition-supplier-quality-hold-exposure'])])
 
+TOPICS.extend([('acquisition-inventory-count-coverage',
+  'Inventory Count Coverage Before Buying a Business',
+  'Confirm the closing count covers all material stock locations and reconciles movements around the cutoff.',
+  'Before counting, list every location where the seller stores, stages, or controls inventory.',
+  [('Map the locations',
+    'Compare warehouse, vehicle, third-party and temporary storage records. Assign each location an approved '
+    'count owner and identify stock held on behalf of another business.'),
+   ('Check a missing location',
+    'A fictional target counts $160,000 of stock in the main warehouse. A separate staging area holds '
+    'another $12,000 already assigned to shipments. Verify whether the staging stock is already in the count '
+    'and reconcile it once.'),
+   ('Resolve the cutoff',
+    'Trace receipts and shipments on both sides of the cutoff and ask the deal team to resolve differences '
+    'using agreed definitions.')],
+  ['List every location',
+   'Assign count ownership',
+   'Check for duplicate coverage',
+   'Reconcile nearby movements'],
+  ('Should staged stock be excluded automatically?',
+   'Verify where the goods were at cutoff and apply the agreed ownership and transaction treatment.'),
+  ['acquisition-opening-inventory-reconciliation', 'acquisition-inventory-in-transit']),
+ ('acquisition-preventive-service-deferral',
+  'Deferred Preventive Service Review in Acquisition Diligence',
+  'Identify recurring maintenance work the seller postponed and model the buyer’s cost of bringing it '
+  'current.',
+  'Separate work owed to customers from work needed to maintain the target’s own equipment.',
+  [('Build the overdue schedule',
+    'Collect service agreements and calendars, completed records, dates, which tasks remain, and qualified '
+    'owners. Prioritize gaps that affect safety, customer promises or production.'),
+   ('Estimate supported catch-up cost',
+    'A fictional business has 24 overdue customer inspections requiring 90 minutes each. At $60 direct labor '
+    'per hour, labor alone is $2,160 before travel, parts or disruption. Confirm qualified capacity and '
+    'revisit the estimate once scope is verified.'),
+   ('Plan the first operating cycle',
+    'Validate the schedule with operations and qualified advisers. Keep overdue obligations distinct from '
+    'ongoing service costs in the forecast.')],
+  ['List overdue work', 'Verify what remains', 'Estimate qualified hours', 'Assign follow-up'],
+  ('Can the buyer treat catch-up work as an ongoing monthly expense?',
+   'Distinguish the documented backlog from normal recurring effort and investigate why the backlog '
+   'accumulated.'),
+  ['acquisition-recurring-service-cadence', 'acquisition-equipment-inspection-backlog'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
