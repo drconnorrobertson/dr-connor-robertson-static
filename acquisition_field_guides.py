@@ -1121,6 +1121,69 @@ TOPICS.extend([('acquisition-customer-price-escalation',
    'adjustment.'),
   ['acquisition-service-staffing-coverage', 'acquisition-contractor-capacity-review'])])
 
+TOPICS.extend([('acquisition-equipment-lease-obligations',
+  'Equipment Lease Obligations in Acquisition Diligence',
+  'Reconcile leased equipment, scheduled payments and end-of-term responsibilities before closing.',
+  'Start with executed agreements and confirm the assets the operating team expects to use.',
+  [('Build the lease schedule',
+    'Record asset, term, recurring cash payments, renewal or return dates, purchase options and maintenance '
+    'obligations. Match the lease to serial numbers and recent bills.'),
+   ('Test near-term cash needs',
+    'A fictional business pays $1,200 monthly for equipment with eight months remaining and an optional '
+    '$8,000 purchase at the end. Compare the payment schedule and option with replacement cost and operating '
+    'downtime.'),
+   ('Confirm continuity',
+    'Ask advisers to check assignment and approval requirements. Give one operator responsibility for '
+    'confirming equipment access and upcoming decision dates after closing.')],
+  ['Collect signed agreements',
+   'Match assets and invoices',
+   'Model end-of-term choices',
+   'Verify permitted transfer'],
+  ('Does a remaining-payment total capture the obligation?',
+   'Include any relevant return, maintenance and transition costs in the scenario, with options shown '
+   'separately.'),
+  ['acquisition-fixed-asset-ownership', 'acquisition-third-party-permissions']),
+ ('acquisition-billing-cutover',
+  'Billing Cutover Checklist for Business Acquisitions',
+  'Prevent missed or duplicate invoices when billing moves to a buyer’s systems or team.',
+  'Give each invoice population one responsible team and one set of cutoff rules.',
+  [('Map the cutover by invoice type',
+    'Identify recurring, milestone and usage-based bills. Record the system of record, required inputs, '
+    'responsible owner and expected first run.'),
+   ('Reconcile across the cutoff',
+    'A fictional subscription company has 280 renewals scheduled for the first week. The legacy run '
+    'processes 60 before cutoff. The buyer reconciles the remaining 220 against the authorized import and '
+    'checks exceptions before sending bills.'),
+   ('Validate first-week output',
+    'Use sample runs to verify dates, rates and totals. Follow the deal team’s instructions on '
+    'responsibilities and customer communications, then check the first settlement and credit activity.')],
+  ['Map invoice populations',
+   'Assign cutoff ownership',
+   'Test sample invoices',
+   'Reconcile first-run totals'],
+  ('Should both teams issue invoices as a fallback?',
+   'Give one team billing authority for each population and retain a reconciliation so a fallback does not '
+   'issue duplicates.'),
+  ['acquisition-order-to-cash-walkthrough', 'handover-readiness-evidence']),
+ ('acquisition-order-fulfillment-lead-time',
+  'Order Fulfillment Lead Time in Acquisition Diligence',
+  'Test promised delivery dates using historical throughput, missing inputs and real capacity.',
+  'Compare what customers were promised with when qualifying orders actually shipped or finished.',
+  [('Measure from a consistent event',
+    'Record order approval, release, shortages, fulfillment and delivery where available. Document which '
+    'events start and stop the measurement.'),
+   ('Identify the source of delay',
+    'A fictional company promises five business days and takes nine for 14 sampled orders. Ten of those '
+    'orders wait three or more days for one component. Inspect confirmed lead times and whether more buffer '
+    'stock changes cash needs.'),
+   ('Model the buyer’s operating plan',
+    'Estimate realistic shipment and collection dates under the planned capacity. Give operations an '
+    'escalation path for commitments at risk after close.')],
+  ['Define the clock', 'Compare promises and actuals', 'Trace recurring blockers', 'Model cash timing'],
+  ('Does average lead time show missed commitments?',
+   'Check the share beyond promised dates and inspect long-tail delays alongside the average.'),
+  ['acquisition-backlog-due-diligence', 'acquisition-supplier-payment-terms'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
