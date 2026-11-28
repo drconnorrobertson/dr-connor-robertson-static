@@ -876,6 +876,66 @@ TOPICS.extend([('acquisition-key-person-interview-plan',
    'Exceptions expose approvals and manual steps that can remain invisible in a clean routine transaction.'),
   ['acquisition-revenue-reconciliation', 'acquisition-cash-conversion-cycle'])])
 
+TOPICS.extend([('acquisition-owner-expense-reconciliation',
+  'Owner Expense Reconciliation in Acquisition Diligence',
+  'Trace proposed owner expense adjustments to records and replacement costs.',
+  'Start with the proposed adjustments and the reason each expense might change under new ownership.',
+  [('Request line-level evidence',
+    'Ask for ledger lines and supporting invoices. Record business purpose, covered period, category and who '
+    'reviewed the proposed adjustment.'),
+   ('Test replacement cost',
+    'A seller adds back $30,000 for a vehicle. The buyer expects to retain a service vehicle costing $18,000 '
+    'per year. Evaluate the proposed increase in earnings after allowing for the needed replacement cost.'),
+   ('Reconcile the normalized model',
+    'Ask the diligence accountant to review material adjustments and verify that an expense listed '
+    'separately does not already appear in another adjustment.')],
+  ['Trace to ledger', 'Document business purpose', 'Estimate replacement expense', 'Check for duplicates'],
+  ('Can every owner-related expense be removed?',
+   'Evaluate whether the buyer still needs the service or asset to operate and whether another cost replaces '
+   'it.'),
+  ['sde-add-backs-explained', 'acquisition-gross-margin-bridge']),
+ ('acquisition-cash-disbursement-controls',
+  'Cash Disbursement Controls Review Before Buying a Business',
+  'Walk through vendor payments and confirm approval, recordkeeping and post-close responsibilities.',
+  'Select routine and exceptional vendor payments that represent how money moves in the target business.',
+  [('Trace the payment file',
+    'Review invoice approval, supporting purchase records, authorized changes to remittance instructions, '
+    'payment confirmation and reconciliation.'),
+   ('Review a payment exception',
+    'A fictional invoice from a familiar supplier includes new bank instructions. The buyer asks whether the '
+    'team verified the change through its established supplier contact and documented approval before '
+    'releasing payment.'),
+   ('Identify the closing handoff',
+    'Record which staff or providers initiate and approve payments and who reconciles the bank. Confirm '
+    'approved coverage after closing without sharing credentials in the diligence log.')],
+  ['Select a representative sample',
+   'Check invoice and approval',
+   'Review remittance changes',
+   'Confirm handover coverage'],
+  ('Why inspect an exception as well as a routine payment?',
+   'An exception shows who can verify unusual requests and whether approval holds up when the usual process '
+   'changes.'),
+  ['acquisition-open-purchase-orders', 'day-one-acquisition-continuity-checklist']),
+ ('acquisition-price-increase-exposure',
+  'Supplier Price Increase Exposure in Acquisitions',
+  'Check which upcoming supplier price changes may compress margins after closing.',
+  'Map documented supplier price changes against order timing, inventory coverage, and customer pricing '
+  'flexibility.',
+  [('Build the effective-date view',
+    'Collect approved rate notices, purchase commitments, quantities, and recent invoices. Identify whether '
+    'prices change at order, shipment, or billing under the applicable documents.'),
+   ('Measure the exposure',
+    'A fictional buyer uses 800 units per month. A supplier increases cost from $15 to $17. With no offset, '
+    'expected monthly direct cost increases by $1,600 once affected inventory flows through.'),
+   ('Model offset and delay',
+    'Compare alternatives, remaining stock and customer pricing terms. Document lead time and cost for any '
+    'tested offset and keep it separate from the baseline until supported.')],
+  ['Verify rates and dates', 'Estimate affected volume', 'Model margin and cash', 'Test offsets'],
+  ('Do higher replacement prices affect all current inventory immediately?',
+   'Model purchasing and inventory flow separately. Cash outflow and cost recognition can occur in different '
+   'periods.'),
+  ['acquisition-supplier-payment-terms', 'acquisition-gross-margin-bridge'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
