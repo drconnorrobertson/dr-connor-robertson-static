@@ -1002,6 +1002,62 @@ TOPICS.extend([('acquisition-supplier-rebate-reconciliation',
    'Track cancellations and delays distinctly so lost demand and shifts in cash timing remain visible.'),
   ['acquisition-backlog-due-diligence', 'acquisition-customer-deposit-register'])])
 
+TOPICS.extend([('acquisition-customer-service-credit-exposure',
+  'Service Credit Exposure Before Buying a Business',
+  'Estimate credits caused by missed service commitments and trace unsettled amounts to specific contracts.',
+  'Start with signed service terms, performance evidence and issued credits.',
+  [('Map credit triggers',
+    'Record measurement windows, definitions, limits and any notice requirements for material agreements.'),
+   ('Reconcile actual records',
+    'A fictional account has a monthly service fee of $30,000 and receives a 5% credit for a missed measure '
+    'under its agreement. The buyer validates the $1,500 against the service log and credit memo.'),
+   ('Review expected recurrence',
+    'Ask the operating lead what would prevent a repeat. Confirm with advisers whether open credits already '
+    'appear in receivables, net revenue or a closing adjustment.')],
+  ['Collect signed terms', 'Recalculate a sample', 'Trace credit memos', 'Assess recurrence'],
+  ('What if service logs disagree with the credit memo?',
+   'Trace both to the reporting period and look for a documented exception before relying on either amount.'),
+  ['acquisition-service-level-commitments', 'acquisition-customer-credit-memos']),
+ ('acquisition-customer-implementation-cost',
+  'Customer Implementation Costs in Acquisition Diligence',
+  'Estimate how much labor, training and vendor support new customers require before recurring contribution '
+  'begins.',
+  'Cohort analysis can show the upfront cash cost of converting signed customers into active accounts.',
+  [('Define implementation work',
+    'Include setup, integration, training, repeated visits and third-party charges. Separate collected setup '
+    'fees and recurring service costs.'),
+   ('Measure a rollout cohort',
+    'A fictional cohort of 12 accounts costs $1,500 each to activate and generates $500 per account in setup '
+    'cash. Model the remaining $12,000 initial cash gap before recurring collections.'),
+   ('Stress-test a slower rollout',
+    'Inspect failed and delayed installations and test which costs repeat if go-live moves. Use the result '
+    'in cash and staffing forecasts.')],
+  ['List activation tasks', 'Allocate direct costs', 'Reconcile setup fees', 'Model delays'],
+  ('Should buyer use average cost for every account?',
+   'Compare equivalent scopes and evaluate unusually complex accounts separately.'),
+  ['seasonal-cash-flow-acquisition', 'acquisition-work-in-progress-review']),
+ ('acquisition-expedited-shipping-cost',
+  'Expedited Shipping Cost Review Before an Acquisition',
+  'Identify when freight premiums hide shortages, late orders or unsustainable service assumptions.',
+  'Review expedited freight separately from standard shipments, using the reason and party bearing the cost.',
+  [('Reconcile charges',
+    'Match carrier invoices, order deadlines, supplier delays and customer reimbursements. Verify whether '
+    'premiums are included in the reported direct costs.'),
+   ('Test a concentrated issue',
+    'A fictional distributor incurs $24,000 in expedite charges in one quarter, $15,000 tied to one '
+    'supplier’s late deliveries. Assess whether a credible alternate source or earlier purchasing would '
+    'change the cost.'),
+   ('Carry evidence into the model',
+    'Keep recorded costs in the baseline and describe any improvement case with the proposed change, '
+    'evidence and timing.')],
+  ['Match carrier invoices',
+   'Identify recurring causes',
+   'Check reimbursements',
+   'Model supported alternatives'],
+  ('Should unusual freight be added back?',
+   'Review whether the underlying cause persists and how the buyer would meet the same commitments.'),
+  ['supplier-concentration-acquisition', 'acquisition-gross-margin-bridge'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
