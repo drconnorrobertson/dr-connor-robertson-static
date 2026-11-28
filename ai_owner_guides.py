@@ -8,7 +8,7 @@ CLAUDE = ("Claude Help Center guide to Projects", "https://support.claude.com/en
 
 GUIDES = [
     ("codex-for-business-owners", "OpenAI Codex for Business Owners",
-     "Use Codex to build a small internal tool with a brief your team can test and maintain.",
+     "Decide when to use Codex for business software, scope a first project, and prove your team can run it.",
      "Start with a decision someone makes by hand every week. An operations manager who combines two exports to identify late orders can start with one sanitized export, one report and one reviewer. Keep the existing spreadsheet available while the new report is tested.",
      ["Describe who runs the tool, which files it reads, and the output they need to make a decision.",
       "Give Codex a test fixture with five fictional orders, including a blank ship date and two rows with the same order ID.",
@@ -91,6 +91,24 @@ GUIDES = [
 
 
 PRACTICE = {
+    "codex-for-business-owners": """<h2>Choose your first Codex project</h2>
+<table><thead><tr><th scope="col">Candidate</th><th scope="col">First release</th><th scope="col">Evidence to review</th></tr></thead><tbody>
+<tr><td>Operations reporting</td><td>Read a copy of a daily export and show late orders.</td><td>Reconcile the report against the existing spreadsheet and explain every unmatched order.</td></tr>
+<tr><td>Internal request form</td><td>Build a preview with sample requests and validate required fields.</td><td>Show that a missing field is caught and that a failed submission displays a clear error.</td></tr>
+<tr><td>Customer account updates</td><td>Produce a proposed change list for an operator to review.</td><td>Verify that each proposed change has source evidence and that the preview leaves accounts untouched.</td></tr>
+</tbody></table>
+<h2>Write a brief your team can accept</h2>
+<p>Copy these fields into your first task. Agree on the expected result with the person who will own the work.</p>
+<pre>Operator and owner:
+Current manual process:
+Approved input and example:
+Output and destination:
+Changes outside this task:
+Routine and exception tests:
+Release approver:
+Fallback and support contact:</pre>
+<p>For a fictional late-order report, agree that a row with a promised ship date before the report date and an empty actual ship date counts as late. A blank promised date belongs in the exceptions table. If the export contains two rows for the same order, flag both for review before counting the order. Ask the operations manager to predict the expected result before running the tool.</p>
+<p>Before release, have a second operator run the report using its written instructions and reconcile one day’s output to the manual report. Keep the old report available during the trial. Use the <a href="/ai/business-owners/codex-build-internal-tools/">internal tool walkthrough and CSV fixture</a> to test a concrete implementation.</p>""",
     "chatgpt-for-business-owners": """<h2>Choose your first ChatGPT pilot</h2>
 <p>Start where the team already has clear source material and someone who can approve the output. Choose a single workflow for the first two weeks.</p>
 <table><thead><tr><th scope="col">Workflow</th><th scope="col">Inputs and reviewer</th><th scope="col">What the reviewer must verify</th></tr></thead><tbody>
