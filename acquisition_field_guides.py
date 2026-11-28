@@ -1699,6 +1699,65 @@ TOPICS.extend([('acquisition-open-freight-claims',
    'requests match.'),
   ['acquisition-order-to-cash-walkthrough', 'acquisition-service-dispatch-system-test'])])
 
+TOPICS.extend([('acquisition-supplier-payables-aging',
+  'Supplier Payables Aging Review Before an Acquisition',
+  'Reconcile aged supplier invoices and identify credit holds, disputes and near-term cash pressure.',
+  'Review supplier balances with the actual due dates and supporting invoice records.',
+  [('Build a risk-based sample',
+    'Choose major suppliers, balances past due, recent term changes and disputed invoices. Compare '
+    'statements with approved records and subsequent payments.'),
+   ('Translate an aged balance into cash exposure',
+    'A fictional target has $90,000 older than 60 days. Statements confirm $20,000 is disputed, $15,000 '
+    'settled after cutoff and $55,000 remains outstanding without a documented dispute. Forecast the $55,000 '
+    'with its expected timing, plus a separate dispute scenario.'),
+   ('Verify the operating consequence',
+    'Ask which suppliers can place orders on hold and review the agreed treatment of closing balances with '
+    'advisers. Assign one post-close owner for the largest unresolved items.')],
+  ['Sample high-risk suppliers', 'Trace later settlements', 'Separate disputes', 'Plan order continuity'],
+  ('Does payable aging establish the total due at closing?',
+   'Reconcile timing, credits and disputed items with source records and have the deal team apply the agreed '
+   'closing definitions.'),
+  ['acquisition-accounts-payable-cutover', 'acquisition-supplier-payment-terms']),
+ ('acquisition-customer-renewal-cohort-forecast',
+  'Customer Renewal Cohort Forecast for Business Buyers',
+  'Forecast renewal cash by matching contracts, dates, historical cohorts and documented assumptions.',
+  'Group eligible renewals by the month and type in which customers make the decision.',
+  [('Prepare comparable cohorts',
+    'Collect renewal eligibility, actual decision, effective date, value and whether agreements had price or '
+    'scope changes. Separate customers outside the measurement window.'),
+   ('Compare account and value measures',
+    'In a fictional cohort, 18 of 20 accounts renew, or 90%. Renewed value is $140,000 of $200,000 eligible, '
+    'or 70%. Model both measures to avoid hiding risk from larger accounts.'),
+   ('Prepare buyer-side scenarios',
+    'Map renewals near closing to account owners, check documented pricing and service issues, and use a '
+    'separate delay case for material uncertain decisions.')],
+  ['Confirm eligibility',
+   'Compare counts and value',
+   'Map dates near closing',
+   'Stress-test larger accounts'],
+  ('Should a signed renewal be grouped with forecasts?',
+   'Keep signed and still-open renewals visible separately so forecasts can be reconciled as outcomes '
+   'arrive.'),
+  ['acquisition-customer-renewal-calendar', 'acquisition-customer-cohort-retention']),
+ ('acquisition-replacement-inventory-cost',
+  'Replacement Inventory Cost in Acquisition Diligence',
+  'Test whether current vendor prices, pack sizes and freight change the cash needed to restock.',
+  'Separate historic book cost from the cost to buy the next usable quantity.',
+  [('Collect a restocking quote',
+    'Confirm unit conversion, minimum purchase, effective price, freight and delivery lead time. Compare '
+    'with current demand and authorized supply alternatives.'),
+   ('Model the first order',
+    'A fictional buyer needs 300 units. A supplier quotes $12 each with a 500-unit minimum and $300 freight. '
+    'Budget $6,300 for the order and account for the 200 excess units separately.'),
+   ('Link the cost to cash and margin',
+    'Schedule payment on the terms actually available. Review how the change affects expected consumption '
+    'and operating reserves, and discuss valuation effects with advisers.')],
+  ['Verify buy and use units', 'Check minimum quantities', 'Include landed costs', 'Model payment dates'],
+  ('Should book cost be used to forecast replenishment?',
+   'Use current supported purchase assumptions for replenishment and keep book values in the appropriate '
+   'historical or deal analysis.'),
+  ['inventory-due-diligence-small-business', 'acquisition-price-increase-exposure'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
