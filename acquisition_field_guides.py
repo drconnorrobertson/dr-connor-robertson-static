@@ -2575,6 +2575,48 @@ TOPICS.extend([('acquisition-customer-approval-latency',
    'units as usable.'),
   ['acquisition-opening-inventory-reconciliation', 'inventory-due-diligence-small-business'])])
 
+TOPICS.extend([('acquisition-unresolved-vendor-disputes',
+  'Unresolved Vendor Disputes in Acquisition Diligence',
+  'Document supplier disputes that could affect cash, access to materials, or continuity after closing.',
+  'Prioritize disagreements over payment or delivery that could place essential orders at risk.',
+  [('Build an evidence-based register',
+    'Record the disputed amount, original contract or order, statements from each side, next date and '
+    'proposed owner. Distinguish a requested credit from an accepted resolution.'),
+   ('Model a delivery dependency',
+    'A fictional distributor disputes $15,000, and the supplier pauses new shipments. The buyer separately '
+    'models settlement exposure and the cost of sourcing equivalent stock before the next customer '
+    'commitment.'),
+   ('Plan the authorized handoff',
+    'Have the deal team confirm who handles outstanding issues and what can be shared. Assign purchasing a '
+    'continuity decision and finance a reconciliation date.')],
+  ['Gather original evidence',
+   'Separate requests and resolutions',
+   'Evaluate order continuity',
+   'Confirm responsible ownership'],
+  ('Should the buyer deduct every disputed amount from cash needs?',
+   'Model documented obligations and unresolved scenarios separately until advisers determine the agreed '
+   'treatment.'),
+  ['acquisition-supplier-payables-aging', 'acquisition-open-purchase-orders']),
+ ('acquisition-field-service-site-access-transfer',
+  'Site Access Transfer Before Buying a Field Service Business',
+  'Verify that the buyer’s authorized crews can enter customer locations on the first operating schedule.',
+  'Prioritize sites with restricted hours or named entrants. Work through the approved customer and deal '
+  'processes.',
+  [('Map access dependencies',
+    'Record permitted windows, induction or approval steps, required roles and the authorized operating '
+    'owner. Store access information only in approved systems.'),
+   ('Walk a first-week appointment',
+    'A fictional customer allows entry only for technicians approved on its roster. One buyer-side '
+    'substitute is not listed. Ask the account owner to confirm approval or schedule a qualified technician '
+    'already accepted by the customer.'),
+   ('Verify the schedule',
+    'Review open permissions without recording credentials in the deal log. Give dispatch a fallback and '
+    'confirm relevant customers have accepted any revised appointment.')],
+  ['List restricted sites', 'Verify accepted crews', 'Check lead times', 'Assign exceptions'],
+  ('Does site access transfer with customer records?',
+   'Confirm the customer’s actual approval process and test whether the intended crew can meet it.'),
+  ['acquisition-route-coverage-readiness', 'acquisition-customer-preferred-delivery-windows'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
