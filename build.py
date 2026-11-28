@@ -1585,11 +1585,21 @@ def footer():
   var menuButton=document.querySelector('.mob-tog');
   var menu=document.getElementById('nv');
   if(menuButton&&menu){{
-    menuButton.addEventListener('click',function(){{
-      var open=menu.classList.toggle('active');
+    function setMenuOpen(open){{
+      menu.classList.toggle('active',open);
       menuButton.setAttribute('aria-expanded',String(open));
       menuButton.setAttribute('aria-label',open?'Close menu':'Open menu');
+    }}
+    menuButton.addEventListener('click',function(){{
+      setMenuOpen(!menu.classList.contains('active'));
     }});
+    document.addEventListener('keydown',function(event){{
+      if(event.key==='Escape'&&menu.classList.contains('active')){{
+        setMenuOpen(false);
+        menuButton.focus();
+      }}
+    }});
+    window.matchMedia('(max-width: 1100px)').addEventListener('change',function(){{setMenuOpen(false);}});
   }}
   function reveal(){{
     var els=document.querySelectorAll('.fade-in');
@@ -3908,16 +3918,71 @@ def main():
     print("  sitemap.xml, feed.xml, robots.txt, 404.html, vercel.json")
 
     # Apply after copying evergreen pages so legacy and generated layouts agree.
-    mobile_css = """@media(max-width:768px){
-.home-intro{grid-template-columns:minmax(0,1fr);gap:24px}
-.home-intro>*{min-width:0}
-.fg input,.fg select,.fg textarea,.lm-form input[type="email"]{font-size:16px;min-width:0;max-width:100%}
+    mobile_css = """/* Shared gutters for generated and evergreen pages. */
+:root{--layout-gutter:clamp(18px,3vw,32px);--layout-header:76px}
+body .ctn,body .hdr-in{padding-inline:var(--layout-gutter)}
+body .breadcrumbs{padding-top:var(--layout-header)}
+body .breadcrumbs ol{padding:10px 0;gap:4px 8px;overflow-wrap:anywhere}
+body .pg-hero:has(>.ctn),body .speaker-hero:has(>.ctn){padding-inline:0}
+body .pg-hero:not(:has(>.ctn)),body .speaker-hero:not(:has(>.ctn)),
+body .hero,body .post{padding-inline:var(--layout-gutter)}
+body .hero-ct{max-width:calc(var(--mw) - 2 * var(--layout-gutter))}
+body .sec{padding-block:clamp(44px,6vw,80px)}
+body .breadcrumbs + .sec{padding-top:clamp(28px,4vw,52px)}
+body .ftr-top>*{min-width:0}
+body .ftr-top a{overflow-wrap:anywhere}
+.owner-guide{max-width:900px}
+.owner-guide h1{max-width:none;font-size:clamp(34px,4.8vw,60px);line-height:1.06;margin-bottom:20px}
+.owner-guide h2{font-size:clamp(24px,3.3vw,34px);line-height:1.18;margin:32px 0 12px}
+.owner-guide p,.owner-guide li{line-height:1.65}
+.owner-guide p{margin-bottom:14px}
+.owner-guide li+li{margin-top:8px}
+.owner-guide ol,.owner-guide ul{padding-inline-start:1.4em}
+.owner-guide .pills{margin-block:24px 34px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.owner-guide .pill::before{display:none}
+.owner-guide blockquote,.owner-guide pre{margin:16px 0 24px;padding:16px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow-wrap:anywhere}
+.owner-guide pre{white-space:pre-wrap;tab-size:2}
+.owner-guide table{width:100%;border-collapse:collapse;table-layout:fixed;margin:16px 0 24px;font-size:clamp(14px,1.5vw,16px)}
+.owner-guide th,.owner-guide td{text-align:left;vertical-align:top;padding:clamp(8px,1.5vw,14px);border-bottom:1px solid var(--border);overflow-wrap:anywhere}
+.owner-guide th{background:var(--bg2);color:var(--text)}
+@media(max-width:1100px){
+  :root{--layout-header:70px}
+  body .hdr-in{height:var(--layout-header)}
+  body .nav{display:none}
+  body .mob-tog{display:block;min-width:44px;min-height:44px}
+  body .nav.active{display:flex;flex-direction:column;align-items:stretch;position:absolute;inset:var(--layout-header) 0 auto;max-height:calc(100dvh - var(--layout-header));overflow-y:auto;padding:12px var(--layout-gutter) 20px;gap:4px;background:var(--bg);border-bottom:1px solid var(--border);z-index:999}
+  body .nav.active a{display:flex;align-items:center;min-height:44px;padding:10px 12px;font-size:15px;white-space:normal}
+  body .nav.active .dd{display:block;position:static;min-width:0;margin:0;padding:0 0 0 12px;background:transparent;border:0;box-shadow:none}
+}
+@media(max-width:768px){
+  body .hero{min-height:0;padding-top:calc(var(--layout-header) + 34px);padding-bottom:44px}
+  body .hero-ct{grid-template-columns:minmax(0,1fr);gap:34px}
+  body .hero h1{font-size:clamp(43px,9vw,62px);margin-bottom:18px}
+  body .hero .tag{margin-bottom:24px}
+  body .hero-proof{margin-top:26px;padding-top:16px}
+  body .hero-portrait::before{inset:10px -8px -8px 10px}
+  body .hero-portrait figcaption{left:10px}
+  body .home-intro{grid-template-columns:minmax(0,1fr);gap:24px}
+  body .home-intro>*{min-width:0}
+  body .pg-hero h1,body .sec-t{font-size:clamp(32px,6vw,46px)}
+  body .pg-hero p{font-size:16px;line-height:1.6}
+  body .pg-hero,body .speaker-hero{padding-top:calc(var(--layout-header) + 32px);padding-bottom:34px}
+  body .breadcrumbs + .pg-hero,body .breadcrumbs + .speaker-hero,body .breadcrumbs + .post{padding-top:28px}
+  body .ftr-top{grid-template-columns:minmax(0,1fr)}
+  .fg input,.fg select,.fg textarea,.lm-form input[type="email"]{font-size:16px;min-width:0;max-width:100%}
+}
+@media(max-width:540px){
+  .owner-guide .pills{grid-template-columns:minmax(0,1fr)}
+  body .hero-portrait img{aspect-ratio:1;object-position:50% 32%}
+  body .hero-portrait figcaption{position:absolute;bottom:12px;width:auto;max-width:calc(100% - 24px)}
+  body .ftr .social-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  body .ftr .social-list a{white-space:normal}
 }"""
     write("assets/mobile-layout.css", mobile_css)
     for mobile_page in DIST.rglob("*.html"):
         markup = mobile_page.read_text()
         if "/assets/mobile-layout.css" not in markup:
-            mobile_page.write_text(markup.replace("</head>", '<link rel="stylesheet" href="/assets/mobile-layout.css?v=20261120">\n</head>', 1))
+            mobile_page.write_text(markup.replace("</head>", '<link rel="stylesheet" href="/assets/mobile-layout.css?v=20261128">\n</head>', 1))
 
     total_files = sum(1 for _ in DIST.rglob("*") if _.is_file())
     print(f"\n{'=' * 60}")
