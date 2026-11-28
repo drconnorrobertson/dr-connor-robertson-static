@@ -336,6 +336,94 @@ TOPICS.extend([('acquisition-warranty-claims-review',
    'reported figure.'),
   ['customer-concentration-risk', 'acquisition-customer-renewal-calendar'])])
 
+TOPICS.extend([('acquisition-gross-margin-bridge',
+  'Gross Margin Bridge for Acquisition Due Diligence',
+  'Separate price, mix, volume, and direct cost changes before relying on a seller’s margin trend.',
+  'A gross margin bridge explains what changed between two periods and which changes the buyer can '
+  'reasonably expect to persist.',
+  [('Align the cost and product definitions',
+    'Use comparable periods and document where freight, subcontractors, returns and discounts are booked. '
+    'Map changed product codes and identify missing direct costs.'),
+   ('Reconcile gross profit in dollars',
+    'A seller reports the same $200,000 gross profit on revenue rising from $500,000 to $625,000. Margin '
+    'declined from 40% to 32%. Break the change out by product or contract before deciding whether higher '
+    'sales improved economic output.'),
+   ('Test the assumptions that matter',
+    'Carry forward recurring changes in price or cost only when there is documented support. If mix shifts '
+    'materially, model a separate downside mix and ask the diligence accountant to review the bridge.')],
+  ['Align periods', 'Reconcile gross profit', 'Review changes by product', 'Stress-test mix'],
+  ('Should a buyer compare only margin percentages?',
+   'Show gross profit dollars alongside percentages so growth and margin dilution stay visible.'),
+  ['quality-of-earnings-small-business-acquisition', 'acquisition-customer-credit-memos']),
+ ('debt-like-items-acquisition-review',
+  'Debt-Like Items Review in a Small Business Acquisition',
+  'Build a review list of possible debt-like obligations and avoid double counting them across deal '
+  'adjustments.',
+  'Begin with the definition being negotiated for the deal and a list of obligations requiring adviser '
+  'review.',
+  [('Collect potential obligations',
+    'Ask for obligations with amounts, cutoff dates, due dates, responsible parties, and signed evidence. '
+    'Mark items already included in working capital or another adjustment.'),
+   ('Walk a duplicate through the model',
+    'A fictional obligation of $35,000 for overdue equipment rent appears both in payable aging and in a '
+    'draft debt-like schedule. The team reconciles the references and asks counsel and the deal accountant '
+    'which negotiated calculation should capture it.'),
+   ('Document closing treatment',
+    'Update the schedule as balances change and ask the deal team to confirm classification. Record the '
+    'reason for any exclusion and make the treatment visible in the bridge to closing proceeds.')],
+  ['Get the deal definitions',
+   'Collect supporting records',
+   'Check for duplicates',
+   'Confirm closing treatment'],
+  ('Is every unpaid bill debt-like?',
+   'Classification depends on the negotiated terms and the nature of the obligation. Review each materially '
+   'disputed category with the deal team.'),
+  ['working-capital-business-acquisition', 'employee-accruals-acquisition-diligence']),
+ ('acquisition-contingent-liability-register',
+  'Contingent Liability Register for Acquisition Diligence',
+  'Document uncertain obligations, missing evidence, response deadlines, and operating owners before '
+  'acquisition closing.',
+  'A contingent liability register keeps uncertain potential obligations visible even when no reliable '
+  'amount is available.',
+  [('Record what is known',
+    'Log the event, basis, possible counterparties, notice deadlines, supporting documents, and who has '
+    'authority to investigate. Separate stated claims from estimates and confirmed costs.'),
+   ('Model a range with clear boundaries',
+    'A fictional business receives a $60,000 disputed customer claim. The buyer records the requested amount '
+    'and separately has advisers evaluate possible outcomes, handling cost, and whether any insurance or '
+    'contract provision applies.'),
+   ('Follow the decisions through closing',
+    'Set checkpoints for reviewing evidence and update the model when material facts change. Confirm who '
+    'handles notices or records after close with qualified advisers.')],
+  ['Log the event and dates',
+   'Separate claims from estimates',
+   'Name an investigation owner',
+   'Review handover duties'],
+  ('What if there is too little evidence to estimate an amount?',
+   'State what is unknown, who can obtain evidence, and the deadline for deciding whether to proceed with '
+   'the uncertainty.'),
+  ['business-acquisition-due-diligence-checklist', 'acquisition-warranty-claims-review']),
+ ('handover-readiness-evidence',
+  'Acquisition Handover Readiness Evidence Checklist',
+  'Turn acquisition handover tasks into observable proof of who can run essential workflows after close.',
+  'Use a readiness checklist to demonstrate that the intended owners can execute the work and recognize '
+  'exceptions.',
+  [('Choose critical walkthroughs',
+    'List a representative payment, order, employee schedule, customer issue, and supplier request. Identify '
+    'required approvals and how the intended owner demonstrates work in an approved test.'),
+   ('Record partial readiness',
+    'A buyer-side operator can export a dispatch schedule but cannot see last-minute callouts in the new '
+    'system. Record the gap, name the workaround owner, and schedule a second test before the first live '
+    'shift.'),
+   ('Keep a decision record',
+    'Use accepted, conditional, and unresolved states with a dated reason. Escalate any issue that stops '
+    'essential operations and agree an owner for first-week follow-through.')],
+  ['Select critical workflows', 'Define observable proof', 'Record unresolved steps', 'Review on day one'],
+  ('How is this different from a task checklist?',
+   'A task checklist records activity. Readiness evidence shows that the intended person can run the work '
+   'under expected operating conditions.'),
+  ['day-one-acquisition-continuity-checklist', 'key-manager-transition-plan'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
