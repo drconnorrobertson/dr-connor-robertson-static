@@ -580,6 +580,88 @@ TOPICS.extend([('acquisition-fixed-asset-ownership',
    'disposition for what remains unresolved.'),
   ['business-acquisition-due-diligence-checklist', 'acquisition-decision-log'])])
 
+TOPICS.extend([('acquisition-customer-contract-rate-review',
+  'Customer Contract Rate Review Before an Acquisition',
+  'Check actual billing against signed rate schedules and model upcoming price changes.',
+  'Start with the contract versions and invoices that support the largest or most complex customer '
+  'relationships.',
+  [('Build a rate schedule',
+    'Record service codes, agreed prices, effective dates, permitted surcharges, discounts, approvals and '
+    'billing frequency.'),
+   ('Test a real invoice pattern',
+    'A fictional contract lists $120 per service call, but invoices have billed $105 for six months. Inspect '
+    'amendments and account correspondence to determine whether the lower amount was approved or a '
+    'configuration error.'),
+   ('Reconcile the forecast',
+    'Use actual collected pricing for the starting model, investigate future changes, and have the advisers '
+    'assess material unresolved differences.')],
+  ['Collect amendments', 'Tie invoices to rates', 'Flag recurring concessions', 'Update the forecast'],
+  ('Which accounts should I review first?',
+   'Start with accounts whose approved rates differ materially from the forecast or whose next price change '
+   'falls near closing.'),
+  ['acquisition-customer-renewal-calendar', 'acquisition-gross-margin-bridge']),
+ ('acquisition-open-purchase-orders',
+  'Open Purchase Order Review for Business Buyers',
+  'Identify procurement commitments, cancellation terms and expected cash outflows before closing.',
+  'An open purchase order can represent a required input, an avoidable duplicate, or a payment the buyer '
+  'needs to fund.',
+  [('Reconcile order status',
+    'Compare orders against partial receipts, supplier acknowledgements and deposits. Identify open work by '
+    'delivery date, responsible team, and related customer order.'),
+   ('Model remaining commitments',
+    'A fictional seller shows $200,000 of open orders. The review finds $35,000 already received but '
+    'unclosed and $20,000 of orders awaiting supplier confirmation. Treat confirmed remaining commitments '
+    'and unresolved orders as distinct cash scenarios.'),
+   ('Assign follow-up',
+    'Have the deal team review which commitments transfer. Give purchasing responsibility for confirming '
+    'important deliveries and update the cash schedule as evidence changes.')],
+  ['Reconcile receipts', 'Identify deposits', 'Record expected cash dates', 'Confirm post-close ownership'],
+  ('Should every open order go into the baseline forecast?',
+   'Include evidence-supported commitments in the baseline and describe how uncertain orders affect a '
+   'separate scenario.'),
+  ['acquisition-supplier-payment-terms', 'inventory-due-diligence-small-business']),
+ ('acquisition-equipment-downtime-review',
+  'Equipment Downtime Review for Business Acquisitions',
+  'Use downtime records to test throughput assumptions, repair exposure and backup capacity.',
+  'Identify the equipment failures that interrupt customer delivery and compare recorded downtime with the '
+  'forecast.',
+  [('Trace downtime events',
+    'Collect maintenance tickets, shift notes, throughput history, duration and repair costs. Separate '
+    'planned maintenance from failures and record when another line absorbed the work.'),
+   ('Test a capacity assumption',
+    'A fictional packaging line loses six hours per month unexpectedly. At 140 units per hour, that exposes '
+    'up to 840 units of nominal production. Check whether overtime or spare capacity actually recovers those '
+    'units.'),
+   ('Model operating response',
+    'Price backup capacity and upcoming repair work, then test how a longer outage would change delivery and '
+    'cash. Assign post-close monitoring to an operating owner.')],
+  ['Identify the constrained asset',
+   'Reconcile event records',
+   'Check recoverable volume',
+   'Estimate backup capacity'],
+  ('Is lost production the same as lost sales?',
+   'Check how much demand was deferred, recovered, or canceled before valuing the financial effect.'),
+  ['maintenance-capex-acquisition', 'acquisition-fixed-asset-ownership']),
+ ('acquisition-inventory-shrink-review',
+  'Inventory Shrink Review in Acquisition Diligence',
+  'Measure recurring inventory loss and separate counting errors from supported shrink.',
+  'Compare inventory movements and physical counts over matching periods before carrying the seller’s loss '
+  'assumption into the deal model.',
+  [('Build a movement bridge',
+    'Reconcile opening quantity, receipts, issues, transfers and adjustments to closing quantity. Check '
+    'consistent units and verify the count cutoff.'),
+   ('Evaluate the adjustment pattern',
+    'A fictional warehouse expects 2,000 units and counts 1,960. Ten were transferred before cutoff and '
+    'recorded afterward. Investigate the remaining 30 using prior reconciliations and related transaction '
+    'evidence.'),
+   ('Carry findings into diligence',
+    'Separate errors corrected once from unexplained recurring differences. Document any estimated ongoing '
+    'cost and have the financial team review how it affects inventory and projected margins.')],
+  ['Align the cutoff', 'Reconcile movement', 'Inspect recurring differences', 'Review deal effects'],
+  ('Can a single count establish a shrink rate?',
+   'A count can verify one date. Compare multiple reconciled periods before estimating a recurring rate.'),
+  ['inventory-due-diligence-small-business', 'acquisition-gross-margin-bridge'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
