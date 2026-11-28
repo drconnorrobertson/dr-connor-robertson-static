@@ -3171,6 +3171,94 @@ TOPICS.extend([('acquisition-packing-labor-cost',
    'Confirm that the underlying evidence meets the agreed billing trigger.'),
   ['acquisition-unbilled-service-visits', 'acquisition-customer-acceptance-backlog'])])
 
+TOPICS.extend([('acquisition-packaging-material-dependence',
+  'Packaging Material Dependence in Acquisition Diligence',
+  'Evaluate packaging shortages that could delay shipping after an acquisition.',
+  'Identify packaging that the target needs to fulfill contracted orders or use particular carriers.',
+  [('Map demand by order type',
+    'Record packaging specifications, supplier lead times, stock, customer limitations and qualified '
+    'alternatives.'),
+   ('Test a near-term shipment',
+    'A fictional buyer expects 240 weekly shipments that need a custom insert and counts 360 inserts. With '
+    'the next delivery three weeks away, the gap is 360 inserts at that demand before any reserve.'),
+   ('Verify operating options',
+    'Ask a qualified owner to confirm acceptable alternatives and their arrival dates. Show unsupported '
+    'substitutions separately from the baseline.')],
+  ['List required materials',
+   'Reconcile stock and orders',
+   'Estimate the gap',
+   'Verify permitted alternatives'],
+  ('Can a generic container fill the gap?',
+   'Check customer, carrier and product requirements and obtain any required approval before relying on a '
+   'substitute.'),
+  ['acquisition-shipping-cutoff-capacity', 'acquisition-supplier-onboarding-timing']),
+ ('acquisition-field-service-time-record-evidence',
+  'Field Service Time Record Evidence in Acquisition Diligence',
+  'Test whether field time records support labor costs, productivity assumptions and customer charges.',
+  'Choose a cross-section of service work and match the time records to agreed scope and accounting '
+  'evidence.',
+  [('Separate time categories',
+    'Compare paid time, travel, service and the amounts billed. Confirm which charges follow fixed fees, '
+    'hourly rates or minimums.'),
+   ('Reconcile a sample',
+    'A fictional crew records 60 paid hours and invoices 39. Twelve hours are scheduled travel and nine are '
+    'training and administration. Verify whether any travel is separately charged before interpreting the '
+    'difference.'),
+   ('Verify the forecast basis',
+    'Calculate planned margins using the documented billing and cost categories. Give material gaps to the '
+    'responsible accountant or operator for resolution.')],
+  ['Sample job types',
+   'Separate paid and billed hours',
+   'Check matching records',
+   'Confirm margin assumptions'],
+  ('Does low billable time always mean unused capacity?',
+   'Review nonbillable travel, training and administrative work before concluding staff had spare time.'),
+  ['acquisition-field-service-billing-terms', 'acquisition-dispatch-travel-cost']),
+ ('acquisition-multi-stop-load-sequence',
+  'Multi-Stop Load Sequence Review Before an Acquisition',
+  'Check whether load planning can support delivery order, unloading windows and customer commitments after '
+  'closing.',
+  'Select an inherited route with several stops and review actual manifests and unloading records.',
+  [('Map stop constraints',
+    'Record receiving hours, cargo handling requirements, unload times, staffing and the documented load '
+    'sequence.'),
+   ('Reconstruct a lost window',
+    'A fictional route misses its second window because two pallets meant for the first stop were loaded '
+    'behind a third-stop shipment. Compare plan and actual records to estimate handling time and verify '
+    'whether the recurrence affects capacity.'),
+   ('Test transition readiness',
+    'Have the approved operator stage a representative load on paper or in the test process and confirm who '
+    'resolves mismatches before departure.')],
+  ['Collect route evidence',
+   'Identify unloading constraints',
+   'Estimate added handling time',
+   'Verify loading ownership'],
+  ('Can route optimization alone improve delivery time?',
+   'Check whether the physical load sequence and receiving conditions support the proposed route.'),
+  ['acquisition-route-coverage-readiness', 'acquisition-order-fulfillment-lead-time']),
+ ('acquisition-customer-update-commitments',
+  'Customer Status Update Commitments in Acquisition Diligence',
+  'Identify open customer promises to provide updates and transfer responsibility at close.',
+  'Review jobs and support cases with an explicit promise to contact the customer before completion.',
+  [('Build an update register',
+    'Record the underlying issue, last verified status, promised next contact, authorized owner and the '
+    'evidence required before communicating a change.'),
+   ('Transfer a time-sensitive promise',
+    'A customer expects an update Friday afternoon on an undelivered order, even though a replacement date '
+    'is unknown. The buyer assigns the account lead and verifies what information can be shared under the '
+    'agreed process.'),
+   ('Verify the first operating cycle',
+    'Review upcoming commitments daily during cutover and check whether actual contact is recorded. Escalate '
+    'repeated delays to the operating owner.')],
+  ['Identify promised contacts',
+   'Confirm authorized owners',
+   'Retain verified status',
+   'Review missed updates'],
+  ('Should the buyer wait until it has a final answer?',
+   'Honor agreed update times with verified information and give the next contact time when the outcome '
+   'remains open.'),
+  ['acquisition-customer-support-cutover', 'acquisition-post-close-customer-communication'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
