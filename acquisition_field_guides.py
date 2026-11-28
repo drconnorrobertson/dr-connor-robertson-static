@@ -1318,6 +1318,72 @@ TOPICS.extend([('acquisition-consignment-inventory-review',
    'remains available.'),
   ['deferred-revenue-business-acquisition', 'seasonal-cash-flow-acquisition'])])
 
+TOPICS.extend([('acquisition-merchant-settlement-cutover',
+  'Merchant Settlement Cutover for Acquisitions',
+  'Reconcile payment processor settlements across closing and assign owners for delayed deposits and '
+  'disputes.',
+  'Identify the authorized merchant accounts, settlement windows and who owns exceptions around the closing '
+  'date.',
+  [('Reconcile transactions to batches',
+    'Capture transaction date, gross amount, fees, reversals, payout date and responsible entity. Confirm '
+    'authorized access with the payment provider.'),
+   ('Trace a cross-close batch',
+    'A fictional Friday batch contains $18,000 in sales and settles Tuesday with $550 in fees. The team ties '
+    'the $17,450 payout to the batch and confirms treatment with the deal accountant.'),
+   ('Validate the first buyer payout',
+    'Verify a properly authorized transaction, settlement notice and reconciliation. Assign an owner for '
+    'chargebacks and follow-up without putting credentials into the deal record.')],
+  ['Match batch and payout dates',
+   'Reconcile net deposits',
+   'Confirm exception owners',
+   'Verify the first payout'],
+  ('Why check settlement dates alongside sales dates?',
+   'A transaction can occur before closing and settle afterward, so each event needs its own date and '
+   'disposition.'),
+  ['acquisition-billing-cutover', 'acquisition-cash-conversion-cycle']),
+ ('acquisition-inventory-in-transit',
+  'Inventory in Transit Review Before Buying a Business',
+  'Reconcile goods between suppliers and receiving locations and assign unresolved deliveries at closing.',
+  'Create a shipment-level list for material items that may move across the closing cutoff.',
+  [('Match shipments to purchase records',
+    'Collect supplier confirmations, packing lists, carrier events and expected receipts. Trace deposits or '
+    'invoices and record the destination and receiving owner.'),
+   ('Check partial orders',
+    'A buyer samples an order for 900 units. Six hundred have arrived and 300 remain in transit. Reconcile '
+    'what the count includes and determine whether a previously paid deposit applies to one shipment or the '
+    'full order.'),
+   ('Review ownership and continuity',
+    'Have advisers interpret agreed cutoff, ownership and closing treatment. Give operations an authorized '
+    'route for tracing delayed shipments and confirming the first receipt.')],
+  ['Trace orders to shipment events',
+   'Separate received and in-transit stock',
+   'Reconcile payments',
+   'Confirm receiving ownership'],
+  ('Does carrier tracking resolve ownership?',
+   'Tracking establishes movement and delivery events. Review ownership and transaction treatment with '
+   'supporting contracts and advisers.'),
+  ['inventory-due-diligence-small-business', 'acquisition-open-purchase-orders']),
+ ('acquisition-customer-reporting-obligations',
+  'Customer Reporting Obligations in Acquisition Diligence',
+  'Identify recurring reports the buyer must deliver and verify that operating data and review ownership '
+  'transfer.',
+  'List material customer reports and test how each one is assembled, approved and sent.',
+  [('Build the reporting register',
+    'Capture frequency, due dates, contract reference, approved recipients, source systems and reviewer. '
+    'Identify restricted inputs and approved access.'),
+   ('Run a representative report',
+    'A fictional buyer can reproduce totals in a monthly service report but has no source for the prior '
+    'month’s exceptions. Assign an owner to verify those records and document how reporting proceeds if the '
+    'missing data persists.'),
+   ('Verify operating readiness',
+    'Have the intended owner reproduce one complete report in the approved environment and confirm '
+    'recipients through the agreed process. Track any unresolved reporting commitment around closing.')],
+  ['Map required reports', 'Verify source access', 'Reproduce a sample', 'Assign delivery owner'],
+  ('Why verify a report before the handoff?',
+   'The test shows whether the buyer can reconstruct the numbers, review the output and deliver it by the '
+   'required date.'),
+  ['acquisition-service-level-commitments', 'handover-readiness-evidence'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
