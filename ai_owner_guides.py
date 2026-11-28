@@ -18,7 +18,7 @@ GUIDES = [
      "Build a local prototype in this repository using the supplied fictional orders. Show late orders and list malformed or duplicate rows separately. Before editing, summarize the intended changes. Add tests for blanks and duplicates. Leave the existing workflow available.",
      CODEX),
     ("chatgpt-for-business-owners", "ChatGPT for Business Owners",
-     "Set up a reusable ChatGPT workflow for the decisions and drafts your team prepares every week.",
+     "Choose a first ChatGPT workflow, test it on real business tasks, and measure whether it saves time after review.",
      "A useful first ChatGPT workflow takes a recurring set of inputs and turns it into a draft someone already knows how to review. Try a weekly owner brief before connecting systems or adding a new reporting obligation.",
      ["Collect the current KPI definitions, a blank brief and a sample with fictional values.",
       "If you use a ChatGPT Project, add the approved reference material and instructions about how to cite sources and mark missing figures.",
@@ -91,6 +91,18 @@ GUIDES = [
 
 
 PRACTICE = {
+    "chatgpt-for-business-owners": """<h2>Choose your first ChatGPT pilot</h2>
+<p>Start where the team already has clear source material and someone who can approve the output. Choose a single workflow for the first two weeks.</p>
+<table><thead><tr><th scope="col">Workflow</th><th scope="col">Inputs and reviewer</th><th scope="col">What the reviewer must verify</th></tr></thead><tbody>
+<tr><td>Sales call follow-up</td><td>Approved call notes and a sample email. The salesperson reviews.</td><td>The draft matches the buyer’s request, next step, and agreed date. It introduces no new commitments.</td></tr>
+<tr><td>Customer support draft</td><td>A redacted ticket and current service policy. The service lead reviews.</td><td>The draft uses the correct policy and routes refund or warranty exceptions to the person authorized to decide.</td></tr>
+<tr><td>Weekly owner brief</td><td>Two dated metric exports and a scorecard dictionary. The meeting owner reviews.</td><td>Every figure reconciles, comparison periods match, and proposed explanations are labeled as hypotheses.</td></tr>
+</tbody></table>
+<h2>Measure time per approved output</h2>
+<p>Use the same ten cases for your baseline and AI pilot. Include routine cases, one missing-input case, and one case that should be escalated. Record drafting, reviewing, and correction time. Count a draft as approved only after the assigned reviewer accepts it.</p>
+<p>In a fictional sales pilot, ten manual follow-ups took 120 minutes. ChatGPT drafting and review took 65 minutes, but two drafts needed manual rewrites that added 24 minutes. That leaves 31 minutes saved across ten approved emails, or 3.1 minutes per email. If either draft introduced a false customer commitment, adjust the instructions and retest that failure before rollout.</p>
+<p>Choose a threshold before the trial. For example, require all critical facts to pass and at least two minutes saved per approved draft. Record which cases failed and who will own the next revision.</p>
+<p>For a recurring reporting workflow, use the <a href="/ai/business-owners/chatgpt-projects-weekly-owner-review/">weekly owner review template</a>. For task-specific drafts, see the <a href="/ai/chatgpt-business-workflows/">ChatGPT business workflow collection</a>.</p>""",
     "codex-build-internal-tools": """<h2>Test the checker with a fictional export</h2>
 <p>Save this fixture as <code>jobs.csv</code>. The checker should report each exception with the row number and reason. Row numbers below count the header as row 1.</p>
 <pre>job_id,due_date,status
