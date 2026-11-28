@@ -3013,6 +3013,47 @@ TOPICS.extend([('acquisition-shipping-cutoff-capacity',
    'Require comparable results after the change before carrying it into the baseline.'),
   ['acquisition-inventory-shrink-review', 'acquisition-warranty-supplier-recovery'])])
 
+TOPICS.extend([('acquisition-customer-service-region-obligations',
+  'Customer Service Region Obligations in Acquisition Diligence',
+  'Check which geographic commitments the buyer must cover and estimate their travel and staffing cost.',
+  'Use signed customer schedules and actual work records to map the service area the target supports.',
+  [('Map coverage terms',
+    'Record locations, required windows, exceptions and the role responsible for each territory. Confirm '
+    'which sites carry commitments beyond the seller’s standard region.'),
+   ('Test an outlying customer',
+    'A fictional account contributes six monthly visits at a rural site. Each adds 90 minutes of driving '
+    'against the standard route. Confirm whether the agreement supports a travel fee and budget nine '
+    'incremental driving hours if the visits continue.'),
+   ('Validate the buyer-side schedule',
+    'Check staffing and vehicle availability for actual windows, then have advisers review unresolved '
+    'obligations before incorporating route changes into the forecast.')],
+  ['Collect site lists',
+   'Identify contract boundaries',
+   'Estimate incremental hours',
+   'Verify operating coverage'],
+  ('Does an account’s billing address define the service area?',
+   'Confirm the delivery or service sites in the agreement and actual schedules.'),
+  ['acquisition-route-coverage-readiness', 'acquisition-dispatch-travel-cost']),
+ ('acquisition-supplier-currency-exposure',
+  'Supplier Currency Exposure Before Buying a Business',
+  'Identify foreign-currency purchasing commitments and test how exchange rates affect cash and margins.',
+  'Compare purchase quantities, original currency and settlement evidence before projecting a translated '
+  'cost.',
+  [('Build a currency commitment schedule',
+    'Record supplier, total source-currency amount, due dates, exchange assumptions and any existing '
+    'contractual arrangements. Reconcile deposits and unpaid balances.'),
+   ('Test an illustrative rate move',
+    'A fictional order costs EUR 50,000. At 1.05 USD per euro it requires $52,500 before fees. At 1.12 it '
+    'requires $56,000. Show the $3,500 difference as a scenario, not a prediction.'),
+   ('Check who carries exposure',
+    'Ask qualified advisers to confirm any agreement terms. Keep forecast assumptions separate from '
+    'committed rates and give the finance owner a date to review changes.')],
+  ['Verify invoice currencies', 'Map due dates', 'Test rate sensitivity', 'Assign follow-up'],
+  ('Should the latest bank rate be used for all historical purchases?',
+   'Keep historical recorded rates and future planning assumptions distinct so purchase and currency effects '
+   'can be reconciled.'),
+  ['acquisition-purchase-price-variance', 'acquisition-supplier-payment-terms'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
