@@ -2673,7 +2673,14 @@ def page_business_acquisitions():
 </div></section>
 <section class="sec"><div class="ctn">
 
-<h2 class="fade-in">Why Buying Beats Building</h2>
+<h2>Business Acquisition Roadmap for First-Time Buyers</h2>
+<ol>
+<li><strong>Set your buying criteria.</strong> Decide what you can operate, how much cash you can commit, and which risks will end your review.</li>
+<li><strong>Screen the opportunity.</strong> Ask the broker for the basis of adjusted earnings, the seller's day-to-day role, and any concentrated customer or supplier relationships. Use the <a href="/blog/the-first-questions-i-ask-when-meeting-a-seller/#questions-to-ask-a-business-broker">broker question checklist</a> before the first seller meeting.</li>
+<li><strong>Verify the deal.</strong> Reconcile reported earnings against source records, model cash after debt service and working capital, and confirm which contracts and relationships will transfer.</li>
+<li><strong>Plan the handoff.</strong> Identify who runs the business at close and how the seller will introduce key employees and customers. Use the <a href="/business-acquisitions/first-100-days-after-buying-a-business/">first 100 days guide</a> to assign owners and deadlines.</li>
+</ol>
+<h2 class="fade-in">How Buying a Business Compares With Starting One</h2>
 <p class="fade-in">Building and buying create different risks. An acquisition may provide an existing team, customers, and operating history, but the buyer also inherits problems that may be hard to see before closing. The right choice depends on the quality of the target, the buyer's operating skills, financing, and the price.</p>
 <p class="fade-in">Start with a documented acquisition thesis: the industry, geography, cash flow needed after debt service, working-capital reserve, management depth, and risks you will not accept. Verify seller-reported earnings and customer relationships against records. The <a href="https://www.sba.gov/counseling/plan-your-business/" target="_blank" rel="noopener">SBA's business planning guidance</a> also recommends due diligence before buying an existing company.</p>
 <p class="fade-in">Buying can save the time needed to create a company from zero, but it does not make revenue or employee continuity automatic. Model a downside case and decide who will operate the business on day one.</p>
@@ -2877,6 +2884,9 @@ def page_ai_business_strategy():
 <p>Write down where a task begins, what a usable result looks like, who reviews it, and what happens after approval. If the process already stalls because an owner is unavailable or the input is incomplete, a faster draft will not remove that delay. Use the <a href="/blog/operational-drag-in-business/">operational drag diagnostic</a> to separate active work from waiting and rework before choosing an AI pilot.</p>
 <p>Pick a task that happens often enough to test, has a stable source of truth, and has a reviewer with time to check outputs. A customer email draft, meeting brief, or document comparison can be a good candidate when the required facts and approval path are clear. A task with unclear authority, highly sensitive data, or no reliable way to judge correctness needs process work first.</p>
 
+<h2>Estimate Payoff Before You Start</h2>
+<p>Suppose a team handles 40 requests per week. Each accepted response currently takes 15 minutes. If a pilot takes 10 minutes per accepted response including review, it saves about 3 hours and 20 minutes per week. At an illustrative labor cost of $45 per hour, that is $150 of staff capacity per week before software and support costs. Track whether the team actually uses that time elsewhere.</p>
+<p>Set the expansion criteria before testing. For example, require a representative batch of accepted outputs with zero invented customer commitments, and verify that total staff time falls after corrections and review. If the pilot clears those checks and another team can use the same source and approval process, test with that team next. For implementation support, see <a href="https://www.elixirconsultinggroup.com/pittsburgh-ai-consulting/">Elixir's AI consulting practice</a>.</p>
 <h2>Make the first pilot small and testable</h2>
 <ol>
 <li><strong>Define the deliverable.</strong> Name the artifact the team will use, its required fields, and the person who accepts it.</li>
