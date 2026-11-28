@@ -662,6 +662,92 @@ TOPICS.extend([('acquisition-customer-contract-rate-review',
    'A count can verify one date. Compare multiple reconciled periods before estimating a recurring rate.'),
   ['inventory-due-diligence-small-business', 'acquisition-gross-margin-bridge'])])
 
+TOPICS.extend([('acquisition-channel-revenue-dependence',
+  'Revenue Channel Dependence in Acquisition Diligence',
+  'Review dependence on marketplaces, referral sources or resellers before forecasting customer acquisition.',
+  'Identify which channels produce collected sales and which relationships the buyer can reasonably expect '
+  'to continue.',
+  [('Reconcile channel attribution',
+    'Compare channel exports, customer records and payment settlements. Separate direct invoices, '
+    'billed-through partners, referral charges and refunds.'),
+   ('Test a concentrated channel',
+    'A fictional business receives $600,000 of net sales through a single reseller and $900,000 directly. '
+    'The reseller accounts for 40% of net sales. Model a six-month decline using contribution after reseller '
+    'fees and the time to replace demand.'),
+   ('Verify continuity',
+    'Review contracts and operational dependencies with deal advisers. Assign a buyer-side owner and update '
+    'the model if portal access, pricing or referral terms change.')],
+  ['Reconcile channel sales',
+   'Calculate channel share',
+   'Model lost contribution',
+   'Verify continued access'],
+  ('How does this differ from customer concentration?',
+   'Channel risk can affect many customers at once even when individual accounts are small.'),
+  ['customer-concentration-risk', 'acquisition-customer-cohort-retention']),
+ ('acquisition-work-in-progress-review',
+  'Work in Progress Review When Buying a Business',
+  'Reconcile project progress, unbilled amounts and cost to complete for open work.',
+  'Begin with open projects and the estimates and customer approvals that support remaining work.',
+  [('Build a project-level view',
+    'Capture contract amount, approved changes, billed and collected amounts, actual cost and estimated cost '
+    'to finish. Note disputed scope and missing acceptance evidence.'),
+   ('Test the remaining margin',
+    'A fictional job has a $200,000 contract and $150,000 billed. A review identifies $65,000 in remaining '
+    'cost and $45,000 previously spent. The job may have positive overall margin, while its remaining '
+    '$50,000 billable amount trails the $65,000 future cost.'),
+   ('Align financial and operating views',
+    'Have the diligence accountant review reporting treatment. Ask the project owner to verify staffing, '
+    'materials and remaining approval dates before relying on the cash forecast.')],
+  ['Collect approved scope',
+   'Reconcile billings and costs',
+   'Test cost to complete',
+   'Confirm operating ownership'],
+  ('Is billed percentage a substitute for work completed?',
+   'Billing follows the agreement. Verify progress and remaining work separately.'),
+  ['acquisition-backlog-due-diligence', 'deferred-revenue-business-acquisition']),
+ ('acquisition-customer-refund-exposure',
+  'Customer Refund Exposure in Acquisition Diligence',
+  'Estimate unresolved and recurring refund exposure using transaction records and contract or policy '
+  'evidence.',
+  'Review refund claims and settlement history alongside customer balances and service problems.',
+  [('Classify the exposure',
+    'Collect dated refund requests, payment references, reason codes, approvals and settlement data. '
+    'Separate open requests, approved refunds and payments already issued.'),
+   ('Reconcile one reporting period',
+    'A fictional report lists $18,000 approved for refund. Settlements show $11,000 issued and $2,000 '
+    'attempted but failed. The buyer reviews the $7,000 still unresolved and keeps the failed payments '
+    'visible until successfully retried.'),
+   ('Carry findings into the model',
+    'Ask advisers which obligations transfer and avoid double counting amounts already deducted in net sales '
+    'or closing balances. Give the post-close owner a record of unresolved commitments.')],
+  ['Match approvals to payments',
+   'Identify failed settlements',
+   'Check reporting treatment',
+   'Assign post-close follow-up'],
+  ('How should the buyer use historic refund rates?',
+   'Compare comparable cohorts and review changes in products, policies and recurring causes before adopting '
+   'a forecast rate.'),
+  ['acquisition-customer-credit-memos', 'acquisition-customer-deposit-register']),
+ ('acquisition-service-staffing-coverage',
+  'Service Staffing Coverage Review Before Buying a Business',
+  'Test whether scheduled staff and backup coverage can meet contracted service windows after closing.',
+  'Start with customer hours and service commitments, then map which shifts and skills actually provide the '
+  'coverage.',
+  [('Build the staffing coverage grid',
+    'Record contracted windows, required skills, scheduled people and backups. Verify what contractors, '
+    'temporary staff and seller coverage contribute.'),
+   ('Test an absence scenario',
+    'A fictional service company needs two qualified technicians on Saturdays and normally schedules exactly '
+    'two. Losing either technician leaves no covered slot. Price a backup rotation and assess which promises '
+    'need escalation if coverage slips.'),
+   ('Confirm the handover plan',
+    'Check availability using authorized discussions. Estimate onboarding and training time and put any '
+    'recurring staffing costs into the post-close forecast.')],
+  ['Map service windows', 'Verify qualified coverage', 'Test absences', 'Budget for backups'],
+  ('Can total headcount prove coverage?',
+   'Use availability by time and skill. Total headcount can hide a gap on a critical shift.'),
+  ['acquisition-service-level-commitments', 'handover-readiness-evidence'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
