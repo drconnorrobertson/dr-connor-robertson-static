@@ -3136,6 +3136,41 @@ TOPICS.extend([('acquisition-inventory-count-coverage',
    'accumulated.'),
   ['acquisition-recurring-service-cadence', 'acquisition-equipment-inspection-backlog'])])
 
+TOPICS.extend([('acquisition-packing-labor-cost',
+  'Packing Labor Cost in Acquisition Diligence',
+  'Test packing labor assumptions using representative order lines, packaging and carrier cutoffs.',
+  'Separate ordinary packing work from oversized, fragile and customer-specific requirements.',
+  [('Build a measured order sample',
+    'Collect packing records, units, kit requirements, labor, exceptions and volume at the actual cutoff.'),
+   ('Recalculate labor for a mixed batch',
+    'A buyer has 80 routine orders requiring three minutes each and 20 special orders requiring 12 minutes. '
+    'Each group requires four labor hours. Use eight hours before adding setup and rework.'),
+   ('Verify forecast capacity',
+    'Compare modeled hours with available qualified staffing and the budgeted rate. Keep expected '
+    'improvements separate until demonstrated.')],
+  ['Define order classes', 'Verify measured time', 'Calculate labor by class', 'Check staffing at cutoff'],
+  ('Should the buyer use one cost per order?',
+   'Calculate separate costs when handling requirements differ materially and model the expected volume '
+   'mix.'),
+  ['acquisition-shipping-cutoff-capacity', 'acquisition-gross-margin-bridge']),
+ ('acquisition-work-order-closeout-evidence',
+  'Work Order Closeout Evidence in Acquisition Diligence',
+  'Verify completed service work against records used for billing and customer follow-up.',
+  'Sample work orders that status reports show as complete, including unusual and recently reopened jobs.',
+  [('Collect the required evidence',
+    'Compare the scope, technician notes, installation or visit evidence, customer acknowledgment rules and '
+    'invoice status.'),
+   ('Investigate a status mismatch',
+    'A fictional system shows 25 closed jobs. Three lack documented handoff or acceptance and cannot yet '
+    'support the expected invoice. Identify which approval is missing and who can obtain it.'),
+   ('Assign transition ownership',
+    'Verify who reviews incomplete records after closing. Ask the deal accountant to review material '
+    'invoicing or cutoff effects.')],
+  ['Sample completed work', 'Verify required records', 'Flag incomplete approvals', 'Assign follow-up'],
+  ('Does a closed status prove the job is billable?',
+   'Confirm that the underlying evidence meets the agreed billing trigger.'),
+  ['acquisition-unbilled-service-visits', 'acquisition-customer-acceptance-backlog'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
