@@ -2358,6 +2358,48 @@ TOPICS.extend([('acquisition-parts-traceability-readiness',
    'another assignment.'),
   ['acquisition-service-staffing-coverage', 'acquisition-overtime-coverage-cost'])])
 
+TOPICS.extend([('acquisition-customer-site-asset-register',
+  'Customer Site Asset Register in Acquisition Diligence',
+  'Verify the link between customer sites, installed equipment and recurring service obligations.',
+  'Select representative sites where a serial number, installation history or ownership decision affects '
+  'service delivery.',
+  [('Reconcile the asset references',
+    'Compare accepted installs, service records, equipment IDs, warranty terms and customer site '
+    'identifiers. Record who can authorize corrections.'),
+   ('Investigate a replacement',
+    'A fictional site has three serviceable units. The register shows a serial that was removed last month. '
+    'Trace the replacement’s approval and installation record before putting it in the buyer’s service '
+    'schedule.'),
+   ('Validate post-close access',
+    'Give the intended service owner an approved way to find the current asset and its history. Review '
+    'unresolved identity or ownership issues with the deal team.')],
+  ['Match sites and units', 'Verify replacements', 'Review operating obligations', 'Test owner access'],
+  ('Should a historical equipment list be imported as active?',
+   'Reconcile retired and replaced equipment separately so only verified active assets generate service '
+   'work.'),
+  ['acquisition-recurring-service-cadence', 'acquisition-parts-traceability-readiness']),
+ ('acquisition-seasonal-fleet-capacity',
+  'Seasonal Fleet Capacity Review Before Buying a Business',
+  'Compare fleet availability with seasonal demand and the qualifications needed to operate each vehicle.',
+  'Build the capacity model from actual routes, maintenance windows and supported peak demand.',
+  [('Map unavailable capacity',
+    'Record vehicles by service capability, condition, typical downtime, approved operators and replacement '
+    'sourcing. Identify assets unsuited for specific jobs.'),
+   ('Test a peak week',
+    'A fictional buyer requires nine route vehicles and owns ten. Two are due for planned service in the '
+    'same week. The buyer models eight available, then confirms whether rental coverage or staged '
+    'maintenance can fill the gap.'),
+   ('Carry timing into the operating forecast',
+    'Use approved maintenance and coverage assumptions, estimate cost and lead time, and assign '
+    'responsibility for verifying readiness before closing.')],
+  ['Group by vehicle capability',
+   'Check maintenance dates',
+   'Test peak coverage',
+   'Price a documented fallback'],
+  ('Can total vehicles prove availability?',
+   'Use the number of suitable vehicles and qualified operators available during each required window.'),
+  ['acquisition-equipment-downtime-review', 'acquisition-route-coverage-readiness'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
