@@ -815,6 +815,67 @@ TOPICS.extend([('acquisition-sales-commission-plan-review',
    'operating plan.'),
   ['acquisition-service-level-commitments', 'acquisition-customer-contract-rate-review'])])
 
+TOPICS.extend([('acquisition-key-person-interview-plan',
+  'Key Person Interview Plan for Business Buyers',
+  'Prepare authorized diligence interviews around real decisions, controls and customer relationships.',
+  'Agree who can be contacted through the deal process and give each interview a concrete operating '
+  'question.',
+  [('Map questions to evidence',
+    'Ask about representative shifts, recurring decisions and unusual escalations. Compare statements with '
+    'approved workflow records where available.'),
+   ('Trace a specific handoff',
+    'A manager says their team approves routine quotes, but three sample quotes all show a seller signature. '
+    'Ask what triggered the escalations and whether the written approval boundary reflects practice.'),
+   ('Document evidence and uncertainty',
+    'Summarize what the interview supports, record conflicting accounts without speculation, and assign a '
+    'follow-up owner before relying on the result.')],
+  ['Confirm authorized contact', 'Choose a sample workflow', 'Compare evidence', 'Record unresolved claims'],
+  ('Should every employee be interviewed?',
+   'Work through the authorized deal process and prioritize roles whose decisions or knowledge materially '
+   'affect continuity.'),
+  ['owner-dependence-due-diligence', 'key-manager-transition-plan']),
+ ('acquisition-contractor-capacity-review',
+  'Contractor Capacity Review Before Buying a Business',
+  'Test continuity, costs and scheduling risk for contractors who perform essential work.',
+  'Map which contract teams support customer commitments and whether the buyer has documented access to that '
+  'capacity.',
+  [('Build a dependency list',
+    'Collect agreements, availability windows, recent invoices, skills and backup alternatives. Identify '
+    'where the seller personally manages bookings.'),
+   ('Stress-test a coverage gap',
+    'A field service buyer expects 32 weekly installation hours from one crew. The crew can commit to only '
+    '20 after close. Estimate the cost and lead time to cover the missing 12 hours before promising the '
+    'existing volume.'),
+   ('Verify the operating response',
+    'Ask qualified advisers to review contracts and obligations. Give scheduling an approved backup and '
+    'update service forecasts when availability changes.')],
+  ['Collect agreements', 'Measure committed hours', 'Model a shortfall', 'Identify backup capacity'],
+  ('How should verbal availability be modeled?',
+   'Use a separate scenario until the buyer can verify timing and applicable terms through an authorized '
+   'source.'),
+  ['acquisition-service-staffing-coverage', 'supplier-concentration-acquisition']),
+ ('acquisition-order-to-cash-walkthrough',
+  'Order-to-Cash Walkthrough for Acquisition Diligence',
+  'Follow a completed transaction from order approval to fulfillment, invoicing and collection.',
+  'Choose transactions that reflect the way the target earns and collects revenue, including one that '
+  'required an exception.',
+  [('Collect each handoff record',
+    'Trace the signed order, release, delivery proof, invoice, adjustments and settlement. Note each control '
+    'owner and any manual re-entry.'),
+   ('Find the delay',
+    'A customer accepts a job on Monday, it finishes Friday, and billing waits 10 days for emailed evidence. '
+    'Distinguish the invoice creation delay from the agreed payment period when modeling cash.'),
+   ('Design the transition check',
+    'Assign an owner to perform each handoff after close. Re-run the walkthrough using a sample transaction '
+    'in any approved replacement system before relying on its output.')],
+  ['Select routine and exceptional orders',
+   'Trace approval through cash',
+   'Separate processing delays',
+   'Confirm post-close owners'],
+  ('Why inspect an exceptional order?',
+   'Exceptions expose approvals and manual steps that can remain invisible in a clean routine transaction.'),
+  ['acquisition-revenue-reconciliation', 'acquisition-cash-conversion-cycle'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
