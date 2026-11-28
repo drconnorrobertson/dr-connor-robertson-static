@@ -2445,6 +2445,50 @@ TOPICS.extend([('acquisition-carrier-claims-history',
    'work moving.'),
   ['acquisition-equipment-downtime-review', 'acquisition-production-tooling-dependence'])])
 
+TOPICS.extend([('acquisition-supplier-deposits-review',
+  'Supplier Deposit Review Before Buying a Business',
+  'Reconcile supplier deposits against open purchases and confirm the buyer can use or recover each material '
+  'balance.',
+  'Use approved payment records and supplier confirmations to establish what each deposit supports.',
+  [('Build a deposit schedule',
+    'Record amount, vendor, order, payment date, fulfillment milestone and recovery terms. Match each entry '
+    'to the accounting record.'),
+   ('Model a conditional balance',
+    'A fictional business pays $20,000 for an order of which 60% is received. A vendor statement shows '
+    '$12,000 applied and $8,000 still held. Verify the expected shipment and model the held amount '
+    'separately.'),
+   ('Confirm treatment and follow-up',
+    'Have the deal team review whether balances transfer and who can request a refund or credit. Give '
+    'unresolved deposits an owner and due date.')],
+  ['Match notices to payments',
+   'Verify application against receipts',
+   'Review canceled orders',
+   'Assign post-close follow-up'],
+  ('Can the buyer count every supplier deposit as available cash?',
+   'Confirm the permitted use and recovery terms. A deposit may only be usable against a future shipment.'),
+  ['acquisition-open-purchase-orders', 'acquisition-supplier-onboarding-timing']),
+ ('acquisition-field-service-revisit-cost',
+  'Field Service Revisit Cost in Acquisition Diligence',
+  'Estimate the labor and travel cost of repeat field visits and test whether the buyer can reduce them.',
+  'Separate corrective trips from new scope and planned multi-visit jobs using dispatch and billing '
+  'evidence.',
+  [('Build a comparable cohort',
+    'Link each second visit to the original job. Record reason, direct labor, travel, replacement parts and '
+    'any approved customer recovery.'),
+   ('Calculate net recurring cost',
+    'A fictional operator has 35 corrective trips at $95 direct cost each and recovers $500 from approved '
+    'supplier credits. That leaves $2,825 in net direct cost for the period before management time.'),
+   ('Test proposed savings',
+    'Ask operators which failure modes are preventable and sample whether a changed dispatch checklist would '
+    'have prevented them. Keep untested savings outside the baseline.')],
+  ['Link original and repeat jobs',
+   'Verify net direct costs',
+   'Identify preventable causes',
+   'Validate the savings scenario'],
+  ('Do repeat visits all indicate poor work?',
+   'Classify planned stages, customer-requested work and avoidable repeat trips separately.'),
+  ['acquisition-dispatch-travel-cost', 'acquisition-warranty-claims-review'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
