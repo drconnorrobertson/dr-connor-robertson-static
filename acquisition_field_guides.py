@@ -1638,6 +1638,67 @@ TOPICS.extend([('acquisition-seller-training-milestones',
    'costs.'),
   ['inventory-due-diligence-small-business', 'acquisition-inventory-shrink-review'])])
 
+TOPICS.extend([('acquisition-open-freight-claims',
+  'Open Freight Claims Review Before Buying a Business',
+  'Reconcile unresolved carrier claims, customer commitments and replacement costs around closing.',
+  'Start with shipments whose loss or damage created a material expected recovery or service obligation.',
+  [('Build a claims register',
+    'Record shipment, documented loss, claim date, replacement obligations, settlement status and next '
+    'deadline. Verify expected recovery against actual correspondence.'),
+   ('Trace a split obligation',
+    'A fictional seller has replaced $9,000 of damaged goods but the carrier has acknowledged only $6,000. '
+    'Model the replacement expense and possible recovery separately until settlement.'),
+   ('Assign post-close follow-up',
+    'Ask deal advisers to confirm who owns each claim and related customer commitment. Transfer approved '
+    'evidence and give each unresolved item a dated action.')],
+  ['Match claims to shipments',
+   'Verify replacement commitments',
+   'Separate possible recovery',
+   'Name an owner'],
+  ('Does filing a claim establish recovery?',
+   'Use filing as evidence of a request. Verify acceptance, settlement terms and receipt separately.'),
+  ['acquisition-inventory-in-transit', 'acquisition-expedited-shipping-cost']),
+ ('acquisition-production-tooling-dependence',
+  'Production Tooling Dependence in Acquisition Diligence',
+  'Identify whether molds, fixtures and specialized tooling will remain available to the buyer.',
+  'Map tooling that supports important customer orders or constrained operations.',
+  [('Verify tooling records',
+    'List the asset reference, location, owner, condition, supported products and access restrictions. Ask '
+    'operating staff for evidence of actual use.'),
+   ('Model a replacement delay',
+    'A fictional target relies on a customer-owned fixture for one recurring product. A replacement would '
+    'take six weeks. Verify permitted access and model delivery impact if the current fixture becomes '
+    'unavailable.'),
+   ('Check continuity at close',
+    'Have advisers review rights and obligations. Assign a buyer-side owner to verify possession or '
+    'authorized access, inspect the tooling and test a representative job.')],
+  ['Map customer and supplier tooling',
+   'Check condition and access',
+   'Model replacement timing',
+   'Verify day-one use'],
+  ('Can ownership be inferred from storage location?',
+   'Check documentation for ownership and permitted use. Tooling may be stored at the business while '
+   'belonging to a customer or supplier.'),
+  ['acquisition-fixed-asset-ownership', 'supplier-concentration-acquisition']),
+ ('acquisition-order-entry-cutover',
+  'Order Entry Cutover Checklist for Acquisitions',
+  'Keep customer order channels and unentered commitments traceable across the closing date.',
+  'Identify how orders arrive and give every inbound channel an owner for each side of the cutover.',
+  [('Define the transfer population',
+    'List email, portal, phone and recurring feeds. Reconcile approved orders waiting for entry and confirm '
+    'which party owns open acknowledgments.'),
+   ('Run an approved duplicate test',
+    'A fictional buyer receives one order through both a portal and a customer email. Use the customer order '
+    'number to match them, retain one accepted record and confirm only one shipment is scheduled.'),
+   ('Verify the first operating cycle',
+    'Trace a representative new order from receipt to scheduling and acknowledgment. Reconcile exceptions '
+    'and document who can approve a manual fallback.')],
+  ['Assign channel owners', 'List unentered orders', 'Test a duplicate', 'Verify the first acknowledgment'],
+  ('What if some orders have no customer reference?',
+   'Use authorized records to confirm the account, requested items and dates before deciding whether the '
+   'requests match.'),
+  ['acquisition-order-to-cash-walkthrough', 'acquisition-service-dispatch-system-test'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
