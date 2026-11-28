@@ -2232,6 +2232,48 @@ TOPICS.extend([('acquisition-freight-accessorial-exposure',
    'to a deposit or disputed balance.'),
   ['acquisition-billing-cutover', 'accounts-receivable-aging-due-diligence'])])
 
+TOPICS.extend([('acquisition-bank-reconciliation-cutover',
+  'Bank Reconciliation Cutover for Small Business Acquisitions',
+  'Identify transfers in flight, uncleared payments and responsibility for reconciling cash across closing.',
+  'Use the agreed closing timestamp and reconcile each account with the authorized finance team.',
+  [('Collect the final evidence',
+    'Gather approved statements, ledger activity and lists of outstanding items. Separate pending deposits '
+    'and authorized payments from settled transactions.'),
+   ('Trace an outstanding payment',
+    'A fictional seller records a $13,000 payment on Thursday. The bank processes it Monday after close. '
+    'Preserve the recorded and settlement dates, then confirm who owns any discrepancy under the agreed '
+    'cutover.'),
+   ('Verify the first reconciliation',
+    'Give each unresolved item an owner and expected date. Have the deal accountant review treatment and '
+    'make sure the first buyer-side reconciliation references the same items.')],
+  ['Align cutoff timestamps',
+   'List unsettled items',
+   'Confirm responsibility',
+   'Review first-period differences'],
+  ('Can current online cash replace a closing reconciliation?',
+   'A current balance leaves out outstanding items and may include post-close activity. Reconcile it against '
+   'the agreed cutoff and transaction records.'),
+  ['acquisition-merchant-settlement-cutover', 'acquisition-accounts-payable-cutover']),
+ ('acquisition-customer-pricing-tier-integrity',
+  'Customer Pricing Tier Integrity in Acquisition Diligence',
+  'Test whether customer discounts and volume thresholds reset and apply as agreed.',
+  'Select customers with annual resets, cumulative tiers or changed purchasing patterns.',
+  [('Map the tier rules',
+    'Record eligible purchases, reset dates, thresholds, currency and treatment of credits. Compare signed '
+    'terms with billing configuration.'),
+   ('Verify a tier crossing',
+    'A fictional customer pays $20 per unit for the first 1,000 units in a year and $18 for additional '
+    'units. Its next 200-unit order starts after 900 eligible units. A graduated tier yields $3,800. Check '
+    'that the system does not apply the lower rate to all 200.'),
+   ('Quantify exposure',
+    'Reconcile a sample of actual invoices and identify open corrections with authorized staff. Consider the '
+    'impact of changes in customer purchasing patterns before projecting margin.')],
+  ['Collect signed rules', 'Check eligibility', 'Recalculate threshold invoices', 'Review margin exposure'],
+  ('What if a tier is retroactive?',
+   'Use the documented calculation. A retroactive tier can affect previously billed units and may require a '
+   'separate credit.'),
+  ['acquisition-customer-contract-rate-review', 'acquisition-recurring-invoice-rate-sampling'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
