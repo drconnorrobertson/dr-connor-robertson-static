@@ -936,6 +936,72 @@ TOPICS.extend([('acquisition-owner-expense-reconciliation',
    'periods.'),
   ['acquisition-supplier-payment-terms', 'acquisition-gross-margin-bridge'])])
 
+TOPICS.extend([('acquisition-supplier-rebate-reconciliation',
+  'Supplier Rebate Reconciliation in Acquisition Diligence',
+  'Connect supplier rebate income to documented terms, qualifying spend and cash receipts.',
+  'Build the review around the vendor program and the purchases that support the reported amount.',
+  [('Collect terms and source records',
+    'Record program period, qualifying products, exclusions, tiers and payment timing. Match eligible '
+    'purchases to vendor statements and identify amounts still pending.'),
+   ('Calculate the amount at risk',
+    'A fictional distributor receives a 3% rebate on qualifying purchases once $500,000 is reached. The '
+    'seller qualified last year, but the buyer forecasts $450,000. The buyer tests margins with no rebate '
+    'under those terms.'),
+   ('Verify cash and continuation',
+    'Reconcile credits or deposits to the amounts recorded and have the deal team verify which terms are '
+    'available to the buyer. Keep disputed estimates separate from confirmed program amounts.')],
+  ['Collect program terms',
+   'Reconcile qualified purchases',
+   'Recalculate threshold scenarios',
+   'Trace credits or receipts'],
+  ('Can the buyer assume last year’s rebate repeats?',
+   'Check the expected purchasing mix, eligibility, program availability and settlement terms before '
+   'including it.'),
+  ['acquisition-supplier-payment-terms', 'acquisition-gross-margin-bridge']),
+ ('acquisition-facility-utility-capacity',
+  'Facility Utility Capacity Review Before Buying a Business',
+  'Verify that electricity, water, compressed air and other critical utilities support the buyer’s operating '
+  'plan.',
+  'Identify utilities that constrain production or service availability and determine what supports the '
+  'capacity estimate.',
+  [('Collect capacity evidence',
+    'Review utility bills, equipment specifications, site drawings and recorded operating constraints with '
+    'qualified personnel. Identify maintenance and approval responsibilities.'),
+   ('Test simultaneous load',
+    'A fictional shop wants to run new finishing equipment during a shift when two existing loads are '
+    'already near the documented limit. The buyer asks a qualified engineer to verify conditions and '
+    'compares staggered operation with an upgrade.'),
+   ('Budget a continuity plan',
+    'Model ongoing usage, potential downtime, and any supported upgrade costs and lead time. Do not assume '
+    'the added equipment can run until the responsible team confirms readiness.')],
+  ['Gather site records', 'Identify peak loads', 'Obtain qualified review', 'Model timing and cost'],
+  ('Can the utility bill prove spare capacity?',
+   'Bills establish historical usage. Verify peak conditions and usable capacity separately with qualified '
+   'specialists.'),
+  ['acquisition-real-estate-lease-review', 'acquisition-equipment-downtime-review']),
+ ('acquisition-customer-order-cancellation',
+  'Customer Order Cancellation Exposure in Acquisition Diligence',
+  'Estimate the impact of canceled orders and identify which backlog items can be relied on.',
+  'Use actual cancellation behavior and signed commitments to understand which open orders may disappear '
+  'before fulfillment.',
+  [('Reconcile cancellations to original orders',
+    'Collect event date, order value, reason, deposits, approved changes, and whether the order returned '
+    'later. Use comparable order-stage cohorts.'),
+   ('Measure exposure by stage',
+    'A fictional seller enters $500,000 of new committed orders in one quarter and cancels $40,000 from that '
+    'cohort before fulfillment. The buyer tracks 8% by value and checks whether a single project dominates '
+    'the result.'),
+   ('Translate the result into scenarios',
+    'Have advisers review cancellation or refund rights. Model which materials or labor are already '
+    'committed and estimate cash impact if the orders cancel.')],
+  ['Track cohort and reason',
+   'Check approval evidence',
+   'Estimate sunk commitments',
+   'Stress-test the largest items'],
+  ('Should canceled and delayed orders be combined?',
+   'Track cancellations and delays distinctly so lost demand and shifts in cash timing remain visible.'),
+  ['acquisition-backlog-due-diligence', 'acquisition-customer-deposit-register'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
