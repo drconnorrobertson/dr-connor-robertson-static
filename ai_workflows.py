@@ -207,6 +207,14 @@ def render_hub(cluster, header, breadcrumbs, footer):
     crumbs = [("Home", "/"), ("AI Business Strategy", "/ai-business-strategy/"), (cluster["title"], None)]
     cards = "".join(f'<div class="pill"><h3><a href="{path}{g[1]}/">{escape(g[0])}</a></h3><p>{escape(g[2].capitalize())}. Start with {escape(g[3])}</p></div>' for g in cluster["guides"])
     peers = "".join(f'<li><a href="/ai/{c["slug"]}/">{escape(c["title"])}</a></li>' for c in CLUSTERS if c is not cluster)
+    owner_guide = {
+        "chatgpt-business-workflows": ("chatgpt-projects-weekly-owner-review", "set up a weekly owner review in ChatGPT Projects"),
+        "claude-business-documents": ("claude-projects-company-knowledge", "organize company knowledge in Claude Projects"),
+    }.get(cluster["slug"])
+    project_link = ""
+    if owner_guide:
+        slug, label = owner_guide
+        project_link = f'<p>For a repeatable team workflow, <a href="/ai/business-owners/{slug}/">{label}</a>.</p>'
     return header(cluster["title"], cluster["description"], path,
                   og_image="/images/dr-connor-robertson-headshot.jpg", page_type="CollectionPage",
                   crumbs=crumbs) + breadcrumbs(crumbs) + f'''<section class="pg-hero"><div class="ctn">
@@ -214,7 +222,7 @@ def render_hub(cluster, header, breadcrumbs, footer):
 <section class="sec"><div class="ctn"><h2>How to use these guides</h2>
 <p>{escape(cluster['intro'])}</p><p>{escape(cluster['decision'])}</p>
 <p>Each page covers one outcome with required inputs, a method, a starting prompt, a review gate, and a metric. Test the draft on a small, approved sample before making it part of a team process. Record the human owner and update the workflow when policy or source documents change.</p>
-<h2>Choose the deliverable you need</h2><div class="pills">{cards}</div>
+{project_link}<h2>Choose the deliverable you need</h2><div class="pills">{cards}</div>
 <h2>Move from a task to an operating system</h2><p><a href="/ai/implementation/directory/">Search the full AI guide directory</a> or explore <a href="/ai/implementation/industries/">industry implementation plans</a> for source requirements, review ownership, and exception handling across related workflows.</p>
 <h2>Explore another workflow family</h2><ul class="link-list">{peers}</ul>
 <p>For prioritization and deployment across the company, read the <a href="/ai-business-strategy/">AI business strategy guide</a>.</p>
