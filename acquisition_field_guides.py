@@ -2886,6 +2886,51 @@ TOPICS.extend([('acquisition-parts-reorder-parameter-review',
    'Check the equipment and accessories needed for the actual work, including anything held off-site.'),
   ['acquisition-service-kit-readiness', 'acquisition-fixed-asset-ownership'])])
 
+TOPICS.extend([('acquisition-service-parts-compatibility-register',
+  'Service Parts Compatibility Register in Acquisition Diligence',
+  'Verify that spare parts on hand can support the buyer’s installed equipment population.',
+  'Start with assets whose repair commitments depend on a specific part or revision.',
+  [('Map parts to installed units',
+    'Compare equipment IDs, revision, approved replacements and current storage records. Ask a qualified '
+    'reviewer to resolve uncertain matches.'),
+   ('Test a mixed asset population',
+    'A fictional business owns ten spare modules. Only three match the older units covered by an active '
+    'service agreement. Forecast availability from the compatible three and model lead time for additional '
+    'verified stock.'),
+   ('Carry the results into the handoff',
+    'Assign responsibility for confirming the register and checking replacements. Record the estimated cash '
+    'and capacity effects of shortages.')],
+  ['Identify equipment revisions',
+   'Validate approved replacements',
+   'Count usable stock',
+   'Assign unresolved items'],
+  ('Can similar model names prove compatibility?',
+   'Use approved technical evidence and qualified review before relying on a replacement part.'),
+  ['acquisition-equipment-spare-parts-dependence', 'acquisition-customer-site-asset-register']),
+ ('acquisition-reserved-inventory-allocation',
+  'Reserved Inventory Allocation Before Buying a Business',
+  'Evaluate which opening inventory units are already committed to specific customer orders or service '
+  'obligations.',
+  'Compare physical stock to active reservations and use the agreed cutoff to reconcile the opening '
+  'position.',
+  [('Build an allocation schedule',
+    'Record item, quantity, order or job, expected date and restrictions. Separate confirmed reservations '
+    'from tentative demand.'),
+   ('Test the buyer’s usable balance',
+    'A fictional target counts 150 usable units. Active jobs reserve 90, but the forecast assumes 100 can go '
+    'to a new order. After confirmed reservations the buyer has 60 available for that order.'),
+   ('Resolve duplicate allocations',
+    'Check whether accounting and dispatch records refer to the same commitment. Give the affected order '
+    'owners an agreed allocation and follow-up date.')],
+  ['Identify active commitments',
+   'Check duplicate reservations',
+   'Reconcile available units',
+   'Assign shortages'],
+  ('Do reserved units disappear from inventory?',
+   'They remain part of the physical count. Show restricted availability separately before planning new '
+   'work.'),
+  ['acquisition-opening-inventory-reconciliation', 'acquisition-backlog-due-diligence'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
