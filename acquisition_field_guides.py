@@ -424,6 +424,97 @@ TOPICS.extend([('acquisition-gross-margin-bridge',
    'under expected operating conditions.'),
   ['day-one-acquisition-continuity-checklist', 'key-manager-transition-plan'])])
 
+TOPICS.extend([('acquisition-business-insurance-coverage',
+  'Business Insurance Coverage Review Before an Acquisition',
+  'Map operating coverage, policy periods, exclusions and transition questions before closing.',
+  'Review the coverage evidence with an insurance professional and identify operations that need continuity '
+  'from the closing date.',
+  [('Assemble the coverage file',
+    'Collect declarations, endorsements, claim histories where available, policy dates, deductibles and named '
+    'insureds. Compare insured operations, vehicles and locations with what the buyer expects to receive.'),
+   ('Walk a timing question through the file',
+    'A fictional buyer inherits a service operation with an unresolved incident reported under the seller’s '
+    'policy. Record incident and reporting dates and ask the broker and counsel to explain who reports new '
+    'developments and which documents should be retained.'),
+   ('Confirm the agreed plan',
+    'Assign someone to verify that the intended coverage documentation is available by closing and that '
+    'managers know how to report an incident afterward. Keep unresolved coverage and responsibility questions '
+    'in the deal log.')],
+  ['Collect endorsements',
+   'Compare entities and operations',
+   'Review open incidents',
+   'Confirm reporting ownership'],
+  ('Does an insurance certificate settle coverage?',
+   'Use the certificate as a pointer to the policy. Ask qualified professionals to review terms, exclusions, '
+   'and transition questions.'),
+  ['acquisition-contingent-liability-register', 'day-one-acquisition-continuity-checklist']),
+ ('acquisition-customer-cohort-retention',
+  'Customer Cohort Retention in Acquisition Diligence',
+  'Test repeat purchase patterns from dated customer cohorts rather than a blended revenue figure.',
+  'Use matching customer identities and enough follow-up time to compare similar cohorts.',
+  [('Define a meaningful repeat purchase',
+    'Identify the first purchase date, customer grouping, repeat order rule, lookback and follow-up window. '
+    'Document whether refunds, free replacements, or related entities qualify.'),
+   ('Compare cohorts on the same clock',
+    'A fictional January cohort includes 50 new accounts and 30 order again within 90 days. A February cohort '
+    'has 40 accounts and 20 repeats within the same window. Compare 60% with 50%, then inspect differences in '
+    'product mix and acquisition channel.'),
+   ('Turn retention into a buyer assumption',
+    'Flag cohorts that have not completed the measurement window. Reconcile customer totals to sales records '
+    'and explain which assumptions support the downside cash forecast.')],
+  ['Define a qualifying repeat',
+   'Align follow-up windows',
+   'Reconcile customer identities',
+   'Model a weaker cohort'],
+  ('How is cohort retention different from concentration?',
+   'Retention measures repeat activity across comparable groups. Concentration measures reliance on specific '
+   'relationships.'),
+  ['customer-concentration-risk', 'acquisition-customer-renewal-calendar']),
+ ('acquisition-third-party-permissions',
+  'Third-Party Permissions Checklist for Business Acquisitions',
+  'Identify contracts and dependencies that require third-party action before ownership can change.',
+  'Create a contract-level list of the permissions, notices and approvals the deal team needs to evaluate.',
+  [('Connect permission to an operating dependency',
+    'Collect signed agreements and amendments. For each material relationship identify the counterparty, '
+    'document reference, reason it matters, decision date and person who can verify the next step.'),
+   ('Plan backward from the decision',
+    'A fictional distribution business needs access to a customer portal for recurring orders. The buyer '
+    'learns onboarding takes three weeks. The account owner confirms permissible contact with the deal team '
+    'and creates a dated readiness check ahead of closing.'),
+   ('Record evidence and fallback',
+    'Document written responses and distinguish submitted requests from approvals. Have advisers confirm '
+    'requirements for the particular deal and give each unresolved dependency an operating fallback with an '
+    'owner.')],
+  ['Gather agreement versions', 'Name the owner', 'Record the evidence', 'Test a fallback'],
+  ('When should the buyer contact counterparties?',
+   'Coordinate contact through the agreed deal process, with counsel and authorized deal team members '
+   'reviewing timing and confidentiality.'),
+  ['acquisition-real-estate-lease-review', 'acquisition-software-license-transfer']),
+ ('acquisition-supplier-payment-terms',
+  'Supplier Payment Terms in Acquisition Cash Flow',
+  'Test whether supplier credit, deposits and settlement timing can change after closing.',
+  'The same inventory and sales forecast can require more cash if supplier terms change.',
+  [('Reconcile actual payment behavior',
+    'Compare contract terms with invoice and payment history. Capture deposits, early-payment discounts, '
+    'credit limits and exceptions by supplier. Verify whether terms depend on the selling entity or a separate '
+    'guarantee.'),
+   ('Model a shorter term',
+    'A fictional buyer expects $80,000 a month of evenly spaced purchases under 30-day terms. If the supplier '
+    'requires payment at order, the initial transition could accelerate roughly one month of outflows. Model '
+    'actual dated orders and avoid counting the permanent run rate increase twice.'),
+   ('Verify the post-close arrangement',
+    'Assign someone to confirm terms with authorized contacts and identify any onboarding or deposits. Pair '
+    'the base case with a cash forecast using the more restrictive terms until documented evidence supports '
+    'the change.')],
+  ['Collect invoices and payment dates',
+   'Check credit conditions',
+   'Model earlier cash outflows',
+   'Confirm terms before close'],
+  ('Do historical payment patterns establish future terms?',
+   'Use historical timing for context and confirm the arrangement available to the buyer before relying on '
+   'it.'),
+  ['acquisition-cash-conversion-cycle', 'supplier-concentration-acquisition'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
