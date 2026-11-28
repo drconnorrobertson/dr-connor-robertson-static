@@ -2617,6 +2617,53 @@ TOPICS.extend([('acquisition-unresolved-vendor-disputes',
    'Confirm the customer’s actual approval process and test whether the intended crew can meet it.'),
   ['acquisition-route-coverage-readiness', 'acquisition-customer-preferred-delivery-windows'])])
 
+TOPICS.extend([('acquisition-unmatched-goods-receipts',
+  'Unmatched Goods Receipts in Acquisition Diligence',
+  'Identify goods already received without a matching supplier invoice before estimating the buyer’s '
+  'near-term cash requirements.',
+  'Start from approved receiving records and match them against invoices and purchase orders as of the '
+  'agreed cutoff.',
+  [('Build a line-level register',
+    'Capture supplier, order line, accepted quantity, receipt date, agreed price, invoiced quantity and '
+    'unresolved discrepancies. Separate inventory on hold and goods received for someone else.'),
+   ('Model the unbilled balance',
+    'A fictional operator receives and accepts 400 units at $25 each. A supplier invoice covers 300. The '
+    'remaining 100 represent an expected $2,500 charge before any agreed freight or credits.'),
+   ('Coordinate closing treatment',
+    'Have the deal accountant review whether the balance is already recorded elsewhere and which party bears '
+    'it. Give accounts payable a dated reconciliation task for the first supplier statement.')],
+  ['Match records by order line',
+   'Separate held goods',
+   'Estimate remaining charges',
+   'Check the first statement'],
+  ('Can an open purchase order show the full amount already received?',
+   'Use the actual receipt evidence and match partial invoices before estimating the unbilled amount.'),
+  ['acquisition-open-purchase-orders', 'acquisition-accounts-payable-cutover']),
+ ('acquisition-subcontractor-rate-card-review',
+  'Subcontractor Rate Card Review Before Buying a Business',
+  'Reconcile subcontractor pricing, minimum callouts and approved exceptions to assess the buyer’s delivery '
+  'costs.',
+  'Compare actual approved invoices to the rate documents and verify which terms can support the post-close '
+  'forecast.',
+  [('Build the effective rate history',
+    'Record role, geography, hourly or fixed pricing, minimums, travel fees, effective dates and documented '
+    'exceptions.'),
+   ('Test a short assignment',
+    'A fictional subcontractor charges $95 per hour, with a four-hour minimum and $65 travel. A three-hour '
+    'visit costs $445 under those terms. Validate the minimum and travel charge against the agreement before '
+    'carrying the cost into the model.'),
+   ('Model the buyer’s available options',
+    'Confirm terms through authorized contacts and have the deal team review material obligations. Compare '
+    'the existing arrangement with any supportable alternative, including timing and quality differences.')],
+  ['Collect approved rate cards',
+   'Recalculate sample invoices',
+   'Identify pricing exceptions',
+   'Confirm available terms'],
+  ('Should the buyer use one effective rate for every visit?',
+   'Compare work by duration and location. Minimums and travel can make shorter or more distant visits '
+   'materially more expensive per hour.'),
+  ['acquisition-contractor-capacity-review', 'acquisition-field-service-billing-terms'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
