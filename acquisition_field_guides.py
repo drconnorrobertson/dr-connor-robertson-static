@@ -2754,6 +2754,52 @@ TOPICS.extend([('acquisition-damaged-stock-recovery',
    'applications.'),
   ['acquisition-route-coverage-readiness', 'acquisition-equipment-spare-parts-dependence'])])
 
+TOPICS.extend([('acquisition-customer-owned-tooling-register',
+  'Customer-Owned Tooling Register Before Closing',
+  'Identify customer-owned tooling, reconcile its location and condition, and assign responsibility for '
+  'approved use after closing.',
+  'Use the tooling register to distinguish the assets needed for operations from assets the buyer will own.',
+  [('Map source documentation',
+    'Collect approved customer assets, storage sites, identifiers, last use and documented maintenance '
+    'responsibilities. Link each to the part or workflow it supports.'),
+   ('Reconcile an unconfirmed location',
+    'A fictional buyer sees five dies listed for a major account. Four are in the shop and one is at an '
+    'approved repair vendor. Verify custody and return timing before scheduling the next order.'),
+   ('Confirm operating responsibility',
+    'Have the deal team review ownership and permissions. Give the operating lead an inventory record with a '
+    'named owner for verification, use and unresolved condition issues.')],
+  ['Reconcile tooling identifiers',
+   'Verify current location',
+   'Confirm approved use',
+   'Assign unresolved items'],
+  ('Should customer-owned tooling be counted as purchased equipment?',
+   'Keep the tooling in the continuity review and have the deal team determine ownership and transaction '
+   'treatment from the contracts.'),
+  ['acquisition-production-tooling-dependence', 'acquisition-customer-site-asset-register']),
+ ('acquisition-inventory-lot-expiration-exposure',
+  'Inventory Lot Expiration Exposure in Acquisition Diligence',
+  'Estimate how much dated stock can be used before it expires and identify the orders that could be '
+  'affected.',
+  'Compare verified lot dates and approved usage requirements with demand by period rather than total annual '
+  'usage.',
+  [('Prepare a lot-level view',
+    'Record receipt, age, remaining shelf life, held quantity and expected usage. Confirm customer minimum '
+    'remaining-life rules and inventory rotation with responsible staff.'),
+   ('Model dated demand',
+    'A fictional lot holds 180 units. The customer can accept 110 before the applicable date limit. Separate '
+    'the 70 units that need another approved use or disposition and include handling cost in the scenario.'),
+   ('Verify the opening action',
+    'Have qualified staff confirm any resale or alternate use and ask advisers to review valuation '
+    'treatment. Assign a buyer-side owner to check actual movement against the date assumptions.')],
+  ['Collect lot and date evidence',
+   'Apply customer requirements',
+   'Quantify dated surplus',
+   'Assign remaining stock decisions'],
+  ('Does an unexpired lot always qualify for an order?',
+   "Check the customer's required remaining shelf life and the expected delivery date before treating the "
+   'lot as available for that order.'),
+  ['inventory-due-diligence-small-business', 'acquisition-inventory-obsolescence-review'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
