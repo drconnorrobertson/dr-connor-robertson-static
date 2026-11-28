@@ -515,6 +515,71 @@ TOPICS.extend([('acquisition-business-insurance-coverage',
    'it.'),
   ['acquisition-cash-conversion-cycle', 'supplier-concentration-acquisition'])])
 
+TOPICS.extend([('acquisition-fixed-asset-ownership',
+  'Verify Fixed Asset Ownership Before Buying a Business',
+  'Reconcile the seller’s fixed asset list to physical equipment, ownership evidence, and obligations.',
+  'An asset register identifies recorded equipment. Build transaction evidence for the items the buyer '
+  'expects to use from day one.',
+  [('Match physical assets to records',
+    'Sample serial numbers, locations and operating condition. Request ownership or lease evidence and '
+    'compare the intended asset list with the transfer schedule.'),
+   ('Walk a discrepancy through diligence',
+    'A fictional shop records three forklifts. Two serial numbers match purchase records and the third '
+    'matches a rental agreement. Separate the rental from the owned list and model the ongoing cost or '
+    'replacement requirement.'),
+   ('Resolve material gaps',
+    'Ask the transaction team to review financing, restrictions and transfer documents. Assign an operating '
+    'owner to confirm equipment access and availability at handover.')],
+  ['Match serial numbers',
+   'Confirm ownership evidence',
+   'Record unresolved items',
+   'Check availability at close'],
+  ('Does a depreciation schedule establish ownership?',
+   'Use it to locate recorded assets and confirm ownership or permitted use against supporting documents.'),
+  ['maintenance-capex-acquisition', 'acquisition-third-party-permissions']),
+ ('acquisition-sales-pipeline-quality',
+  'Sales Pipeline Quality Review for Business Acquisitions',
+  'Test whether the seller’s reported sales pipeline has identifiable buyers, evidence of progression, and '
+  'realistic timing.',
+  'Pipeline figures can help forecast future orders when each material opportunity has evidence and a '
+  'specific next milestone.',
+  [('Reconstruct the stage criteria',
+    'Record when opportunities entered their stage and the evidence required to advance. Inspect approved '
+    'budgets, outreach history, proposals and known decision dates using authorized records.'),
+   ('Test stale opportunities',
+    'A fictional seller reports $900,000 in late-stage opportunities. Three deals totaling $300,000 have no '
+    'buyer activity for 120 days. Forecast the remaining deals separately and require fresh evidence before '
+    'relying on the stale group.'),
+   ('Validate timing after close',
+    'Compare stage-to-order outcomes from past cohorts and ask who owns the relationship after handover. Run '
+    'a delay scenario for large deals where decisions fall near closing.')],
+  ['Document stage rules', 'Sample past conversion', 'Flag stale opportunities', 'Assign account ownership'],
+  ('How is pipeline different from backlog?',
+   'Pipeline tracks potential orders. Backlog should trace to customer commitments and remaining fulfillment '
+   'work.'),
+  ['acquisition-backlog-due-diligence', 'customer-concentration-risk']),
+ ('acquisition-data-room-request-tracker',
+  'Data Room Request Tracker for Small Business Acquisitions',
+  'Track diligence requests so owners can verify the evidence provided, identify gaps and follow material '
+  'issues to a decision.',
+  'A request tracker should tell the deal team which question a document answers and what remains to be '
+  'verified.',
+  [('Make requests specific',
+    'Give requests a subject, relevant entity, dates, requested format, responsible person and reason. Use '
+    'authorized access to records and avoid copying sensitive data into the tracker.'),
+   ('Check completeness before accepting',
+    'A fictional buyer receives 11 months of customer sales when requesting a full year. The reviewer '
+    'records the missing month, checks the date range and leaves the request partially fulfilled until the '
+    'seller supplies the remaining extract.'),
+   ('Connect requests to findings',
+    'Assign a reviewer to record which issue the evidence resolves. Flag unresolved items approaching a '
+    'decision date and document how they affect models or closing conditions.')],
+  ['Name the reviewer', 'Check dates and entities', 'Record partial delivery', 'Tie evidence to decisions'],
+  ('When can a request be closed?',
+   'Close it after the reviewer confirms the evidence addresses the original question or records an agreed '
+   'disposition for what remains unresolved.'),
+  ['business-acquisition-due-diligence-checklist', 'acquisition-decision-log'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
