@@ -133,6 +133,87 @@ TOPICS = [
         ["how-much-cash-to-buy-a-business", "accounts-receivable-aging-due-diligence"],
     ),
 ]
+TOPICS.extend([
+    (
+        "acquisition-backlog-due-diligence", "How to Verify Order Backlog When Buying a Business",
+        "Reconcile the order backlog and distinguish customer commitments, expected work, and cash needed to fulfill it.",
+        "An order backlog becomes useful evidence when a buyer can identify the underlying commitment and the work still required.",
+        [
+            ("Rebuild the backlog from orders", "Export signed orders and active change orders. Track promised dates, completion, remaining invoicing and cancellation rights. Reconcile backlog movement from opening balance to closing balance."),
+            ("Test fulfillment before counting revenue", "A fictional backlog totals $600,000, including $100,000 of orders awaiting customer approval. Separate the uncertain amount. For a $150,000 signed job, estimate direct and mobilization cash requirements and when progress invoices can be collected."),
+            ("Validate capacity and customer timing", "Sample overdue, large, and newly signed jobs. Ask operations whether crew, equipment, and materials can meet the promised dates. Have deal counsel review change and cancellation rights where material."),
+        ],
+        ["Tie backlog to commitments", "Separate expected orders", "Forecast cash and capacity", "Inspect late jobs"],
+        ("Should backlog equal next year's revenue?", "Convert confirmed orders to a dated delivery schedule and adjust for cancellations, incomplete inputs, capacity, and revenue already recognized."),
+        ["customer-concentration-risk", "deferred-revenue-business-acquisition"],
+    ),
+    (
+        "employee-accruals-acquisition-diligence", "Employee Accruals in Acquisition Due Diligence",
+        "Gather evidence on earned bonuses, commissions, paid leave, and payroll cutoffs before agreeing to closing balances.",
+        "Employee-related balances can affect cash needs and closing mechanics. Begin with policy documents and anonymized reports.",
+        [
+            ("Create an accrual register", "Record each category, earning period, eligibility terms, payout timing, accounting balance, and policy reference. Use aggregate data or appropriately authorized records."),
+            ("Reconcile one cutoff", "A fictional company has a $40,000 commission ledger balance. A sample shows $9,000 was paid in the following payroll and $6,000 depends on unresolved returns. Document the evidence and ask which cutoff and definitions the financial team uses."),
+            ("Identify who bears the obligation", "Have deal counsel and the accountant review applicable obligations and deal definitions. Assign the owner of post-close payment or dispute handling and reconcile against the purchase agreement."),
+        ],
+        ["Obtain policies and reports", "Trace one payout cycle", "Flag unresolved eligibility", "Confirm responsibility"],
+        ("Should I use payroll cash paid for the cutoff?", "Use the earning period and documented eligibility to identify the amount under review, then reconcile subsequent cash payments to it."),
+        ["working-capital-business-acquisition", "day-one-acquisition-continuity-checklist"],
+    ),
+    (
+        "acquisition-real-estate-lease-review", "Commercial Lease Review When Buying a Business",
+        "Trace occupancy costs, renewal dates, assignment conditions, and site dependencies before a business acquisition.",
+        "The site a business relies on can affect whether it can operate after closing. Collect signed leases, amendments, notices, and the most recent occupancy invoices.",
+        [
+            ("Reconcile occupancy expense", "Separate base rent, pass-through charges, utilities, scheduled increases, and one-time items. Ask who maintains essential equipment and estimate cash required when payments change."),
+            ("Map deadlines against closing", "A fictional retailer pays $8,000 monthly rent and $1,200 in recurring pass-throughs. In three months base rent increases by $800. The buyer models the higher run rate and has counsel confirm the required consent and feasible timing."),
+            ("Check location continuity", "Assess site-specific needs such as access, capacity, or permits with relevant advisers. Document the alternatives and decision deadline if the preferred location cannot transfer on time."),
+        ],
+        ["Collect signed amendments", "Build cash schedule", "Confirm consent path", "Document continuity options"],
+        ("What if the seller owns the property?", "Model future occupancy under the proposed lease or property deal and verify responsibilities, renewal terms, and affordability with the deal team."),
+        ["maintenance-capex-acquisition", "day-one-acquisition-continuity-checklist"],
+    ),
+    (
+        "acquisition-software-license-transfer", "Software License Transfer Checklist for Acquisitions",
+        "Map business-critical systems, data exports, license ownership, and approved access before a company handoff.",
+        "Identify systems needed to place orders, collect cash, support customers, and run payroll. Confirm who can approve access and who holds the agreement for each system.",
+        [
+            ("Inventory access and contract owners", "Record provider, business owner, admin role, renewal date, legal entity, license count, integrations, and data export coverage. Confirm the permitted transfer process with the provider and deal team."),
+            ("Rehearse continuity without live changes", "A fictional company uses a scheduling platform tied to a seller-owned workspace. The team uses sample data to test an authorized export and import, checks whether time zones and job notes survive, and confirms the intended production handoff with the provider."),
+            ("Verify responsibilities at close", "Identify who authorizes the transfer, who checks service after close, and which approved fallback can keep essential work available. Record the evidence of a successful handoff without copying credentials into the checklist."),
+        ],
+        ["List essential systems", "Confirm provider transfer process", "Test an approved sample export", "Assign handoff owners"],
+        ("Does admin access prove the license transferred?", "Admin access demonstrates one operational capability. Confirm the contract, billing owner, data responsibility, and ongoing support separately."),
+        ["day-one-acquisition-continuity-checklist", "owner-dependence-due-diligence"],
+    ),
+    (
+        "employee-transition-listening-plan", "Employee Listening Plan After a Business Acquisition",
+        "Set up post-close employee listening sessions, follow-up commitments, and a practical issue log.",
+        "Employee feedback is most useful when leaders can act on it and explain what happens next. Schedule predictable opportunities to raise operating concerns.",
+        [
+            ("Build a listening schedule", "Choose who attends, how separate shifts can participate, what information is recorded, and who follows up. Use a consistent set of operational questions and avoid collecting unnecessary personal information."),
+            ("Turn feedback into an owned action", "In a fictional company, multiple shifts report that a new scheduling tool leaves no clear contact for absences. The operator confirms the issue, picks one contact and backup, and tests the revised instruction with a supervisor from each shift."),
+            ("Close the loop", "Tell employees what changed, what is still under review, and when they should expect follow-up. Use aggregate themes for wider reporting and route individual concerns through the appropriate internal process."),
+        ],
+        ["Include each shift", "Record repeated operating issues", "Assign action owners", "Confirm changes with staff"],
+        ("How often should the buyer meet employees?", "Match cadence to transition risk and existing communications. Establish a follow-up routine employees can count on before increasing meeting volume."),
+        ["first-100-days-after-buying-a-business", "day-one-acquisition-continuity-checklist"],
+    ),
+    (
+        "acquisition-customer-renewal-calendar", "Customer Renewal Calendar for Acquisition Diligence",
+        "Map renewal and notice dates so a buyer can test revenue timing and plan account handoffs under the actual agreements.",
+        "Build a contract-level calendar for material accounts. Key dates matter most when connected to revenue risk and the person who manages the relationship.",
+        [
+            ("Structure the renewal evidence", "Record account group, agreement version, renewal month, notice rules, recurring value, responsible employee, and recent customer signals. Keep renewal assumptions apart from signed commitments."),
+            ("Prioritize accounts near closing", "A fictional buyer expects to close in October and finds three January renewals worth $240,000 combined. Two require notice in November. The buyer reviews who owns communications and models a downside case with one delayed renewal."),
+            ("Use the calendar after close", "Work with counsel and the account lead to confirm permissible outreach and any consent needed. Give each priority account a dated action and capture the evidence of renewal when it arrives."),
+        ],
+        ["Validate agreement versions", "Map near-term renewals", "Stress-test delays", "Assign an account owner"],
+        ("How is this different from customer concentration?", "Concentration measures dependence on a relationship. A renewal calendar adds deadlines and identifies when that risk needs an operating decision."),
+        ["customer-concentration-risk", "seasonal-cash-flow-acquisition"],
+    ),
+])
+
 
 
 def field_guides():
