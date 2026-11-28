@@ -90,6 +90,48 @@ GUIDES = [
 ]
 
 
+PRACTICE = {
+    "codex-build-internal-tools": """<h2>Test the checker with a fictional export</h2>
+<p>Save this fixture as <code>jobs.csv</code>. The checker should report each exception with the row number and reason. Row numbers below count the header as row 1.</p>
+<pre>job_id,due_date,status
+J-101,2026-12-01,open
+J-102,2026-12-02,complete
+J-101,2026-12-03,open
+J-103,2026-02-30,open
+,2026-12-04,open</pre>
+<table><thead><tr><th scope="col">Row</th><th scope="col">Expected result</th></tr></thead><tbody>
+<tr><td>2–3</td><td>Accepted</td></tr><tr><td>4</td><td>Duplicate J-101</td></tr>
+<tr><td>5</td><td>Invalid calendar date</td></tr><tr><td>6</td><td>Missing job ID</td></tr>
+</tbody></table>
+<p>Run a second fixture with just the header. Expect zero accepted rows and an explicit empty-export message. Check that both runs leave the source files unchanged.</p>""",
+    "chatgpt-projects-weekly-owner-review": """<h2>Copy the weekly review template</h2>
+<p>Fill in the inputs before asking for a draft. The reviewer can use the final column to record whether each figure reconciles.</p>
+<pre>Week ending:
+Meeting owner:
+Current and comparison export dates:
+
+Metric | Definition | Current | Prior | Source | Reviewer check
+Open jobs | Jobs with no completion timestamp | 24 | 18 | Dispatch export | Check snapshot dates
+
+Decision needed | Options | Owner | Due date
+Investigate backlog change | Compare Friday snapshots | Dispatch lead | Next review
+
+Missing evidence:
+Approved actions:</pre>
+<p>In this fictional example, the current export was taken on Thursday and the comparison on Friday. The accepted brief should ask for matching snapshots before treating the six-job difference as a trend.</p>""",
+    "claude-projects-company-knowledge": """<h2>Run a three-question document review</h2>
+<p>Use this fictional test packet. Give the reviewer the source text and expected answers before running the trial.</p>
+<ol><li><strong>Dispatch Procedure §2, effective November 10.</strong> Dispatchers notify the scheduling lead within 15 minutes of a missed visit.</li>
+<li><strong>Customer Updates §4, effective November 12.</strong> The service lead approves the revised arrival window before it is sent to the customer.</li></ol>
+<table><thead><tr><th scope="col">Question</th><th scope="col">Expected answer and evidence</th></tr></thead><tbody>
+<tr><td>Who needs to know immediately?</td><td>The scheduling lead within 15 minutes, Dispatch Procedure §2.</td></tr>
+<tr><td>Who approves a revised arrival window?</td><td>The service lead, Customer Updates §4.</td></tr>
+<tr><td>Must the customer be called?</td><td>The packet does not specify a contact method. Ask the policy owner.</td></tr>
+</tbody></table>
+<p>Mark the trial as failed if a response guesses a rule or cites a section that does not support the answer.</p>""",
+}
+
+
 def render_pages(header, breadcrumbs, footer):
     def wrap(path, title, description, body, kind):
         trail = [("Home", "/"), ("AI for Business Owners", ROOT)]
@@ -127,7 +169,7 @@ def render_pages(header, breadcrumbs, footer):
         <h2>How to run the workflow</h2><ol>{items}</ol>
         <h2>Worked example</h2><p>{escape(example)}</p>
         <h2>Prompt to adapt</h2><blockquote>{escape(prompt)}</blockquote>
-        <h2>Product documentation</h2><ul>{references}</ul>
+        {PRACTICE.get(slug, "")}<h2>Product documentation</h2><ul>{references}</ul>
         <h2>Related business guides</h2><ul>{related}<li><a href="{ROOT}">All Codex, ChatGPT, and Claude guides</a></li></ul>"""
         pages[path] = wrap(path, name, summary, body, "WebPage")
     return pages
