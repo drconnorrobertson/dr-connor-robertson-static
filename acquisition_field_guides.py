@@ -1822,6 +1822,69 @@ TOPICS.extend([('acquisition-recurring-service-cadence',
    'Use approved consistent facts and select the appropriate contact method and follow-up for each account.'),
   ['acquisition-customer-renewal-calendar', 'acquisition-open-service-escalations'])])
 
+TOPICS.extend([('acquisition-dispatch-travel-cost',
+  'Dispatch Travel Cost in Acquisition Diligence',
+  'Test how route density and service windows affect travel time and working capacity after closing.',
+  'Collect actual routes and service records for weeks comparable to the proposed operating plan.',
+  [('Separate productive and travel time',
+    'Record crew hours, location, service window, distance and work performed. Identify deadhead travel and '
+    'gaps required by customer promises.'),
+   ('Test a territory assumption',
+    'A fictional buyer estimates an added branch will reduce driving by 12 crew hours weekly. Two sites '
+    'require early appointments that do not fit the proposed routes. Recalculate using realistic schedules '
+    'and check vehicle needs.'),
+   ('Carry only supported savings',
+    'Test the proposed pattern with scheduling and use a separate improvement scenario until supported by '
+    'actual operations.')],
+  ['Collect completed routes',
+   'Verify service windows',
+   'Estimate realistic capacity',
+   'Test the improvement case'],
+  ('Does lower mileage automatically free paid hours?',
+   'Check total route time and crew availability. Lower distance can coexist with the same labor '
+   'requirement.'),
+  ['acquisition-service-staffing-coverage', 'acquisition-order-fulfillment-lead-time']),
+ ('acquisition-customer-contracted-minimums',
+  'Customer Minimum Volume Commitments in Acquisition Diligence',
+  'Verify minimum volume terms before using them to forecast sales and collections.',
+  'Separate usage projections and sales targets from commitments supported by signed customer terms.',
+  [('Map the measurement rules',
+    'Record minimum quantity or spend, permitted offsets, measurement period, shortfall remedy and relevant '
+    'amendments. Reconcile past consumption and billing.'),
+   ('Read the shortfall economics',
+    'A fictional agreement projects 1,000 units per month but sets a binding minimum of 800. Recent usage is '
+    '720. Ask whether and how an 80-unit shortfall is chargeable under agreed terms before forecasting '
+    'cash.'),
+   ('Test the renewal case',
+    'Have the deal team review enforceability and transfer. Compare the base case with reduced usage and '
+    'with customers negotiating a lower next-term minimum.')],
+  ['Check signed definitions',
+   'Compare usage with commitments',
+   'Trace actual shortfall billing',
+   'Model renewal sensitivity'],
+  ('Should the full projected volume be treated as contracted?',
+   'Use the commitment defined in the signed agreement and model additional expected usage separately.'),
+  ['acquisition-customer-contract-rate-review', 'acquisition-customer-renewal-calendar']),
+ ('acquisition-first-week-issue-triage',
+  'First-Week Issue Triage After a Business Acquisition',
+  'Prioritize post-close issues by customer impact, deadline and who can resolve them.',
+  'Give the team one queue for transition issues that require coordination across functions.',
+  [('Define what needs escalation',
+    'Capture impact, evidence, next decision, deadline and owner. Keep routine work on its existing queue '
+    'and raise issues that threaten operating continuity.'),
+   ('Run a triage example',
+    'A billing import leaves four invoices without terms while a customer site cannot receive a scheduled '
+    'technician. Assign finance the same-day reconciliation and assign dispatch to address the immediate '
+    'customer impact.'),
+   ('Close the loop daily',
+    'Review open issues with owners and update affected stakeholders through authorized contacts. Close an '
+    'issue after verifying the result rather than after someone starts working on it.')],
+  ['Capture impact and deadlines', 'Assign one owner', 'Review daily', 'Verify resolution evidence'],
+  ('Should the buyer rank solely by dollar amount?',
+   'Consider timing, customer commitments, operational dependencies and reversibility along with financial '
+   'impact.'),
+  ['day-one-acquisition-continuity-checklist', 'handover-readiness-evidence'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
