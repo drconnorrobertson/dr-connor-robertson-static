@@ -2400,6 +2400,51 @@ TOPICS.extend([('acquisition-customer-site-asset-register',
    'Use the number of suitable vehicles and qualified operators available during each required window.'),
   ['acquisition-equipment-downtime-review', 'acquisition-route-coverage-readiness'])])
 
+TOPICS.extend([('acquisition-carrier-claims-history',
+  'Carrier Claims History Review Before Buying a Business',
+  'Estimate recurring shipment loss and recovery using closed carrier claims and replacement records.',
+  'Review paid, denied, and closed claims alongside shipment volumes for comparable periods.',
+  [('Reconcile the claim population',
+    'Collect dates, affected goods, exclusion reasons, replacement cost and reimbursements. Match each '
+    'material claim to the order and settlement.'),
+   ('Estimate net cost',
+    'A fictional operator spends $25,000 replacing damaged shipments and receives $16,000 in verified '
+    'reimbursements. Its net replacement cost is $9,000 before administrative effort. Review which causes '
+    'may continue.'),
+   ('Use the results in planning',
+    'Compare proposed carrier changes with actual loss patterns and keep potential recoveries separate from '
+    'recorded amounts.')],
+  ['Match claims and settlements',
+   'Reconcile replacement expense',
+   'Calculate historical recovery',
+   'Review recurring causes'],
+  ('Is a high recovery rate always favorable?',
+   'Compare recovery with the original losses and customer service impact. High recoveries can still '
+   'accompany costly disruptions.'),
+  ['acquisition-open-freight-claims', 'acquisition-freight-accessorial-exposure']),
+ ('acquisition-equipment-spare-parts-dependence',
+  'Equipment Spare Parts Dependence in Acquisition Diligence',
+  'Verify the availability of essential service parts before assuming equipment uptime will continue.',
+  'Identify parts whose absence can stop a critical machine or a major customer workflow.',
+  [('Build a critical parts list',
+    'Record equipment, part number, compatible alternatives, local stock, source and lead time. Verify the '
+    'maintenance team’s evidence for expected failure and recovery.'),
+   ('Test a downtime scenario',
+    'A fictional machine needs a controller whose authorized replacements take six weeks. The buyer confirms '
+    'whether the target has a tested spare and estimates how approved backup capacity affects customer '
+    'work.'),
+   ('Confirm the buyer’s plan',
+    'Record feasible purchases and the costs of holding spares. Assign a buyer-side owner to verify access '
+    'and track open supply questions.')],
+  ['Identify the constrained equipment',
+   'Verify spares physically',
+   'Check lead times',
+   'Model downtime exposure'],
+  ('Should all hard-to-source parts be stocked?',
+   'Prioritize by downtime consequence, replacement lead time and whether an approved alternative can keep '
+   'work moving.'),
+  ['acquisition-equipment-downtime-review', 'acquisition-production-tooling-dependence'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
