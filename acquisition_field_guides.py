@@ -3054,6 +3054,46 @@ TOPICS.extend([('acquisition-customer-service-region-obligations',
    'can be reconciled.'),
   ['acquisition-purchase-price-variance', 'acquisition-supplier-payment-terms'])])
 
+TOPICS.extend([('acquisition-customer-purchase-order-capacity',
+  'Customer Purchase Order Capacity in Acquisition Diligence',
+  'Reconcile remaining customer purchase authorization before treating unfinished work as billable.',
+  'Review open work that relies on customer purchase orders, spending caps or periodic releases.',
+  [('Build the authorization schedule',
+    'Record the original approved amount, changes, invoices already charged, scope and expiry. Link each '
+    'remaining job to the authorization it uses.'),
+   ('Test a constrained order',
+    'A fictional account has a $90,000 order and $72,000 already invoiced. A $25,000 next phase exceeds the '
+    'remaining $18,000 by $7,000. Confirm the required approval before forecasting the full invoice.'),
+   ('Assign the follow-up',
+    'Verify outstanding approvals with the authorized account owner and deal team. Model documented billable '
+    'scope separately from work that still depends on a customer decision.')],
+  ['Verify applicable order limits',
+   'Reconcile prior invoices',
+   'Quantify unsupported work',
+   'Assign the next approval'],
+  ('Can expected authorization be included in backlog?',
+   'Show expected authorization separately and reconcile it when the customer approves the scope and '
+   'amount.'),
+  ['acquisition-work-in-progress-review', 'acquisition-customer-contracted-minimums']),
+ ('acquisition-receiving-inspection-throughput',
+  'Receiving Inspection Throughput in Acquisition Diligence',
+  'Check whether inbound inspection can release stock fast enough to meet the buyer’s operating plan.',
+  'Use the approved inspection rules and records of actual lots released to identify the constraint.',
+  [('Measure the real inspection load',
+    'Collect inbound lot sizes, inspection time, staffing hours, holds and retests. Separate work that '
+    'requires a particular qualification.'),
+   ('Test a peak shipment',
+    'A fictional buyer expects nine lots requiring 35 minutes each. The qualified inspector has four hours '
+    'available, leaving 75 minutes uncovered before retests. Identify which lots are needed first and when a '
+    'second qualified reviewer can help.'),
+   ('Confirm the capacity scenario',
+    'Verify which options protect the approved inspection process. Reflect delays or added qualified '
+    'capacity in the first-week schedule.')],
+  ['Measure lot inspection time', 'Verify qualified staffing', 'Test peak deliveries', 'Plan release timing'],
+  ('Does faster unloading improve usable inventory availability?',
+   'Check the time through inspection and release. Unloading can be faster while the release queue grows.'),
+  ['acquisition-dock-receiving-capacity', 'acquisition-supplier-quality-hold-exposure'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
