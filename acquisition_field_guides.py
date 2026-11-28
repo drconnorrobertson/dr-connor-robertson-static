@@ -1250,6 +1250,74 @@ TOPICS.extend([('acquisition-outsourced-payroll-handoff',
    'date.'),
   ['acquisition-third-party-permissions', 'acquisition-open-purchase-orders'])])
 
+TOPICS.extend([('acquisition-consignment-inventory-review',
+  'Consignment Inventory Review Before Buying a Business',
+  'Verify who owns consigned stock, what triggers settlement and how balances transfer.',
+  'Compare the signed agreements with physical stock and inventory records before including consigned goods '
+  'in a deal model.',
+  [('Separate each ownership direction',
+    'List supplier-owned stock on site and target-owned stock held elsewhere. Record location, lot, '
+    'condition, reporting requirements and who bears losses.'),
+   ('Reconcile transactions and settlement',
+    'A buyer finds 400 units in a target warehouse, 90 supplied on consignment. Compare supplier statements '
+    'and sales events to identify sold units awaiting settlement and stock still owned by the supplier.'),
+   ('Assign post-close responsibility',
+    'Ask the deal team to review contractual and accounting treatment. Have operations confirm who reports '
+    'movement and who reconciles opening balances after close.')],
+  ['Identify legal owners',
+   'Reconcile stock by location',
+   'Trace settlement events',
+   'Confirm operating ownership'],
+  ('Should consigned stock appear in the purchased inventory count?',
+   'Count the physical stock, identify ownership separately, and apply the transaction’s agreed definitions '
+   'with adviser review.'),
+  ['inventory-due-diligence-small-business', 'acquisition-inventory-shrink-review']),
+ ('acquisition-customer-support-cutover',
+  'Customer Support Cutover Checklist for Acquisitions',
+  'Transfer open issues, promised callbacks and escalation responsibilities into the buyer’s support '
+  'workflow.',
+  'Inventory the customer support channels and establish who owns each open item at the cutover.',
+  [('Build the transfer register',
+    'Capture case reference, customer impact, last contact, promised response, escalation and assigned '
+    'owner. Keep supporting material within the approved system and scope.'),
+   ('Walk one urgent case through close',
+    'A priority case has a Friday repair promise and the technician changes employer Thursday. The buyer '
+    'verifies authorization to dispatch the technician, confirms the case owner and checks who communicates '
+    'schedule changes.'),
+   ('Verify the first support cycle',
+    'Test agreed phone and email routing, trace one new request to its destination and review the backlog '
+    'for commitments that no team owns.')],
+  ['List inbound channels',
+   'Assign open commitments',
+   'Verify authorized access',
+   'Check first-week routing'],
+  ('What should be included in the cutover test?',
+   'Confirm a new request reaches the assigned team and a transferred case retains its promised response '
+   'time and history.'),
+  ['day-one-acquisition-continuity-checklist', 'acquisition-returns-authorization-cutover']),
+ ('acquisition-customer-prepayment-seasonality',
+  'Customer Prepayment Seasonality in Acquisition Cash Flow',
+  'Model how seasonal prepayments affect cash availability and fulfillment costs across closing.',
+  'Map expected service obligations against the months when customers typically pay in advance.',
+  [('Build a dated collection and delivery schedule',
+    'Record amount, payment date, coverage period, associated costs and refund terms. Reconcile a sample to '
+    'invoices and cash receipts.'),
+   ('Stress-test closing timing',
+    'A fictional business collects $180,000 in spring for annual service and expects $90,000 in direct cost '
+    'across the following nine months. A midsummer buyer models remaining work and asks which cash and '
+    'obligations the transaction transfers.'),
+   ('Compare cash and accounting views',
+    'Have the deal team assess the agreed closing economics. Test late collections and higher fulfillment '
+    'spending without assuming prepayment cash will be available after close.')],
+  ['Map receipt dates',
+   'Match obligations to costs',
+   'Model alternate closing dates',
+   'Verify deal definitions'],
+  ('Does annual profitability show the full cash risk?',
+   'Use monthly cash flows to show when customers pay, when the team performs the work and what funding '
+   'remains available.'),
+  ['deferred-revenue-business-acquisition', 'seasonal-cash-flow-acquisition'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
