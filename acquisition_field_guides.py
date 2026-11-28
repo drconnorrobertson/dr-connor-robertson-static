@@ -1758,6 +1758,70 @@ TOPICS.extend([('acquisition-supplier-payables-aging',
    'historical or deal analysis.'),
   ['inventory-due-diligence-small-business', 'acquisition-price-increase-exposure'])])
 
+TOPICS.extend([('acquisition-recurring-service-cadence',
+  'Recurring Service Cadence Review Before an Acquisition',
+  'Verify that the active service schedule reflects contracted frequencies, exclusions, and remaining '
+  'commitments.',
+  'Use executed customer agreements and a representative scheduling period to reconcile what the buyer will '
+  'need to deliver.',
+  [('Build the expected schedule',
+    'List active sites, service frequency, seasonal changes and blackout dates. Compare them with completed '
+    'and upcoming orders.'),
+   ('Model an uncovered commitment',
+    'A fictional portfolio requires 80 monthly visits, but dispatch has scheduled 72. Six omitted visits are '
+    'valid and two reflect documented closures. Model the staffing and travel needed for the six.'),
+   ('Assign first-cycle ownership',
+    'Have the intended operator verify the schedule, customer windows and unresolved deviations. Bring '
+    'material contractual questions to the deal team.')],
+  ['Confirm active sites',
+   'Compare expected and scheduled visits',
+   'Factor in legitimate exclusions',
+   'Assign open commitments'],
+  ('Can prior visit totals establish future workload?',
+   'Use prior totals alongside current agreements and schedule changes to calculate the expected workload.'),
+  ['acquisition-service-level-commitments', 'acquisition-service-staffing-coverage']),
+ ('acquisition-supplier-credit-balance',
+  'Supplier Credit Balance Review in Acquisition Diligence',
+  'Trace supplier credits to validated causes and assess when they can be applied or recovered.',
+  'Separate requested credits, issued credits, applied credits and amounts still held on supplier accounts.',
+  [('Reconcile the supplier record',
+    'Match notices, returns and credits to recent vendor statements and payable records. Identify credits '
+    'that require a future order to become usable.'),
+   ('Model an application limit',
+    'A fictional buyer finds $14,000 of issued credits. The supplier confirms $8,000 can offset open '
+    'invoices and the remaining $6,000 is available against qualifying future orders. Reflect the two groups '
+    'on the dates they can plausibly be used.'),
+   ('Confirm treatment and ownership',
+    'Have advisers verify the transaction’s treatment of balances. Give the buyer an owner for reconciling '
+    'the first statement and following up on excluded items.')],
+  ['Verify issued amounts',
+   'Reconcile applied credits',
+   'Model timing restrictions',
+   'Assign statement review'],
+  ('Are all issued credits equivalent to cash?',
+   'Check who can use them, against which invoices and under what conditions before treating them as '
+   'available funds.'),
+  ['acquisition-supplier-payables-aging', 'acquisition-supplier-rebate-reconciliation']),
+ ('acquisition-post-close-customer-communication',
+  'Post-Close Customer Communication Plan for Business Buyers',
+  'Organize customer announcements around approved messages, contact ownership, and follow-through.',
+  'Identify who needs a personal conversation, what information can be shared, and which customer '
+  'commitments require coordination.',
+  [('Build an approved contact plan',
+    'Work with the deal team on timing, scope and authorized senders. Prioritize accounts with upcoming '
+    'renewals, unresolved escalations or service changes.'),
+   ('Test the handoff message',
+    'A fictional major account renews two weeks after close. The former account lead introduces the '
+    'buyer-side contact using approved language, and the new owner confirms the renewal meeting and existing '
+    'service commitments.'),
+   ('Verify the response and next action',
+    'Log who was reached, where correspondence is retained and who owns open questions. Give support an '
+    'approved escalation route for unexpected customer concerns.')],
+  ['Prioritize accounts', 'Confirm authorized timing', 'Assign a contact owner', 'Track acknowledgments'],
+  ('Should all customers receive the same announcement?',
+   'Use approved consistent facts and select the appropriate contact method and follow-up for each account.'),
+  ['acquisition-customer-renewal-calendar', 'acquisition-open-service-escalations'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
