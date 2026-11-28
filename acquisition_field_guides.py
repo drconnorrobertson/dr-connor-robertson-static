@@ -2067,6 +2067,46 @@ TOPICS.extend([('acquisition-unbilled-service-visits',
    'Track it as an unresolved recovery until shipment, acceptance and settlement are evidenced.'),
   ['acquisition-supplier-credit-balance', 'acquisition-accounts-payable-cutover'])])
 
+TOPICS.extend([('acquisition-customer-master-handoff',
+  'Customer Master Handoff After a Business Acquisition',
+  'Map customer records and verify billing and service destinations before first-week operations.',
+  'Agree which customer records and fields can be transferred and how they map to the buyer’s systems.',
+  [('Map record identifiers',
+    'Capture parent and site records, approved billing contacts, delivery addresses and tax or payment '
+    'fields handled through authorized channels.'),
+   ('Test a multi-site account',
+    'A fictional parent customer has one billing address and four service sites. Verify that a new order '
+    'uses the intended delivery site and still routes billing to the authorized parent record.'),
+   ('Reconcile exceptions',
+    'Review missing relationships and ambiguous duplicates with the account owner. Keep originals traceable '
+    'and confirm approved corrections before the first invoice run.')],
+  ['Map parent and site IDs',
+   'Protect restricted fields',
+   'Test order and invoice routing',
+   'Confirm correction ownership'],
+  ('Should accounts sharing a billing address be merged?',
+   'Verify the legal and operating relationships first. Distinct accounts can share a billing address.'),
+  ['acquisition-data-migration-reconciliation', 'acquisition-billing-cutover']),
+ ('acquisition-customer-preferred-delivery-windows',
+  'Customer Delivery Window Review in Acquisition Diligence',
+  'Identify delivery windows and access rules that constrain the buyer’s first routes.',
+  'Build the schedule from actual customer commitments and current access rules rather than a territory map '
+  'alone.',
+  [('Find the source of each window',
+    'Compare contract terms, customer instructions, recurring routes and approved exceptions. Record the '
+    'location’s actual receiving capabilities.'),
+   ('Stress-test a route',
+    'A fictional customer accepts deliveries only before 10 a.m. Its new route arrives at 10:30 under '
+    'typical traffic. Verify a different route sequence or a customer-approved window before forecasting the '
+    'change.'),
+   ('Verify assignment and communication',
+    'Ask dispatch and the account owner to confirm the initial schedule. Track unresolved sites and the '
+    'fallback authorized for the first operating week.')],
+  ['Collect current site rules', 'Identify hard windows', 'Test likely travel', 'Assign customer follow-up'],
+  ('Should every historical window carry forward?',
+   'Confirm which windows still apply and which changes the customer authorized.'),
+  ['acquisition-route-coverage-readiness', 'acquisition-dispatch-travel-cost'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
