@@ -2008,6 +2008,65 @@ TOPICS.extend([('acquisition-customer-portal-readiness',
    'Find the underlying service record and ask a qualified owner to verify status and restrictions.'),
   ['maintenance-capex-acquisition', 'acquisition-equipment-downtime-review'])])
 
+TOPICS.extend([('acquisition-unbilled-service-visits',
+  'Unbilled Service Visits in Acquisition Diligence',
+  'Identify completed service calls missing from billing and verify the evidence needed to recover them.',
+  'Start with completed field work and trace eligible visits to invoices or approved exclusions.',
+  [('Build the completed-visit population',
+    'Collect job IDs, dates, signed scope, completion evidence and approved billing rules. Match invoices '
+    'and credits by job.'),
+   ('Review unexplained visits',
+    'A fictional buyer finds 14 completed visits with no matching invoice. Five are included in a prepaid '
+    'contract, six are waiting on customer proof and three have no documented next action.'),
+   ('Give each group a disposition',
+    'Document recoverable amounts only after verifying billability. Ask the deal team to review cutoff and '
+    'responsibility, then assign an owner to collect missing evidence.')],
+  ['Match visits and invoices', 'Separate prepaid work', 'Verify open evidence', 'Assign closing treatment'],
+  ('Can every unmatched visit be billed?',
+   'Confirm the customer agreement and whether the visit is already covered by an earlier payment or '
+   'invoice.'),
+  ['acquisition-order-to-cash-walkthrough', 'acquisition-customer-acceptance-backlog']),
+ ('acquisition-customer-credit-limit-handoff',
+  'Customer Credit Limit Handoff After an Acquisition',
+  'Transfer approved customer limits and avoid releasing orders on stale or missing authority.',
+  'Identify who owns credit decisions and which existing orders require a review at the cutoff.',
+  [('Map approved decisions',
+    'Record authorized limits, balances, holds, pending payments and the responsible reviewer. Use '
+    'restricted access for supporting records.'),
+   ('Test a held order',
+    'A fictional account has $8,000 outstanding and a $10,000 approved limit. A new $4,000 order would bring '
+    'exposure to $12,000. Verify that the buyer’s order system holds it and routes it to the designated '
+    'reviewer.'),
+   ('Reconcile the first cycle',
+    'Sample held and released orders against their documented approvals and check that customers receive '
+    'updates from the right owner.')],
+  ['Confirm authority', 'Reconcile exposure', 'Test a held order', 'Verify first-cycle outcomes'],
+  ('Do inherited limits apply automatically?',
+   'Confirm the buyer’s approved policy and transition decisions before using limits in the new system.'),
+  ['acquisition-order-entry-cutover', 'accounts-receivable-aging-due-diligence']),
+ ('acquisition-supplier-return-authorization',
+  'Supplier Return Authorization Review Before an Acquisition',
+  'Verify open supplier returns, shipping deadlines and outstanding credits before transferring '
+  'responsibility.',
+  'Distinguish stock waiting for authorization, authorized stock ready to ship and returns already received '
+  'by the vendor.',
+  [('Create an open return register',
+    'Tie each item to the original purchase, authorization, quantity, location, expected credit and date. '
+    'Confirm any freight or handling deductions.'),
+   ('Walk through an outstanding return',
+    'A fictional vendor authorizes 30 units at $40 each and deducts a $100 handling fee. Expected recovery '
+    'is $1,100 before any other costs, and depends on receipt by the authorized date.'),
+   ('Plan evidence after close',
+    'Confirm responsibility with the deal team. Give receiving and payables a shared reference to trace '
+    'shipment, receipt and credit.')],
+  ['Match original purchases',
+   'Verify authorization dates',
+   'Calculate expected net credits',
+   'Assign follow-up'],
+  ('Can authorization be treated as a collected credit?',
+   'Track it as an unresolved recovery until shipment, acceptance and settlement are evidenced.'),
+  ['acquisition-supplier-credit-balance', 'acquisition-accounts-payable-cutover'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
