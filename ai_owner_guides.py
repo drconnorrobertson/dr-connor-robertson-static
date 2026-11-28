@@ -168,7 +168,7 @@ def render_pages(header, breadcrumbs, footer):
         trail = trail[:-1] + [("AI for Business Owners", None)] if path == ROOT else trail + [(title, None)]
         return (header(title, description, path, page_type=kind)
                 + breadcrumbs(trail)
-                + f'<section class="sec"><div class="ctn" style="max-width:900px"><h1>{escape(title)}</h1>{body}</div></section>'
+                + f'<section class="sec"><div class="ctn owner-guide"><h1>{escape(title)}</h1>{body}</div></section>'
                 + footer())
 
     def link(guide):
