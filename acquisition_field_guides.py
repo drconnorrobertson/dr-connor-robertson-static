@@ -2150,6 +2150,49 @@ TOPICS.extend([('acquisition-supplier-freight-terms',
    'Prioritize items whose absence stops committed work and whose replenishment dates remain uncertain.'),
   ['acquisition-opening-inventory-reconciliation', 'acquisition-supplier-onboarding-timing'])])
 
+TOPICS.extend([('acquisition-equipment-rental-cost-normalization',
+  'Equipment Rental Cost Normalization in Acquisition Diligence',
+  'Separate recurring rental needs from temporary jobs and quantify the equipment cost the buyer will still '
+  'incur.',
+  'Use rental invoices and the jobs they support to determine which expense assumptions belong in the '
+  'buyer’s operating model.',
+  [('Group rental charges by purpose',
+    'Record equipment, associated work, rates, delivery charges and rental duration. Identify assets rented '
+    'repeatedly because the business lacks permanent capacity.'),
+   ('Test a proposed adjustment',
+    'A fictional seller classifies $48,000 of rental costs as unusual. The buyer verifies $18,000 supported '
+    'a completed one-time project and $30,000 supported recurring peak work. Retain the recurring portion '
+    'unless a supported substitute is in place.'),
+   ('Price the substitute',
+    'Compare owned, leased and rented options using downtime, upkeep and cash timing. Have the diligence '
+    'accountant review material adjustments.')],
+  ['Trace rents to jobs',
+   'Identify recurring capacity gaps',
+   'Price a feasible substitute',
+   'Reconcile the forecast'],
+  ('Should buying replacement equipment erase recurring rental expense?',
+   'Compare the replacement’s financing, maintenance, utilization and timing before changing the operating '
+   'and cash forecasts.'),
+  ['acquisition-equipment-lease-obligations', 'maintenance-capex-acquisition']),
+ ('acquisition-field-service-billing-terms',
+  'Field Service Billing Terms Review Before an Acquisition',
+  'Check travel rates, callout fees and time rounding against signed agreements and service records.',
+  'Review actual field-service invoices alongside the source records that should support each charge.',
+  [('Build a representative sample',
+    'Include routine work, overtime, travel, minimum callouts and repeat visits. Capture the effective terms '
+    'and any exceptions approved by the customer.'),
+   ('Recalculate one bill',
+    'A fictional agreement bills $120 per hour after a two-hour minimum. A 90-minute visit supports $240 in '
+    'labor under those assumptions. Verify whether travel is included before relying on a separate fee.'),
+   ('Test the first buyer-side run',
+    'Reconcile a test invoice back to the documented rules and work order. Assign ownership for disputed '
+    'charges and have advisers review material terms.')],
+  ['Sample visit types', 'Check approved rate terms', 'Recalculate charges', 'Verify the cutover run'],
+  ('How should informal pricing exceptions be handled?',
+   'Record the supporting evidence, verify the approval process and keep unresolved economics visible in the '
+   'forecast.'),
+  ['acquisition-customer-contract-rate-review', 'acquisition-unbilled-service-visits'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
