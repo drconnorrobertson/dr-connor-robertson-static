@@ -2548,6 +2548,8 @@ def sitemap(posts):
                        BRAND_LASTMOD if loc in BRAND_UPDATED_PAGES or loc.startswith(("/books/", "/projects/", "/podcast/")) else
                        ACQUISITIONS_LASTMOD if loc == "/business-acquisitions/" else STATIC_LASTMOD)
         lastmod = acquisition_dates.get(loc, lastmod)
+        if loc.startswith("/ai/business-owners/"):
+            lastmod = "2026-11-28"
         if loc in {"/guides/customer-question-csv-to-faq-brief/", "/ai/implementation/"}:
             lastmod = "2026-10-25"
         if loc == "/ai/implementation/knowledge-and-evaluation/evaluation-dataset-design/":
