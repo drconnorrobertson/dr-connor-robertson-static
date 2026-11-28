@@ -215,6 +215,127 @@ TOPICS.extend([
 ])
 
 
+TOPICS.extend([('acquisition-warranty-claims-review',
+  'Warranty Claims Review Before Buying a Business',
+  'Estimate the work and cash tied to open and expected warranty claims.',
+  'Review the commitment the customer received, the claim history, and cash required after close.',
+  [('Collect warranty terms and active claims',
+    'Match open claims to the originating sale, coverage period, status, and resolution owner. Review prior '
+    'claims by product cohort and document unusual failure rates.'),
+   ('Model an expected cost',
+    'A fictional buyer finds 40 open claims. The initial planning model uses $180 average handling and '
+    'repair cost, or $7,200, before unusual claims. Inspect the high-cost cases separately.'),
+   ('Resolve responsibility',
+    'Ask deal advisers to confirm who handles existing claims and future claims tied to prior sales. Assign '
+    'an operating owner and a cash contingency.')],
+  ['Map warranty terms',
+   'Review active claims',
+   'Model high-cost cases',
+   'Confirm post-close responsibility'],
+  ('What if claim rates changed recently?',
+   'Review the affected cohorts separately and test the cost under the newer rate.'),
+  ['maintenance-capex-acquisition', 'day-one-acquisition-continuity-checklist']),
+ ('acquisition-customer-credit-memos',
+  'Review Customer Credit Memos in Acquisition Diligence',
+  'Trace customer credits to sales and distinguish routine discounts from disputes or recurring fulfillment '
+  'problems.',
+  'Credit memo history shows where billed revenue changed after invoicing.',
+  [('Build a bridge from gross to net',
+    'Group credits by origin and reason. Tie the original invoice and approval to each sampled credit and '
+    'inspect unmatched credits around reporting cutoffs.'),
+   ('Test recurring causes',
+    'A fictional seller has $45,000 of credits in one quarter, including $25,000 from late delivery on one '
+    'service line. The buyer checks subsequent jobs and distinguishes the recoverable operating issue from a '
+    'persistent pricing assumption.'),
+   ('Reflect the evidence in the deal model',
+    'Update the projected net sales for persistent causes and document the estimate. Review unsettled '
+    'disputes and upcoming service obligations with the transaction team.')],
+  ['Reconcile adjustments', 'Inspect high-value credits', 'Classify repeat causes', 'Update net sales'],
+  ('Why review credits rather than only net revenue?',
+   'Credits can reveal recurring delivery problems or disputed terms hidden inside a stable aggregate '
+   'amount.'),
+  ['acquisition-revenue-reconciliation', 'accounts-receivable-aging-due-diligence']),
+ ('acquisition-cash-conversion-cycle',
+  'Cash Conversion Cycle When Buying a Business',
+  'Translate inventory, billing and collection timing into a concrete funding requirement.',
+  'A funding model needs the time between cash paid to suppliers and cash collected from customers.',
+  [('Trace real trade cycles',
+    'Collect time stamps from purchase orders, receipts, inventory issues, invoices and payments. Use '
+    'representative orders by product line or season.'),
+   ('Walk through a cash gap',
+    'A fictional distributor pays on day 15, sells the inventory on day 35, and collects 35 days after sale. '
+    'Cash is tied up for about 55 days. Apply that timing to planned purchases and test delays.'),
+   ('Build the first-quarter funding schedule',
+    'Map purchases, collections and debt payments week by week when cash is tight. Ask finance to reconcile '
+    'the forecast with actual balances and update it at close.')],
+  ['Collect source dates',
+   'Measure time by cohort',
+   'Model collection delays',
+   'Monitor first-quarter balances'],
+  ('How is this different from a working capital target?',
+   'Cash timing helps estimate what must be funded during operations. The negotiated working capital target '
+   'defines the purchase agreement mechanics.'),
+  ['working-capital-business-acquisition', 'seasonal-cash-flow-acquisition']),
+ ('key-manager-transition-plan',
+  'Key Manager Transition Plan for Business Buyers',
+  'Plan the transfer of decisions, relationships and operating responsibilities to key managers after an '
+  'acquisition.',
+  'A named manager needs clear authority, usable records and time to assume important duties.',
+  [('Map the responsibilities',
+    'List recurring decisions, unusual exceptions, internal and external relationships, approval limits and '
+    'system access. Confirm which duties the manager already performs.'),
+   ('Rehearse a high-impact decision',
+    'A fictional manager can schedule staff but has never approved an expedited supplier order. The buyer '
+    'runs an authorized exercise and records the budget limit, escalation path and systems needed for the '
+    'change.'),
+   ('Review workload after transfer',
+    "Check which duties can move off the manager's plate. Schedule feedback and a backup owner for critical "
+    'decisions. Use observable milestones to confirm the handoff.')],
+  ['Map current duties', 'Set authority', 'Rehearse one exception', 'Review capacity'],
+  ('What if the manager lacks capacity?',
+   'Reassign work, add support or stage the transfer with an interim owner and explicit dates.'),
+  ['owner-dependence-due-diligence', 'employee-transition-listening-plan']),
+ ('acquisition-customer-deposit-register',
+  'Customer Deposit Register for Business Buyers',
+  'Build a register tying individual deposits to open orders, refund rules and delivery obligations.',
+  'A deposit register helps prevent prepaid jobs from falling out of the closing handoff.',
+  [('Connect every amount to a job',
+    'Record deposit date, amount, remaining invoice, order status, expected completion, refund terms and '
+    'account owner. Reconcile the register to accounting records.'),
+   ('Quantify unresolved jobs',
+    'A fictional company has 18 deposits totaling $90,000. Three pending jobs account for $15,000 and lack '
+    'confirmed delivery dates. The buyer checks whether the orders can be filled or funds may need to be '
+    'returned.'),
+   ('Confirm handoff and reconciliation',
+    'Have the deal team confirm treatment and appoint one owner for post-close customer communications. '
+    'Sample the first week of completed jobs against the register.')],
+  ['Build the job-level register', 'Reconcile to ledger', 'Review uncertain jobs', 'Assign follow-up'],
+  ('How does this relate to deferred revenue?',
+   'The register provides practical job-level evidence. The accountant determines how amounts belong in the '
+   'financial statements and deal calculations.'),
+  ['deferred-revenue-business-acquisition', 'acquisition-backlog-due-diligence']),
+ ('acquisition-service-level-commitments',
+  'Review Service-Level Commitments Before an Acquisition',
+  'Map delivery, uptime, response and reporting commitments before deciding how the business will serve '
+  'accounts after close.',
+  'The buyer needs to understand which commitments create recurring staffing costs and which gaps already '
+  'affect customer trust.',
+  [('Read obligations with operations',
+    'List commitments and measurement rules from signed contracts. Compare actual performance, recurring '
+    'reports, credits and incident logs.'),
+   ('Test the operating implications',
+    'A fictional support contract requires a response within two hours during defined coverage hours. The '
+    'buyer finds repeated late responses on one shift and tests the staffing and backup coverage required to '
+    'support the promise.'),
+   ('Assign ongoing ownership',
+    'Give each commitment an operating owner and escalation route. Ask the deal team to review material '
+    'obligations and open claims, then carry the most critical measures into the transition dashboard.')],
+  ['Collect signed terms', 'Reconcile performance reports', 'Forecast staffing or capacity', 'Assign owners'],
+  ('What if the seller reports performance differently from the contract?',
+   'Recalculate a sample using the contractual definition and document the difference before relying on the '
+   'reported figure.'),
+  ['customer-concentration-risk', 'acquisition-customer-renewal-calendar'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
