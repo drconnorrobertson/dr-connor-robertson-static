@@ -2489,6 +2489,47 @@ TOPICS.extend([('acquisition-supplier-deposits-review',
    'Classify planned stages, customer-requested work and avoidable repeat trips separately.'),
   ['acquisition-dispatch-travel-cost', 'acquisition-warranty-claims-review'])])
 
+TOPICS.extend([('acquisition-purchase-price-variance',
+  'Purchase Price Variance Review in Acquisition Diligence',
+  'Explain supplier cost changes by unit rate, order volume and documented exceptions.',
+  'Take a comparable purchase sample and reconcile the quantities and terms to approved source records.',
+  [('Normalize quantities and rates',
+    'Check pack sizes, invoiced currency, freight and vendor credits before comparing unit costs.'),
+   ('Separate volume from unit price',
+    'A fictional operator buys 600 units at $9 instead of 500 at $8. The $1,400 cost increase includes $800 '
+    'from volume at the old price and $600 from the higher rate on actual volume.'),
+   ('Check persistence',
+    'Compare current signed rate notices and actual order patterns, then keep unconfirmed supplier changes '
+    'in a separate forecast scenario.')],
+  ['Confirm comparable units',
+   'Reconcile total spend',
+   'Bridge volume and price',
+   'Validate the forward rate'],
+  ('What if purchasing mix changed too?',
+   'Compare at item level or show the mix effect separately so a blended rate does not hide the cause.'),
+  ['acquisition-price-increase-exposure', 'acquisition-replacement-inventory-cost']),
+ ('acquisition-lost-order-capacity-risk',
+  'Lost Order Capacity Risk Before Buying a Business',
+  'Estimate the demand a business could not serve and verify what would make that work attainable.',
+  'Start with customer requests declined or left unserved because capacity was unavailable.',
+  [('Validate reasons and eligibility',
+    'Collect dated requests, customer requirements and documented reasons. Exclude work outside the service '
+    'area or quoted scope unless evidence supports a feasible change.'),
+   ('Model a feasible recovery',
+    'A fictional seller declines 20 jobs. Eight could fit with four additional qualified shifts, while '
+    'twelve require equipment the buyer does not own. Estimate incremental margin for the eight before '
+    'considering the rest.'),
+   ('Test the staffing and delivery plan',
+    'Verify lead times, labor availability and related costs. Keep recovered demand in an improvement '
+    'scenario until customers and capacity are confirmed.')],
+  ['Verify decline reasons',
+   'Separate feasible demand',
+   'Price incremental capacity',
+   'Model supported contribution'],
+  ('Can all lost orders be assumed to return?',
+   'Verify ongoing customer demand and ability to serve the work before including it in a forecast.'),
+  ['acquisition-sales-pipeline-quality', 'acquisition-service-staffing-coverage'])])
+
 
 def field_guides():
     for slug, title, description, lead, sections, checklist, faq, related in TOPICS:
