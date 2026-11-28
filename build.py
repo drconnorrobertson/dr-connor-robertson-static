@@ -2911,6 +2911,9 @@ def page_ai_business_strategy():
 </ol>
 <p>The <a href="/ai/ai-governance-measurement/choose-first-ai-pilot-small-business/">first AI pilot guide</a> helps choose between candidate tasks. The <a href="/ai/ai-governance-measurement/measure-ai-workflow-roi-human-review/">ROI guide</a> shows how to count only accepted results after human review.</p>
 
+<h2>Score candidate workflows before the pilot</h2>
+<p>Give each candidate one score for frequency, source quality, ease of review, and the cost of an error. A weekly operations summary with a trusted spreadsheet and a named reviewer may be ready to test. An irregular pricing exception with no written policy needs a better source and approval process first. Record the reason for selecting a pilot so the team can revisit it when the facts change.</p>
+
 <h2>Match the tool to the output</h2>
 <p>Use the same approved test input and acceptance checklist when comparing tools. A conversational draft, a long-document review, and a reusable team assistant have different setup and review needs. The right choice is the one that produces accurate, traceable work at a reasonable total cost for that task. Tool names and features change; retest when your workflow or vendor settings change.</p>
 <div class="pills" style="margin-top:24px">
